@@ -1,0 +1,256 @@
+<view class="touch">
+
+    <!--用户信息 -->
+    <view class="container_userInfo" bindtap='intoUserInfoDetailPage'>
+        <!-- 头像 -->
+        <view class='userInfo_avatar'>
+            <image class='avatar' src='{{userInfo.avatar_url}}'></image>
+        </view>
+
+        <!-- 昵称、用户ID -->
+        <view class='nickname_userId'>
+            <text class='nick_name'>{{userInfo.nick_name}}</text>
+            <text class='user_id'>用户ID：{{userInfo.id}}</text>
+        </view>
+
+        <!-- 查看我的主页 -->
+        <view class='mine'>
+            <text>查看我的主页</text>
+            <image class='into_mine_page' src='/images/button/into_button.png'>
+            </image>
+        </view>
+    </view>
+
+
+    <!--相关功能 -->
+    <view class='functionalModule'>
+
+        <!-- 第一行 -->
+        <view class='line'>
+            <!-- 我的关注 -->
+            <view class='my_follow'>
+                <image src='/images/button/my_follow.png'></image>
+                <text>关注</text>
+            </view>
+
+            <!-- 我的粉丝 -->
+            <view class='my_follower'>
+                <image src='/images/button/my_follower.png'></image>
+                <text>粉丝</text>
+            </view>
+
+            <!-- 我的收藏 -->
+            <view class='my_collect'>
+                <image src='/images/button/my_collect.png'></image>
+                <text>收藏</text>
+            </view>
+
+            <!-- 我建的圈子 -->
+            <view class='my_create_project'>
+                <image src='/images/button/my_create_project.png'></image>
+                <text>圈子</text>
+            </view>
+        </view>
+
+        <!-- 第二行 -->
+        <view class='line'>
+            <!-- 设置 -->
+            <view class='setting'>
+                <image src='/images/button/setting.png'></image>
+                <text>设置</text>
+            </view>
+
+            <!-- 占位 -->
+            <view class='blank'></view>
+            <view class='blank'></view>
+            <view class='blank'></view>
+        </view>
+
+
+    </view>
+
+    <!-- 分割线 -->
+    <view class='interval_line'></view>
+
+    <!-- 我的打卡日记展示 -->
+    <view class="myPunchCardDiaryDisplay">
+
+        <text>我的打卡日记</text>
+
+        <!-- 遍历展示详细内容 -->
+        <block wx:if="{{diaryLists}}">
+            <block wx:for="{{diaryLists}}">
+
+                <!-- 分割线 若是第一个打卡日记则不显示 -->
+                <block wx:if="{{index !== 0}}">
+                    <view class='interval_line'></view>
+                </block>
+
+                <view class='diaryDisplayItem'>
+                    <!-- 日记展示头部：日记用户头像、昵称、打卡时间、已打卡天数、日记私密类型、删除
+                    按钮 -->
+                    <view class='diaryDisplayHeader'>
+
+                        <!-- 头像 -->
+                        <view class='headerLeft' bindtap='intoUserInfoDetailPage'>
+                            <image src='{{userInfo.avatar_url}}'></image>
+                        </view>
+
+                        <view class='headerCenter'>
+                            <!-- 用户昵称 -->
+                            <view class="punchCardUserNickName" bindtap='intoUserInfoDetailPage'>
+                                <text>{{userInfo.nick_name}}</text>
+                            </view>
+
+                            <!-- 打卡时间 & 坚持天数，也就是在圈子中的第几次打卡 -->
+                            <text class="punchTime" bindtap="intoDiaryDetailPage"> 18-01-01 23:30 · 已坚持23天</text>
+
+                            <!-- 日记隐私类型 -->
+                            <view class="punchCardDiaryType">
+                                <image src="/images/button/hide.png"></image>
+                            </view>
+                        </view>
+
+                        <view class='headerRight' bindtap="deleteDiary">
+                            <!-- 删除按钮 -->
+                            <image src='/images/button/delete.png'></image>
+
+                        </view>
+                    </view>
+
+                    <!--打卡日记内容-->
+                    <view class="diaryDetailContent">
+                        <!-- 打卡文字内容 -->
+                        <view class="diaryText" bindtap="intoDiaryDetailPage">
+                            {{item.diaryDetailContent}}
+                        </view>
+
+                        <!-- 打卡图片，一张图片直接显示，二张以上九宫格格式展示 -->
+                        <view class="diaryImages">
+                            <image src="{{userInfo.avatar_url}}"></image>
+                        </view>
+
+                        <!-- 打卡地点 -->
+                        <view class="diaryPunchAddress">
+                            <image src="/images/button/diaryPunchAddress.png"></image>
+                            <text> 银河系某个神秘星球</text>
+                        </view>
+
+                        <!-- 打卡日记所属圈子信息：图片&圈子名称 -->
+                        <view class="diaryProjectInfo" bindtap="intoProjectDetailPage">
+                            <!--圈子封面图片-->
+                            <view class="diaryProjectCoverImg">
+                                <image src="{{userInfo.avatar_url}}">
+                                </image>
+                            </view>
+
+                            <!--圈子名称-->
+                            <view class="diaryProjectName">
+                                <text>test</text>
+                            </view>
+
+                            <!--进入打卡圈子详情页-->
+                            <view class="intoDiaryDetail">
+                                <image src="/images/button/into_btn_gray.png">
+                                </image>
+                            </view>
+                        </view>
+
+                        <!-- 互动信息 -->
+                        <view class="diaryInteractionInfo">
+
+                            <!-- 点赞、评论、分享 按钮-->
+                            <view class="diaryInteractionButton">
+                                <!-- 点赞 -->
+                                <view class="likeBtn">
+                                    <image src="/images/button/like_btn.png"></image>
+                                    <text>赞</text>
+                                </view>
+
+                                <!-- 评论 -->
+                                <view class="commentBtn">
+                                    <image src="/images/button/comment_btn.png"></image>
+                                    <text>评论</text>
+                                </view>
+
+                                <!-- 分享 -->
+                                <view class="shareBtn">
+                                    <image src="/images/button/share_btn.png"></image>
+                                    <text>分享</text>
+                                </view>
+                            </view>
+
+                            <!-- 点赞用户展示，只展示服务器返回前十个用户昵称以及总赞数 -->
+                            <block wx:if="{{item.likeUserInfo}}">
+                                <view class="likeUserInfo">
+                                    <image src="/images/button/like_btn_2.png"></image>
+                                    <block wx:for="{{item.likeUserInfo.info}}" wx:for-item="likeUserItem">
+                                        <text id="{{likeUserItem.open_id}}"
+                                              bindtap="intoUserInfoDetailPage">{{likeUserItem.nick_name}},
+                                        </text>
+                                    </block>
+                                    <text>共{{item.likeUserInfo.num}}人觉得很赞</text>
+                                </view>
+                            </block>
+                            <block wx:else></block>
+
+
+                            <!-- 隔离带 -->
+                            <view style="background-color: #dbdbdb;height: 1px;">
+                            </view>
+
+                            <!-- 评论信息 -->
+                            <block wx:if="{{item.commentInfo}}">
+                                <view class="commentInfo">
+                                    <block wx:for="{{item.commentInfo}}" wx:for-item="commItem">
+                                        <view>
+                                            <!--发送者昵称-->
+                                            <text id="{{commItem.commentInfo.sender.open_id}}" bindtap=
+                                                    "intoUserInfoDetailPage">{{commItem.sender.nick_name}}</text>
+                                            <!-- 发送者所回复者的昵称 -->
+                                            <block wx:if="{{commItem.receiver}}">
+                                                <text style="color: black"> @ </text>
+                                                <text id="{{commItem.receiver.open_id}}"
+                                                      bindtap="intoUserInfoDetailPage">{{commItem.receiver.nick_name}}</text>
+                                            </block>
+                                            <block wx:else></block>
+                                            <!--评论内容-->
+                                            <text style="color: black"
+                                                  bindtap="receiverComment"> :{{commItem.content}}</text>
+                                        </view>
+                                    </block>
+                                </view>
+                            </block>
+                            <block wx:else></block>
+
+                            <!--回复评论输入框 通过display:none 来隐藏 小程序hidden属性使用于块级元素-->
+                            <!--<view class="receiverComment" style="display:{{hideCommentInputView}};">-->
+                            <view class="receiverComment" hidden="{{!releaseFocus}}">
+                            <textarea class="receiverInput" placeholder="{{replyTo}}" fixed="{{true}}"
+                                      placeholder-style="{{placeholderColor}}" maxlength="-1"  cursor-spacing="15"
+                                      show-confirm-bar= '' auto-height="true" focus="{{releaseFocus}}"
+                                      bindinput="updateSendBtn">
+                            </textarea>
+                                <button size="mini" type="primary" disabled="{{sendBtnAttr.allowSend}}"
+                                        bindtap="sendComment">发送</button>
+                            </view>
+
+                        </view><!-- 打卡日记交互(点赞、评论等)信息 -->
+                    </view><!-- 打卡日记详细内容 -->
+                </view><!-- 我的打卡日记展示 -->
+            </block> <!--for遍历循环-->
+
+        </block> <!--if判断-->
+        <block wx:else>
+            <!--这是显示没有打卡日记展示提示信息-->
+        </block>
+
+    </view>
+
+    <!--TODO 这里上拉加载获取全部信息之后显示底部提示view-->
+    <!-- 底线  -->
+    <view class="bottom">
+         ——· 我也是有顶线的哦 ·——
+    </view>
+
+</view>

@@ -1,0 +1,26 @@
+<view class="container">
+    <view class="input-project-name">
+        <label>
+            <input type="text" placeholder="点击输入名称,十五个汉字以内"
+                   bindblur="checkInput"/>
+        </label>
+        <view></view>
+    </view>
+
+    <view class="chose-project-privacy-type">
+        <radio-group class="radio-group" bindchange="radioChange">
+            <label>
+                <radio value="0" checked="false">设置为公开圈子,任何人都可以参加</radio>
+            </label>
+            <label>
+                <radio value="1" >设置为私密圈子,邀请别人才能参加</radio>
+            </label>
+        </radio-group>
+    </view>
+
+    <view class="submitBtn">
+        <button type="primary" disabled="{{btn_disable}}" bindtap="intoSetTwo">
+            下一步
+        </button>
+    </view>
+</view>

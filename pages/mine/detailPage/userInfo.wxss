@@ -1,0 +1,708 @@
+/* pages/mine/detailPage/userInfo.wxss */
+.container {
+    width: 100%;
+    height: 100%;
+    /*background-color: cyan;*/
+}
+
+/*
+ * 头部信息: 个人主页背景图、头像、个人主页设置
+ */
+.headerInfo {
+    width: 100%;
+    height: 260px;
+}
+
+/*
+ * 个人主页背景图
+ */
+.backgroundImg {
+    width: 100%;
+    height: 200px;
+}
+
+/* 进入个人主页设置页面按钮 */
+.intoUserInfoSetBtn {
+    width: auto;
+    height: 20px;
+    padding: 3px 5px 3px 5px;
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: transparent;
+    font-size: 12px;
+    font-weight: bolder;
+    color: white;
+
+    position: absolute;
+    top: 158px;
+    right: 10px;
+
+    /*设置图片居中*/
+    display: table;
+    vertical-align: middle;
+
+}
+.intoUserInfoSetBtn image {
+    height: 20px;
+    width: 20px;
+    margin-right: 3px;
+    vertical-align: middle;
+
+}
+
+
+/*
+ * 用户头像
+ */
+.userAvatar {
+    width: 100px;
+    height: 100px;
+    border: 1px solid white;
+    border-radius: 50%;
+
+    /*绝对定位水平居中*/
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    margin-left: -50px;
+}
+
+/*用户昵称*/
+.userNickName {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+
+
+    font-size: 19px;
+    text-align: center;
+}
+
+/* 关注与粉丝 */
+.followAndFollower {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 我的关注 */
+.myFollowNum {
+    width: 45%;
+    text-align: right;
+    color: cornflowerblue;
+
+}
+
+/* 分隔符 */
+.decollator {
+    width: 10%;
+    padding-top: 7px;
+    text-align: center;
+    color: #8a8a8a;
+    font-size: 10px;
+}
+
+/* 我的粉丝 */
+.myFollowerNum {
+    width: 45%;
+    text-align: left;
+    color: cornflowerblue;
+}
+
+/* 个人标签：身份标签 & 兴趣标签 & 添加按钮*/
+/*容器：flex布局*/
+.personalLabel {
+    height: auto;
+    width: 80%;
+    margin-right: 10%;
+    margin-left: 10%;
+    padding: 0 5px 5px 5px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    /*background-color: yellow;*/
+}
+
+/* min flex item*/
+.minLabelItem {
+    width: auto;
+    height: 15px;
+
+    padding: 5px 12px 5px 12px;
+    margin: 3px;
+
+    border: 1px solid darkorange;
+    border-radius: 15px;
+
+    flex-grow: 0;
+
+    color: darkorange;
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+
+}
+
+/* 小号添加按钮 图标 */
+.minLabelItem image {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 3px;
+}
+
+/* max flex item*/
+.maxLabelItem {
+    width: auto;
+    height: 25px;
+
+    padding: 5px 12px 5px 12px;
+    margin: 3px;
+
+    border: 1px solid darkorange;
+    border-radius: 15px;
+
+    flex-grow: 0;
+
+    color: darkorange;
+    font-size: 16px;
+    line-height: 25px;
+    text-align: center;
+
+}
+/* 大号添加按钮 图标 */
+.maxLabelItem image {
+    display: inline-block;
+    width: 14px;
+    height: 15px;
+    margin-right: 6px;
+    margin-bottom: 2px;
+    vertical-align: middle;
+}
+
+/* 分割线 */
+.breakupLineMin {
+    background-color: #e7e7e7;
+    height: 1px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+/* 个人主页访客记录: 访客人数 & 最近访问的五个人头像 & 详细访问记录页面入口*/
+.visitorRecord {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/*访客人数*/
+.visitorNum {
+    width: 45%;
+    height: 50px;
+    padding-left: 10px;
+
+    line-height: 50px;
+    font-size: 14px;
+
+}
+
+/*最近访问的五个人的头像*/
+.visitorAvatarList {
+    width: 45%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.visitorAvatarItem {
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+}
+.visitorAvatarItem image {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/*详细访问记录页面入口图标*/
+.intoVisitorDetailPageIcon {
+    width: 10%;
+    height: 100%;
+}
+.intoVisitorDetailPageIcon image {
+    width: 70%;
+    height: 35px;
+    padding-top: 7px;
+}
+
+/*分割线*/
+.breakupLineMax {
+    background-color: whitesmoke;
+    height: 10px;
+    width: 100%;
+}
+
+
+/* 我加入的打卡圈子 */
+.joinInPunchCardProject {
+    width: 100%;
+    height: 165px;
+    padding-top: 10px;
+
+}
+
+.joinInPunchCardProject text {
+    width: 100%;
+    height: 30px;
+
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+/* 加入的打卡圈子通过scroll-view横向展示 */
+.joinInPunchCardProjectList {
+    height: 100px;
+    width: auto;
+    margin-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    white-space: nowrap;
+}
+
+/*还未参与任何一个打卡圈子*/
+.noJoinInPunchCardProjectNotice {
+    height: 100px;
+    width: 100%;
+    line-height: 100px;
+
+    font-weight: bolder;
+    text-align: center;
+
+}
+
+/* 加入的打卡圈子相关信息展示 */
+.joinInPunchCardProjectItem {
+    width: 200px;
+    height: 100%;
+    margin-right: 10px;
+    border-radius: 5px;
+
+    display: inline-block;
+}
+
+/*打卡圈子名称*/
+.punchCardProjectName {
+    height: 60px;
+    width: 100%;
+    line-height: 60px;
+    text-align: center;
+    color: white;
+}
+
+/* 所属打卡圈子打卡天数、排名*/
+.punchCardDaysAndRand {
+    height: 40px;
+    width: 100%;
+    line-height: 40px;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+
+}
+
+
+/* 间隔线 */
+.interval_line {
+    height: 10px;
+    width: 100%;
+    background-color: whitesmoke;
+}
+
+
+/* 我的打卡日记展示 */
+.myPunchCardDiaryDisplay {
+    height:auto;
+    width: 100%;
+    padding-top: 10px;
+    /*background-color: yellow;*/
+}
+
+.myPunchCardDiaryDisplay > text {
+    width: 100%;
+    height: 30px;
+
+    font-size: 18px;
+    font-weight: bolder;
+    line-height: 30px;
+    padding-left: 10px;
+}
+
+/* 遍历展示所有打卡日记*/
+.diaryDisplayItem {
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* 日记展示头部：日记用户头像、昵称、打卡时间、已打卡天数、日记私密类型、删除 按钮 */
+.diaryDisplayHeader {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    /*background-color: yellow;*/
+
+}
+
+/* 用户头像 */
+.headerLeft {
+    width: 17%;
+    height: 100%;
+    /*background-color: red;*/
+}
+
+.headerLeft image {
+    width: 50px;
+    height: 50px;
+
+    margin-left: 10px;
+    margin-top: 10px;
+    border-radius: 50%;
+}
+
+/*打卡用户昵称、打卡时间、坚持天数、日记隐私类型*/
+.headerCenter {
+    width: 75%;
+    height:100%;
+    /*background-color: cyan;*/
+}
+
+/* 打卡日记用户昵称 */
+.punchCardUserNickName {
+    width: 100%;
+    height: 50%;
+
+    /*background-color: #73E68C;*/
+    position: relative;
+}
+
+.punchCardUserNickName > text {
+    position: absolute;
+    bottom: 0;
+    margin-left: 10px;
+    text-align: left;
+    color: #F0B27A;
+}
+
+/*打卡时间 & 坚持天数*/
+.punchTime {
+    font-size: 11px;
+    color: #8a8a8a;
+    display: inline;
+    margin-left: 8px;
+}
+
+/* 打卡日记隐私类型按钮 */
+.punchCardDiaryType {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+
+}
+.headerCenter  image {
+    width: 15px;
+    height: 15px;
+    margin-left: 6px;
+}
+
+
+/* 当本人进入自己的个人主页时显示可删除按钮 */
+.headerRight {
+    width: 10%;
+    height: 100%;
+    position: relative;
+}
+
+.headerRight > image {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    top: 25%;
+    position: absolute;
+
+}
+
+/* 打卡日记内容：打卡文字、图片、地址、所属打卡圈子信息、点赞、评论、分享*/
+.diaryDetailContent {
+    width: 290px;
+    height: auto;
+    margin-left: 17%;
+
+}
+
+/* 打卡文字内容 */
+.diaryText {
+    margin-bottom: 5px;
+}
+
+/* 打卡图片，一张图片直接显示，二张以上九宫格格式展示 */
+.diaryImages {
+    width: 100%;
+}
+.diaryImages image {
+    width: 100%;
+}
+
+/* 打卡地址 */
+.diaryPunchAddress {
+    margin-top: 5px;
+}
+
+.diaryPunchAddress text{
+    font-size: 11px;
+    color: #8a8a8a;
+}
+
+.diaryPunchAddress image {
+    width: 10px;
+    height: 10px;
+    margin-top: 2px;
+}
+
+/* 打卡圈子信息*/
+.diaryProjectInfo {
+    background-color: WhiteSmoke;
+
+    display: flex;
+    height: 50px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+/* 打卡圈子信息：封面*/
+.diaryProjectCoverImg {
+    width: 50px;
+    height: 50px;
+    float: left;
+}
+
+.diaryProjectCoverImg image {
+    width: 50px;
+    height: 50px;
+}
+
+/* 打卡圈子信息：圈子名称*/
+.diaryProjectName {
+    flex: 1;
+    height: 50px;
+    text-align: left;
+}
+
+.diaryProjectName text {
+    font-size: 13px;
+    margin-left: 10px;
+
+    /*设置文字居中*/
+    height: 50px;
+    line-height: 50px;
+}
+
+/*进入打卡圈子详情页图标*/
+.intoDiaryDetail {
+    width: 50px;
+    height: 50px;
+    float: right;
+}
+
+.intoDiaryDetail image {
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 30px;
+    height: 30px;
+}
+
+/*打卡日记互动信息：点赞、评论、分享*/
+.diaryInteractionInfo {
+    /*background-color: cyan;*/
+    height: auto;
+}
+/* 互动按钮*/
+.diaryInteractionButton {
+    /*background-color: #F0B27A;*/
+    display: flex;
+    height: 30px;
+    width: 210px;
+}
+
+.diaryInteractionButton text {
+    font-size: 14px;
+    color: #8a8a8a;
+    margin-left: 3px;
+
+    /*文字垂直居中*/
+    height: 30px;
+    line-height: 30px;
+}
+
+/*点赞*/
+.likeBtn {
+    /*background-color: greenyellow;*/
+    height: 100%;
+    width: 70px;
+
+    /*图片垂直居中*/
+    display: table;
+    vertical-align: middle;
+}
+
+.likeBtn image {
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;
+}
+
+/*评论*/
+.commentBtn {
+    /*background-color: blue;*/
+    flex: 1;
+    height: 100%;
+    width: 70px;
+
+    /*图片垂直居中*/
+    display: table;
+    vertical-align: middle;
+
+}
+
+.commentBtn image {
+    height: 17px;
+    width: 17px;
+    vertical-align: middle;
+}
+
+/*分享*/
+.shareBtn {
+    /*background-color: darkorange;*/
+    height: 100%;
+    width: 70px;
+
+    /*图片垂直居中*/
+    display: table;
+    vertical-align: middle;
+}
+
+.shareBtn image {
+    height: 15px;
+    width: 15px;
+    vertical-align: middle;
+}
+
+/*点赞信息：点赞用户昵称*/
+.likeUserInfo {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    word-break: break-all;
+    height: auto;
+    background-color: whitesmoke;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+.likeUserInfo image {
+    height: 15px;
+    width: 15px;
+    display: inline;
+    margin-left: 6px;
+}
+
+.likeUserInfo text {
+    margin-left: 15rpx;
+    font-size: 14px;
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+
+    /*color: #0c61dd;*/
+    color: #F0B27A;
+}
+
+/*评论信息*/
+.commentInfo {
+    height: auto;
+    padding: 15rpx 15rpx 5rpx 15rpx;
+    background-color: whitesmoke;
+}
+
+.commentInfo view {
+    height: auto;
+    line-height: 1.1;
+    margin-bottom: 3px;
+}
+
+.commentInfo text {
+    text-align:left;
+    font-size: 14px;
+    color: #F0B27A;
+}
+
+/* 评论输入框*/
+.input_null{
+    color: #C9C9C9;
+}
+
+.receiverComment{
+    display: flex;
+    align-items: flex-end; /*底部对齐*/
+    justify-content: space-between; /*两端对齐*/
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 18rpx 0 18rpx 30rpx;
+    background-color: #F7F8F7;
+    font-size: 28rpx;
+    z-index: 999;
+}
+.receiverComment .receiverInput{
+    width: 84%;
+    min-height: 37rpx;
+    max-height: 111rpx; /*最多显示三行*/
+    border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
+    border-style: solid;
+    border-color: #ffffff;
+    line-height: 34rpx;
+    font-size: 28rpx;
+    background-color: #ffffff;
+    border-radius: 4rpx;
+}
+.receiverComment button{
+    width: 15%;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 3px 10px;
+}

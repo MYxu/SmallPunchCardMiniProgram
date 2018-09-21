@@ -1,0 +1,129 @@
+<view class="container">
+    <!--顶部-->
+    <view class="container-header">
+        <view class="user-avatar">
+            <image src="{{userInfo.avatar_url}}"></image>
+        </view>
+    </view>
+
+    <!--创建打卡圈子 && 展示我加入加入的打卡圈子 -->
+    <view class="punch-card-project">
+        <block wx:if="{{punchCardProjectList}}"> <!--存在参与的打卡圈子-->
+            <!--创建打卡圈子按钮-->
+            <view class="create-punch-card-project-btn"
+                  bindtap="createNewPunchCardProject">
+                <image src="/images/button/add.png"></image>
+                <text>新建打卡圈</text>
+            </view>
+
+            <!--我参与的打卡圈子列表-->
+            <view class="my-punch-card-project-list">
+                <block wx:for="{{punchCardProjectList}}">
+                    <!--点击查看更多按钮显示后面全部打卡圈子-->
+                    <block wx:if="{{(index + 1) > 3}}">
+                        <view class="my-punch-card-project-item"
+                              hidden="{{projectHidden}}"
+                              bindtap="intoPunchCardDetail">
+                            <!--打卡圈子封面-->
+                            <view class="project-cover-img">
+                                <image src="/images/backgroundImg/img_1.png"></image>
+                            </view>
+                            <!--打卡圈子相关信息：打卡圈子名称 && 是否为圈子创建者  &&
+                             打卡提示时间 && 本日打卡人数-->
+                            <view class="project-detail-info">
+                                <!--打卡提醒时间 && 本日打卡人数-->
+                                <view class="row">
+                                    <view class="remind-time">
+                                        <image class="remind-time-icon"
+                                               src="/images/button/time.png">
+                                        </image>
+                                        <text>20:00</text>
+                                    </view>
+                                    <view class="punch-card-num-today">
+                                        <image class="punch-card-num-today-icon"
+                                               src="/images/button/people.png">
+                                        </image>
+                                        <text>0人已打卡</text>
+                                    </view>
+                                </view>
+                                <!--打卡圈子名称-->
+                                <view class="project-name">
+                                    <view>{{item.name}}
+                                        <block wx:if="{{item.isCreator}}">
+                                            <text class="is-creator">圈主</text>
+                                        </block>
+                                    </view>
+                                </view>
+
+                            </view>
+                            <!--打卡按钮-->
+                            <view class="punch-card-btn">
+                                <text>打卡</text>
+                            </view>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="my-punch-card-project-item"
+                              bindtap="intoPunchCardDetail">
+                            <!--打卡圈子封面-->
+                            <view class="project-cover-img">
+                                <image src="/images/backgroundImg/img_1.png"></image>
+                            </view>
+                            <!--打卡圈子相关信息：打卡圈子名称 && 是否为圈子创建者  &&
+                             打卡提示时间 && 本日打卡人数-->
+                            <view class="project-detail-info">
+                                <!--打卡提醒时间 && 本日打卡人数-->
+                                <view class="row">
+                                    <view class="remind-time">
+                                        <image class="remind-time-icon"
+                                               src="/images/button/time.png">
+                                        </image>
+                                        <text>20:00</text>
+                                    </view>
+                                    <view class="punch-card-num-today">
+                                        <image class="punch-card-num-today-icon"
+                                               src="/images/button/people.png">
+                                        </image>
+                                        <text>0人已打卡</text>
+                                    </view>
+                                </view>
+                                <!--打卡圈子名称-->
+                                <view class="project-name">
+                                    <view>{{item.name}}
+                                        <block wx:if="{{item.isCreator}}">
+                                            <text class="is-creator">圈主</text>
+                                        </block>
+                                    </view>
+                                </view>
+
+                            </view>
+                            <!--打卡按钮-->
+                            <view class="punch-card-btn">
+                                <text>打卡</text>
+                            </view>
+                        </view>
+                    </block>
+                </block>
+            </view>
+
+            <!--查看更多的打卡圈子按钮-->
+            <block wx:if="{{projectNum >= 4 }}">
+                <view class="morePunchCardProject" hidden="{{moreProjectInfo}}"
+                      bindtap="showMorePunchCardProject">
+                    <text>查看更多</text>
+                </view>
+            </block>
+        </block>
+        <block wx:else>                          <!--尚未存在参与的打卡圈子-->
+            <view class="create-punch-card-project-btn-none"
+                  bindtap="createNewPunchCardProject">
+                <image src="/images/button/add.png"></image>
+                <text>创建我的打卡圈</text>
+            </view>
+        </block>
+    </view>
+
+    <view class="container-bottom">
+        这里是底部页面444
+    </view>
+</view>

@@ -1,0 +1,249 @@
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+/*圈子类型标签展示*/
+.project-type-label-list {
+    width: 100%;
+    height: auto;
+    margin-bottom: 80px;
+    margin-left: 20px;
+    background-color: white;
+}
+.notice-message {
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    line-height: 40px;
+}
+
+/*一级标签展示*/
+.parent-label-item {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+/*标签图标*/
+.label-img {
+    width: 15%;
+    height: 100%;
+    position: relative;
+}
+.label-img > image {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+
+}
+
+/*标签名*/
+.label-name {
+    width: 25%;
+    height: 80px;
+    line-height: 80px;
+    color: black;
+    font-size: 15px;
+}
+
+/*被选的当前父级标签的子级标签*/
+.choose-child-label-list {
+    width: 45%;
+    height: 80px;
+    line-height: 80px;
+
+    text-align: right;
+    color: #F0B27A;
+    font-size: 14px;
+}
+
+/*子标签显示、隐藏icon*/
+.show-child-label-btn {
+    width: 15%;
+    height:100%;
+    position: relative;
+}
+
+/*显示*/
+.show-child-label {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    margin-left: 5px;
+
+    transition:transform  0.3s;
+
+}
+/*隐藏*/
+.hidden-child-label {
+    transform:rotate(180deg);
+}
+/*分割线*/
+.break-line-mix {
+    width: 100%;
+    height: 1px;
+    background-color: #cccccc;
+}
+
+
+/*父级标签下的子级标签列表显示*/
+.child-label-list {
+    width: 100%;
+    height: 100%;
+    background-color: #FAFAFA;
+    padding: 20px 5px 5px 25px;
+}
+
+.child-label-list > view {
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: center;
+}
+
+/*子级标签名*/
+.child-label-item {
+    margin-right: 20px;
+    margin-bottom: 15px;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    text-align: center;
+}
+
+/*子级标签被选中之后的显示状态*/
+.child-label-item-choose {
+    border: 1px solid #F0B27A;
+    color: #F0B27A;
+}
+
+
+/*添加自定义标签Icon*/
+.add-custom-project-label-btn {
+    width: 15%;
+    height:100%;
+    position: relative;
+}
+.add-custom-project-label-btn > image {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    margin-left: 5px;
+}
+
+/*自定义的添加自定义标签模态框*/
+
+/*弹出层蒙层*/
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9000;
+    color: #fff;
+}
+
+/*模态对话框*/
+.modal-dialog {
+    width: 80%;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -100px 10%;
+    border-radius: 10px;
+}
+/*对话框标题*/
+.modal-title {
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: bolder;
+    color: black;
+    text-align: center;
+}
+/*对话框内容*/
+.modal-content {
+    padding: 15px 15px;
+}
+
+/*对话框内容：添加自定义标签输入框*/
+.modal-input {
+    display: flex;
+    background: #fff;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/*输入框*/
+.input {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    color: black;
+}
+/*输入框placeholder样式*/
+.input-holder {
+    color: #666;
+    font-size: 14px;
+}
+
+/*对话框按钮*/
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    border-top: 1px solid #dedede;
+    font-size: 17px;
+    line-height: 50px;
+}
+/*取消按钮*/
+.btn-cancel {
+    width: 50%;
+    color: #666;
+    text-align: center;
+    border-right: 1px solid #dedede;
+}
+/*确认按钮*/
+.btn-confirm {
+    width: 50%;
+    color: #F0B27A;
+    text-align: center;
+}
+
+
+
+/*创建打卡圈子提交按钮*/
+.submit-btn {
+    width: 90%;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    padding: 10px 5%;
+    background-color: whitesmoke;
+}

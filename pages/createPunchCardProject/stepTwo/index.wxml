@@ -1,0 +1,102 @@
+<view class="container">
+    <scroll-view class="project-type-label-list">
+        <view class="notice-message">点击展开分类,最多可以添加3个标签</view>
+        <block wx:for="{{parentLabel}}" wx:for-item="parentItem"
+               wx:for-index="p_index">
+            <!--父级标签-->
+            <view class="parent-label-item" data-parentIndex="{{p_index}}"
+                  bindtap="showChildLabel" >
+                <!--父级标签Icon-->
+                <view class="label-img">
+                    <!--TODO 图标我先定死，后期有空再改为存数据库然后动态获取-->
+                    <image src="../../../images/bottomIcon/project_label_icon_{{p_index}}.png"></image>
+                </view>
+                <!--父级标签名-->
+                <view class="label-name">
+                    {{parentItem.label_name}}
+                </view>
+                <!--显示当前父级标签下被选选的所属子级标签字符串-->
+                <view class="choose-child-label-list">
+                    {{parentItem.chooseLabelNameStr}}
+                </view>
+                <!--显示、隐藏子级的Icon-->
+                <view class="show-child-label-btn">
+                    <image src="../../../images/button/up_btn.png"
+                           class='show-child-label {{parentItem.show && "hidden-child-label"}}'></image>
+                </view>
+            </view>
+            <!--当前父级标签下的子级标签 由父级标签view的点击事件控制显示、隐藏-->
+            <view class="child-label-list"
+                  hidden="{{parentItem.show}}">
+                <view>
+                    <block wx:for="{{childLabel}}" wx:for-item="childItem">
+                        <block wx:if="{{parentItem.id == childItem.parent_id}}">
+                            <view class='child-label-item {{childItem.choose && "child-label-item-choose"}}' bindtap="childLabelBeChoose"
+                                  data-childId="{{childItem.id}}"
+                                  data-parentIndex="{{p_index}}"
+                                  data-childLabelName="{{childItem.label_name}}">
+                                {{childItem.label_name}}
+                            </view>
+                        </block>
+                    </block>
+                </view>
+            </view>
+
+            <!--分割线-->
+            <view class="break-line-mix"></view>
+        </block>
+
+        <!--自定义标签 与父标签view同级-->
+        <block wx:if="{{parentLabel}}">
+            <view class="parent-label-item" bindtap="showDialogBtn">
+                <!--自定义标签Icon-->
+                <view class="label-img">
+                    <image src="../../../images/bottomIcon/custom_label_icon.png">
+                    </image>
+                </view>
+                <view class="label-name">自定义</view>
+                <!--显示自定义的标签名-->
+                <view class="choose-child-label-list">
+                    {{customLabelName}}
+                </view>
+                <!--添加自定义的按钮Icon-->
+                <view class="add-custom-project-label-btn">
+                    <image src="../../../images/button/down_btn.png"></image>
+                </view>
+            </view>
+
+            <!--自定义模态对话框：用于输入添加自定义标签-->
+            <block wx:if="{{showAddCustomLabelModel}}">
+                <!--弹出层蒙层-->
+                <view class="modal-mask" bindtap="hideModal"
+                      catchtouchmove="preventTouchMove" catchtap="preventTab">
+                </view>
+                <!--模态对话框-->
+                <view class="modal-dialog">
+                    <view class="modal-title">填写自定义标签</view>
+                    <view class="modal-content">
+                        <view class="modal-input">
+                            <input placeholder-class="input-holder" type="text"
+                                   maxlength="15" bindblur="addCustomLabelEnd"
+                                   class="input" placeholder="最多输入十五个字"
+                            value="{{customLabelName}}"/>
+                        </view>
+                    </view>
+                    <view class="modal-footer">
+                        <view class="btn-cancel" bindtap="onCancel"
+                              data-status="cancel">取消
+                        </view>
+                        <view class="btn-confirm" bindtap="onConfirm"
+                              data-status="confirm">确定
+                        </view>
+                    </view>
+                </view>
+            </block><!--是否显示自定义的添加自定义标签模态框-->
+        </block><!--是否显示添加自定义标签选项列表-->
+    </scroll-view>
+    <view class="submit-btn">
+        <button type="primary" disabled="{{chooseLabelNum === 0}}"
+                bindtap="createPunchCardProject">创建打卡圈子
+        </button>
+    </view>
+</view>
