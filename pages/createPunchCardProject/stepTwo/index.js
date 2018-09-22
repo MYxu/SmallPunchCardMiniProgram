@@ -331,12 +331,13 @@ Page({
 
     // 创建打卡圈子按钮
     createPunchCardProject: function () {
-        var that = this;
+        let that = this;
 
         wx.showLoading({
             title: "加载中...",
             mask: true
         });
+
 
         // 向服务器端发送请求执行创建打卡圈子
         wx.request({
@@ -350,20 +351,52 @@ Page({
 
             },
             success:function (response) {
-                wx.hideLoading();
 
                 switch (response.statusCode) {
                     case 200:
-                        // 创建成功则进入打卡圈子详情页，完善圈子介绍信息
-                        var id = response.data.data.id;
-                        wx.navigateTo({
-                          url: '../stepThree/index' + '?projectId=' + id
+                        // 服务器端创建打卡圈子成功，客户端开始生成打卡圈子邀请图片
+                        // 传递图片生成成功结果 && 图片地址 && 打卡圈子编号参数
+                        // 进入打卡圈子详情页，完善圈子介绍信息
+                        let getInviteImgUrl = new Promise(function (resolve) {
+                            wx.showLoading({
+                                title: "加载中..."
+                            });
+
+                            // 获取生成的邀请图片临时地址
+                            that.createPunchCardInviteImg();
+
+                            let time = 10000;
+                            let id = setInterval(function () {
+                                time -= 500;
+                                if (time >= 0) {
+                                    if (that.data.invite_img_url !== undefined) {
+                                        clearInterval(id);
+                                        resolve(true); // 在规定时间内成功获取
+                                    }
+                                } else {
+                                    clearInterval(id);
+                                    resolve(false); // 没有在5秒之内获取则认定为获取失败
+                                }
+
+                            },500);
                         });
 
+                        getInviteImgUrl.then(function (res) {
+                            wx.hideLoading();
+                            let param = '?projectId=' + 1
+                                + '&invite_img_url=' + that.data.invite_img_url
+                                + '&get_invite_img_flag=' + res;
+
+
+                            wx.navigateTo({
+                                url: '../stepThree/index' + param
+                            });
+                        });
                         break;
 
                     default:
-                        var title = response.data.errMsg;
+                        wx.hideLoading();
+                        let title = response.data.errMsg;
                         wx.showToast({
                             title: title,
                             icon: "none"
@@ -372,7 +405,7 @@ Page({
                 }
 
             },
-            fail: function (response) {
+            fail: function () {
                 // 客户端发送请求失败才会进入这里
                 wx.hideLoading();
 
@@ -384,7 +417,102 @@ Page({
         });
         console.log(that.data);
         console.log(app.globalData.userInfo.id);
+    },
 
+
+
+    // 创建成功生成对应的打卡邀请图片
+    createPunchCardInviteImg: function () {
+        let that = this;
+        //TODO 获取打卡圈子封面图片,需要改为获取网络图片
+        let getCoverImg = new Promise(function (resolve) {
+            wx.getImageInfo({
+                src:'../../../images/backgroundImg/img_1.png',
+                success: function (res) {
+                    resolve(res);
+                }
+             });
+        });
+
+        // TODO 获取邀请者头像，需要改为获取网络图片
+        let getUserAvatar = new Promise(function (resolve) {
+            wx.getImageInfo({
+                src: app.globalData.userInfo.avatar_url,
+                success: function (res) {
+                    resolve(res);
+                }
+            });
+        });
+
+        // 图片皆获取成功后
+        Promise
+            .all([getCoverImg,getUserAvatar])
+            .then(function (res) {
+                console.log(res);
+
+                // 创建画布
+                const ctx = wx.createCanvasContext('invite-canvas');
+
+                // 绘制图片到画布
+                ctx.setFillStyle("white");
+                ctx.fillRect(0,0,200,200);
+                ctx.drawImage("../../../"+res[0].path,0, 0, 200, 110);
+
+                // 绘画打卡圈子名称
+                ctx.setFontSize(15);
+                ctx.setFillStyle("black");
+                ctx.fillText(that.data.projectName,0,130);
+
+                // 参与人数|打卡次数
+                ctx.setFontSize(11);
+                ctx.setFillStyle("black");
+                ctx.fillText("1人参加 | 0次打卡",23,152);
+
+                // // 用户头像
+                ctx.save(); // 保存之前的绘制
+                ctx.setFillStyle("white");
+                let r = 8;
+                let cx = r;
+                let cy = 140 + r;
+                //先画个圆，前两个参数确定了圆心 （x,y） 坐标  第三个参数是圆的半径
+                // 四参数是绘图方向  默认是false，即顺时针
+                ctx.arc(cx,cy,r,0,2 * Math.PI); // 绘制圆
+                ctx.clip(); //画好了圆 剪切  原始画布中剪切任意形状和尺寸。
+                ctx.drawImage(res[1].path,0,140,16,16);
+                ctx.restore();
+
+
+                // 绘制
+                // ctx.stroke();
+                ctx.draw(
+                    false,
+                    setTimeout(function () {
+                        wx.canvasToTempFilePath({
+                            x: 0,
+                            y: 0,
+                            width: 200,
+                            height: 170,
+                            destWidth: 200 * app.globalData.pixelRatio,
+                            destHeight:170 * app.globalData.pixelRatio,
+                            canvasId: 'invite-canvas',
+                            success: function(res) {
+                                console.log(res);
+                                that.setData({
+                                    invite_img_url: res.tempFilePath
+                                });
+                            },
+                            fail: function (res) {
+                                console.log("fail:");
+                                console.log(res);
+                            }
+                        });
+                    },1000)
+
+                );
+
+
+
+            });
     }
 
 

@@ -99,4 +99,7 @@
                 bindtap="createPunchCardProject">创建打卡圈子
         </button>
     </view>
+
+    <!--绘画打卡圈子邀请图片，向左偏移来达到隐藏目的，若是真正隐藏则无法绘画-->
+    <canvas canvas-id="invite-canvas" style="width:200px;height:200px"></canvas>
 </view>

@@ -17,19 +17,29 @@ Page({
                         data: {
                             code: res.code
                         },
-                        success: function(result) {
-                            app.globalData.openid = JSON.parse(result.data).openid;
-                            console.log(result);                        
+                        success: function(response) {
+                            if (response.statusCode !== 200) {
+                                wx.showToast({
+                                    title: response.data.errMsg,
+                                    icon: "none"
+                                })
+                            } else {
+                                app.globalData.openid = response.data.data.openid
+                            }
+                            console.log(response);
                             console.log(app.globalData.openid);
                         },
 
                         fail: function() {
-                            console.error('网络错误，获取openID失败!');
+                            wx.showToast({
+                                title: '网络异常...',
+                                icon: "none"
+                            })
                         }
                     })
 
                 } else {
-                    console.error('登录失败！' + res.errMsg);
+                    console.error('微信登录失败:' + res.errMsg);
                 }
             }
         });
@@ -50,7 +60,7 @@ Page({
                             // 保存用户微信信息至全局变量,同时保证字段名与表字段名一致
                             app.globalData.userInfo.avatar_url = res.userInfo.avatarUrl;
                             app.globalData.userInfo.nick_name = res.userInfo.nickName;
-                            app.globalData.userInfo.sex = res.userInfo.gender;
+                            app.globalData.userInfo.sex = parseInt(res.userInfo.gender);
 
                             // 为了防止在用户第一次授权的时候，服务器未能成功添加用户信息
                             // 在授权成功依旧根据openId检测，再次添加，添加成功返回服务器
@@ -76,7 +86,10 @@ Page({
         // 若是用户信息存在则说明授权成功
         if (e.detail.userInfo) {
 
-            app.globalData.userInfo = e.detail.userInfo;
+            // 保存用户微信信息至全局变量,同时保证字段名与表字段名一致
+            app.globalData.userInfo.avatar_url = e.detail.userInfo.avatarUrl;
+            app.globalData.userInfo.nick_name = e.detail.userInfo.nickName;
+            app.globalData.userInfo.sex = e.detail.userInfo.gender;
 
             // 一般而言，授权只有一次，也就是第一次，在授权成功后需要将微信的一些信息
             // 写入服务器端的数据库
@@ -113,7 +126,7 @@ Page({
     // 服务器端持久化微信用户信息
     addWeiXinUserInfo: function() {
         // 服务器端根据openid判断用户信息是否存在，不存在将用户微信信息存入数据库
-        console.log(app.globalData);
+        console.log(app.globalData.userInfo);
         wx.request({
             url: getApp().globalData.urlRootPath + 'index/user/addUserInfo',
             data: {
@@ -129,7 +142,7 @@ Page({
 
                 // 根据返回的statusCode进行业务逻辑处理，添加成功则返回对应的用户信息
                 console.log(res.statusCode);
-                if(res.statusCode != 200)
+                if(res.statusCode !== 200)
                 {
                     wx.showToast({
                         title: res.data.errMsg,
@@ -154,24 +167,6 @@ Page({
                 
             }
         });
-    },
+    }
 
-
-    //获取用户信息接口
-    queryUsreInfo: function() {
-        wx.request({
-            url: getApp().globalData.urlRootPath + '',
-            data: {
-                openid: getApp().globalData.openid
-            },
-            header: {
-                'content-type': 'application/json'
-            },
-            success: function(res) {
-                console.log(res.data);
-                getApp().globalData.userInfo = res.data;
-            }
-        });
-    },
-
-})
+});

@@ -247,3 +247,14 @@
     padding: 10px 5%;
     background-color: whitesmoke;
 }
+
+/* 画布绘制过程不能隐藏 但是又不能被用户看见 所以定位在用户看不到地方 */
+canvas{
+    position: fixed;
+    top: 0;
+    left: 999px;
+}
+
+.preview {
+    margin-bottom: 200px;
+}

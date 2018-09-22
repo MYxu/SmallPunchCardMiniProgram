@@ -5,7 +5,19 @@ App({
      */
     onLaunch: function() {
 
-        // 微信登录
+        let that = this;
+        // 获取设备的相关信息
+        wx.getSystemInfo({
+            success:function (res) {
+                that.globalData.windowWidth = res.windowWidth;
+                that.globalData.windowHeight = res.windowHeight;
+                that.globalData.pixelRatio = res.pixelRatio;
+
+            },
+            fail: function (res) {
+                console.log(res);
+            }
+        })
         
         
     },
@@ -35,7 +47,7 @@ App({
         userInfo: {
             nick_name: '',
             avatar_url: '',
-            sex: ''
+            sex: 0 // 性别 0-未知，1-男性，2-女性
         },
         urlRootPath: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/public/",
         urlRootPath_local:
