@@ -88,9 +88,11 @@ Page({
         // });
         console.log(that.data.inviteImgUrl);
 
+        // 获取邀请者id
+        let inviteUserId = app.globalData.userInfo.id;
         let shareObj = {
             title: "MYXuu邀请你打卡",
-            // path: "pages/createPunchCardProject/stepThree/index"
+            path: "pages/projectDetailPage/index" + "?inviteUserId=" + inviteUserId,
             imageUrl: that.data.inviteImgUrl
         };
         if (options.from === 'button') {

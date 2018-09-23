@@ -9,7 +9,8 @@
         "pages/mine/detailPage/userInfoSetting",
         "pages/createPunchCardProject/stepOne/index",
         "pages/createPunchCardProject/stepTwo/index",
-        "pages/createPunchCardProject/stepThree/index"
+        "pages/createPunchCardProject/stepThree/index",
+        "pages/projectDetailPage/index"
     ],
     "window": {
         "navigationBarBackgroundColor": "#F0B27A",
