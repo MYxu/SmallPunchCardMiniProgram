@@ -55,7 +55,7 @@
     right: 3px;
 }
 
-
+/*自定义模态框邀请标题*/
 .punch-card-invite-title {
     width: 100%;
     height: 40px;
@@ -64,7 +64,7 @@
     color: black;
     font-size: 16px;
 }
-
+/*自定义模态框邀请内容*/
 .punch-card-invite-content {
     width: 228px;
     height: auto;
@@ -76,7 +76,7 @@
     font-size: 14px;
     white-space: normal;
 }
-
+/*自定义模态框邀请按钮*/
 .punch-card-invite-btn {
     width: 100%;
     height: 80px;
@@ -97,3 +97,185 @@
     text-align: center;
 
 }
+
+/*打卡圈子详情信息*/
+.punch-card-project-detail {
+    width: 100%;
+    height: 1000px;
+    background-color: whitesmoke;
+    margin-bottom: 40px;
+}
+
+/*打卡圈子详情--封面图部分*/
+.cover-img-container {
+    width: 100%;
+    height: 180px;
+    background-color: white;
+}
+
+/*封面图*/
+.cover-img {
+    width: 100%;
+    height: 170px;
+}
+/*封面图上的分享按钮*/
+.share-btn-1 {
+    width: auto;
+    height: 20px;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 20px;
+
+    border-radius: 10px 0 0  10px;
+    background-color: indianred;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.share-btn-1 > image {
+    width: 15px;
+    height: 15px;
+    margin: 0 3px 0 3px;
+}
+.share-btn-1 > text {
+    color: white;
+    font-size: 11px;
+    height: 20px;
+    width: auto;
+    line-height: 20px;
+    margin-right: 4px;
+
+
+}
+
+/*修改封面图按钮*/
+.update-cover-img-btn {
+    width: auto;
+    height: auto;
+    position: absolute;
+    padding: 5px;
+    right: 10px;
+    top: 135px;
+    background: rgba(0,0,0,0.3);
+    z-index: 1;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.update-cover-img-btn > image {
+    width: 15px;
+    height: 15px;
+    margin-right: 3px;
+}
+.update-cover-img-btn {
+    height: 15px;
+    line-height: 15px;
+    font-size: 12px;
+    color: white;
+}
+
+
+
+/*圈子基本信息*/
+.project-base-info {
+    width: 100%;
+    height: 90px;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+/*上半部为项目名*/
+.project-name {
+    width: 100%;
+    height: 30px;
+    margin-left: 25px;
+}
+
+.project-name text {
+    color: black;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    font-size: 20px;
+    font-weight: bolder;
+    margin-right: 8px;
+    display: inline-block;
+}
+/*圈子名修改按钮*/
+.project-name > image {
+    width: 15px;
+    height: 15px;
+}
+
+
+/*下半部创建者信息*/
+.project-creator-info {
+    width: 100%;
+    height: 40px;
+    margin-left: 25px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.project-creator-info > image {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+
+    display: inline-block;
+}
+.project-creator-info > text {
+    font-size: 13px;
+    color: #C9C9C9;
+
+}
+
+
+/*底部按钮组：分享按钮、进入打卡详情页按钮*/
+.btn-group {
+    width: 90%;
+    height: auto;
+    background-color: white;
+    padding: 10px 5%;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    position: fixed;
+    bottom: 0;
+}
+
+/*分享按钮2*/
+.share-btn-2 {
+    width: 49%;
+    height: 50px;
+    line-height: 50px;
+    color: red;
+    border: 1px solid red;
+    border-radius: 3px;
+    margin-right: 1%;
+}
+
+/*进入打卡详情页*/
+.into-punch-card-detail {
+    width: 49%;
+    height: 50px;
+    line-height: 50px;
+    background-color: lightseagreen;
+    color: white;
+    border-radius: 5px;
+    margin-left: 1%;
+}
+
+

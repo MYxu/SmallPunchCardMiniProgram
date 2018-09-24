@@ -1,4 +1,4 @@
-var app = getApp();
+let app = getApp();
 Page({
 
     /**
@@ -8,7 +8,7 @@ Page({
         punchCardProjectId:'',
 
         // 在创建圈子的第二步骤成功创建圈子之后进入第三步骤的圈子详情页，默认显示自定义的邀请模态框
-        showCustomInviteModal: true
+        showCustomInviteModal: true,
     },
 
     /**
@@ -22,7 +22,9 @@ Page({
         that.setData({
             punchCardProjectId: options.projectId,
             inviteImgUrl: options.invite_img_url,
-            getInviteImgFlag: options.get_invite_img_flag
+            getInviteImgFlag: options.get_invite_img_flag,
+            userAvatar: app.globalData.userInfo.avatar_url,
+            creatorNickName: app.globalData.userInfo.nick_name
 
         })
     },
@@ -111,7 +113,7 @@ Page({
     },
     // 点击关闭按钮隐藏自定义的邀请模态框
     hiddenCustomModal: function () {
-        var that = this;
+        let that = this;
         that.setData({
             showCustomInviteModal: false
         })

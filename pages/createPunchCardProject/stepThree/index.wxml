@@ -37,10 +37,48 @@
     </block>
 
     <!--打卡圈子详请-->
-    <view class="punch-card-project-detail">
-        <view>222</view>
-        <view>
-            <image src="{{inviteImgUrl}}"></image>
+    <scroll-view class="punch-card-project-detail">
+        <view class="cover-img-container">
+            <!--打卡圈子封面图-->
+            <image src="../../../images/backgroundImg/img_6.png"
+                   class="cover-img">
+            </image>
+            <!-- 打卡圈子分享按钮-1 -->
+            <button open-type="share" class="share-btn-1">
+                    <image src="../../../images/bottomIcon/gold.png"></image>
+                    <text>分享给好友233</text>
+            </button>
+
+            <!--修改封面图按钮-->
+            <view class="update-cover-img-btn">
+                <image src="../../../images/bottomIcon/picture.png">
+                </image>
+                <text>修改头图</text>
+            </view>
         </view>
+
+        <!--圈子基本信息：圈子名称、创建者头像、昵称等信息-->
+        <view class="project-base-info">
+            <!--圈子名称-->
+            <view class="project-name">
+                <text>测试</text>
+                <image src="../../../images/bottomIcon/edit.png"></image>
+            </view>
+
+            <!--创建者头像、昵称-->
+            <view class="project-creator-info">
+                <image src="{{userAvatar}}"></image>
+                <text>{{creatorNickName}} | 0次打卡</text>
+            </view>
+        </view>
+
+        <!--圈子详细介绍-->
+        <view class="project-introduction-info"></view>
+    </scroll-view>
+
+    <!--分享按钮、进入打卡详情页-->
+    <view class="btn-group">
+        <button open-type="share" class="share-btn-2">分享给好友</button>
+        <button class="into-punch-card-detail">去打卡详情页</button>
     </view>
 </view>
