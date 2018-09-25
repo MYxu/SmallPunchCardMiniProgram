@@ -61,8 +61,37 @@
         <view class="project-base-info">
             <!--圈子名称-->
             <view class="project-name">
-                <text>测试</text>
-                <image src="../../../images/bottomIcon/edit.png"></image>
+                <text>{{projectName}}</text>
+                <!--修改圈子名称按钮图标-->
+                <image src="../../../images/bottomIcon/edit.png"
+                       bindtap="showUpdateProjectNameModal"></image>
+                <!--修改圈子名称自定义模态框-->
+                <block wx:if="{{showUpdateProjectNameModel}}">
+                    <!--弹出层蒙层-->
+                    <view class="modal-mask" catchtouchmove="preventTouchMove"
+                          catchtap="preventTab">
+                    </view>
+                    <!--模态对话框-->
+                    <view class="modal-dialog">
+                        <view class="modal-title">填写圈子名称</view>
+                        <view class="modal-content">
+                            <view class="modal-input">
+                                <input placeholder-class="input-holder" type="text"
+                                       maxlength="15" bindblur="checkInputProjectName"
+                                       class="input" placeholder="最多输入十五个字"
+                                       value="{{projectName}}"/>
+                            </view>
+                        </view>
+                        <view class="modal-footer">
+                            <view class="btn-cancel" bindtap="onCancel"
+                                  data-status="cancel">取消
+                            </view>
+                            <view class="btn-confirm" bindtap="onConfirm"
+                                  data-status="confirm">确定
+                            </view>
+                        </view>
+                    </view>
+                </block>
             </view>
 
             <!--创建者头像、昵称-->

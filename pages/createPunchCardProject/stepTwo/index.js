@@ -1,4 +1,4 @@
-var app = getApp();
+let app = getApp();
 Page({
 
     /**
@@ -18,7 +18,7 @@ Page({
      */
     onLoad: function (options) {
 
-        var that = this;
+        let that = this;
 
         wx.showLoading({
             title: '加载中...'
@@ -27,13 +27,13 @@ Page({
         this.getAllTypeLabel(function (parentLabel,childLabel) {
 
             // 设置当前父级标签的子级标签全部隐藏 && 当前父级标签下被选中的子级标签字符串为空，即皆未被选中
-            for (var i = 0 ; i< parentLabel.length;i++) {
+            for (let i = 0 ; i< parentLabel.length;i++) {
                 parentLabel[i].show = true;
                 parentLabel[i].chooseLabelNameStr = "";
             }
 
             // 设置子级标签皆未被选中
-            for (var i = 0; i < childLabel.length; i++)
+            for (let i = 0; i < childLabel.length; i++)
                 childLabel[i].choose = false;
 
             that.setData({
@@ -69,8 +69,8 @@ Page({
 
             success:function (response) {
 
-                var parentLabel = response.data.data.parentLabel;
-                var childLabel  = response.data.data.childLabel;
+                let parentLabel = response.data.data.parentLabel;
+                let childLabel  = response.data.data.childLabel;
                 // 成功后进行回调将获取的数据赋值到data当中
                 return "function" === typeof callback &&
                     callback(parentLabel,childLabel);
@@ -80,12 +80,12 @@ Page({
 
     // 显示、隐藏所属的子标签
     showChildLabel: function (e) {
-        var that = this;
+        let that = this;
 
         // 获取当前父级标签列表的index,来显示、隐藏对应的子级标签列表
         // e.currentTarget参数标明了当前发生事件的控件，可以通过dataSet传值
-        var  currIndex= e.currentTarget.dataset.parentindex;
-        var parentLabel;
+        let  currIndex= e.currentTarget.dataset.parentindex;
+        let parentLabel;
         parentLabel = that.data.parentLabel;
 
         //变换其打开、关闭的状态,即若是打开则关闭，关闭则打开 false为打开，true为关闭
@@ -107,7 +107,7 @@ Page({
     //让所有的展开项，都变为收起
     packUp: function (data,currIndex) {
         //其他列表变为关闭状态
-        for (var i = 0, len = data.length; i < len; i++) {
+        for (let i = 0, len = data.length; i < len; i++) {
             if (i !== currIndex)
                 data[i].show = true;
         }
@@ -116,20 +116,20 @@ Page({
     // 子级标签被选中、取消时的点击事件，选中后修改显示样式以及设置显示已被选中的标签名
     childLabelBeChoose: function (e) {
         console.log(e);
-        var that = this;
+        let that = this;
 
         // 当前被点击的标签的相关信息
-        var childId     = e.currentTarget.dataset.childid,
+        let childId     = e.currentTarget.dataset.childid,
             childName   = e.currentTarget.dataset.childlabelname,
             parentIndex = e.currentTarget.dataset.parentindex; // 当前被点击的子标签位于父标签的位置索引
 
-        var num = that.data.chooseLabelNum; // 记录当前被选中的标签数
+        let num = that.data.chooseLabelNum; // 记录当前被选中的标签数
 
-        var cLabel = that.data.childLabel,
+        let cLabel = that.data.childLabel,
             pLabel = that.data.parentLabel,
             allChooseLabelNameStr = that.data.labelNameString;
 
-        for(var i = 0; i < cLabel.length; i++) {
+        for(let i = 0; i < cLabel.length; i++) {
             if (cLabel[i].id === childId) {
                 // 原先为false则修改为true选中状态，true则修改为false未被选中状态
                 if (cLabel[i].choose) {
@@ -137,8 +137,8 @@ Page({
                     num -= 1;// 当前标签被取消选中，则选中标签数减一
 
                     // 将被取消选中的标签名从对应的父级标签的被选中子标签名字符串中删除
-                    var labelNameArr = pLabel[parentIndex].chooseLabelNameStr.split(",");
-                    var delAfterLabelNameArr = that.removeArray(labelNameArr,childName);
+                    let labelNameArr = pLabel[parentIndex].chooseLabelNameStr.split(",");
+                    let delAfterLabelNameArr = that.removeArray(labelNameArr,childName);
                     pLabel[parentIndex].chooseLabelNameStr = delAfterLabelNameArr.join(",");
 
                     // 从总的被选中的标签字符串中删除
@@ -190,9 +190,9 @@ Page({
 
     // 自定义函数 用于删除数组指定元素
     removeArray: function (labelNameArr,delLabelName) {
-        var delAfterLabelNameStr = [];
+        let delAfterLabelNameStr = [];
         // 获取需要删除的元素的下标索引
-        for (var i = 0; i < labelNameArr.length; i++) {
+        for (let i = 0; i < labelNameArr.length; i++) {
             if (labelNameArr[i] !== delLabelName) {
                 delAfterLabelNameStr.push(labelNameArr[i])
             }
@@ -204,7 +204,7 @@ Page({
      * 添加自定义标签模态对话框
      */
     showDialogBtn: function() {
-        var that = this;
+        let that = this;
 
         // 如果已经存在系统内置的子标签已经选中了三个则不能添加自定义标签
         // 若是存在一个自定义标签外加两个系统标签则可以重新修改已经添加的自定义标签
@@ -245,8 +245,8 @@ Page({
     addCustomLabelEnd: function (e) {
         console.log(e);
 
-        var that = this;
-        var preCustomLabelName = that.data.customLabelName,
+        let that = this;
+        let preCustomLabelName = that.data.customLabelName,
             num  = that.data.chooseLabelNum,
             labelNameStr = that.data.labelNameString;
 
@@ -256,8 +256,8 @@ Page({
             if (e.detail.value === "")
             {
                 num -= 1;
-                var labelNameArr = labelNameStr.split(",");
-                var delAfterLabelNameArr = that.removeArray(labelNameArr,
+                let labelNameArr = labelNameStr.split(",");
+                let delAfterLabelNameArr = that.removeArray(labelNameArr,
                     preCustomLabelName);
 
                 labelNameStr = delAfterLabelNameArr.join(",");
@@ -269,12 +269,12 @@ Page({
         }
 
         // 检测是否为十五个汉字、英文以内的字符
-        var reg = /^[\u4e00-\u9fa5A-Za-z]{0,15}$/;
+        let reg = /^[\u4e00-\u9fa5A-Za-z]{0,15}$/;
         if(reg.test(e.detail.value)){
             that.data.customLabelName = e.detail.value;
 
         } else {
-            var title = "标签名格式错误!";
+            let title = "标签名格式错误!";
             if (e.detail.value.length > 15)
                 title = "标签名限制十五字符!";
 
@@ -299,9 +299,9 @@ Page({
      */
     onConfirm: function (e) {
         console.log(e);
-        var that = this;
+        let that = this;
 
-        var customLabelName = that.data.customLabelName,
+        let customLabelName = that.data.customLabelName,
             labelNameStr = that.data.labelNameString;
 
 
@@ -385,7 +385,8 @@ Page({
                             wx.hideLoading();
                             let param = '?projectId=' + 1
                                 + '&invite_img_url=' + that.data.invite_img_url
-                                + '&get_invite_img_flag=' + res;
+                                + '&get_invite_img_flag=' + res
+                                + '&projectName=' + that.data.projectName ;
 
 
                             wx.navigateTo({

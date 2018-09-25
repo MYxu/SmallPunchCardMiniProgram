@@ -79,7 +79,7 @@
                             <input placeholder-class="input-holder" type="text"
                                    maxlength="15" bindblur="addCustomLabelEnd"
                                    class="input" placeholder="最多输入十五个字"
-                            value="{{customLabelName}}"/>
+                                   value="{{customLabelName}}"/>
                         </view>
                     </view>
                     <view class="modal-footer">

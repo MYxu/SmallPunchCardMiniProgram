@@ -1,5 +1,5 @@
 // pages/createPunchCardProject/stepOne/index.js
-var app = getApp();
+let app = getApp();
 Page({
 
     /**
@@ -15,8 +15,8 @@ Page({
     /**
     * 生命周期函数--监听页面加载
     */
-    onLoad: function (options) {
-      var that = this;
+    onLoad: function () {
+      let that = this;
       that.setData({
           user_id: app.globalData.userInfo.id
       });
@@ -53,7 +53,7 @@ Page({
 
     // 监听单选按钮
     radioChange:function (e) {
-        var that = this;
+        let that = this;
         that.setData({
             privacy_type: parseInt(e.detail.value)
         });
@@ -63,10 +63,10 @@ Page({
 
     //  输入框失去焦点检测输入的数据正确性，并根据检测结果控制下一步按钮
     checkInput: function (e) {
-        var that = this;
+        let that = this;
 
         // 检测是否为十五个汉字以内的字符
-        var reg = /^[\u4e00-\u9fa5]{1,15}$/;
+        let reg = /^[\u4e00-\u9fa5]{1,15}$/;
         if(reg.test(e.detail.value)){
             that.setData({
                 btn_disable: false,
@@ -75,7 +75,7 @@ Page({
 
         } else {
             this.setData({btn_disable: true});
-            var title = "圈子名称格式错误!";
+            let title = "圈子名称格式错误!";
             if (e.detail.value.length > 15)
                 title = "圈子名称限制十五字符!";
 
@@ -90,8 +90,8 @@ Page({
 
     // 下一步按钮点击事件
     intoSetTwo : function () {
-        var project_name = this.data.project_name;
-        var privacy_type = this.data.privacy_type;
+        let project_name = this.data.project_name;
+        let privacy_type = this.data.privacy_type;
         wx.navigateTo({
           url: '../stepTwo/index'
           +'?project_name='+project_name
