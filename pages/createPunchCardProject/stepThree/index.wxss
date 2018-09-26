@@ -336,6 +336,70 @@
     background-color: white;
 }
 
+/*圈子介绍为空时：提示填写圈子介绍信息展示*/
+.project-introduction-header {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    margin-left: 10px;
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.project-introduction-content {
+    width: auto;
+    height: 125px;
+    margin: 0 10px 15px 10px;
+    border: 1px #F0B27A dashed;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-project-intr-content-notice {
+    width: auto;
+    height: 65px;
+
+    line-height: 65px;
+    font-size: 16px;
+    color: #F0B27A;
+    display: table;
+    vertical-align: middle;
+}
+.edit-project-intr-content-notice > image {
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-bottom: 3px;
+}
+.edit-project-intr-activity-notice {
+    width: auto;
+    height: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 10px;
+    background-color: beige;
+
+    font-size: 13px;
+    line-height: 20px;
+    color: indianred;
+    display: table;
+    vertical-align: middle;
+}
+.edit-project-intr-activity-notice > image {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+
 /*圈主介绍内容*/
 .creator-introduction-info {
     width: 100%;
@@ -344,29 +408,171 @@
     background-color: white;
 }
 
-/*圈子类型展示 & 编辑*/
+
+/*圈主介绍为空时：提示填写圈主介绍信息展示*/
+.creator-intr-info-header {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    margin-left: 10px;
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.creator-intr-info-content {
+    width: auto;
+    height: 125px;
+    margin: 0 10px 15px 10px;
+    border: 1px #F0B27A dashed;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-creator-intr-content-notice {
+    width: auto;
+    height: 65px;
+
+    line-height: 65px;
+    font-size: 16px;
+    color: #F0B27A;
+    display: table;
+    vertical-align: middle;
+}
+.edit-creator-intr-content-notice > image {
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-bottom: 3px;
+}
+
+
+
+/*圈子类型展示 & 修改*/
 .project-type-info {
     width: 100%;
     height: 50px;
     margin-top: 10px;
     background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.project-type-info-header {
+    width: 20%;
+    height: 50px;
+    margin-left: 10px;
+    line-height: 50px;
+    color: black;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.project-type-info-content {
+    width: 70%;
+    height: 50px;
+    line-height: 50px;
+    font-size: 14px;
+    color: #C9C9C9;
+    text-align: right;
+}
+
+.update-project-type-btn {
+    width: 10%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.update-project-type-btn > image {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
 }
 
 /*设置报名费&分销佣金*/
 .set-project-attend-cost {
     width: 100%;
-    height: 100px;
+    height: 65px;
     margin-top: 10px;
     background-color: white;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.set-project-attend-cost-header {
+    width: 90%;
+    height: 65px;
+    margin-left: 10px;
+
+}
+
+.title {
+    width: 100%;
+    height: 39px;
+    line-height: 39px;
+    font-size: 16px;
+    color: black;
+    font-weight: bolder;
+}
+.notice {
+    width: 100%;
+    height: 26px;
+    font-size: 13px;
+    color: #C9C9C9;
+}
+
+.set-project-attend-cost-btn {
+    width: 10%;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.set-project-attend-cost-btn > image {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
 }
 
 /*创建契约金*/
 .set-punch-card-money-award {
     width: 100%;
-    height: 100px;
+    height: 65px;
     margin-top: 10px;
     margin-bottom: 100px;
     background-color: white;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.set-punch-card-money-award-header {
+    width: 90%;
+    height: 65px;
+    margin-left: 10px;
+}
+
+.set-punch-card-money-award-btn {
+    width: 10%;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.set-punch-card-money-award-btn > image {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
 }
 
 

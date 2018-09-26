@@ -385,9 +385,10 @@ Page({
                             wx.hideLoading();
                             let param =
                                 '?projectId=' + parseInt(response.data.data.id)
-                                + '&invite_img_url=' + that.data.invite_img_url
-                                + '&get_invite_img_flag=' + res
-                                + '&projectName=' + that.data.projectName;
+                                + '&inviteImgUrl=' + that.data.invite_img_url
+                                + '&getInviteImgFlag=' + res
+                                + '&projectName=' + that.data.projectName
+                                + '&projectTypeLabel='+ that.data.labelNameString;
 
 
                             wx.navigateTo({

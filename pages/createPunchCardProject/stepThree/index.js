@@ -6,6 +6,7 @@ Page({
      */
     data: {
         punchCardProjectId: 0,
+        projectTypeLabel: '',
 
         // 在创建圈子的第二步骤成功创建圈子之后进入第三步骤的圈子详情页，默认显示自定义的邀请模态框
         showCustomInviteModal: true,
@@ -19,13 +20,14 @@ Page({
     onLoad: function (options) {
         console.log("threePage options:");
         console.log(options);
-        console.log(options.projectId);
+
         let that = this;
         that.setData({
             punchCardProjectId: options.projectId,
             projectName: options.projectName,
-            inviteImgUrl: options.invite_img_url,
-            getInviteImgFlag: options.get_invite_img_flag,
+            inviteImgUrl: options.inviteImgUrl,
+            getInviteImgFlag: options.getInviteImgFlag,
+            projectTypeLabel: options.projectTypeLabel,
             userAvatar: app.globalData.userInfo.avatar_url,
             creatorNickName: app.globalData.userInfo.nick_name
 
