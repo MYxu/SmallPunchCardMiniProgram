@@ -190,6 +190,7 @@ Page({
             },
             success: function (response) {
                wx.hideLoading();
+               console.log(response);
 
                 switch (response.statusCode) {
                     case 200:

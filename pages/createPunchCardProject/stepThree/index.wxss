@@ -101,7 +101,7 @@
 /*打卡圈子详情信息*/
 .punch-card-project-detail {
     width: 100%;
-    height: 1000px;
+    height: auto;
     background-color: whitesmoke;
     margin-bottom: 40px;
 }
@@ -183,7 +183,7 @@
 /*圈子基本信息*/
 .project-base-info {
     width: 100%;
-    height: 90px;
+    height: 80px;
     background-color: white;
 
     display: flex;
@@ -318,7 +318,7 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    margin-right: 5px;
+    margin-right: 10px;
 
     display: inline-block;
 }
@@ -326,6 +326,47 @@
     font-size: 13px;
     color: #C9C9C9;
 
+}
+
+/*圈子介绍内容*/
+.project-introduction-info {
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    background-color: white;
+}
+
+/*圈主介绍内容*/
+.creator-introduction-info {
+    width: 100%;
+    height: 200px;
+    margin-top: 10px;
+    background-color: white;
+}
+
+/*圈子类型展示 & 编辑*/
+.project-type-info {
+    width: 100%;
+    height: 50px;
+    margin-top: 10px;
+    background-color: white;
+}
+
+/*设置报名费&分销佣金*/
+.set-project-attend-cost {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    background-color: white;
+}
+
+/*创建契约金*/
+.set-punch-card-money-award {
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 100px;
+    background-color: white;
 }
 
 

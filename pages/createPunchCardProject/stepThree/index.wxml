@@ -101,8 +101,20 @@
             </view>
         </view>
 
-        <!--圈子详细介绍-->
+        <!--圈子详细介绍展示 & 编辑-->
         <view class="project-introduction-info"></view>
+
+        <!--圈主简介展示 & 编辑-->
+        <view class="creator-introduction-info"></view>
+
+        <!--圈子类型展示 & 编辑-->
+        <view class="project-type-info"></view>
+
+        <!--设置报名费&分销佣金：报名费为成员加入缴纳的费用，归圈主所有-->
+        <view class="set-project-attend-cost"></view>
+
+        <!--创建契约金：圈主设置目标，参与者上交契约金，完成打卡分奖金-->
+        <view class="set-punch-card-money-award"></view>
     </scroll-view>
 
     <!--分享按钮、进入打卡详情页-->

@@ -383,10 +383,11 @@ Page({
 
                         getInviteImgUrl.then(function (res) {
                             wx.hideLoading();
-                            let param = '?projectId=' + 1
+                            let param =
+                                '?projectId=' + parseInt(response.data.data.id)
                                 + '&invite_img_url=' + that.data.invite_img_url
                                 + '&get_invite_img_flag=' + res
-                                + '&projectName=' + that.data.projectName ;
+                                + '&projectName=' + that.data.projectName;
 
 
                             wx.navigateTo({
@@ -482,9 +483,7 @@ Page({
                 ctx.drawImage(res[1].path,0,140,16,16);
                 ctx.restore();
 
-
                 // 绘制
-                // ctx.stroke();
                 ctx.draw(
                     false,
                     setTimeout(function () {
