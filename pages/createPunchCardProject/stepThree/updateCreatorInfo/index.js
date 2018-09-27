@@ -18,6 +18,12 @@ Page({
      */
     onLoad: function (options) {
         console.log(options);
+        let that = this;
+        that.data.projectId = options.projectId;
+        that.setData({
+            creatorIntrInfo: options.creatorIntrInfo,
+            creatorWeiXinNum: options.weixinNum
+        });
     },
 
     /**
@@ -88,15 +94,21 @@ Page({
 
         if (that.data.creatorWeiXinNumFlag === true) {
             wx.request({
-                url: app.globalData.urlRootPath + "",
+                url: app.globalData.urlRootPath + "index/PunchCardProject/updateCreatorInfo",
+                method: "post",
                 data:{
                     project_id: that.data.projectId,
                     creator_introduce: that.data.creatorIntrInfo,
                     weixin_num: that.data.creatorWeiXinNum
                 },
                 success: function (response) {
+                    console.log(response);
                     switch (response.statusCode) {
-                        case 200: break;
+                        case 200:
+                            wx.navigateBack({
+                                delta: 1
+                            });
+                            break;
                         default:
                             wx.showToast({
                                 title: response.data.errMsg,
@@ -104,10 +116,6 @@ Page({
                             });
                             break;
                     }
-
-                    wx.navigateBack({
-                        delta: 1
-                    });
                 },
                 fail: function () {
                     wx.showToast({
@@ -125,8 +133,4 @@ Page({
 
 
     }
-
-
-
-
 });

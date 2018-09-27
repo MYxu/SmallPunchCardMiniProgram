@@ -16,6 +16,7 @@ Page({
         projectTypeLabel: '',
         projectIntrInfo: '',
         creatorIntrInfo: '',
+        weixinNum: '',
 
         // 在创建圈子的第二步骤成功创建圈子之后进入第三步骤的圈子详情页，默认显示自定义的邀请模态框
         showCustomInviteModal: true,
@@ -57,8 +58,40 @@ Page({
      * 当从其他修改页面返回时从服务器端获取最新的圈子信息
      */
     onShow: function () {
+        let that = this;
         // 从服务器端获取圈主信息
+        wx.request({
+            url: app.globalData.urlRootPath + "index/PunchCardProject/getCreatorInfo",
+            data:{
+                project_id: that.data.punchCardProjectId
+            },
+            method: "post",
+            success:function (response) {
+                console.log(response);
+                switch (response.statusCode) {
+                    case 200:
+                        that.setData({
+                            creatorIntrInfo: response.data.data.creator_introduce,
+                            weixinNum: response.data.data.weixin_num
+                        });
+                        break;
 
+                    default:
+                        wx.showToast({
+                           title: response.data.errMsg,
+                           icon: "none"
+                        });
+                        break
+                }
+
+            },
+            fail: function () {
+                wx.showToast({
+                   title: "网络异常...",
+                   icon: "none"
+                });
+            }
+        });
     },
 
     /**
@@ -241,11 +274,22 @@ Page({
         })
     },
 
+    // 进入个人主页
+    intoPersonalPage: function() {
+        wx.navigateTo({
+            url: "../../mine/detailPage/userInfo"
+        })
+    },
+
     // 修改圈主介绍
-    updateCreatorInfo: function () {
+    updateCreatorInfo: function (e) {
+        console.log(e);
         let  that = this;
         wx.navigateTo({
-           url: '../stepThree/updateCreatorInfo/index' + "?projectId=" + that.data.punchCardProjectId
+           url: '../stepThree/updateCreatorInfo/index'
+               + "?projectId=" + that.data.punchCardProjectId
+               + "&creatorIntrInfo=" + e.currentTarget.dataset.introduce
+               + "&weixinNum=" + that.data.weixinNum
         });
     },
 

@@ -119,14 +119,37 @@
 
         <!--圈主简介展示 & 编辑-->
         <view class="creator-introduction-info">
-            <view class="creator-intr-info-header">圈主介绍</view>
-            <view class="creator-intr-info-content" bindtap="updateCreatorInfo">
-                <view class="edit-creator-intr-content-notice">
-                    <image src="../../../images/button/add.png"></image>
-                    <text>完善圈主介绍，让成员认识你</text>
+            <!--存在圈主简介时展示简介内容，缩小化编辑按钮-->
+            <block wx:if="{{creatorIntrInfo}}">
+                <view class="creator-intr-info-header">
+                    <text>圈主介绍</text>
+                    <image src="../../../images/bottomIcon/edit_2.png"
+                           bindtap="updateCreatorInfo"
+                           data-introduce="{{creatorIntrInfo}}">
+                    </image>
                 </view>
+                <view class="creator-intr-info-content">
+                    <view class="creator-intr-avatar" bindtap="intoPersonalPage">
+                        <image src="{{userAvatar}}"></image>
+                        <text>{{creatorNickName}}</text>
+                    </view>
+                    <view class="creator-intr-text">{{creatorIntrInfo}}</view>
+                </view>
+            </block>
+            <!--最大化编辑按钮、提示添加圈主简介-->
+            <block wx:else>
+                <view class="creator-intr-info-header">
+                    <text>圈主介绍</text>
+                </view>
+                <view class="edit-creator-intr-info-btn" bindtap="updateCreatorInfo"
+                      data-introduce="{{creatorIntrInfo}}">
+                    <view class="edit-creator-intr-notice">
+                        <image src="../../../images/button/add.png"></image>
+                        <text>完善圈主介绍，让成员认识你</text>
+                    </view>
 
-            </view>
+                </view>
+            </block>
         </view>
 
         <!--圈子类型展示 & 编辑-->
