@@ -10,7 +10,9 @@
         "pages/createPunchCardProject/stepOne/index",
         "pages/createPunchCardProject/stepTwo/index",
         "pages/createPunchCardProject/stepThree/index",
-        "pages/projectDetailPage/index"
+        "pages/projectDetailPage/index",
+        "pages/createPunchCardProject/stepThree/updateCreatorInfo/index",
+        "pages/createPunchCardProject/stepThree/updateProjectIntrInfo/index"
     ],
     "window": {
         "navigationBarBackgroundColor": "#F0B27A",

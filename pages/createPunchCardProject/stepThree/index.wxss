@@ -103,7 +103,6 @@
     width: 100%;
     height: auto;
     background-color: whitesmoke;
-    margin-bottom: 40px;
 }
 
 /*打卡圈子详情--封面图部分*/
@@ -548,7 +547,7 @@
     width: 100%;
     height: 65px;
     margin-top: 10px;
-    margin-bottom: 100px;
+    margin-bottom: 90px;
     background-color: white;
 
     display: flex;
@@ -607,7 +606,7 @@
     width: 49%;
     height: 50px;
     line-height: 50px;
-    background-color: lightseagreen;
+    background-color: #F0B27A;
     color: white;
     border-radius: 5px;
     margin-left: 1%;

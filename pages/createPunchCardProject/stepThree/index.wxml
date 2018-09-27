@@ -63,7 +63,7 @@
             <view class="project-name">
                 <text>{{projectName}}</text>
                 <!--修改圈子名称按钮图标-->
-                <image src="../../../images/bottomIcon/edit.png"
+                <image src="../../../images/bottomIcon/edit_2.png"
                        bindtap="showUpdateProjectNameModal"></image>
                 <!--修改圈子名称自定义模态框-->
                 <block wx:if="{{showUpdateProjectNameModel}}">
@@ -104,7 +104,7 @@
         <!--圈子详细介绍展示 & 编辑-->
         <view class="project-introduction-info">
             <view class="project-introduction-header">圈子介绍</view>
-            <view class="project-introduction-content">
+            <view class="project-introduction-content" bindtap="updateProjectIntrInfo">
                 <view class="edit-project-intr-content-notice">
                     <image src="../../../images/button/add.png"></image>
                     <text>丰富圈子介绍，让更多人了解你的圈子</text>
@@ -120,7 +120,7 @@
         <!--圈主简介展示 & 编辑-->
         <view class="creator-introduction-info">
             <view class="creator-intr-info-header">圈主介绍</view>
-            <view class="creator-intr-info-content">
+            <view class="creator-intr-info-content" bindtap="updateCreatorInfo">
                 <view class="edit-creator-intr-content-notice">
                     <image src="../../../images/button/add.png"></image>
                     <text>完善圈主介绍，让成员认识你</text>
@@ -130,7 +130,7 @@
         </view>
 
         <!--圈子类型展示 & 编辑-->
-        <view class="project-type-info">
+        <view class="project-type-info" bindtap="updateProjectType">
             <view class="project-type-info-header">圈子类型</view>
             <view class="project-type-info-content">{{projectTypeLabel}}</view>
             <view class="update-project-type-btn">
@@ -139,7 +139,7 @@
         </view>
 
         <!--设置报名费&分销佣金：报名费为成员加入缴纳的费用，归圈主所有-->
-        <view class="set-project-attend-cost">
+        <view class="set-project-attend-cost" bindtap="setProjectAttendCost">
             <view class="set-project-attend-cost-header">
                 <view class="title">设置报名费与分销佣金</view>
                 <view class="notice">报名费是成员加入时缴纳的费用，归圈主所有</view>
@@ -151,7 +151,7 @@
         </view>
 
         <!--创建契约金：圈主设置目标，参与者上交契约金，完成打卡分奖金-->
-        <view class="set-punch-card-money-award">
+        <view class="set-punch-card-money-award" bindtap="setPunchCardMoneyAward">
             <view class="set-punch-card-money-award-header">
                 <view class="title">创建契约金</view>
                 <view class="notice">圈主设置目标，参与者上交契约金，完成打卡分奖金</view>

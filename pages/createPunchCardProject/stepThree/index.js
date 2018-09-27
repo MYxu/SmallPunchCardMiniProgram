@@ -5,8 +5,17 @@ Page({
      * 页面的初始数据
      */
     data: {
+        userAvatar: '',
+        creatorNickName: '',
+
+        // 圈子相关信息
         punchCardProjectId: 0,
+        projectName: '',
+        inviteImgUrl: '',
+        getInviteImgFlag: true, // stepTwo中生成圈子邀请图片的结果 true为生成成功、false为失败
         projectTypeLabel: '',
+        projectIntrInfo: '',
+        creatorIntrInfo: '',
 
         // 在创建圈子的第二步骤成功创建圈子之后进入第三步骤的圈子详情页，默认显示自定义的邀请模态框
         showCustomInviteModal: true,
@@ -18,19 +27,20 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        let that = this;
+
         console.log("threePage options:");
         console.log(options);
-
-        let that = this;
+        // 页面初次加载，接收从stepTwo页面传递的圈子信息参数
         that.setData({
             punchCardProjectId: options.projectId,
             projectName: options.projectName,
             inviteImgUrl: options.inviteImgUrl,
             getInviteImgFlag: options.getInviteImgFlag,
             projectTypeLabel: options.projectTypeLabel,
+
             userAvatar: app.globalData.userInfo.avatar_url,
             creatorNickName: app.globalData.userInfo.nick_name
-
         })
     },
 
@@ -43,8 +53,11 @@ Page({
 
     /**
      * 生命周期函数--监听页面显示
+     *
+     * 当从其他修改页面返回时从服务器端获取最新的圈子信息
      */
     onShow: function () {
+        // 从服务器端获取圈主信息
 
     },
 
@@ -218,7 +231,49 @@ Page({
                 });
             }
         });
-    }
+    },
+
+    // 修改圈子详情介绍
+    updateProjectIntrInfo: function() {
+        wx.showToast({
+            title: '待开发...',
+            icon: "none"
+        })
+    },
+
+    // 修改圈主介绍
+    updateCreatorInfo: function () {
+        let  that = this;
+        wx.navigateTo({
+           url: '../stepThree/updateCreatorInfo/index' + "?projectId=" + that.data.punchCardProjectId
+        });
+    },
+
+    // 修改圈子类型标签
+    updateProjectType: function() {
+        wx.showToast({
+            title: '待开发...',
+            icon: "none"
+        })
+    },
+
+    // 设置报名费与分销佣金
+    setProjectAttendCost: function() {
+        wx.showToast({
+            title: '待开发...',
+            icon: "none"
+        })
+    },
+
+    // 创建契约金
+    setPunchCardMoneyAward: function() {
+        wx.showToast({
+            title: '待开发...',
+            icon: "none"
+        })
+    },
+
+
 
 
 

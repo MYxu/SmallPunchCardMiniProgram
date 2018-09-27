@@ -1,0 +1,29 @@
+<view class="container">
+    <!--填写圈主简介-->
+    <view class="input-creator-intr-info">
+        <view class="title">圈主简介</view>
+        <view class="input-creator-intr-info-area">
+            <textarea placeholder="请输入圈主简介" value="{{creatorIntrInfo}}"
+                      maxlength="50" bindinput="creatorIntrInfoInput"></textarea>
+        </view>
+        <view class="input-text-num-notice">{{inputTextNum}}/50</view>
+    </view>
+
+    <!--填写圈主微信号-->
+    <view class="input-creator-weixin-info">
+        <view class="title">圈主微信号</view>
+        <view class="input-creator-weixin-info-notice">
+            填写圈主微信号，有助于让成员找到您
+        </view>
+        <view class="input-creator-weixin-info-area">
+            <input placeholder="请输入微信号" placeholder-class="placeholder-style"
+                   value="{{creatorWeiXinNum}}" maxlength="20"
+                   bindinput="creatorWeiXinInfoInput" bindblur="checkWeiXinNumInput"/>
+        </view>
+        <view class="input-text-num-notice">{{inputWeiXinNum}}/20</view>
+    </view>
+
+    <view class="update-creator-intr-info-btn" bindtap="updateCreatorIntrInfo">
+        <text>保存</text>
+    </view>
+</view>
