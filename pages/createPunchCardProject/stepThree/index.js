@@ -267,11 +267,15 @@ Page({
     },
 
     // 修改圈子详情介绍
-    updateProjectIntrInfo: function() {
-        wx.showToast({
-            title: '待开发...',
-            icon: "none"
-        })
+    updateProjectIntrInfo: function(e) {
+        console.log(e);
+        let  that = this;
+        wx.navigateTo({
+            url: '../stepThree/updateProjectIntrInfo/index'
+                + "?projectId=" + that.data.punchCardProjectId
+                + "&creatorIntrInfo=" + e.currentTarget.dataset.introduce
+                + "&weixinNum=" + that.data.weixinNum
+        });
     },
 
     // 进入个人主页

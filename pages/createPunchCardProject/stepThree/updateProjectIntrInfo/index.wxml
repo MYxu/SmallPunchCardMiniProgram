@@ -1,2 +1,96 @@
-<!--pages/createPunchCardProject/stepThree/updateProjectIntrInfo/index.wxml-->
-<text>pages/createPunchCardProject/stepThree/updateProjectIntrInfo/index.wxml</text>
+<view class="container">
+    <view class="edit-project-intr-activity-notice" bindtap="getActivityDetailInfo">
+        <view class="gold-icon">
+            <image src="../../../../images/bottomIcon/gold.png"></image>
+        </view>
+        <view class="notice-message">
+            <text>填写圈子介绍赢20金币，点击查看规则</text>
+        </view>
+        <view class="into-btn-icon">
+            <image src="../../../../images/button/into_btn_gray.png"></image>
+        </view>
+    </view>
+
+    <!--编辑的圈子介绍-->
+    <block wx:if="{{projectIntrInfoList}}">
+        <view class="project-intr-info-list">
+            <block wx:for="{{projectIntrInfoList}}">
+                <!--添加一个文字简介区域-->
+                <block wx:if="{{item.type === 'textarea'}}">
+                    <view class="intr-info-btn">
+                        <view class="edit-area-title">文字</view>
+                        <!--上移按钮-->
+                        <view class="intr-info-up-order-btn" bindtap="orderUp"
+                              data-index="{{index}}">
+                            <block wx:if="{{index === 0}}">
+                                <image src="../../../../images/bottomIcon/down_gray.png"
+                                       style="border: 1px #cccccc solid">
+                                </image>
+                            </block>
+                            <block wx:else>
+                            <image src="../../../../images/bottomIcon/down.png"></image>
+                            </block>
+                        </view>
+                        <!--下移按钮-->
+                        <view class="intr-info-down-order-btn" bindtap="orderDown"
+                              data-index="{{index}}">
+                            <block wx:if="{{index === projectIntrInfoList.length - 1}}">
+                                <image src="../../../../images/bottomIcon/down_gray.png"
+                                       style="border: 1px #cccccc solid">
+                                </image>
+                            </block>
+                            <block wx:else>
+                                <image src="../../../../images/bottomIcon/down.png">
+                                </image>
+                            </block>
+                        </view>
+                        <!--删除按钮-->
+                        <view class="intr-info-delete-btn" bindtap="deleteEditArea"
+                              data-index="{{index}}">
+                            <image src="../../../../images/bottomIcon/delete.png">
+                            </image>
+                        </view>
+                    </view>
+                    <!--文字简介编辑区域-->
+                    <view class="intr-info-text-item">
+                        <textarea maxlength="500" auto-height="true"
+                                  data-index="{{index}}" bindinput="getTextInput"
+                                  placeholder="请输入圈子介绍" value="{{item.content}}">
+                        </textarea>
+                    </view>
+                    <view class="text-num-notice">{{item.content.length}}/500</view>
+                </block>
+            </block>
+        </view>
+    </block>
+
+    <!--添加圈子简信息的模板按钮：文字、图片、录音、视频-->
+    <view class="edit-btn-panel">
+        <block wx:if="{{projectIntrInfoList}}">
+            <view class="edit-btn-panel-title">继续添加内容:</view>
+        </block>
+        <block wx:else>
+            <view class="edit-btn-panel-title">开始添加内容</view>
+        </block>
+        <!--按钮组-->
+        <view class="edit-btn-group">
+            <view class="edit-btn-item text" bindtap="addTextEditArea">
+                <image src="../../../../images/bottomIcon/text.png"></image>
+                <text>文字</text>
+            </view>
+            <view class="edit-btn-item image" bindtap="addImageEditArea">
+                <image src="../../../../images/bottomIcon/picture_3.png"></image>
+                <text>图片</text>
+            </view>
+            <view class="edit-btn-item sound" bindtap="">
+                <image src="../../../../images/bottomIcon/sound.png"></image>
+                <text>录音</text>
+            </view>
+            <view class="edit-btn-item video" bindtap="">
+                <image src="../../../../images/bottomIcon/video.png"></image>
+                <text>视频</text>
+            </view>
+        </view>
+    </view>
+
+</view>

@@ -496,6 +496,7 @@
     width: auto;
     margin-left: 46px;
     padding-bottom: 10px;
+    margin-top: 10px;
     height: auto;
     line-height: 1.2;
     letter-spacing: 1px;
