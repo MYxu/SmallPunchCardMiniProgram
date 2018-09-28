@@ -211,4 +211,16 @@
 }
 
 
+/*对选择、拍摄的简介图片进行预览*/
+.intr-info-image-item {
+    width: 92%;
+    /*display: inline-block;*/
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 5px;
+}
+.intr-info-image-item > image {
+    width: 100%;
+}
+
 

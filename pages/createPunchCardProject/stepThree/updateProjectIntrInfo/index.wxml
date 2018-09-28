@@ -15,7 +15,7 @@
     <block wx:if="{{projectIntrInfoList}}">
         <view class="project-intr-info-list">
             <block wx:for="{{projectIntrInfoList}}">
-                <!--添加一个文字简介区域-->
+                <!--如果为文字信息简介-->
                 <block wx:if="{{item.type === 'textarea'}}">
                     <view class="intr-info-btn">
                         <view class="edit-area-title">文字</view>
@@ -60,7 +60,51 @@
                     </view>
                     <view class="text-num-notice">{{item.content.length}}/500</view>
                 </block>
-            </block>
+
+                <!--如果为图片信息简介-->
+                <block wx:if="{{item.type === 'image'}}">
+                    <view class="intr-info-btn">
+                        <view class="edit-area-title">图片</view>
+                        <!--上移按钮-->
+                        <view class="intr-info-up-order-btn" bindtap="orderUp"
+                              data-index="{{index}}">
+                            <block wx:if="{{index === 0}}">
+                                <image src="../../../../images/bottomIcon/down_gray.png"
+                                       style="border: 1px #cccccc solid">
+                                </image>
+                            </block>
+                            <block wx:else>
+                                <image src="../../../../images/bottomIcon/down.png">
+                                </image>
+                            </block>
+                        </view>
+                        <!--下移按钮-->
+                        <view class="intr-info-down-order-btn" bindtap="orderDown"
+                              data-index="{{index}}">
+                            <block wx:if="{{index === projectIntrInfoList.length - 1}}">
+                                <image src="../../../../images/bottomIcon/down_gray.png"
+                                       style="border: 1px #cccccc solid">
+                                </image>
+                            </block>
+                            <block wx:else>
+                                <image src="../../../../images/bottomIcon/down.png">
+                                </image>
+                            </block>
+                        </view>
+                        <!--删除按钮-->
+                        <view class="intr-info-delete-btn" bindtap="deleteEditArea"
+                              data-index="{{index}}">
+                            <image src="../../../../images/bottomIcon/delete.png">
+                            </image>
+                        </view>
+                    </view>
+                    <!--图片简介预览-->
+                    <view class="intr-info-image-item">
+                        <image mode="widthFix" src="{{item.content}}"></image>
+                    </view>
+                </block>
+
+            </block><!--遍历循环展示所添加的圈子简介-->
         </view>
     </block>
 
