@@ -330,23 +330,37 @@
 /*圈子介绍内容*/
 .project-introduction-info {
     width: 100%;
-    height: 200px;
+    min-height: 200px;
+    height: auto;
     margin-top: 10px;
     background-color: white;
 }
 
-/*圈子介绍为空时：提示填写圈子介绍信息展示*/
-.project-introduction-header {
+/*圈子介绍标题：当填写圈子简介信息之后显示缩小化的编辑按钮icon*/
+.project-intr-info-header {
     width: 100%;
+    height: 60px;
+}
+
+.project-intr-info-header > text {
+    width: auto;
     height: 60px;
     line-height: 60px;
     margin-left: 10px;
+    margin-right: 8px;
     color: black;
     font-size: 16px;
     font-weight: bolder;
+    display: inline-block;
+}
+.project-intr-info-header > image {
+    width: 15px;
+    height: 15px;
 }
 
-.project-introduction-content {
+
+/*圈子简介信息为空时：提示填写圈子介绍信息*/
+.edit-creator-intr-info-btn {
     width: auto;
     height: 125px;
     margin: 0 10px 15px 10px;
@@ -358,7 +372,8 @@
     align-items: center;
 }
 
-.edit-project-intr-content-notice {
+/*提示添加圈子简介*/
+.edit-project-intr-notice {
     width: auto;
     height: 65px;
 
@@ -368,7 +383,7 @@
     display: table;
     vertical-align: middle;
 }
-.edit-project-intr-content-notice > image {
+.edit-project-intr-notice > image {
     width: 14px;
     height: 14px;
     margin-right: 5px;
@@ -376,6 +391,7 @@
     display: inline-block;
     margin-bottom: 3px;
 }
+/*添加圈子简介获取金币提示*/
 .edit-project-intr-activity-notice {
     width: auto;
     height: 20px;
@@ -397,6 +413,30 @@
     display: inline-block;
     vertical-align: middle;
 }
+
+
+/*展示填写的圈子简介信息*/
+.project-intr-info-content {
+    width: auto;
+    height: auto;
+    margin: 0 10px 15px 10px;
+}
+
+/*文本简介*/
+.project-intr-text-content {
+    width: 100%;
+}
+
+/*图片简介*/
+.project-intr-image-content {
+    width: 100%;
+}
+.project-intr-image-content > image {
+    width: 100%;
+}
+
+
+
 
 
 /*圈主介绍内容*/
@@ -491,7 +531,7 @@
     color: dodgerblue;
 }
 
-/*简介内容*/
+/*圈主简介内容*/
 .creator-intr-text {
     width: auto;
     margin-left: 46px;

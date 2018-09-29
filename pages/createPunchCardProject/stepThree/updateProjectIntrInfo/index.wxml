@@ -16,7 +16,7 @@
         <view class="project-intr-info-list">
             <block wx:for="{{projectIntrInfoList}}">
                 <!--如果为文字信息简介-->
-                <block wx:if="{{item.type === 'textarea'}}">
+                <block wx:if="{{item.type === '1'}}">
                     <view class="intr-info-btn">
                         <view class="edit-area-title">文字</view>
                         <!--上移按钮-->
@@ -62,7 +62,7 @@
                 </block>
 
                 <!--如果为图片信息简介-->
-                <block wx:if="{{item.type === 'image'}}">
+                <block wx:if="{{item.type === '2'}}">
                     <view class="intr-info-btn">
                         <view class="edit-area-title">图片</view>
                         <!--上移按钮-->
@@ -100,17 +100,27 @@
                     </view>
                     <!--图片简介预览-->
                     <view class="intr-info-image-item">
-                        <image mode="widthFix" src="{{item.content}}"></image>
+                        <!--预览已经存在的图片简介-->
+                        <block wx:if="{{item.id}}">
+                            <image mode="widthFix"
+                                   src="{{imgRootPath}}{{item.content}}"></image>
+                        </block>
+                        <block wx:else>
+                            <!--新添加的本地图片预览 尚未上传至服务器-->
+                            <image mode="widthFix"
+                                   src="{{item.content}}"></image>
+                        </block>
+
                     </view>
-                </block>
+                </block><!--圈子图片简介预览区域-->
 
             </block><!--遍历循环展示所添加的圈子简介-->
         </view>
-    </block>
+    </block><!--圈子信息编辑、预览区域-->
 
     <!--添加圈子简信息的模板按钮：文字、图片、录音、视频-->
     <view class="edit-btn-panel">
-        <block wx:if="{{projectIntrInfoList}}">
+        <block wx:if="{{projectIntrInfoList.length > 0}}">
             <view class="edit-btn-panel-title">继续添加内容:</view>
         </block>
         <block wx:else>
@@ -137,4 +147,13 @@
         </view>
     </view>
 
+    <!--电脑端编辑提示-->
+    <view class="web-site-edit-notice">
+        <view>使用电脑访问<text class="web-site">www.myxu.xyz</text>发布主题，可上传MP3格式音频和更大的视频文件，图文编辑更方便。</view>
+    </view>
+
+    <!--保存按钮-->
+    <view class="update-project-intr-info" bindtap="updateProjectIntrInfo">
+        <text>保存</text>
+    </view>
 </view>

@@ -5,6 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        imgRootPath: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/", // 用于访问服务器图片
+
         userAvatar: '',
         creatorNickName: '',
 
@@ -14,7 +16,7 @@ Page({
         inviteImgUrl: '',
         getInviteImgFlag: true, // stepTwo中生成圈子邀请图片的结果 true为生成成功、false为失败
         projectTypeLabel: '',
-        projectIntrInfo: '',
+        projectIntrInfo: [],
         creatorIntrInfo: '',
         weixinNum: '',
 
@@ -92,6 +94,40 @@ Page({
                 });
             }
         });
+
+        // 获取圈子简介信息
+        wx.request({
+            url: app.globalData.urlRootPath + "index/PunchCardProject/getProjectIntr",
+            data:{
+                project_id: that.data.punchCardProjectId
+            },
+            method: "post",
+            success:function (response) {
+                console.log(response);
+                switch (response.statusCode) {
+                    case 200:
+                        that.setData({
+                            projectIntrInfo: response.data.data,
+                        });
+                        break;
+
+                    default:
+                        wx.showToast({
+                            title: response.data.errMsg,
+                            icon: "none"
+                        });
+                        break
+                }
+
+            },
+            fail: function () {
+                wx.showToast({
+                    title: "网络异常...",
+                    icon: "none"
+                });
+            }
+        });
+        console.log(that.data)
     },
 
     /**
@@ -270,11 +306,13 @@ Page({
     updateProjectIntrInfo: function(e) {
         console.log(e);
         let  that = this;
+        let projectIntrInfo = that.data.projectIntrInfo;
+        if (projectIntrInfo !== "")
+            projectIntrInfo = JSON.stringify(that.data.projectIntrInfo);
         wx.navigateTo({
             url: '../stepThree/updateProjectIntrInfo/index'
                 + "?projectId=" + that.data.punchCardProjectId
-                + "&creatorIntrInfo=" + e.currentTarget.dataset.introduce
-                + "&weixinNum=" + that.data.weixinNum
+                + "&projectIntrInfo=" + projectIntrInfo
         });
     },
 
