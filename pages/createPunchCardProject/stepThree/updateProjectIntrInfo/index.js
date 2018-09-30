@@ -195,6 +195,7 @@ Page({
                 url: app.globalData.urlRootPath + 'index/PunchCardProject/deleteProjectIntr',
                 method: "post",
                 data:{
+                    projectId: parseInt(that.data.projectId),
                     deleteIdList:that.data.deleteIntrInfoIdList,
                 },
                 success: function (res) {

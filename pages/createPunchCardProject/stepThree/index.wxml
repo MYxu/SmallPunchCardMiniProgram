@@ -136,7 +136,7 @@
                 <view class="project-intr-info-header">
                     <text>圈子简介</text>
                 </view>
-                <view class="edit-creator-intr-info-btn"
+                <view class="edit-project-intr-info-btn"
                       bindtap="updateProjectIntrInfo">
                     <view class="edit-project-intr-notice">
                         <image src="../../../images/button/add.png"></image>
@@ -148,6 +148,7 @@
                         <text>限时活动: 填写介绍送20金币</text>
                     </view>
                 </view>
+                <view style="width: 100%;height: 1px"></view>
             </block>
 
         </view>
@@ -182,8 +183,8 @@
                         <image src="../../../images/button/add.png"></image>
                         <text>完善圈主介绍，让成员认识你</text>
                     </view>
-
                 </view>
+                <view style="width: 100%;height: 1px"></view>
             </block>
         </view>
 

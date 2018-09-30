@@ -330,7 +330,7 @@
 /*圈子介绍内容*/
 .project-introduction-info {
     width: 100%;
-    min-height: 200px;
+    /*min-height: 200px;*/
     height: auto;
     margin-top: 10px;
     background-color: white;
@@ -360,7 +360,7 @@
 
 
 /*圈子简介信息为空时：提示填写圈子介绍信息*/
-.edit-creator-intr-info-btn {
+.edit-project-intr-info-btn {
     width: auto;
     height: 125px;
     margin: 0 10px 15px 10px;
@@ -426,7 +426,7 @@
 .project-intr-text-content {
     width: 100%;
     line-height: 1.2;
-    margin-bottom: 15px;
+    padding-bottom: 15px;
 }
 
 /*图片简介*/
@@ -435,7 +435,7 @@
 }
 .project-intr-image-content > image {
     width: 100%;
-    margin-bottom: 15px;
+    padding-bottom: 15px;
 }
 
 

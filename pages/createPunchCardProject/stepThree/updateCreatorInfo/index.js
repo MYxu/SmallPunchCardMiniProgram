@@ -94,7 +94,8 @@ Page({
 
         if (that.data.creatorWeiXinNumFlag === true) {
             wx.request({
-                url: app.globalData.urlRootPath + "index/PunchCardProject/updateCreatorInfo",
+                url: app.globalData.urlRootPath
+                    + "index/PunchCardProject/updateCreatorInfo",
                 method: "post",
                 data:{
                     project_id: that.data.projectId,
