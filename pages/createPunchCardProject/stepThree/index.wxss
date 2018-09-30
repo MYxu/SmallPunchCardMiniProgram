@@ -425,6 +425,8 @@
 /*文本简介*/
 .project-intr-text-content {
     width: 100%;
+    line-height: 1.2;
+    margin-bottom: 15px;
 }
 
 /*图片简介*/
@@ -433,6 +435,7 @@
 }
 .project-intr-image-content > image {
     width: 100%;
+    margin-bottom: 15px;
 }
 
 
