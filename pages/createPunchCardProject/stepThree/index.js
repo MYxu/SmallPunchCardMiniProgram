@@ -182,8 +182,15 @@ Page({
 
         return shareObj;
 
+    },
 
-
+    // 修改打卡圈子封面图
+    updateProjectCoverImg: function() {
+        let that = this;
+        wx.navigateTo({
+           'url': '../stepThree/updateCoverImg/index'
+               + "?projectId=" + that.data.punchCardProjectId
+        });
     },
 
     // 阻止模态框之外的页面点击事件
@@ -357,6 +364,13 @@ Page({
             title: '待开发...',
             icon: "none"
         })
+    },
+
+    // 跳转至圈子的打卡详情页
+    intoPunchCardDetailPage: function () {
+        wx.navigateTo({
+            url: '../../punchCardDetailPage/index'
+        });
     },
 
 

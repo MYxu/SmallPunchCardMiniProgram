@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        imgRootPath: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/", // 用于访问服务器图片
+        // 用于访问服务器图片
+        imgRootPath: app.globalData.imgBaseSeverUrl,
 
         projectId: 0,
         projectIntrInfoList: [

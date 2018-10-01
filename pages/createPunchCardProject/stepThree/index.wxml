@@ -40,7 +40,7 @@
     <scroll-view class="punch-card-project-detail">
         <view class="cover-img-container">
             <!--打卡圈子封面图-->
-            <image src="../../../images/backgroundImg/img_6.png"
+            <image src="../../../images/default/project_cover_img.png"
                    class="cover-img">
             </image>
             <!-- 打卡圈子分享按钮-1 -->
@@ -50,9 +50,8 @@
             </button>
 
             <!--修改封面图按钮-->
-            <view class="update-cover-img-btn">
-                <image src="../../../images/bottomIcon/picture.png">
-                </image>
+            <view class="update-cover-img-btn" bindtap="updateProjectCoverImg">
+                <image src="../../../images/bottomIcon/picture.png"></image>
                 <text>修改头图</text>
             </view>
         </view>
@@ -225,6 +224,8 @@
     <!--分享按钮、进入打卡详情页-->
     <view class="btn-group">
         <button open-type="share" class="share-btn-2">分享给好友</button>
-        <button class="into-punch-card-detail">去打卡详情页</button>
+        <button class="into-punch-card-detail" bindtap="intoPunchCardDetailPage">
+            去打卡详情页
+        </button>
     </view>
 </view>

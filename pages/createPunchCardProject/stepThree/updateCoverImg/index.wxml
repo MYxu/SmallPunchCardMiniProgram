@@ -1,0 +1,27 @@
+<view class="container">
+    <!--上传本地图片-->
+    <view class="upload-custom-img">
+        <view class="title">上传本地图片</view>
+        <view class="upload-img-btn">
+            <image src="../../../../images/bottomIcon/add.png"></image>
+        </view>
+    </view>
+
+    <!--推荐图片-->
+    <view class="system-recommend-img">
+        <view class="title">推荐图片</view>
+        <!--推荐图片列表-->
+        <block wx:if="{{systemRecommendCoverImgList.length > 0}}">
+            <block wx:for="{{systemRecommendCoverImgList}}">
+                <view class="cover-img-item" data-url="{{item.img_url}}"
+                      data-id="{{item.id}}" bindtap="useSystemRecommendCoverImg">
+                    <image src="{{imgRootPath}}{{item.img_url}}"></image>
+                </view>
+            </block>
+        </block>
+        <block wx:else>
+            <view class="not-recommend-img-notice">暂无系统推荐封面背景图!</view>
+        </block>
+    </view>
+
+</view>

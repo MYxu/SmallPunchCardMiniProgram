@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "更换背景图",
+  "navigationBarBackgroundColor": "#E3F2FD",
+  "navigationBarTextStyle": "black",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "enablePullDownRefresh": true
+}

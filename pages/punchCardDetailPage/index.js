@@ -1,4 +1,4 @@
-// pages/projectDetailPage/index.js
+// pages/punchCardDetailPage/index.js
 Page({
 
     /**
@@ -10,7 +10,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-        console.log(options);
+
     },
 
     /**
@@ -38,7 +38,10 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+        // 修改navigateBack按钮的返回事件，直接关闭其他非tabBar页面，回到首页tab
+        wx.switchTab({
+            url: "../../index/index"
+        });
     },
 
     /**

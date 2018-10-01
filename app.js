@@ -51,6 +51,10 @@ App({
         },
         urlRootPath: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/public/",
         urlRootPath_local:
-            "http://myxu.com/EndProject/SmallPunchMiniProgramAfterEnd/public/"
+            "http://myxu.com/EndProject/SmallPunchMiniProgramAfterEnd/public/",
+
+        // 服务器图片访问BaseURl
+        imgBaseSeverUrl: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
+
     }
 });
