@@ -7,11 +7,13 @@ Page({
     data: {
         imgRootPath: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/", // 用于访问服务器图片
 
-        userAvatar: '',
-        creatorNickName: '',
+        userAvatar: app.globalData.userInfo.avatar_url,
+        creatorNickName: app.globalData.userInfo.nick_name,
 
         // 圈子相关信息
         punchCardProjectId: 0,
+        projectCoverImgUrl: "default_cover_img", // 代表使用小程序本地内置的一张默认图片
+        sysRecommendCoverImgId: 0,               // 所使用的系统推荐封面背景图的图片id,没有使用为0
         projectName: '',
         inviteImgUrl: '',
         getInviteImgFlag: true, // stepTwo中生成圈子邀请图片的结果 true为生成成功、false为失败
@@ -190,6 +192,7 @@ Page({
         wx.navigateTo({
            'url': '../stepThree/updateCoverImg/index'
                + "?projectId=" + that.data.punchCardProjectId
+               + "&preCoverImgId=" + that.data.sysRecommendCoverImgId
         });
     },
 
@@ -372,11 +375,5 @@ Page({
             url: '../../punchCardDetailPage/index'
         });
     },
-
-
-
-
-
-
 
 });

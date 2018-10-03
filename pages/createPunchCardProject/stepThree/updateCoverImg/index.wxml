@@ -1,6 +1,6 @@
 <view class="container">
     <!--上传本地图片-->
-    <view class="upload-custom-img">
+    <view class="upload-custom-img" bindtap="useCustomUploadCoverImg">
         <view class="title">上传本地图片</view>
         <view class="upload-img-btn">
             <image src="../../../../images/bottomIcon/add.png"></image>
@@ -20,7 +20,7 @@
             </block>
         </block>
         <block wx:else>
-            <view class="not-recommend-img-notice">暂无系统推荐封面背景图!</view>
+            <view class="not-recommend-img-notice">{{sysRecommendCoverImgLoadNotice}}</view>
         </block>
     </view>
 

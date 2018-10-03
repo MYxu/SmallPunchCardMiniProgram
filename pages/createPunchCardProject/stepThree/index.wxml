@@ -40,14 +40,21 @@
     <scroll-view class="punch-card-project-detail">
         <view class="cover-img-container">
             <!--打卡圈子封面图-->
-            <image src="../../../images/default/project_cover_img.png"
-                   class="cover-img">
-            </image>
+            <block wx:if="{{projectCoverImgUrl === 'default_cover_img'}}">
+                <image src="../../../images/default/project_cover_img.png"
+                       class="cover-img">
+                </image>
+            </block>
+            <block else>
+                <image src="{{imgRootPath}}{{projectCoverImgUrl}}" class="cover-img"></image>
+            </block>
+
             <!-- 打卡圈子分享按钮-1 -->
             <button open-type="share" class="share-btn-1">
                     <image src="../../../images/bottomIcon/gold.png"></image>
                     <text>分享给好友</text>
             </button>
+
 
             <!--修改封面图按钮-->
             <view class="update-cover-img-btn" bindtap="updateProjectCoverImg">
