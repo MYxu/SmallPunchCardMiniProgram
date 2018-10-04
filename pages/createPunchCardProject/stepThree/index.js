@@ -193,6 +193,7 @@ Page({
            'url': '../stepThree/updateCoverImg/index'
                + "?projectId=" + that.data.punchCardProjectId
                + "&preCoverImgId=" + that.data.sysRecommendCoverImgId
+               + "&curCoverImgUrl=" + that.data.projectCoverImgUrl
         });
     },
 
