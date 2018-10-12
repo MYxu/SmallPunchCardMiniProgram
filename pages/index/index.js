@@ -1,10 +1,13 @@
-var app = getApp();
+let app = getApp();
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
+        // 服务器图片访问BaseURL
+        imgRootPath: app.globalData.imgBaseSeverUrl,
+
         canIUse: wx.canIUse('button.open-type.getUserInfo'),
         userInfo: '',
         punchCardProjectList: [],
@@ -18,21 +21,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function () {
-        const that = this;
-
-        // TODO 动态获取我参与的打卡圈子信息
-
-        that.setData({
-            projectNum: 0,
-            moreProjectInfo: true, // 圈子数量超过3个则显示查看更多按钮
-            punchCardProjectList:  [
-                {name: '测试1', isCreator: true},
-                {name: '测试2', isCreator: false},
-                {name: '字标题测试吧吧吧啦啦啦啦啦啦啦', isCreator: false},
-                {name: '测试4', isCreator: true}
-            ]
-        });
-
+        let that = this;
 
         // 根据全局变量中是否已经存在服务器端返回的用户信息条件，
         // 来注册loginAuth.js的addWeiXinUserInfo函数的回调函数userInfoReadyCallBack
@@ -53,7 +42,6 @@ Page({
             that.setData({
                 userInfo: app.globalData.userInfo
             });
-
         }
     },
 
@@ -61,13 +49,6 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        wx.setNavigationBarTitle({
-            title: '首页'
-        });
-
-        var that = this;
-        console.log(that.data.userInfo);
-        console.log(that.data.canIUse);
 
     },
 
@@ -75,7 +56,38 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
+        let that = this;
 
+        // 在获取用户的打卡圈子列表之前要确保已获取到用户id
+        let promise = new Promise(function (resolve) {
+            // 设置一个定时器去判断用户id是否获取成功
+            let timeout = 10000;
+            let id = setInterval(function () {
+                timeout -= 500;
+                if (timeout >= 0) {
+                    if (that.data.userInfo.id !== undefined) {
+                        clearInterval(id);
+                        resolve(true); // 在规定时间内成功获取
+                    }
+                } else {
+                    clearInterval(id);
+                    resolve(false); // 没有在规定时间获取则认定为获取失败
+                }
+            },500)
+        });
+
+        promise.then(function (res) {
+            if (res === false) {
+                wx.showToast({
+                    title: '出了点小问题,请下拉重试...',
+                    icon: 'none'
+                });
+                return false;
+            }
+            // 获取当前用户参与的打卡圈子信息
+            that.getMyPunchCardProject();
+
+        });
     },
 
     /**
@@ -96,6 +108,9 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+        wx.stopPullDownRefresh();
+        let that = this;
+        that.getMyPunchCardProject();
 
     },
 
@@ -108,10 +123,10 @@ Page({
 
     // 查看按钮点击事件
     showMorePunchCardProject: function () {
-        var that = this;
+        let that = this;
         that.setData({
-            moreProjectInfo: true,
-            projectHidden: false
+            moreProjectInfo: true, // 点击之后隐藏按钮
+            projectHidden: false   // 显示隐藏的打卡圈子列表
         });
     },
 
@@ -127,6 +142,47 @@ Page({
         wx.navigateTo({
           url: '../createPunchCardProject/stepOne/index'
         });
-    }
+    },
 
+    // 获取我创建、参与的打卡圈子相关信息
+    getMyPunchCardProject: function () {
+        let that = this;
+        wx.request({
+            url: app.globalData.urlRootPath + 'index/User/getAllProject',
+            method: 'post',
+            data: {
+              userId: app.globalData.userInfo.id
+            },
+            success: function (res) {
+                console.log(res);
+                switch (res.statusCode) {
+                    case 200:
+                        let punchCardProject = res.data.data.punchCardProject;
+
+                        that.setData({
+                            projectNum: punchCardProject.length,
+                            // 圈子数量超过3个则显示查看更多按钮
+                            moreProjectInfo: !(punchCardProject.length > 3),
+                            projectHidden: punchCardProject.length > 3, // 超过3个打卡圈子则隐藏第三之后的打卡圈子
+                            punchCardProjectList: punchCardProject
+                        });
+                        console.log(that.data.moreProjectInfo);
+
+                        break;
+                    default :
+                        wx.showToast({
+                            title: res.data.errMsg,
+                            icon: 'none'
+                        });
+                    break;
+                }
+            },
+            fail: function () {
+                wx.showToast({
+                    title: '网络异常...',
+                    icon: 'none'
+                })
+            }
+        })
+    }
 });

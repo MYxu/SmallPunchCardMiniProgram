@@ -19,14 +19,20 @@
             <!--我参与的打卡圈子列表-->
             <view class="my-punch-card-project-list">
                 <block wx:for="{{punchCardProjectList}}">
-                    <!--点击查看更多按钮显示后面全部打卡圈子-->
+                    <!--隐藏第三个之后的所有打卡圈子,点击查看更多按钮才显示后面全部打卡圈子-->
                     <block wx:if="{{(index + 1) > 3}}">
                         <view class="my-punch-card-project-item"
                               hidden="{{projectHidden}}"
                               bindtap="intoPunchCardDetail">
                             <!--打卡圈子封面-->
                             <view class="project-cover-img">
-                                <image src="/images/backgroundImg/img_1.png"></image>
+                                <block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">
+                                    <image src="../../images/default/project_cover_img.png"></image>
+                                </block>
+                                <block wx:else>
+                                    <image src="{{imgRootPath}}{{item.cover_img_url}}">
+                                    </image>
+                                </block>
                             </view>
                             <!--打卡圈子相关信息：打卡圈子名称 && 是否为圈子创建者  &&
                              打卡提示时间 && 本日打卡人数-->
@@ -48,8 +54,8 @@
                                 </view>
                                 <!--打卡圈子名称-->
                                 <view class="project-name">
-                                    <view>{{item.name}}
-                                        <block wx:if="{{item.isCreator}}">
+                                    <view>{{item.project_name}}
+                                        <block wx:if="{{item.is_creator}}">
                                             <text class="is-creator">圈主</text>
                                         </block>
                                     </view>
@@ -63,11 +69,18 @@
                         </view>
                     </block>
                     <block wx:else>
+                        <!--第1到3个打卡圈子列表-->
                         <view class="my-punch-card-project-item"
                               bindtap="intoPunchCardDetail">
                             <!--打卡圈子封面-->
                             <view class="project-cover-img">
-                                <image src="/images/backgroundImg/img_1.png"></image>
+                                <block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">
+                                    <image src="../../images/default/project_cover_img.png"></image>
+                                </block>
+                                <block wx:else>
+                                    <image src="{{imgRootPath}}{{item.cover_img_url}}">
+                                    </image>
+                                </block>
                             </view>
                             <!--打卡圈子相关信息：打卡圈子名称 && 是否为圈子创建者  &&
                              打卡提示时间 && 本日打卡人数-->
@@ -89,8 +102,8 @@
                                 </view>
                                 <!--打卡圈子名称-->
                                 <view class="project-name">
-                                    <view>{{item.name}}
-                                        <block wx:if="{{item.isCreator}}">
+                                    <view>{{item.project_name}}
+                                        <block wx:if="{{item.is_creator}}">
                                             <text class="is-creator">圈主</text>
                                         </block>
                                     </view>
@@ -124,6 +137,6 @@
     </view>
 
     <view class="container-bottom">
-        这里是底部页面444
+        这里是底部页面
     </view>
 </view>

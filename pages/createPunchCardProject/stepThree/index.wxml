@@ -45,7 +45,7 @@
                        class="cover-img">
                 </image>
             </block>
-            <block else>
+            <block wx:else>
                 <image src="{{imgRootPath}}{{projectCoverImgUrl}}" class="cover-img"></image>
             </block>
 
