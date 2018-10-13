@@ -1,4 +1,60 @@
+<!--
+说明：打卡详情页根据所进入的用户的角色进行区分显示
+1.若是圈主进入打卡详情页显示进入管理后台的按钮
+2.若是管理员进入显示进入管理后台的按钮、显示是否已关注圈主的相关信息
+3.若是普通参与成员进入不显示管理后台按钮、显示是否关注圈主的相关信息
+4.未加入打卡圈子的用户进入
+-->
 <view class="container">
-    <view></view>
-    <view></view>
+    <!--在未从服务器端获取到数据之前显示空白页并显示加载动画-->
+    <block wx:if="{{showLoading}}">
+        <!--显示空白页-->
+        <view></view>
+    </block>
+    <block wx:else><!--成功获取数据后关闭加载动画显示获取的数据内容-->
+        <!--1.未加入打卡圈子的用户进行如下显示-->
+        <block wx:if="{{}}">
+            <view>该用户未加入该打卡圈子</view>
+        </block>
+        <!--2.已经加入打卡圈子的用户进行如下显示：需要区分普通用户、管理员、圈主-->
+        <block wx:else>
+            <!--
+               （公共）显示打卡圈子相关信息：
+                打卡圈子封面图、名称、参与人数、总打卡数次数、圈主头像、昵称
+            -->
+            <view class="header">该用户已经加入打卡圈子</view>
+
+            <view class="content">中间的打卡信息</view>
+
+            <!--底部按钮：返回首页按钮、打卡按钮、进入发现页按钮-->
+            <view class="bottom">
+                <!--返回首页-->
+                <view class="into-index-page-btn" bindtap="intoIndexPage">
+                    <image src="../../images/bottomIcon/index.png"></image>
+                    <text>首页</text>
+                </view>
+
+                <!--打卡按钮-->
+                <view class="punch-card-btn" bindtap="intoPublishPunchCardDiaryPage">
+                    <block wx:if="{{}}">
+                        <view>打卡</view>
+                    </block>
+                    <block wx:else>
+                        <view>已打卡</view>
+                    </block>
+                </view>
+
+                <!--进入发现页面-->
+                <view class="into-find-page-btn" bindtap="intoFindPage">
+                    <image src="../../images/bottomIcon/find.png"></image>
+                    <text>发现</text>
+                </view>
+            </view>
+        </block>
+
+    </block>
+
+
+
+
 </view>

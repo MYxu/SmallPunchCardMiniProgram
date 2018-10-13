@@ -4,7 +4,14 @@
     <view class="container_userInfo" bindtap='intoUserInfoDetailPage'>
         <!-- 头像 -->
         <view class='userInfo_avatar'>
-            <image class='avatar' src='{{userInfo.avatar_url}}'></image>
+            <!--使用默认的小程序内置的默认头像-->
+            <block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">
+                <image class="avatar" src="../../images/default/userAvatar.png">
+                </image>
+            </block>
+            <block wx:else>
+                <image class='avatar' src='{{userInfo.avatar_url}}'></image>
+            </block>
         </view>
 
         <!-- 昵称、用户ID -->
@@ -93,7 +100,15 @@
 
                         <!-- 头像 -->
                         <view class='headerLeft' bindtap='intoUserInfoDetailPage'>
-                            <image src='{{userInfo.avatar_url}}'></image>
+                            <!--使用默认的小程序内置的默认头像-->
+                            <block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">
+                                <image src="../../images/default/userAvatar.png">
+                                </image>
+                            </block>
+                            <block wx:else>
+                                <image src='{{userInfo.avatar_url}}'></image>
+                            </block>
+
                         </view>
 
                         <view class='headerCenter'>
@@ -127,7 +142,8 @@
 
                         <!-- 打卡图片，一张图片直接显示，二张以上九宫格格式展示 -->
                         <view class="diaryImages">
-                            <image src="{{userInfo.avatar_url}}"></image>
+                            <image src="../../../images/default/userAvatar.png">
+                            </image>
                         </view>
 
                         <!-- 打卡地点 -->

@@ -1,58 +1,58 @@
 {
-    "pages": [
-        "pages/loginAuth/index",
-        "pages/index/index",
-        "pages/find/index",
-        "pages/news/index",
-        "pages/mine/index",
-        "pages/mine/detailPage/userInfo",
-        "pages/mine/detailPage/userInfoSetting",
-        "pages/createPunchCardProject/stepOne/index",
-        "pages/createPunchCardProject/stepTwo/index",
-        "pages/createPunchCardProject/stepThree/index",
-        "pages/projectDetailPage/index",
-        "pages/createPunchCardProject/stepThree/updateCreatorInfo/index",
-        "pages/createPunchCardProject/stepThree/updateProjectIntrInfo/index",
-        "pages/punchCardDetailPage/index",
-        "pages/createPunchCardProject/stepThree/updateCoverImg/index"
-    ],
-    "window": {
-        "navigationBarBackgroundColor": "#F0B27A",
-        "navigationBarTitleText": ""
-    },
-    "tabBar": {
-        "color": "#8a8a8a",
-        "selectedColor": "#F0B27A",
-        "list": [
-            {
-                "pagePath": "pages/index/index",
-                "text": "首页",
-                "iconPath": "images/bottomIcon/index.png",
-                "selectedIconPath": "images/bottomIcon/index_light.png"
-            },
-            {
-                "pagePath": "pages/find/index",
-                "text": "发现",
-                "iconPath": "images/bottomIcon/find.png",
-                "selectedIconPath": "images/bottomIcon/find_light.png"
-            },
-            {
-                "pagePath": "pages/news/index",
-                "text": "消息",
-                "iconPath": "images/bottomIcon/news.png",
-                "selectedIconPath": "images/bottomIcon/news_light.png"
-            },
-            {
-                "pagePath": "pages/mine/index",
-                "text": "我的",
-                "iconPath": "images/bottomIcon/my.png",
-                "selectedIconPath": "images/bottomIcon/my_light.png"
-            }
-        ]
-    },
-    "networkTimeout": {
-        "request": 10000,
-        "downloadFile": 10000
-    },
-    "debug": true
+  "pages": [
+    "pages/index/index",
+    "pages/loginAuth/index",
+    "pages/find/index",
+    "pages/news/index",
+    "pages/mine/index",
+    "pages/mine/detailPage/userInfo",
+    "pages/mine/detailPage/userInfoSetting",
+    "pages/createPunchCardProject/stepOne/index",
+    "pages/createPunchCardProject/stepTwo/index",
+    "pages/createPunchCardProject/stepThree/index",
+    "pages/projectDetailPage/index",
+    "pages/createPunchCardProject/stepThree/updateCreatorInfo/index",
+    "pages/createPunchCardProject/stepThree/updateProjectIntrInfo/index",
+    "pages/punchCardDetailPage/index",
+    "pages/createPunchCardProject/stepThree/updateCoverImg/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#F0B27A",
+    "navigationBarTitleText": ""
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#F0B27A",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/bottomIcon/index.png",
+        "selectedIconPath": "images/bottomIcon/index_light.png"
+      },
+      {
+        "pagePath": "pages/find/index",
+        "text": "发现",
+        "iconPath": "images/bottomIcon/find.png",
+        "selectedIconPath": "images/bottomIcon/find_light.png"
+      },
+      {
+        "pagePath": "pages/news/index",
+        "text": "消息",
+        "iconPath": "images/bottomIcon/news.png",
+        "selectedIconPath": "images/bottomIcon/news_light.png"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "text": "我的",
+        "iconPath": "images/bottomIcon/my.png",
+        "selectedIconPath": "images/bottomIcon/my_light.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
 }

@@ -1,1 +1,98 @@
-/* pages/punchCardDetailPage/index.wxss */
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.header {
+    width: 100%;
+    height: 200px;
+    background-color: #E3F2FD;
+}
+
+.content {
+    width: 100%;
+    height: 600px;
+}
+
+/*底部的按钮：返回首页、打卡、进入发现页按钮*/
+.bottom {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    border-top: 1px #cccccc solid;
+}
+
+/*返回首页按钮*/
+.into-index-page-btn {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 10px;
+    color: gray;
+}
+.into-index-page-btn > image {
+    width: 20px;
+    height: 20px;
+    margin: 8px 0 5px 0;
+}
+
+/*打卡按钮*/
+.punch-card-btn {
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 18px;
+    border: 1px #F0B27A solid;
+    box-shadow:  0 0 1px rgba(240, 178, 122, 0.7);
+    border-radius: 50%;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.punch-card-btn > view {
+    width: 94%;
+    height: 94%;
+    font-size: 15px;
+    color: white;
+    line-height: 57px;
+    text-align: center;
+
+    background-color: rgba(240, 178, 122, 0.9);
+    border-radius: 50%;
+}
+
+/*进入发现页按钮*/
+.into-find-page-btn {
+    width: 40%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 10px;
+    color: gray;
+}
+.into-find-page-btn > image {
+    width: 20px;
+    height: 20px;
+    margin: 8px 0 5px 0;
+
+}
+
+

@@ -102,6 +102,13 @@
 
             <!--创建者头像、昵称-->
             <view class="project-creator-info">
+                <!--使用默认的小程序内置的默认头像-->
+                <block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">
+                    <image src="../../images/default/userAvatar.png"></image>
+                </block>
+                <block wx:else>
+                    <image src="{{userAvatar}}"></image>
+                </block>
                 <image src="{{userAvatar}}"></image>
                 <text>{{creatorNickName}} | 0次打卡</text>
             </view>
