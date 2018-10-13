@@ -121,6 +121,51 @@ Page({
 
     },
 
+    // 微信登录获取openId
+    weiXinLogin: function() {
+        // 微信登录，获取用户openID
+        wx.login({
+            success: function(res) {
+                if (res.code) {
+                    wx.request({
+                        url: app.globalData.urlRootPath +
+                            'index/user/getOpenId',
+                        data: {
+                            code: res.code
+                        },
+                        success: function(response) {
+                            switch (response.statusCode) {
+                                case 200:
+                                    app.globalData.openid = response.data.data.openid;
+                                    break;
+                                default:
+                                    wx.showToast({
+                                        title: response.data.errMsg,
+                                        icon: "none"
+                                    });
+                                    break;
+                            }
+                            console.log("微信登录获取openId返回值:");
+                            console.log(response);
+                            console.log("openId:" + app.globalData.openid);
+                        },
+                        fail: function() {
+                            wx.showToast({
+                                title: '网络异常...',
+                                icon: "none"
+                            })
+                        }
+                    })
+
+                } else {
+                    console.error('微信登录失败:' + res.errMsg);
+                }
+            }
+        });
+    },
+
+
+
     // 查看按钮点击事件
     showMorePunchCardProject: function () {
         let that = this;
@@ -131,11 +176,13 @@ Page({
     },
 
     // 进入打卡详情页点击事件
-    intoPunchCardDetail: function () {
-        wx.showToast({
-            title: '进入圈子详情页成功'
-
-        })
+    intoPunchCardDetail: function (e) {
+        console.log(e);
+       wx.navigateTo({
+           url: '../punchCardDetailPage/index'
+               + "?projectId=" + e.currentTarget.dataset.project_id
+               + "&isCreator=" + e.currentTarget.dataset.is_creator
+       })
     },
     // 创建新的打卡圈子按钮点击事件
     createNewPunchCardProject: function () {
@@ -163,7 +210,8 @@ Page({
                             projectNum: punchCardProject.length,
                             // 圈子数量超过3个则显示查看更多按钮
                             moreProjectInfo: !(punchCardProject.length > 3),
-                            projectHidden: punchCardProject.length > 3, // 超过3个打卡圈子则隐藏第三之后的打卡圈子
+                            // 超过3个打卡圈子则隐藏第三之后的打卡圈子
+                            projectHidden: punchCardProject.length > 3,
                             punchCardProjectList: punchCardProject
                         });
                         console.log(that.data.moreProjectInfo);

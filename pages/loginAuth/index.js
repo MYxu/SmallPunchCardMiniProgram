@@ -1,12 +1,11 @@
-// pages/loginAuth/index.js
-var app = getApp();
+let app = getApp();
 Page({
     data: {
         //判断小程序的API，回调，参数，组件等是否在当前版本可用。
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
     onLoad: function() {
-        var that = this;
+        let that = this;
         // 微信登录，获取用户openID
         wx.login({
             success: function(res) {
@@ -127,12 +126,13 @@ Page({
     addWeiXinUserInfo: function() {
         // 服务器端根据openid判断用户信息是否存在，不存在将用户微信信息存入数据库
         console.log(app.globalData.userInfo);
+        let avatarUrl = app.globalData.userInfo.avatar_url;
         wx.request({
             url: getApp().globalData.urlRootPath + 'index/user/addUserInfo',
             data: {
                 open_id: app.globalData.openid,
                 nick_name: app.globalData.userInfo.nick_name, // 微信昵称
-                avatar_url: app.globalData.userInfo.avatar_url, // 微信用户头像
+                avatar_url: avatarUrl === "" ? "default_avatar": avatarUrl, // 微信用户头像
                 sex: parseInt(app.globalData.userInfo.sex) // 性别 0-未知，1-男性，2-女性
             },
             header: {
