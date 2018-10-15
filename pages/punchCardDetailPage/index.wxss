@@ -4,6 +4,314 @@
     background-color: white;
 }
 
+/*------------用户未加入该打卡圈子所显示页面的样式-------------*/
+.container-not-join-in-project {
+    width: 100%;
+    height: 100%;
+}
+
+/*头部信息: 圈子封面图、邀请按钮、圈子名称、参与者列表、总打卡次数*/
+.container-not-join-in-pro-header {
+    width: 100%;
+    height: auto;
+    padding-bottom: 15px;
+}
+
+/*圈子封面图*/
+.not-join-in-project-cover-img > image {
+    width: 100%;
+    height: 180px;
+}
+
+/*邀请按钮*/
+.not-join-in-project-invite-btn {
+    width: auto;
+    height: 26px;
+    padding: 0 10px;
+    border-radius: 13px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(33, 33, 33,0.7);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.not-join-in-project-invite-btn > image {
+    width: 24px;
+    height: 26px;
+}
+.not-join-in-project-invite-btn > text {
+    font-size: 12px;
+    color: white;
+    line-height: 26px;
+}
+
+/*圈子名称*/
+.not-join-in-project-name {
+    width: auto;
+    height: auto;
+    margin: 12px 15px;
+    background-color: white;
+    line-height: 1.2;
+    font-size: 24px;
+    font-weight: bolder;
+    color: black;
+}
+
+/*最近新加入的三个用户信息列表 & 总打卡次数*/
+.not-join-in-project-attend-user-info {
+    width: auto;
+    height: 30px;
+    margin: 0 15px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/*参与者头像*/
+.user-avatar-list {
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-right: 5px;
+
+}
+
+.user-avatar-list-item {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+}
+
+.user-avatar-list-item > image {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+}
+
+.img-1 {
+    position: relative;
+    left: -6px;
+}
+
+.img-2 {
+    position: relative;
+    left: -12px;
+}
+
+/*参与者昵称*/
+.attend-user-nick-name {
+    max-width: 27px;
+    height: 100%;
+    font-size: 13px;
+    color: #8a8a8a;
+    line-height: 30px;
+
+    overflow: hidden;
+    /*超出范围显示省略号...*/
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*总参与人数*/
+.attend-user-num {
+    width: auto;
+    height: 100%;
+    font-size: 13px;
+    color: #8a8a8a;
+    line-height: 30px;
+    margin-right: 8px;
+}
+
+/*总打卡次数*/
+.all-punch-card-num {
+    width: auto;
+    height: 100%;
+    font-size: 13px;
+    color: #8a8a8a;
+    line-height: 30px;
+    margin-left: 8px;
+}
+
+
+/*圈子简介*/
+.container-not-join-in-pro-project-intr {
+    width: 100%;
+    height: auto;
+}
+
+.not-join-in-project-intr-content {
+    width: auto;
+    height: auto;
+    margin: 0 10px 15px 10px;
+}
+
+/*文本简介*/
+.not-join-in-project-text-intr {
+    width: 100%;
+    line-height: 1.2;
+    padding-bottom: 15px;
+}
+
+/*图片简介*/
+.project-intr-image-content {
+    width: 100%;
+}
+.not-join-in-project-image-intr > image {
+    width: 100%;
+    padding-bottom: 15px;
+}
+
+
+
+
+
+/*圈主简介*/
+.container-not-join-in-pro-creator-intr {
+    width: 100%;
+    height: auto;
+}
+
+.title {
+    width: auto;
+    height: 60px;
+    line-height: 60px;
+    margin: 0 10px;
+
+    font-size: 17px;
+    color: black;
+    font-weight: bolder;
+}
+
+.not-join-in-project-creator-info {
+    width: auto;
+    height: 40px;
+    margin: 0 10px 10px 10px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 16px;
+    color: dodgerblue;
+}
+.not-join-in-project-creator-info > image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+.not-join-in-project-creator-intr-info {
+    width: auto;
+    height: auto;
+    line-height: 1.2;
+    margin: 0 10px 0 56px;
+    padding-bottom: 10px;
+    letter-spacing: 1px;
+    font-size: 16px;
+    color: black;
+}
+
+
+
+
+
+
+/*底部按钮：收藏、申请参加、举报按钮*/
+.container-not-join-in-pro-footer {
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px whitesmoke solid;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+/*收藏按钮*/
+.not-join-in-project-collect-btn {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 12px;
+    color: #F0B27A;
+
+    background-color: white;
+}
+.not-join-in-project-collect-btn > image {
+    width: 25px;
+    height: 25px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+}
+
+/*申请加入按钮*/
+.not-join-in-project-attend-btn {
+    width: 75%;
+    height: 100%;
+    line-height: 50px;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+
+    background-color: rgba(240,178,122,0.9);
+}
+
+/*举报按钮*/
+.not-join-in-project-report-btn {
+    width: 10%;
+    height: 100%;
+    background-color: #F0B27A;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.not-join-in-project-report-btn > image {
+    width: 60%;
+    height: 60%;
+    transform: rotate(90deg);
+}
+
+.report-btn {
+    width: auto;
+    height: 40px;
+    padding: 0 10px;
+    background-color: rgba(0,0,0,0.7);
+    font-size: 12px;
+    color: white;
+    line-height: 40px;
+    position: absolute;
+    bottom: 60px;
+    right: 5px;
+}
+
+
+
+
+/*--------------------------------------------------------*/
+
 .header {
     width: 100%;
     height: 200px;

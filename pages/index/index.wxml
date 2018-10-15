@@ -42,7 +42,8 @@
                                 <!--打卡圈子封面-->
                                 <view class="project-cover-img">
                                     <block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">
-                                        <image src="../../images/default/project_cover_img.png"></image>
+                                        <image src="../../images/default/project_cover_img.png">
+                                        </image>
                                     </block>
                                     <block wx:else>
                                         <image src="{{imgRootPath}}{{item.cover_img_url}}">

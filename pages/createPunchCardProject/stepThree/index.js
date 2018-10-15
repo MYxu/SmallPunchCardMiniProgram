@@ -174,8 +174,11 @@ Page({
         // 获取邀请者id
         let inviteUserId = app.globalData.userInfo.id;
         let shareObj = {
-            title: "MYXuu邀请你打卡",
-            path: "pages/projectDetailPage/index" + "?inviteUserId=" + inviteUserId,
+            title: app.globalData.userInfo.nick_name + "邀请你打卡",
+            path: "pages/punchCardDetailPage/index"
+                + "?inviteUserId=" + inviteUserId
+                + "&projectId=" + that.data.punchCardProjectId
+                + "&isCreator=" + -1,//-1代表分享给的用户 是否为创建者未知
             imageUrl: that.data.inviteImgUrl
         };
         if (options.from === 'button') {
@@ -183,7 +186,6 @@ Page({
         }
 
         return shareObj;
-
     },
 
     // 修改打卡圈子封面图
@@ -372,8 +374,11 @@ Page({
 
     // 跳转至圈子的打卡详情页
     intoPunchCardDetailPage: function () {
+        let that = this;
         wx.navigateTo({
             url: '../../punchCardDetailPage/index'
+                + "?projectId=" + that.data.punchCardProjectId
+                + "&isCreator=" + 1
         });
     },
 

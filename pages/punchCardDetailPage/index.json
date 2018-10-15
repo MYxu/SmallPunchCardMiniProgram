@@ -1,8 +1,6 @@
 {
-  "navigationBarTitleText": "打卡详情页",
-  "navigationBarBackgroundColor": "#E3F2FD",
-  "navigationBarTextStyle": "black",
-  "backgroundColor": "#eeeeee",
+  "navigationBarTitleText": "",
+  "navigationBarTextStyle": "white",
   "backgroundTextStyle": "light",
   "enablePullDownRefresh": true
 }

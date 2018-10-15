@@ -13,8 +13,179 @@
     </block>
     <block wx:else><!--成功获取数据后关闭加载动画显示获取的数据内容-->
         <!--1.未加入打卡圈子的用户进行如下显示-->
-        <block wx:if="{{}}">
-            <view>该用户未加入该打卡圈子</view>
+        <block wx:if="{{joinInPunchCardProjectFlag === 0}}">
+            <view class="container-not-join-in-project">
+                <!--头部信息: 圈子封面图、邀请按钮、圈子名称、参与者信息、总打卡次数-->
+                <view class="container-not-join-in-pro-header">
+                    <!--圈子封面图-->
+                    <block wx:if="{{projectInfo.cover_img_url==='default_cover_img'}}">
+                        <view class="not-join-in-project-cover-img">
+                            <image src="../../images/default/project_cover_img.png">
+                            </image>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <view class="not-join-in-project-cover-img">
+                            <image src="{{imgRootPath}}{{projectInfo.cover_img_url}}">
+                            </image>
+                        </view>
+                    </block>
+
+                    <!--邀请按钮-->
+                    <view class="not-join-in-project-invite-btn">
+                        <image src="../../images/button/invite-btn.png"></image>
+                        <text>邀请好友</text>
+                    </view>
+                    <!--圈子名称-->
+                    <view class="not-join-in-project-name">
+                       {{projectInfo.project_name}}
+                    </view>
+
+                    <!--TODO 需要替换 最近新加入的三个用户信息列表 & 总打卡次数 -->
+                    <view class="not-join-in-project-attend-user-info">
+                        <!--参与者头像：最多三个-->
+                        <view class="user-avatar-list">
+                            <block wx:for="{{attendUserInfo}}">
+                                <block wx:if="{{index <= 2 }}">
+                                    <!--使用默认的小程序内置的默认头像-->
+                                    <block wx:if="{{item.avatar_url == 'default_avatar'}}">
+                                        <view class="user-avatar-list-item img-{{index}}">
+                                            <image src="../../images/default/userAvatar.png">
+                                            </image>
+                                        </view>
+                                    </block>
+                                    <block wx:else>
+                                        <view class="user-avatar-list-item img-{{index}}">
+                                            <image src="{{item.avatar_url}}">
+                                            </image>
+                                        </view>
+                                    </block>
+                                </block>
+                            </block>
+                        </view>
+
+                        <!--参与者昵称两个字符后省略使用符号...替代-->
+                        <view class="attend-user-nick-name">
+                            <text>{{attendUserInfo[0].nick_name}}</text>
+                        </view>
+                        <!--总参与人数-->
+                        <view class="attend-user-num">
+                            等{{projectInfo.attendUserNum}}人已参加
+                        </view>
+
+                        <view style="width: 1px;height: 15px;background-color: #cccccc;">
+                        </view>
+
+                        <!--总打卡次数-->
+                        <view class="all-punch-card-num">
+                            {{projectInfo.punchCardNum}}次打卡</view>
+                    </view>
+                </view>
+
+                <!--圈子简介-->
+                <block wx:if="{{projectInfo.IntrInfoList.length > 0}}">
+
+                    <view class="separator-height-10px"></view>
+
+                    <view class="container-not-join-in-pro-project-intr">
+                        <view class="title">圈子介绍</view>
+
+                        <!--圈子简介详情信息展示-->
+                        <view class="not-join-in-project-intr-content">
+                            <block wx:for="{{projectInfo.IntrInfoList}}">
+                                <!--文本简介类型-->
+                                <block wx:if="{{item.type === '1'}}">
+                                    <view class="not-join-in-project-text-intr">
+                                        {{item.content}}
+                                    </view>
+                                </block>
+                                <!--图片简介类型-->
+                                <block wx:if="{{item.type === '2'}}">
+                                    <view class="not-join-in-project-image-intr">
+                                        <image mode="widthFix"
+                                               src="{{imgRootPath}}{{item.content}}">
+                                        </image>
+                                    </view>
+                                </block>
+                            </block>
+                        </view>
+                    </view>
+                </block>
+
+
+                <!--圈主简介-->
+                <block wx:if="{{creatorInfo.introduce !== ''}}">
+                    <!--与圈子简介分隔-->
+                    <view class="separator-height-10px"></view>
+
+                    <view class="container-not-join-in-pro-creator-intr">
+                        <view class="title">圈主简介</view>
+                        <view class="not-join-in-project-creator-info">
+                            <!--头像-->
+                            <block                                                                                 wx:if="{{creatorInfo.avatar_url == 'default_avatar'}}">
+                                <image src="../../images/default/userAvatar.png">
+                                </image>
+                            </block>
+                            <block wx:else>
+                                <image src="{{creatorInfo.avatar_url}}">
+                                </image>
+                            </block>
+                            <!--创建者昵称-->
+                            <text>{{creatorInfo.nick_name}}</text>
+                        </view>
+
+                        <!--简介-->
+                        <view class="not-join-in-project-creator-intr-info">
+                            {{creatorInfo.introduce}}
+                        </view>
+                    </view>
+                </block>
+
+
+                <!--打卡日记部分展示-->
+                <block>
+                    <view class="container-not-join-in-pro-punch-card-diary">
+                    </view>
+                </block>
+
+                <!--设置空白内容防止底部按钮遮挡上面内容-->
+                <view style="width: 100%;height: 100px;"></view>
+
+                <!--底部按钮：收藏、申请参加、举报按钮-->
+                <view class="container-not-join-in-pro-footer">
+                    <!--收藏按钮-->
+                    <view class="not-join-in-project-collect-btn"
+                          bindtap="dealCollect">
+                        <block wx:if="{{haveCollect}}">
+                            <image src="../../images/bottomIcon/collect-fill-btn.png">
+                            </image>
+                            <text>已收藏</text>
+                        </block>
+                        <block wx:else>
+                            <image src="../../images/bottomIcon/collect-btn.png">
+                            </image>
+                            <text>收藏</text>
+                        </block>
+                    </view>
+                    <!--申请加入-->
+                    <view class="not-join-in-project-attend-btn"
+                          bindtap="attendPunchCardProject">
+                        立即参加
+                    </view>
+
+                    <!--举报按钮-->
+                    <view class="not-join-in-project-report-btn"
+                          bindtap="showReportBtn">
+                        <image src="../../images/bottomIcon/more.png">
+                        </image>
+                        <!--弹出举报按钮-->
+                        <view class="report-btn" hidden="{{hiddenReportBtn}}"
+                              bindtap="reportPunchCardProject">
+                            举报该圈子
+                        </view>
+                    </view>
+                </view>
+            </view>
         </block>
         <!--2.已经加入打卡圈子的用户进行如下显示：需要区分普通用户、管理员、圈主-->
         <block wx:else>
@@ -22,7 +193,7 @@
                （公共）显示打卡圈子相关信息：
                 打卡圈子封面图、名称、参与人数、总打卡数次数、圈主头像、昵称
             -->
-            <view class="header">该用户已经加入打卡圈子</view>
+            <view class="header">该用户已经加入打卡圈子233</view>
 
             <view class="content">中间的打卡信息</view>
 
@@ -53,8 +224,4 @@
         </block>
 
     </block>
-
-
-
-
 </view>

@@ -390,7 +390,6 @@ Page({
                                 + '&projectName=' + that.data.projectName
                                 + '&projectTypeLabel='+ that.data.labelNameString;
 
-
                             wx.navigateTo({
                                 url: '../stepThree/index' + param
                             });
@@ -510,12 +509,7 @@ Page({
                     },1000)
 
                 );
-
-
-
             });
     }
-
-
 
 });

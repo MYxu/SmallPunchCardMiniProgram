@@ -314,7 +314,7 @@ Page({
                 console.log(res);
                 switch (res.statusCode) {
                     case 200:
-                        let punchCardProject = res.data.data.punchCardProject;
+                        let punchCardProject = res.data.data.punchCardProjectList;
 
                         that.setData({
                             projectNum: punchCardProject.length,
