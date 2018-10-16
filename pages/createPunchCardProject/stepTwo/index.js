@@ -426,20 +426,28 @@ Page({
     // 创建成功生成对应的打卡邀请图片
     createPunchCardInviteImg: function () {
         let that = this;
-        //TODO 获取打卡圈子封面图片,需要改为获取网络图片
+        
+        // 圈子初始创建时的封面图为小程序内置的一张默认图片
         let getCoverImg = new Promise(function (resolve) {
             wx.getImageInfo({
-                src:'../../../images/backgroundImg/img_1.png',
+                src:'../../../images/default/project_cover_img.png',
                 success: function (res) {
                     resolve(res);
                 }
              });
         });
 
-        // TODO 获取邀请者头像，需要改为获取网络图片
+        // 
         let getUserAvatar = new Promise(function (resolve) {
+            
+            let avatar_url = app.globalData.userInfo.avatar_url;
+            if (avatar_url === 'default_avatar') {
+                // default_avatar 代表使用的头像为小程序内置的默认头像图片
+                avatar_url = '../../../images/default/userAvatar.png';
+            }
+            console.log(avatar_url);
             wx.getImageInfo({
-                src: app.globalData.userInfo.avatar_url,
+                src: avatar_url,
                 success: function (res) {
                     resolve(res);
                 }
@@ -480,7 +488,12 @@ Page({
                 // 四参数是绘图方向  默认是false，即顺时针
                 ctx.arc(cx,cy,r,0,2 * Math.PI); // 绘制圆
                 ctx.clip(); //画好了圆 剪切  原始画布中剪切任意形状和尺寸。
-                ctx.drawImage(res[1].path,0,140,16,16);
+
+                if (app.globalData.userInfo.avatar_url === 'default_avatar') {
+                    ctx.drawImage("../../../"+res[1].path,0,140,16,16);
+                } else {
+                    ctx.drawImage(res[1].path,0,140,16,16);
+                }
                 ctx.restore();
 
                 // 绘制
