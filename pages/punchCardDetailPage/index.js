@@ -41,7 +41,6 @@ Page({
             //         attend_time: '加入时间'
             //     }
             // }
-
         ],
 
         haveCollect: false,      // 是否已经收藏该打卡圈子 false--未收藏
@@ -54,6 +53,8 @@ Page({
     onLoad: function (options) {
         console.log(options);
         let that = this;
+        // 一定传递打卡圈子的projectId, isCreator是否为创建者若未知直接传递-1(未知)即可，
+        // 后续在获取打卡圈子的详细信息的时候获取到
         that.setData({
             projectId: parseInt(options.projectId),
             isCreator: parseInt(options.isCreator),
@@ -235,7 +236,7 @@ Page({
     onUnload: function () {
         // 修改navigateBack按钮的返回事件，直接关闭其他非tabBar页面，回到首页tab
         wx.switchTab({
-            url: "../index/index"
+            url: "../../index/index"
         });
     },
 

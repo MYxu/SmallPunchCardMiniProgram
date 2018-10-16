@@ -1,3 +1,127 @@
-<view>
-<text>find</text>
+<view class="container">
+    <!--搜索按钮-->
+    <view class="search-punch-card-project-btn" bindtap="intoSearchProjectPage">
+        <image src="../../images/bottomIcon/search.png"></image>
+        <text>搜索</text>
+    </view>
+
+    <!--swiper组件 展示精选打卡圈子专题-->
+    <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}"
+            circular="{{true}}" indicator-active-color="#F0B27A">
+        <block wx:for="{{punchCardProjectSpecialSubject}}">
+            <swiper-item class="project-special-subject-swiper-container">
+                <view class="project-special-subject-item" data-subject-id="{{index}}"
+                      bindtap="intoProjectSpecialSubject">
+                    {{item}}
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+
+    <!--打卡圈子类型标签：点击后进入显示对应类型的打卡圈子-->
+    <view class="punch-card-project-type">
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="推荐">
+            <image src="../../images/bottomIcon/recommend.png">
+            </image>
+            <text>推荐</text>
+        </view>
+
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="外语">
+            <image src="../../images/bottomIcon/project_label_icon_0.png"></image>
+            <text>外语</text>
+        </view>
+
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="阅读">
+            <image src="../../images/bottomIcon/project_label_icon_8.png"></image>
+            <text>阅读</text>
+        </view>
+
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="生活">
+            <image src="../../images/bottomIcon/project_label_icon_2.png"></image>
+            <text>生活</text>
+        </view>
+
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="教育">
+            <image src="../../images/bottomIcon/project_label_icon_4.png"></image>
+            <text>教育</text>
+        </view>
+
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="亲子幼教">
+            <image src="../../images/bottomIcon/project_label_icon_5.png"></image>
+            <text>亲子幼教</text>
+        </view>
+
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="艺术兴趣">
+            <image src="../../images/bottomIcon/project_label_icon_6.png"></image>
+            <text>艺术兴趣</text>
+        </view>
+
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="变美">
+            <image src="../../images/bottomIcon/project_label_icon_1.png"></image>
+            <text>变美</text>
+        </view>
+
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="运动">
+            <image src="../../images/bottomIcon/project_label_icon_7.png"></image>
+            <text>运动</text>
+        </view>
+
+        <view class="punch-card-project-type-item" bindtap="searchProjectByType"
+              data-type="职场">
+            <image src="../../images/bottomIcon/project_label_icon_3.png"></image>
+            <text>职场</text>
+        </view>
+    </view>
+
+    <!--打卡圈子推荐列表展示-->
+    <block wx:if="{{punchCardProjectRecommendList.length > 0}}">
+        <view class="separator-height-10px"></view>
+
+        <view class="punch-card-project-recommend-list">
+            <block wx:for="{{punchCardProjectRecommendList}}">
+                <view class="punch-card-project-recommend-list-item"
+                      data-project-id="{{item.project_id}}"
+                      bindtap="intoPunchCardDetail">
+                    <!--圈子封面-->
+                    <view class="project-cover-img">
+                      <block wx:if="{{item.cover_img_url == 'default_cover_img'}}">
+                          <image src="../../images/default/project_cover_img.png">
+                          </image>
+                      </block>
+                      <block wx:else>
+                          <image src="{{imgRootPath}}{{item.cover_img_url}}"></image>
+                      </block>
+                    </view>
+
+                    <!--圈子信息-->
+                    <view class="project-base-info"
+                          style="width: {{projectBaseInfoWidth}}px">
+                        <view class="project-name">
+                            {{item.project_name}}
+                        </view>
+                        <view class="punch-card-info">
+                            <view class="attend-num-info">
+                                {{item.attendUserNum}}人参加
+                            </view>
+                            <view class="punch-card-num-info">
+                                {{item.punchCardNum}}次打卡
+                            </view>
+                        </view>
+                    </view>
+
+                    <!--TODO 报名费 && 推荐原因???-->
+                </view>
+            </block>
+        </view>
+
+    </block>
 </view>
