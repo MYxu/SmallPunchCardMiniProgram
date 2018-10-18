@@ -405,8 +405,118 @@
 
                 <!--当选择详情选项卡的时候显示圈子的圈主简介、圈子简介详情-->
                 <view class="project-detail-info" hidden="{{hiddenProjectDetailInfo}}">
-                    圈子详情
+                    <!--圈主简介-->
+                    <view class="creator-intr-info">
+                        <view class="creator-intr-info-header">
+                            <view class="separator"></view>
+                            <view class="creator-intr-info-title">
+                                <text>圈主简介</text>
+                            </view>
+                            <image src="../../images/button/edit.png" class="edit-icon"
+                                   bindtap="updateCreatorInfo">
+                            </image>
+                            <view class="creator-intr-info-edit-notice"
+                                  bindtap="updateCreatorInfo">
+                                编辑圈主信息
+                            </view>
+                        </view>
+                        <view class="creator-base-info">
+                            <!--头像-->
+                            <view class="creator-intr-info-avatar"
+                                  bindtap="intoPersonalPage">
+                                <block wx:if="{{creatorInfo.avatar_url==default_avatar}}">
+                                    <image src="../../images/default/userAvatar.png">
+                                    </image>
+                                </block>
+                                <block wx:else>
+                                    <image src="{{creatorInfo.avatar_url}}"></image>
+                                </block>
+                            </view>
+
+                            <!--性别-->
+                            <block wx:if="{{creatorInfo.sex == 1}}">
+                                <view class="creator-sex-male">
+                                    <image src="../../images/button/sex_male.png">
+                                    </image>
+                                </view>
+                            </block>
+                            <block wx:if="{{creatorInfo.sex == 2}}">
+                                <view class="creator-sex-female">
+                                    <image src="../../images/button/sex_female.png">
+                                    </image>
+                                </view>
+                            </block>
+
+                            <!--昵称-->
+                            <view class="creator-base-info-nick-name"
+                                  bindtap="intoPersonalPage">
+                                <view style="color: cornflowerblue;font-size: 15px">
+                                    {{creatorInfo.nick_name}}
+                                </view>
+                                <view style="color: #8a8a8a;font-size: 12px">
+                                    圈主
+                                </view>
+                            </view>
+
+                            <!--TODO 加圈主微信-->
+                            <block wx:if="{{creatorInfo.weChat != ''}}">
+                                <block wx:if="{{isCreator != 1}}">
+                                    <view class="get-creator-we-chat">
+                                        <text>加微信</text>
+                                    </view>
+                                </block>
+                            </block>
+                            <block wx:else>
+                                <!--只是设置了背景颜色为空白进行隐藏，实际上加微信按钮还是存在的
+                                因此这里不能绑定事件-->
+                                <block wx:if="{{isCreator != 1}}">
+                                    <view class="get-creator-we-chat"
+                                          style="background-color: white">
+                                        <text>加微信</text>
+                                    </view>
+                                </block>
+
+                            </block>
+
+                            <!--对圈子成员显示给圈主发私信的按钮-->
+                            <block wx:if="{{isCreator != 1}}">
+                                <view class="send-message-to-creator">
+                                    <image src="../../images/button/mail.png"></image>
+                                    <text>发私信</text>
+                                </view>
+                            </block>
+
+                        </view>
+
+                        <view class="creator-intr-content">
+                            <block wx:if="{{creatorInfo.introduce==''}}">
+                                <text>这个圈主有点儿懒，什么都没有写呢</text>
+                            </block>
+                            <block wx:else>
+                                {{creatorInfo.introduce}}
+                            </block>
+                        </view>
+                    </view>
+
+                    <view class="separator-height-10px"></view>
+
+                    <!--圈子简介-->
+                    <view class="project-intr-info">
+                        <view class="project-intr-info-header">
+                            <view class="separator"></view>
+                            <view class="project-intr-info-title">
+                                <text>圈子简介</text>
+                            </view>
+                            <image src="../../images/button/edit.png" class="edit-icon">
+                            </image>
+                            <view class="project-intr-info-edit-notice">
+                                编辑圈子介绍
+                            </view>
+                        </view>
+                    </view>
                 </view>
+
+
 
                 <!--当选择成员选项卡的时候展示打卡圈子的参与用户列表-->
                 <view class="punch-Card-project-attend-user-list"

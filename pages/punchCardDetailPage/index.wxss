@@ -709,6 +709,235 @@
 
 /*参与用户的打卡日记展示*/
 /*圈子的圈主简介、圈子简介信息展示*/
+.project-detail-info {
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+}
+
+/*圈主简介*/
+.creator-intr-info {
+    width: 100%;
+    height: auto;
+}
+/*头部的标题 & 修改按钮*/
+.creator-intr-info-header {
+    width: auto;
+    height: 60px;
+    margin: 0 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.separator{
+    width: 2px;
+    height: 18px;
+    background-color: #F0B27A;
+    margin-right: 5px;
+}
+
+.creator-intr-info-title {
+    width: 65%;
+    height: 60px;
+    line-height: 60px;
+    margin-right: 5px;
+
+    font-size: 17px;
+    color: black;
+    font-weight: bolder;
+}
+.edit-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.creator-intr-info-edit-notice {
+    width: 25%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+    color: #F0B27A;
+    text-align: right;
+}
+/*圈主基本信息*/
+.creator-base-info {
+    width: auto;
+    height: auto;
+    margin-left: 17px;
+    margin-right: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+/*圈主头像*/
+.creator-intr-info-avatar {
+    width: 45px;
+    height: 45px;
+
+    display: inline-block;
+}
+.creator-intr-info-avatar > image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+/*性别*/
+.creator-sex-male{
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: relative;
+    left: -15px;
+    bottom: -25px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.creator-sex-male > image{
+    width: 15px;
+    height: 15px;
+}
+
+.creator-sex-female {
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: relative;
+    left: -15px;
+    bottom: -25px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.creator-sex-female > image{
+    width: 15px;
+    height: 15px;
+    transform: rotate(30deg);
+}
+
+/*圈主昵称*/
+.creator-base-info-nick-name {
+    width: 40%;
+    height: auto;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: white;
+
+}
+
+/*获取圈主微信*/
+.get-creator-we-chat {
+    width: auto;
+    height: 20px;
+    padding: 0 5px;
+    line-height: 20px;
+    background-color: #F0B27A;
+    border-radius: 3px;
+    font-size: 12px;
+    color: white;
+    margin-right: 8px;
+}
+
+/*给圈主发私信*/
+.send-message-to-creator {
+    width: auto;
+    height: 20px;
+    padding: 0 5px;
+    background-color: #F0B27A;
+    border-radius: 3px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.send-message-to-creator > image {
+    width: 20px;
+    height: 20px;
+    margin-right: 4px;
+}
+.send-message-to-creator > text {
+    width: auto;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    color: white;
+}
+
+/*圈主简介内容*/
+.creator-intr-content {
+    width: auto;
+    height: auto;
+    margin: 10px 10px 15px 77px;
+
+    font-size: 13px;
+    color: black;
+}
+
+
+/*圈子简介信息*/
+.project-intr-info {
+    width: 100%;
+    height: auto;
+}
+/*头部的标题 & 修改按钮*/
+.project-intr-info-header {
+    width: auto;
+    height: 60px;
+    margin: 0 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.project-intr-info-title {
+    width: 65%;
+    height: 60px;
+    line-height: 60px;
+    margin-right: 5px;
+
+    font-size: 17px;
+    color: black;
+    font-weight: bolder;
+}
+
+.project-intr-info-edit-notice {
+    width: 25%;
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+    color: #F0B27A;
+    text-align: right;
+}
+
+
+
+
 /*打卡圈子的参与用户列表展示*/
 .punch-Card-project-attend-user-list {
     width: 100%;
@@ -841,13 +1070,11 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
 }
 .user-sex-male > image{
     width: 15px;
     height: 15px;
 }
-
 .user-sex-female {
     width: 17px;
     height: 17px;
@@ -865,7 +1092,6 @@
     align-items: center;
 
 }
-
 .user-sex-female > image{
     width: 15px;
     height: 15px;

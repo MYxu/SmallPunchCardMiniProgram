@@ -33,7 +33,8 @@ Page({
             nick_name: "",
             sex: 0,
             avatar_url: '',
-            introduce: ''
+            introduce: '',
+            weChat: ''// 圈主微信号
         },
 
         // 最新加入打卡圈子的三个用户信息
@@ -184,6 +185,7 @@ Page({
                                 'creatorInfo.sex' : parseInt(data.creator_sex),
                                 'creatorInfo.avatar_url' : data.creator_avatar_url,
                                 'creatorInfo.introduce' : data.creator_introduce,
+                                'creatorInfo.weChat' : data.weixin_num,
 
                                 attendUserInfo: attendUserList,
                                 isCreator: isCreatorFlag ? 1:0
@@ -457,6 +459,18 @@ Page({
             hiddenAttendUserList: true      // 隐藏圈子参加用户列表
         });
 
+    },
+
+    // 修改圈主介绍
+    updateCreatorInfo: function (e) {
+        console.log(e);
+        let  that = this;
+        wx.navigateTo({
+            url: '../createPunchCardProject/stepThree/updateCreatorInfo/index'
+                + "?projectId=" + that.data.projectId
+                + "&creatorIntrInfo=" + that.data.creatorInfo.introduce
+                + "&weixinNum=" + that.data.creatorInfo.weChat
+        });
     },
 
     // 点击成员选项卡，展示参与打卡的用户
