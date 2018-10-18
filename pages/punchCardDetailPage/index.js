@@ -7,6 +7,13 @@ Page({
     data: {
         showLoading: true, // 在未从服务器端获取到打卡圈子信息之前则显示加载动画&&空白页面
         imgRootPath: app.globalData.imgBaseSeverUrl, // 服务器图片访问BaseURL
+
+        showUpdateProjectNameModel: false, // 控制显示、隐藏修改圈子名称的自定义模态框
+        newProjectNameCheckFlag: false, // 修改后的圈子名是否合法标志
+
+        // 头部封面图右边部分圈子信息的宽度
+        projectInfoRightWidth: app.globalData.windowWidth - (10 + 110 + 10 + 10 ),
+
         projectId: 0,
         joinInPunchCardProjectFlag: -1, // 当前用户是否已经加入该打卡圈子标志 -1--未知、0--未加入、1--已加入
         isCreator: -1, // 当前用户是否为圈子创建者 -1--未知、 0--参与者、1--代表当前用户为创建者
@@ -16,7 +23,7 @@ Page({
             project_name: '',
             cover_img_url: 'default_cover_img',
             IntrInfoList: [],
-            attendUserNum: 0,
+            attendUserNum: 1,
             punchCardNum: 88888888
         },
 
@@ -36,12 +43,18 @@ Page({
             //     id: '用户id',
             //     nick_name: '用户名',
             //     avatar_url: '用户头像url',
+            //     sex: 0-未知，1-男性，2-女性
             //     pivot: {
             //         id: '用户加入打卡圈子的记录id',
             //         attend_time: '加入时间'
             //     }
             // }
         ],
+
+        hiddenDiaryInfo: false, // 是否隐藏用户的打卡日记列表 默认初始显示用户的打卡日记列表
+        hiddenProjectDetailInfo: true, // 是否隐藏用户的打卡日记列表
+        hiddenAttendUserList: true, // 是否隐藏用户的打卡日记列表
+
 
         haveCollect: false,      // 是否已经收藏该打卡圈子 false--未收藏
         hiddenReportBtn: true, // 显示--true、隐藏--false 举报按钮
@@ -66,7 +79,10 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-
+        // 获取动画实例 用于在切换显示打卡圈子内容的时候执行对应的动画
+        this.animation = wx.createAnimation({
+            duration: 400
+        });
     },
 
     /**
@@ -154,7 +170,8 @@ Page({
                                 attendUserList[length-i-1] = temp;
                             }
 
-                            let isCreatorFlag=parseInt(data.creator_id)===app.globalData.userInfo.id;
+                            let isCreatorFlag = parseInt(data.creator_id)
+                                === parseInt(app.globalData.userInfo.id);
 
                             that.setData({
                                 'projectInfo.project_name': data.project_name,
@@ -171,7 +188,6 @@ Page({
                                 attendUserInfo: attendUserList,
                                 isCreator: isCreatorFlag ? 1:0
                             });
-                            // console.log(that.data.attendUserInfo);
                             resolve(true);
                             break;
                         default:
@@ -259,6 +275,239 @@ Page({
      */
     onShareAppMessage: function () {
 
+    },
+    // 修改圈子封面图片
+    updateProjectCoverImg: function() {
+        wx.showToast({
+            title: 'todo',
+            icon: 'none'
+        })
+
+    },
+
+
+    // 阻止模态框之外的页面点击事件
+    preventTab: function () {
+
+    },
+
+    // 弹出框蒙层截断touchmove事件
+    preventTouchMove: function() {
+
+    },
+
+    // 显示修改圈子名称的自定义模态框
+    showUpdateProjectNameModal: function() {
+        let that = this;
+        that.setData({
+            showUpdateProjectNameModel: true
+        })
+    },
+
+    // 输入框失去焦点时检测输入的圈子名称正确性
+    checkInputProjectName: function(e) {
+        let that = this;
+
+        // 检测是否为十五个汉字以内的字符
+        let reg = /^[\u4e00-\u9fa5]{1,15}$/;
+        if(reg.test(e.detail.value)){
+            that.setData({
+                newProjectName: e.detail.value,
+                newProjectNameCheckFlag: true
+            })
+
+        } else {
+            let title = "圈子名称格式错误!";
+            if (e.detail.value.length > 15)
+                title = "圈子名称限制十五字符!";
+
+            if (e.detail.value.length === 0)
+                title = "请填写圈子名称";
+
+            that.data.newProjectNameCheckFlag = false;
+
+            wx.showToast({
+                title: title,
+                icon: "none"
+            })
+        }
+    },
+
+    // 取消修改圈子名称，隐藏模态框
+    onCancel: function () {
+        let that = this;
+        that.setData({
+            newProjectNameCheckFlag: false,
+            showUpdateProjectNameModel: false
+        })
+    },
+
+    // 确认修改
+    onConfirm: function () {
+        let that = this;
+        if (that.data.newProjectNameCheckFlag === false) {
+            wx.showToast({
+                title: '新圈子名称格式错误!',
+                icon: "none"
+            });
+            return false;
+        }
+
+        wx.showLoading({
+            title: '处理中...'
+        });
+
+        // 新圈子名合法则提交服务器
+        wx.request({
+            'url': app.globalData.urlRootPath + 'index/PunchCardProject/updateName',
+            data: {
+                'project_id': that.data.projectId,
+                'project_name': that.data.newProjectName
+            },
+            success: function (response) {
+                wx.hideLoading();
+                console.log(response);
+
+                switch (response.statusCode) {
+                    case 200:
+                        // 服务器修改成功后客户端再重新渲染圈子名称
+                        that.setData({
+                            newProjectNameCheckFlag: false,
+                            'projectInfo.project_name': that.data.newProjectName,
+                            showUpdateProjectNameModel: false
+                        });
+                        break;
+
+                    default:
+                        wx.showToast({
+                            title: response.data.errMsg,
+                            icon: "none"
+                        });
+                        break;
+                }
+            },
+            fail: function () {
+                wx.showToast({
+                    title: '网络异常...'
+                });
+            }
+        });
+    },
+
+    // 进入个人主页
+    intoPersonalPage: function() {
+        wx.navigateTo({
+            url: "../mine/detailPage/userInfo"
+        })
+    },
+
+    // 处理用户关注、取消关注
+    dealUserFollow: function() {
+        wx.showToast({
+            title: 'todo',
+            icon: 'none'
+        })
+    },
+
+    // 处理用户关注、取消关注
+    contactCreator: function() {
+        wx.showToast({
+            title: 'todo',
+            icon: 'none'
+        })
+    },
+
+    // 点击日记选项卡，展示参与用户的打卡日记
+    showPunchCardDiary: function() {
+        console.log(1);
+        let that = this;
+
+        // 动画：将标识当前选项卡的指示器移动到日记选项，指示器的默认初始位置就是在日记选项，重置即可
+        this.animation.translate(0,0).step();
+        that.setData({
+            animation: this.animation.export(),
+            hiddenDiaryInfo: false,        // 显示用户的打卡日记列表
+            hiddenProjectDetailInfo: true, // 隐藏圈子详情内容
+            hiddenAttendUserList: true     // 隐藏圈子参加用户列表
+        });
+    },
+
+
+    // 点击详情选项卡，展示打卡圈子详情信息：创建者详情、圈子简介详情
+    showPunchCardProjectDetailInfo: function() {
+        console.log(2);
+
+        let that = this;
+
+        // 动画：将标识当前选项卡的指示器移动到详情选项
+        let x,  // 需要偏移的x轴长度
+            width = app.globalData.windowWidth, // 屏幕宽度
+            oneTabWidth = width * 0.3; // 一个选项卡所占屏幕宽度
+
+        // x轴偏移距离计算 参考选项卡的css布局画图即可推导出
+        // 移动到近邻的选项卡的偏移量为一个选项卡的宽度
+        // 则从第一个选项卡移动到第n个选项卡需要的偏移量为(n-1)*(一个选项卡的宽度)
+        x = oneTabWidth;
+
+        this.animation.translate(x,0).step();
+        that.setData({
+            animation: this.animation.export(),
+            hiddenDiaryInfo: true,          // 隐藏用户的打卡日记列表
+            hiddenProjectDetailInfo: false, // 显示圈子详情内容
+            hiddenAttendUserList: true      // 隐藏圈子参加用户列表
+        });
+
+    },
+
+    // 点击成员选项卡，展示参与打卡的用户
+    showAttendUserList: function() {
+        console.log(3);
+        let that = this;
+
+        // 动画：将标识当前选项卡的指示器移动到成员选项
+        let x,  // 需要偏移的x轴长度
+            width = app.globalData.windowWidth, // 屏幕宽度
+            oneTabWidth = width * 0.3; // 一个选项卡所占屏幕宽度
+        x = 2 * oneTabWidth;
+        this.animation.translate(x,0).step();
+        that.setData({
+            animation: this.animation.export(),
+            hiddenDiaryInfo: true,         // 隐藏用户的打卡日记列表
+            hiddenProjectDetailInfo: true, // 隐藏圈子详情内容
+            hiddenAttendUserList: false    // 显示圈子参加用户列表
+        });
+    },
+
+    // 创建者查看&管理上传的微信群二维码
+    showWeChatGroupQRCodeImg: function() {
+        wx.showToast({
+            title: 'TODO',
+            icon: 'none'
+        })
+    },
+
+    // 打卡成员获取创建者上传的微信群二维码
+    getWeChatGroupQRCodeImg: function() {
+        wx.showToast({
+            title: 'TODO',
+            icon: 'none'
+        })
+    },
+
+    // 创建者上传微信群二维码
+    uploadWeChatGroupQRCodeImg: function() {
+        wx.showToast({
+            title: 'TODO',
+            icon: 'none'
+        })
+    },
+
+    // 进入搜索成员页面
+    intoSearchAttendUserPage: function() {
+      wx.showToast({
+          title: 'TODO',
+          icon: 'none'
+      })
     },
 
     // 返回首页

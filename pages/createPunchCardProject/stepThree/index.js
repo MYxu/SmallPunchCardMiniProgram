@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        imgRootPath: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/", // 用于访问服务器图片
+        // 用于访问服务器图片
+        imgRootPath: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/",
 
         userAvatar: app.globalData.userInfo.avatar_url,
         creatorNickName: app.globalData.userInfo.nick_name,

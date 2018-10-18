@@ -142,7 +142,7 @@
                 </block>
 
 
-                <!--打卡日记部分展示-->
+                <!--TODO 打卡日记部分展示-->
                 <block>
                     <view class="container-not-join-in-pro-punch-card-diary">
                     </view>
@@ -189,13 +189,330 @@
         </block>
         <!--2.已经加入打卡圈子的用户进行如下显示：需要区分普通用户、管理员、圈主-->
         <block wx:else>
-            <!--
-               （公共）显示打卡圈子相关信息：
-                打卡圈子封面图、名称、参与人数、总打卡数次数、圈主头像、昵称
+            <!--显示打卡圈子相关信息：
+                打卡圈子封面图、名称、参与人数、总打卡数次数、圈主头像、昵称、关注情况、私信按钮
+                后台管理入口按钮(创建者、管理员角色的用户才显示)
             -->
-            <view class="header">该用户已经加入打卡圈子233</view>
+            <view class="header">
+                <view class="project-base-info">
+                    <!--左边的封面图-->
+                    <view class="project-cover-img">
+                        <block wx:if="{{projectInfo.cover_img_url== 'default_cover_img'}}">
+                            <image src="../../images/default/project_cover_img.png">
+                            </image>
+                        </block>
+                        <block wx:else>
+                            <image src="{{imgRootPath}}{{projectInfo.cover_img_url}}">
+                            </image>
+                        </block>
 
-            <view class="content">中间的打卡信息</view>
+                        <!--对创建者显示修改封面图按钮-->
+                        <block wx:if="{{isCreator == 1}}">
+                            <view class="update-project-cover-img-btn"
+                                  bindtap="updateProjectCoverImg">
+                                修改
+                            </view>
+                        </block>
+                    </view>
+
+                    <!--右边的圈子相关信息-->
+                    <view class="project-base-info-right"
+                          style="width: {{projectInfoRightWidth}}">
+                        <!--圈子名称-->
+                        <view class="project-name">
+                            <view>{{projectInfo.project_name}}
+                                <!--对创建者显示修改圈子名称按钮-->
+                                <block wx:if="{{isCreator == 1}}">
+                                    <image src="../../images/bottomIcon/edit_2.png"
+                                           bindtap="showUpdateProjectNameModal">
+                                    </image>
+                                    <!--修改圈子名称自定义模态框-->
+                                    <block wx:if="{{showUpdateProjectNameModel}}">
+                                        <!--弹出层蒙层-->
+                                        <view class="modal-mask"
+                                              catchtouchmove="preventTouchMove"
+                                              catchtap="preventTab">
+                                        </view>
+                                        <!--模态对话框-->
+                                        <view class="modal-dialog">
+                                            <view class="modal-title">填写圈子名称</view>
+                                            <view class="modal-content">
+                                                <view class="modal-input">
+                                                    <input type="text"
+                                                           placeholder-class="input-holder"
+                                                           maxlength="15"
+                                                           bindblur="checkInputProjectName"
+                                                           class="input"
+                                                           placeholder="最多输入十五个字"
+                                                           value="{{projectInfo.project_name}}"
+                                                    />
+                                                </view>
+                                            </view>
+                                            <view class="modal-footer">
+                                                <view class="btn-cancel" bindtap="onCancel"
+                                                      data-status="cancel">取消
+                                                </view>
+                                                <view class="btn-confirm" bindtap="onConfirm"
+                                                      data-status="confirm">确定
+                                                </view>
+                                            </view>
+                                        </view>
+                                    </block>
+                                </block>
+                            </view>
+                        </view>
+
+                        <!--参与人数、总打卡次数-->
+                        <view class="punch-card-info">
+                            <view class="attend-user-num">
+                                {{projectInfo.attendUserNum}}人已参加
+                            </view>
+
+                            <view style="width:1px;height:10px;background-color:#C9C9C9">
+                            </view>
+
+                            <view class="all-punch-card-num">
+                                {{projectInfo.punchCardNum}}次打卡
+                            </view>
+                        </view>
+
+                        <!--创建者信息-->
+                        <view class="creator-info">
+                            <!--头像-->
+                            <block wx:if="{{creatorInfo.avatar_url == 'default_avatar'}}">
+                                <image src="../../images/default/userAvatar.png"
+                                       class="creator-avatar"
+                                       bindtap="intoPersonalPage">
+                                </image>
+                            </block>
+                            <block wx:else>
+                                <image src="{{creatorInfo.avatar_url}}"
+                                       class="creator-avatar"
+                                       bindtap="intoPersonalPage">
+                                </image>
+                            </block>
+
+                            <!--昵称-->
+                            <view class="creator-nick-name" bindtap="intoPersonalPage">
+                                <text>{{creatorInfo.nick_name}}</text>
+                                <image src="../../images/button/into_btn_gray.png">
+                                </image>
+                            </view>
+
+                            <!--对当前非圈子创建者的用户显示其与创建者的关注按钮 & 私信按钮-->
+                            <block wx:if="{{isCreator != 0}}">
+                                <!--TODO 关注情况-->
+                                <view class="user-follow-info" bindtap="dealUserFollow">
+                                    <text>关注</text>
+                                </view>
+                                <!--私信-->
+                                <view class="contact-creator" bindtap="contactCreator">
+                                    <text>发私信</text>
+                                </view>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+
+                <block wx:if="{{isCreator === 1}}">
+                    <view class="back-stage-management-page-into-btn">
+                        <image src="../../images/button/back_setting.png">
+                        </image>
+                        <text>管理后台</text>
+                    </view>
+                </block>
+                <!--通用的功能入口列表：打卡日历、排行&勋章、设置、邀请好友-->
+                <view class="universal-function-list">
+                    <!--打卡日历-->
+                    <view class="list-item">
+                        <image src="../../images/button/calendar.png"></image>
+                        <text>打卡日历</text>
+                    </view>
+                    <!--排行&勋章-->
+                    <view class="list-item">
+                        <image src="../../images/button/honour.png"></image>
+                        <text>排行&勋章</text>
+                    </view>
+                    <!--设置-->
+                    <view class="list-item">
+                        <image src="../../images/button/setting-black.png"></image>
+                        <text>设置</text>
+                    </view>
+                    <!--邀请好友-->
+                    <view class="list-item">
+                        <image src="../../images/button/invite.png"></image>
+                        <text>邀请好友</text>
+                    </view>
+                </view>
+
+            </view>
+
+            <view class="separator-height-10px"></view>
+
+            <!--TODO 打卡时间提示-->
+
+            <!--创建者打卡主题添加按钮 or 展示已创建的打卡主题-->
+            <block wx:if="{{isCreator == 1}}">
+                <view class="punch-card-theme">
+                    <view class="add-punch-card-theme-btn">
+                        <image src="../../images/button/add.png"></image>
+                        <text>添加打卡主题</text>
+                    </view>
+                </view>
+                <view class="separator-height-10px"></view>
+            </block>
+
+
+            <!--打卡圈子内容：成员的打卡日记、详情（圈主、圈子简介详情）、成员列表-->
+            <view class="punch-card-project-content">
+                <!--内容展示选项卡：进行切换显示对应的内容-->
+                <view class="punch-card-project-content-tab-btn-list">
+                    <view class="tab-btn-item" bindtap="showPunchCardDiary">
+                        <block wx:if="{{hiddenDiaryInfo}}">
+                            <text>日记</text>
+                        </block>
+                        <block wx:else>
+                            <text style="color: #F0B27A">日记</text>
+                        </block>
+                    </view>
+                    <view class="tab-btn-item" bindtap="showPunchCardProjectDetailInfo">
+                        <block wx:if="{{hiddenProjectDetailInfo}}">
+                            <text>详情</text>
+                        </block>
+                        <block wx:else>
+                            <text style="color: #F0B27A">详情</text>
+                        </block>
+                    </view>
+                    <view class="tab-btn-item" bindtap="showAttendUserList">
+                        <block wx:if="{{hiddenAttendUserList}}">
+                            <text>成员</text>
+                        </block>
+                        <block wx:else>
+                            <text style="color: #F0B27A">成员</text>
+                        </block>
+                    </view>
+                </view>
+                <!--标识出当前选择的选项卡 默认为日记-->
+                <view class="selected-tab-indicate" animation="{{animation}}">
+                </view>
+
+                <view class="separator-height-1px" style="margin-top: 2px"></view>
+
+                <!--当选择日记选项卡的时候显示成员的打卡日记列表-->
+                <view class="user-punch-card-diary-list" hidden="{{hiddenDiaryInfo}}">
+                    用户日记
+                </view>
+
+                <!--当选择详情选项卡的时候显示圈子的圈主简介、圈子简介详情-->
+                <view class="project-detail-info" hidden="{{hiddenProjectDetailInfo}}">
+                    圈子详情
+                </view>
+
+                <!--当选择成员选项卡的时候展示打卡圈子的参与用户列表-->
+                <view class="punch-Card-project-attend-user-list"
+                      hidden="{{hiddenAttendUserList}}">
+
+                    <!--TODO 上传(创建者)、查看已上传的微信群二维码-->
+                    <block wx:if="{{weChatGroupQRCodeImg !== ''}}">
+                        <!--如果已经存在创建者上传的微信群二维码则进行显示-->
+                        <view class="we-chat-group-qr-code-img">
+                            <image src="../../images/button/qr_code_img.png">
+                            </image>
+                            <view class="add-group-qr-code-img-notice-info">
+                                <view class="notice-info-1">
+                                    圈子微信交流群
+                                </view>
+                                <view class="notice-info-2">
+                                    让成员一起打卡互动吧
+                                </view>
+                            </view>
+                            <!--若为创建者显示查看按钮 点击按钮弹出模态框显示二维码及删除按钮-->
+                            <block wx:if="{{isCreator == 1}}">
+                                <view class="we-chat-group-qr-code-img-operate-btn"
+                                      bindtap="showWeChatGroupQRCodeImg">
+                                    <text>查看二维码</text>
+                                </view>
+                                <!--TODO 自定义模态框：显示上传的二维码 && 删除、完成按钮-->
+                            </block>
+                            <block wx:else>
+                                <!--普通成员则通过此获取二维码图片-->
+                                <view class="we-chat-group-qr-code-img-operate-btn"
+                                      bindtap="getWeChatGroupQRCodeImg">
+                                    <text>加入群聊</text>
+                                </view>
+                            </block>
+                        </view>
+                    </block>
+                    <block wx:else>
+                        <!--创建者还未上传微信群二维码 则对创建者显示上传按钮-->
+                        <block wx:if="{{isCreator == 0}}">
+                            <view class="we-chat-group-qr-code-img">
+                                <image src="../../images/button/qr_code_img.png">
+                                </image>
+                                <view class="add-group-qr-code-img-notice-info">
+                                    <view class="notice-info-1">
+                                        圈子微信交流群
+                                    </view>
+                                    <view class="notice-info-2">
+                                        让成员一起打卡互动吧
+                                    </view>
+                                </view>
+                                <view class="we-chat-group-qr-code-img-operate-btn"
+                                      bindtap="uploadWeChatGroupQRCodeImg">
+                                    <text>上传二维码</text>
+                                </view>
+                            </view>
+                        </block>
+                    </block>
+
+                    <!--成员搜索按钮-->
+                    <view class="search-punch-card-project-attend-user-btn"
+                          bindtap="intoSearchAttendUserPage">
+                        <image src="../../images/bottomIcon/search.png"></image>
+                        <text>搜索成员</text>
+                    </view>
+
+                    <!--已加入的成员列表-->
+                    <view class="attend-user-list">
+                        <block wx:for="{{attendUserInfo}}">
+                            <view class="attend-user-list-item"
+                                  bindtap="intoPersonalPage">
+                                <block wx:if="{{item.avatar_url=='default_avatar'}}">
+                                    <!--头像: 在头像右下角标识性别-->
+                                    <view class="user-avatar">
+                                        <image src="../../images/default/userAvatar.png">
+                                        </image>
+                                    </view>
+                                </block>
+                                <block wx:else>
+                                    <view class="user-avatar">
+                                        <image src="{{item.avatar_url}}"></image>
+                                    </view>
+                                </block>
+
+                                <!--性别-->
+                                <block wx:if="{{item.sex == 1}}">
+                                    <view class="user-sex-male">
+                                        <image src="../../images/button/sex_male.png">
+                                        </image>
+                                    </view>
+                                </block>
+                                <block wx:if="{{item.sex == 2}}">
+                                    <view class="user-sex-female">
+                                        <image src="../../images/button/sex_female.png">
+                                        </image>
+                                    </view>
+                                </block>
+
+                                <view class="user-nick-name">{{item.nick_name}}</view>
+                                <view class="attend-time">
+                                    {{item.pivot.attend_time}}加入
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+            </view>
 
             <!--底部按钮：返回首页按钮、打卡按钮、进入发现页按钮-->
             <view class="bottom">

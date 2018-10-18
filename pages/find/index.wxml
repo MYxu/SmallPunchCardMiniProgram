@@ -149,7 +149,8 @@
             <view class="not-recommend-punch-card-project-notice">
                 啊咧,没有系统推荐的打卡圈子,建一个呗
             </view>
-            <view class="create-punch-card-project-btn">
+            <view class="create-punch-card-project-btn"
+                  bindtap="createNewPunchCardProject">
                 <image src="../../images/button/add.png"></image>
                 <text>创建打卡圈子</text>
             </view>

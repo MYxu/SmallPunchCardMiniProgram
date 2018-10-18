@@ -189,7 +189,8 @@ Page({
         chooseImg.then(function (res) {
             console.log(res);
             wx.uploadFile({
-                url: app.globalData.urlRootPath + "index/PunchCardProject/updateCoverImg",
+                url: app.globalData.urlRootPath
+                    + "index/PunchCardProject/updateCoverImg",
                 filePath: that.data.tempFilePaths,
                 name: "image",
                 formData: {

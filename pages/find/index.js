@@ -39,7 +39,7 @@ Page({
         getDataRes: -1, // 用于记录获取数据的请求状态 -1未知 0--请求获取数据失败 1--请求并获取数据成功
 
         // 打卡圈子推荐列表子项右边圈子信息的宽度
-        projectBaseInfoWidth: app.globalData.windowWidth - (10 + 100 + 5),
+        projectBaseInfoWidth: app.globalData.windowWidth - (10 + 100 + 5 + 10 ),
     },
 
     /**
@@ -330,6 +330,13 @@ Page({
             url: '../punchCardDetailPage/index'
                 + "?projectId=" + e.currentTarget.dataset.projectId
                 + "&isCreator=" + -1 // 未知是否为创建者
+        });
+    },
+
+    // 创建新的打卡圈子按钮点击事件
+    createNewPunchCardProject: function () {
+        wx.navigateTo({
+            url: '../createPunchCardProject/stepOne/index'
         });
     },
 
