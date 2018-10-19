@@ -461,7 +461,7 @@
                             <view class="creator-intr-info-avatar"
                                   bindtap="intoPersonalHomePage"
                                   data-user-id="{{creatorInfo.creator_id}}">
-                                <block wx:if="{{creatorInfo.avatar_url==default_avatar}}">
+                                <block wx:if="{{creatorInfo.avatar_url=='default_avatar'}}">
                                     <image src="../../images/default/userAvatar.png">
                                     </image>
                                 </block>

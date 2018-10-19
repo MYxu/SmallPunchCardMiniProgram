@@ -1,0 +1,86 @@
+<view class="container">
+    <!--文本内容编辑区域-->
+    <view class="text-content-edit-area">
+        <textarea placeholder="说说今天的的感想和收获吧..." auto-height="{{true}}"
+                  adjust-position="{{false}}" show-confirm-bar="{{false}}"
+                  placeholder-class="edit-diary-notice" maxlength="500"
+                  bindinput="editTextContent">
+        </textarea>
+        <view class="text-content-num-notice">
+            {{textContentLength}}/500
+        </view>
+    </view>
+
+    <!--TODO 显示上传的音频-->
+
+    <!--图片、音频、视频添加上传按钮-->
+    <view class="upload-btn-list">
+        <!--对选择的的图片进行预览-->
+        <block wx:for="{{chooseImg}}">
+            <view class="btn-list-item picture-item"
+                  bindtap="previewImage" id="{{item}}">
+                <image src="{{item}}" mode="aspectFill">
+                    <image src="../../../images/button/cancel.png"
+                           class="cancel-picture-upload-btn"
+                           data-index="{{index}}" catchtap="cancelPictureUpload">
+                    </image>
+                </image>
+            </view>
+        </block>
+
+        <!--图片添加按钮-->
+        <view class="btn-list-item picture-upload-btn" bindtap="chooseImage">
+            <image src="../../../images/bottomIcon/picture_2.png">
+            </image>
+        </view>
+
+        <!--音频添加按钮-->
+        <view class="btn-list-item sound-upload-btn" bindtap="chooseSound">
+            <image src="../../../images/bottomIcon/sound.png">
+            </image>
+        </view>
+
+        <!--视频添加按钮-->
+        <view class="btn-list-item video-upload-btn" bindtap="chooseVideo">
+            <image src="../../../images/bottomIcon/video.png">
+            </image>
+        </view>
+
+    </view>
+
+    <!--选择日记发表的定位-->
+   <view class="publish-location-address">
+       <block wx:if="{{address === ''}}">
+           <!--不存在地理位置时显示定位按钮-->
+           <view class="choose-location-address" bindtap="chooseLocationAddress">
+               <image src="../../../images/button/location.png"></image>
+               <text>所在位置</text>
+           </view>
+       </block>
+       <block wx:else>
+           <!--存在则显示用户选择的地理位置 点击则取消该地理位置 即重置为未选择-->
+           <view class="show-user-choose-location-address"
+                 bindtap="cancelLocationAddress">
+               <image class="address-icon"
+                      src="../../../images/button/location_light.png">
+               </image>
+               <text>{{address}}</text>
+               <image class="cancel-icon" src="../../../images/button/close.png">
+               </image>
+           </view>
+       </block>
+   </view>
+
+    <!--设置日记可见类型：公开 其他成员可见 & 仅圈主可见-->
+    <picker bindchange="chooseDiaryVisibleType" value="{{index}}"
+            range="{{diaryType}}">
+        <view class="choose-diary-visible-type">
+            {{diaryType[index]}}
+        </view>
+    </picker>
+
+    <view class="punch-card-diary-publish-btn">
+        发表
+    </view>
+
+</view>

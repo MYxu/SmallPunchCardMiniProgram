@@ -551,8 +551,11 @@ Page({
 
     // 进入发表打卡日记页面
     intoPublishPunchCardDiaryPage: function () {
-
-
+        let that = this;
+        wx.navigateTo({
+            url: './publishPunchCardDiary/index'
+                + '?projectId=' + that.data.projectId
+        })
     },
 
     // 进入发现页

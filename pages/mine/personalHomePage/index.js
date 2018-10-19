@@ -1,11 +1,28 @@
-// pages/mine/detailPage/userInfo.js
-var app = getApp();
+let app = getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+      showLoading: true, // 在未从服务器端获取到打卡圈子信息之前则显示加载动画&&空白页面
+      imgRootPath: app.globalData.imgBaseSeverUrl, // 服务器图片访问BaseURL
+
+      visitedUserId: 0, // 被访问者的userId  也就是需要显示该用户的相关信息
+      visitorUserId: 0, // 访问者的userId    即小程序当前使用者的userId
+      isMyself: false, // 是否为本人访问自己的个人主页 即 visitedUserId == visitorUserId
+
+      // 用户基本信息
+      userBaseInfo: {
+          id: 0,
+          nick_name: '',
+          sex: 0,
+          avatar_url: '',
+          birthday: '',
+          person_sign: '',
+          weixin_num: ''
+      },
+
       // 当未获取到用户头像时使用默认头像
       defaultUserAvatar: '/images/default/userAvatar.png',
 
@@ -17,8 +34,6 @@ Page({
 
       // 主页访客中最新的五个用户头像地址
       latestFiveUserAvatarList:'',
-
-      userInfo:'',
 
       hideCommentInputView:'none',
       sendBtnAttr: {
@@ -34,8 +49,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+      let that = this;
+      that.data.visitedUserId = parseInt(options.visitedUserId);
+      that.data.visitorUserId = parseInt(app.globalData.userInfo.id);
+      that.data.isMyself = that.data.visitorUserId === that.data.visitedUserId;
+      console.log(that.data.isMyself);
+
       this.setData({
-          userInfo: app.globalData.userInfo,
           defaultUserAvatar: app.globalData.userInfo.avatar_url,
 
           //TODO 动态获取个人标签数据
@@ -168,16 +189,65 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-      wx.setNavigationBarTitle({
-          title: app.globalData.userInfo.nick_name + '的个人主页'
-      })
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+      let that = this;
 
+      wx.showLoading({
+          title: '加载中...'
+      });
+
+      // 获取指定用户的获取详细的信息
+      // 1.用户基本信息、TODO 2.个人主页背景图、3.粉丝、关注者情况、4.个人标签、5.访问者记录
+      wx.request({
+          url: app.globalData.urlRootPath + 'index/User/getUserDetailInfoById',
+          method: 'post',
+          data: {
+              userId: that.data.visitedUserId
+          },
+          success: function (res) {
+              console.log(res);
+              let data = res.data;
+              switch (res.statusCode) {
+                  case 200:
+                      wx.hideLoading();
+                      wx.setNavigationBarTitle({
+                          title: data.data.nick_name + '的个人主页'
+                      });
+                      console.log(data);
+                      that.setData({
+                          showLoading: false,
+                          'userBaseInfo.id': data.data.id,
+                          'userBaseInfo.nick_name': data.data.nick_name,
+                          'userBaseInfo.sex': parseInt(data.data.sex),
+                          'userBaseInfo.avatar_url': data.data.avatar_url,
+                          'userBaseInfo.birthday': data.data.birthday,
+                          'userBaseInfo.person_sign': data.data.person_sign,
+                          'userBaseInfo.weixin_num': data.data.weixin_num
+                      });
+                      break;
+                  default:
+                      wx.showToast({
+                          title: data.errMsg,
+                          icon: 'none',
+                          duration: 2000
+                      });
+                      break;
+              }
+          },
+          fail: function () {
+              wx.showToast({
+                  title: '网络异常',
+                  icon: 'none',
+                  duration: 2000
+              });
+          }
+      });
   },
 
   /**
