@@ -934,7 +934,36 @@
     color: #F0B27A;
     text-align: right;
 }
+/*展示填写的圈子简介信息*/
+.project-intr-content {
+    width: auto;
+    height: auto;
+    padding-bottom: 50px;
+    margin: 0 10px 15px 10px;
+}
 
+/*文本简介*/
+.project-text-intr {
+    width: 100%;
+    line-height: 1.2;
+    padding-bottom: 15px;
+}
+
+/*图片简介*/
+.project-image-intr {
+    width: 100%;
+}
+.project-image-intr > image {
+    width: 100%;
+    padding-bottom: 15px;
+}
+/*没有图片简介提示*/
+.not-project-intr-info-notice {
+    width: auto;
+    height: auto;
+    margin: 0 10px;
+    font-size: 13px;
+}
 
 
 

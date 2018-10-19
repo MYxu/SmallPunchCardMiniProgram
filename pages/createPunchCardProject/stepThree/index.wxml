@@ -121,8 +121,7 @@
                 <view class="project-intr-info-header">
                     <text>圈子简介</text>
                     <image src="../../../images/bottomIcon/edit_2.png"
-                           bindtap="updateProjectIntrInfo"
-                           data-introduce="{{creatorIntrInfo}}">
+                           bindtap="updateProjectIntrInfo">
                     </image>
                 </view>
                 <!--圈子内容顺序展示-->

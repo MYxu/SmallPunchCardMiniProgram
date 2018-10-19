@@ -473,6 +473,19 @@ Page({
         });
     },
 
+    // 修改圈子详情介绍
+    updateProjectIntrInfo: function() {
+        let  that = this;
+        let projectIntrInfo = that.data.projectInfo.IntrInfoList;
+        if (projectIntrInfo !== "")
+            projectIntrInfo = JSON.stringify(that.data.projectInfo.IntrInfoList);
+        wx.navigateTo({
+            url: '../createPunchCardProject/stepThree/updateProjectIntrInfo/index'
+                + "?projectId=" + that.data.projectId
+                + "&projectIntrInfo=" + projectIntrInfo
+        });
+    },
+
     // 点击成员选项卡，展示参与打卡的用户
     showAttendUserList: function() {
         console.log(3);

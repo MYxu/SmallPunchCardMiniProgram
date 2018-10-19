@@ -507,12 +507,40 @@
                             <view class="project-intr-info-title">
                                 <text>圈子简介</text>
                             </view>
-                            <image src="../../images/button/edit.png" class="edit-icon">
+                            <image src="../../images/button/edit.png" class="edit-icon"
+                                   bindtap="updateProjectIntrInfo">
                             </image>
-                            <view class="project-intr-info-edit-notice">
+                            <view class="project-intr-info-edit-notice"
+                                  bindtap="updateProjectIntrInfo">
                                 编辑圈子介绍
                             </view>
                         </view>
+                        <!--圈子内容-->
+                        <block wx:if="{{projectInfo.IntrInfoList.length > 0}}">
+                            <view class="project-intr-content">
+                                <block wx:for="{{projectInfo.IntrInfoList}}">
+                                    <!--文本简介类型-->
+                                    <block wx:if="{{item.type === '1'}}">
+                                        <view class="project-text-intr">
+                                            {{item.content}}
+                                        </view>
+                                    </block>
+                                    <!--图片简介类型-->
+                                    <block wx:if="{{item.type === '2'}}">
+                                        <view class="project-image-intr">
+                                            <image mode="widthFix"
+                                                   src="{{imgRootPath}}{{item.content}}">
+                                            </image>
+                                        </view>
+                                    </block>
+                                </block>
+                            </view>
+                        </block>
+                        <block wx:else>
+                            <view class="not-project-intr-info-notice">
+                                暂无圈子介绍
+                            </view>
+                        </block>
                     </view>
                 </view>
 

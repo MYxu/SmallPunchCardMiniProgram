@@ -317,8 +317,7 @@ Page({
     },
 
     // 修改圈子详情介绍
-    updateProjectIntrInfo: function(e) {
-        console.log(e);
+    updateProjectIntrInfo: function() {
         let  that = this;
         let projectIntrInfo = that.data.projectIntrInfo;
         if (projectIntrInfo !== "")
