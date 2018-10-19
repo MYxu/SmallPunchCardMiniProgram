@@ -708,6 +708,71 @@
 }
 
 /*参与用户的打卡日记展示*/
+/*日记展示筛选器*/
+.punch-card-diary-filter-btn {
+    width: auto;
+    height: 40px;
+    padding: 0 10px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.punch-card-num-today-num {
+    width: 80%;
+    height: 40px;
+    line-height: 40px;
+    font-size: 13px;
+    color: #8a8a8a;
+}
+.filter-btn {
+    width: 20%;
+    height: 40px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 13px;
+    color: #F0B27A;
+}
+.filter-btn > image {
+    width: 18px;
+    height: 18px;
+    margin-left: 3px;
+}
+
+/*打卡日记列表展示*/
+
+/*无打卡日记时提示信息*/
+.not-punch-card-diary-notice {
+    width: auto;
+    height: auto;
+    margin: 25px 25% 0 25%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 12px;
+    color: #8a8a8a;
+}
+.line {
+    width: 40px;
+    height: 1px;
+    background-color: #C9C9C9;
+}
+.dot {
+    width: 4px;
+    height: 4px;
+    background-color: #C9C9C9;
+    border-radius: 50%;
+}
+
+
+
 /*圈子的圈主简介、圈子简介信息展示*/
 .project-detail-info {
     width: 100%;

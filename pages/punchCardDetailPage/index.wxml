@@ -282,18 +282,22 @@
                             <block wx:if="{{creatorInfo.avatar_url == 'default_avatar'}}">
                                 <image src="../../images/default/userAvatar.png"
                                        class="creator-avatar"
-                                       bindtap="intoPersonalPage">
+                                       bindtap="intoPersonalHomePage"
+                                       data-user-id="{{creatorInfo.creator_id}}">
                                 </image>
                             </block>
                             <block wx:else>
                                 <image src="{{creatorInfo.avatar_url}}"
                                        class="creator-avatar"
-                                       bindtap="intoPersonalPage">
+                                       bindtap="intoPersonalHomePage"
+                                       data-user-id="{{creatorInfo.creator_id}}">
                                 </image>
                             </block>
 
                             <!--昵称-->
-                            <view class="creator-nick-name" bindtap="intoPersonalPage">
+                            <view class="creator-nick-name"
+                                  bindtap="intoPersonalHomePage"
+                                  data-user-id="{{creatorInfo.creator_id}}">
                                 <text>{{creatorInfo.nick_name}}</text>
                                 <image src="../../images/button/into_btn_gray.png">
                                 </image>
@@ -400,7 +404,39 @@
 
                 <!--当选择日记选项卡的时候显示成员的打卡日记列表-->
                 <view class="user-punch-card-diary-list" hidden="{{hiddenDiaryInfo}}">
-                    用户日记
+                    <!--日记展示筛选器-->
+                    <block wx:if="{{isCreator == 1}}">
+                        <view class="punch-card-diary-filter-btn">
+                            <view class="punch-card-num-today-num">
+                                今日已打卡: 0 人
+                            </view>
+                            <view class="filter-btn">
+                                <image src="../../images/button/filter.png"></image>
+                                <text>筛选</text>
+                            </view>
+                        </view>
+                    </block>
+
+                    <!--日记展示-->
+                    <block wx:if="{{false}}">
+
+                    </block>
+                    <block wx:else>
+                        <view class="not-punch-card-diary-notice">
+                            <view class="line" style="margin-right: 2px">
+                            </view>
+
+                            <view class="dot"></view>
+
+                            <view style="margin: 0 5px;">暂无打卡日记</view>
+
+                            <view class="dot"></view>
+
+                            <view class="line" style="margin-left: 2px">
+                            </view>
+                        </view>
+                    </block>
+
                 </view>
 
                 <!--当选择详情选项卡的时候显示圈子的圈主简介、圈子简介详情-->
@@ -423,7 +459,8 @@
                         <view class="creator-base-info">
                             <!--头像-->
                             <view class="creator-intr-info-avatar"
-                                  bindtap="intoPersonalPage">
+                                  bindtap="intoPersonalHomePage"
+                                  data-user-id="{{creatorInfo.creator_id}}">
                                 <block wx:if="{{creatorInfo.avatar_url==default_avatar}}">
                                     <image src="../../images/default/userAvatar.png">
                                     </image>
@@ -435,13 +472,17 @@
 
                             <!--性别-->
                             <block wx:if="{{creatorInfo.sex == 1}}">
-                                <view class="creator-sex-male">
+                                <view class="creator-sex-male"
+                                      bindtap="intoPersonalHomePage"
+                                      data-user-id="{{creatorInfo.creator_id}}">
                                     <image src="../../images/button/sex_male.png">
                                     </image>
                                 </view>
                             </block>
                             <block wx:if="{{creatorInfo.sex == 2}}">
-                                <view class="creator-sex-female">
+                                <view class="creator-sex-female"
+                                      bindtap="intoPersonalHomePage"
+                                      data-user-id="{{creatorInfo.creator_id}}">
                                     <image src="../../images/button/sex_female.png">
                                     </image>
                                 </view>
@@ -449,7 +490,8 @@
 
                             <!--昵称-->
                             <view class="creator-base-info-nick-name"
-                                  bindtap="intoPersonalPage">
+                                  bindtap="intoPersonalHomePage"
+                                  data-user-id="{{creatorInfo.creator_id}}">
                                 <view style="color: cornflowerblue;font-size: 15px">
                                     {{creatorInfo.nick_name}}
                                 </view>
@@ -614,7 +656,8 @@
                     <view class="attend-user-list">
                         <block wx:for="{{attendUserInfo}}">
                             <view class="attend-user-list-item"
-                                  bindtap="intoPersonalPage">
+                                  bindtap="intoPersonalHomePage"
+                                  data-user-id="{{item.id}}">
                                 <block wx:if="{{item.avatar_url=='default_avatar'}}">
                                     <!--头像: 在头像右下角标识性别-->
                                     <view class="user-avatar">

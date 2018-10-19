@@ -396,11 +396,16 @@ Page({
         });
     },
 
-    // 进入个人主页
-    intoPersonalPage: function() {
+    // 进入指定用户的个人主页
+    intoPersonalHomePage: function(e) {
+        console.log(e);
+        // 传递被访问者的用户id, 在个人主页根据此id查询被访问者的个人信息
+        let visitedUserId = parseInt(e.currentTarget.dataset.userId);
+
         wx.navigateTo({
-            url: "../mine/detailPage/userInfo"
-        })
+            url: '../mine/personalHomePage/index'
+                + '?visitedUserId=' + visitedUserId
+        });
     },
 
     // 处理用户关注、取消关注

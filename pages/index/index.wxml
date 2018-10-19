@@ -8,7 +8,7 @@
     <block wx:else><!--成功获取数据后关闭加载动画显示获取的数据内容-->
         <!--顶部-->
         <view class="container-header">
-            <view class="user-avatar">
+            <view class="user-avatar" bindtap="intoPersonalHomePage">
                 <!--使用默认的小程序内置的默认头像-->
                 <block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">
                     <image src="../../images/default/userAvatar.png"></image>

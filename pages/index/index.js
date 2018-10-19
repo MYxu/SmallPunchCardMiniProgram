@@ -274,30 +274,23 @@ Page({
         });
     },
 
+    // 点击头像进入我的个人主页
+    intoPersonalHomePage: function() {
 
+        // 传递被访问者的用户id, 在个人主页根据此id查询被访问者的个人信息
+        let visitedUserId = app.globalData.userInfo.id;
 
-    // 查看按钮点击事件
-    showMorePunchCardProject: function () {
-        let that = this;
-        that.setData({
-            moreProjectInfo: true, // 点击之后隐藏按钮
-            projectHidden: false   // 显示隐藏的打卡圈子列表
-        });
+        wx.navigateTo({
+            url: '../mine/personalHomePage/index'
+                + '?visitedUserId=' + visitedUserId
+        })
     },
 
-    // 进入打卡详情页点击事件
-    intoPunchCardDetail: function (e) {
-        console.log(e);
-       wx.navigateTo({
-           url: '../punchCardDetailPage/index'
-               + "?projectId=" + e.currentTarget.dataset.project_id
-               + "&isCreator=" + e.currentTarget.dataset.is_creator
-       })
-    },
+
     // 创建新的打卡圈子按钮点击事件
     createNewPunchCardProject: function () {
         wx.navigateTo({
-          url: '../createPunchCardProject/stepOne/index'
+            url: '../createPunchCardProject/stepOne/index'
         });
     },
 
@@ -342,5 +335,26 @@ Page({
                 })
             }
         })
-    }
+    },
+
+
+    // 进入打卡详情页点击事件
+    intoPunchCardDetail: function (e) {
+        console.log(e);
+        wx.navigateTo({
+            url: '../punchCardDetailPage/index'
+                + "?projectId=" + e.currentTarget.dataset.project_id
+                + "&isCreator=" + e.currentTarget.dataset.is_creator
+        })
+    },
+
+    // 查看更多打卡圈子按钮点击事件
+    showMorePunchCardProject: function () {
+        let that = this;
+        that.setData({
+            moreProjectInfo: true, // 点击之后隐藏按钮
+            projectHidden: false   // 显示隐藏的打卡圈子列表
+        });
+    },
+
 });
