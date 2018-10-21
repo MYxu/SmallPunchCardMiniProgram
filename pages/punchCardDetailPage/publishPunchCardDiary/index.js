@@ -179,7 +179,7 @@ Page({
         // 1.提交打卡日记基本信息至服务器，获取到该条打卡日记的记录id
         let addPunchCardDiary = new Promise(function (resolve) {
             wx.request({
-                url: app.globalData.urlRootPath_local + 'index/PunchCardDiary/addPunchCardDiary',
+                url: app.globalData.urlRootPath + 'index/PunchCardDiary/addPunchCardDiary',
                 method: 'post',
                 data: {
                     project_id: that.data.projectId,
@@ -240,7 +240,7 @@ Page({
                             // 只要一个资源上传失败发起请求删除前面相关所有提交包括日记的基本信息
                             let deleteDiary = new Promise(function (resolve) {
                                 wx.request({
-                                    url: app.globalData.urlRootPath_local
+                                    url: app.globalData.urlRootPath
                                         + 'index/PunchCardDiary/deleteDiaryById',
                                     method: 'post',
                                     data: {
@@ -299,7 +299,7 @@ Page({
         let index = currUploadImgIndex;
         let uploadTask = new Promise(function (resolve) {
             wx.uploadFile({
-                url: app.globalData.urlRootPath_local
+                url: app.globalData.urlRootPath
                     + 'index/PunchCardDiary/uploadDiaryResourceFile',
                 filePath: resourcePath[index],
                 name: 'diaryImgResource',
@@ -359,7 +359,7 @@ Page({
 
         let deleteDiary = new Promise(function (resolve) {
             wx.request({
-                url: app.globalData.urlRootPath_local
+                url: app.globalData.urlRootPath
                     + 'index/PunchCardDiary/deleteDiaryById',
                 method: 'post',
                 data: {
