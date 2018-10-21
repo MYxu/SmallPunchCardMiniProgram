@@ -18,6 +18,11 @@ Page({
         joinInPunchCardProjectFlag: -1, // 当前用户是否已经加入该打卡圈子标志 -1--未知、0--未加入、1--已加入
         isCreator: -1, // 当前用户是否为圈子创建者 -1--未知、 0--参与者、1--代表当前用户为创建者
 
+
+        hiddenDiaryInfo: false, // 是否隐藏日记选项卡的用户打卡日记列表信息 默认初始显示用户的打卡日记列表
+        hiddenProjectDetailInfo: true, // 是否隐藏圈子简介选项卡信息
+        hiddenAttendUserList: true, // 是否隐藏成员选项卡列表信息
+
         // 打卡圈子基本信息
         projectInfo: {
             project_name: '',
@@ -37,6 +42,41 @@ Page({
             weChat: ''// 圈主微信号
         },
 
+        // 用户打卡日记列表
+        punchCardDiaryList: [
+            // 属性值说明
+            // {
+            //     id: '打卡日记记录id',
+            //     text_content: '打卡日记文本内容',
+            //     punch_card_time: '打卡时间',
+            //     punch_card_address: '打卡地理位置信息',
+            //     address_longitude: '经度',
+            //     address_latitude: '纬度',
+            //     visible_type: '日记可见类型', // 0-公开 圈子成员可见 1--仅圈主可见
+            //     curr_diary_punch_card_day_num: '当前日记已坚持天数',
+            //     have_sticky: '是否置顶', // 0--不置顶
+            //     is_repair_diary: '是否为补打卡日记', // 0--不是 1--是
+            //     repair_punch_card_time: '补打卡时间',
+            //     publisher: {
+            //         id: 0,// 日记发表者userId
+            //         sex:'0--未知 1--男性 2--女性',
+            //         nick_name:'',
+            //         avatar_url: ''
+            //     },
+            //     diaryResource:{
+            //         id: '打卡日记相关的资源文件记录id',
+            //         resource_url: '资源文件路径信息',
+            //         type: '1-图片 2-音频 3-视频'
+            //     }
+            // }
+        ],
+        diaryListPageNo: 1, // 当前已经加载的页号
+        diaryListDataNum: 1, // 每页显示的数据条数
+        hiddenLoadingMore: true, // 触发上拉事件时控制显示、隐藏加载更多
+        haveMore: true, // 控制显示、隐藏 没有更多数据提示信息
+        getDataRes: -1, // 用于记录获取数据的请求状态 -1未知 0--请求获取数据失败 1--请求并获取数据成功
+        onePageDiaryListData: [], // 获取到的打卡圈子日记列表的一页数据
+
         // 最新加入打卡圈子的三个用户信息
         attendUserInfo: [
             // 数据格式
@@ -51,10 +91,6 @@ Page({
             //     }
             // }
         ],
-
-        hiddenDiaryInfo: false, // 是否隐藏用户的打卡日记列表 默认初始显示用户的打卡日记列表
-        hiddenProjectDetailInfo: true, // 是否隐藏用户的打卡日记列表
-        hiddenAttendUserList: true, // 是否隐藏用户的打卡日记列表
 
 
         haveCollect: false,      // 是否已经收藏该打卡圈子 false--未收藏
@@ -240,6 +276,39 @@ Page({
                 })
             }
         });
+
+
+        // 获取第一页打卡日记列表
+        that.data.punchCardDiaryList = []; // 清空原先的数据
+        that.getPunchCardDiaryList(1,that.data.diaryListDataNum);
+
+        let timeout = 20000;
+        let id = setInterval(function () {
+            timeout -= 500;
+            if (that.data.getDataRes === 1) {
+                let newData = that.data.onePageDiaryListData;
+
+                that.setData({
+                    showLoading: false, // 隐藏加载时显示的全屏空白页，显示获取到内容
+                    punchCardDiaryList: newData
+                });
+                clearInterval(id);
+
+            } else if(that.data.getDataRes === 0) {
+                // 请求获取数据失败
+                clearInterval(id);
+            }
+
+            // 获取超时
+            if (timeout === 0) {
+                wx.showToast({
+                    title: '请求超时,无法获取数据,请下拉重试!',
+                    icon: 'none',
+                    duration: 2000
+                });
+                clearInterval(id);
+            }
+        },500);
     },
 
     /**
@@ -262,13 +331,111 @@ Page({
      * 页面相关事件处理函数--监听用户下拉动作
      */
     onPullDownRefresh: function () {
+        // 下拉刷新，重新获取第一页的打卡日记列表
+        let that = this;
+        that.data.punchCardDiaryList = []; // 清空原先的数据
+        that.getPunchCardDiaryList(1,that.data.diaryListDataNum);
 
+        let timeout = 20000;
+        let id = setInterval(function () {
+            timeout -= 500;
+            if (that.data.getDataRes === 1) {
+                let newData = that.data.onePageDiaryListData;
+
+                that.setData({
+                    showLoading: false, // 隐藏加载时显示的全屏空白页，显示获取到内容
+                    punchCardDiaryList: newData
+                });
+                wx.stopPullDownRefresh();
+                wx.showToast({
+                    title: '获取新数据成功',
+                    icon: 'none',
+                    duration: 2000
+                });
+                clearInterval(id);
+
+            } else if(that.data.getDataRes === 0) {
+                // 请求获取数据失败
+                wx.stopPullDownRefresh();
+                clearInterval(id);
+            }
+
+            // 获取超时
+            if (timeout === 0) {
+                wx.stopPullDownRefresh();
+                wx.showToast({
+                    title: '请求超时,无法获取数据,请下拉重试!',
+                    icon: 'none',
+                    duration: 2000
+                });
+                clearInterval(id);
+            }
+        },500);
     },
 
     /**
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
+        let that = this;
+        let currPunchCardDiaryList = that.data.punchCardDiaryList;
+
+        that.setData({
+            haveMore: true, // 加载更多之前 假设还有数据可以加载
+            hiddenLoadingMore: false // 显示加载更多动画
+        });
+
+        // 获取下一页数据
+        that.getPunchCardDiaryList(that.data.diaryListPageNo+1,that.data.diaryListDataNum);
+        let timeout = 20000;
+        let id = setInterval(function () {
+            timeout -= 500;
+            if (that.data.getDataRes === 1) {
+                //  请求并获取数据成功 将获取的数据添加到当前已经获取到的打卡圈子日记列表数据中
+                let newData = that.data.onePageDiaryListData,
+                    newDataLength = newData.length;
+
+                if (newDataLength > 0) {
+                    // 追加形式添加数据
+                    for (let i = 0; i < newDataLength; i++) {
+                        currPunchCardDiaryList.push(newData[i]);
+                    }
+                } else {
+                    // 没有更多数据了 显示底部的没有更多数据提示信息
+                    that.data.haveMore = false;
+                }
+
+                that.setData({
+                    punchCardProjectRecommendList: currPunchCardDiaryList,
+                    haveMore: that.data.haveMore,
+                    hiddenLoadingMore: true // 关闭加载更多动画
+                });
+                clearInterval(id);
+
+            } else if(that.data.getDataRes === 0) {
+                // 请求获取数据失败
+                that.setData({
+                    haveMore: true,
+                    hiddenLoadingMore: true // 关闭加载更多动画
+                });
+                clearInterval(id);
+            }
+
+            // 获取超时
+            if (timeout === 0) {
+                that.setData({
+                    haveMore: true,
+                    hiddenLoadingMore: true // 关闭加载更多动画
+                });
+                wx.showToast({
+                    title: '加载超时...',
+                    icon: 'none',
+                    duration: 2000
+                });
+                clearInterval(id);
+            }
+        },500);
+
 
     },
 
@@ -278,6 +445,64 @@ Page({
     onShareAppMessage: function () {
 
     },
+
+    // 获取打卡圈子的打卡日记
+    getPunchCardDiaryList: function(pageNo,dataNum) {
+        console.log(dataNum);
+        let that = this;
+        wx.request({
+            url: app.globalData.urlRootPath_local
+                + 'index/punchCardDiary/getDiaryListByProjectId',
+            method: 'post',
+            data: {
+                isCreator: that.data.isCreator,
+                pageNo: pageNo,
+                dataNum: dataNum,
+                projectId: that.data.projectId
+            },
+            success: function (res) {
+                console.log(res);
+                let data = res.data;
+                switch (res.statusCode) {
+                    case 200:
+                        // 若是当前页pageNo没有数据则说明总页数为pageNo-1
+                        if (data.data.length <= 0)
+                            pageNo = pageNo-1;
+
+                        // 清空之前的数据
+                        that.data.onePageDiaryListData = [];
+
+                        that.setData({
+                            onePageDiaryListData: data.data,
+                            diaryListPageNo: pageNo
+                        });
+                        that.data.getDataRes = 1; // 标明获取数据成功
+                        break;
+                    default:
+                        wx.showToast({
+                            title: data.errMsg,
+                            icon: 'none',
+                            duration: 2000
+                        });
+                        that.data.getDataRes = 0; // 标明获取数据失败
+                        break;
+                }
+                console.log(res);
+            },
+            fail: function () {
+                that.data.getDataRes = 0; // 标明获取数据失败
+                wx.showToast({
+                    title: '网络异常,无法获取打卡日记',
+                    icon: 'none',
+                    duration: 2000
+                });
+            }
+        })
+
+
+    },
+
+
     // 修改圈子封面图片
     updateProjectCoverImg: function() {
         wx.showToast({

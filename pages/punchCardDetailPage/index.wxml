@@ -420,8 +420,22 @@
                     </block>
 
                     <!--日记展示-->
-                    <block wx:if="{{false}}">
+                    <block wx:if="{{punchCardDiaryList.length > 0}}">
+                        <block wx:for="{{punchCardDiaryList}}">
+                            <view>{{item.text_content}}</view>
+                        </block>
 
+                        <!--底部加载更多-->
+                        <view class="weui-loadmore" hidden="{{hiddenLoadingMore}}">
+                            <view class="weui-loading"></view>
+                            <view class="weui-loadmore__tips">正在加载</view>
+                        </view>
+
+                        <view hidden="{{haveMore}}"
+                              class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
+                            <view class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot">
+                            </view>
+                        </view>
                     </block>
                     <block wx:else>
                         <view class="not-punch-card-diary-notice">
@@ -709,7 +723,7 @@
 
                 <!--打卡按钮-->
                 <view class="punch-card-btn" bindtap="intoPublishPunchCardDiaryPage">
-                    <block wx:if="{{}}">
+                    <block wx:if="{{true}}">
                         <view>打卡</view>
                     </block>
                     <block wx:else>
