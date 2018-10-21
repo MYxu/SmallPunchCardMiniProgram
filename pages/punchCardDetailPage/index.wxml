@@ -101,7 +101,9 @@
                                 </block>
                                 <!--图片简介类型-->
                                 <block wx:if="{{item.type === '2'}}">
-                                    <view class="not-join-in-project-image-intr">
+                                    <view class="not-join-in-project-image-intr"
+                                          bindtap="previewProjectIntrImage"
+                                          data-img-url="{{item.content}}">
                                         <image mode="widthFix"
                                                src="{{imgRootPath}}{{item.content}}">
                                         </image>
@@ -569,7 +571,9 @@
                                     </block>
                                     <!--图片简介类型-->
                                     <block wx:if="{{item.type === '2'}}">
-                                        <view class="project-image-intr">
+                                        <view class="project-image-intr"
+                                              bindtap="previewProjectIntrImage"
+                                              data-img-url="{{item.content}}">
                                             <image mode="widthFix"
                                                    src="{{imgRootPath}}{{item.content}}">
                                             </image>

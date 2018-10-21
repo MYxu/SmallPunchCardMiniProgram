@@ -171,7 +171,6 @@
     height: 50px;
     margin: 50px 15px 100px 15px;
     border-radius: 5px;
-    background-color: #F0B27A;
 
     font-size: 16px;
     color: white;

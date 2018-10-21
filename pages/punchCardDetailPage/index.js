@@ -22,7 +22,7 @@ Page({
         projectInfo: {
             project_name: '',
             cover_img_url: 'default_cover_img',
-            IntrInfoList: [],
+            IntrInfoList: [], // {id:'简介记录id',content:'简介内容',order:'排序',type:'简介类型'}
             attendUserNum: 1,
             punchCardNum: 88888888
         },
@@ -489,6 +489,38 @@ Page({
                 + "?projectId=" + that.data.projectId
                 + "&projectIntrInfo=" + projectIntrInfo
         });
+    },
+
+    // 预览圈子简介图片
+    previewProjectIntrImage: function(e){
+        let that = this;
+
+        let intrInfoList = that.data.projectInfo.IntrInfoList,
+            length = intrInfoList.length;
+
+        let projectIntrImgList = [];
+        let index = 0;
+        for (let i = 0; i < length; i++)
+        {
+            if (parseInt(intrInfoList[i].type) === 2)
+                // 加上图片访问的baseUrl  注意一定要改为http 不然预览网络图片一直黑屏
+                projectIntrImgList[index++] =
+                    "http://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
+                    + intrInfoList[i].content;
+        }
+
+        console.log(e.currentTarget.dataset.imgUrl);
+        wx.previewImage({
+            // 当前显示图片的http链接
+            current: "http://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
+                + e.currentTarget.dataset.imgUrl,
+
+            // 需要预览的图片http链接列表
+            urls: projectIntrImgList,
+            fail: function (res) {
+                console.log(res);
+            }
+        })
     },
 
     // 点击成员选项卡，展示参与打卡的用户

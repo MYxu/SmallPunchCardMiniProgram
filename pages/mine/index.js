@@ -145,7 +145,8 @@ Page({
     intoUserInfoDetailPage: function (e) {
         console.log(e);
         wx.navigateTo({
-            url: './detailPage/userInfo'
+            url: './personalHomePage/index'
+                + "?visitedUserId=" + app.globalData.userInfo.id
         })
     },
 

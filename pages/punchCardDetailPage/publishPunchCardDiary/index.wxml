@@ -79,8 +79,10 @@
         </view>
     </picker>
 
-    <view class="punch-card-diary-publish-btn">
+    <!--发表日记按钮-->
+    <button class="punch-card-diary-publish-btn" type="primary"
+            disabled="{{disabledPublishBtn}}" bindtap="publishDiary">
         发表
-    </view>
+    </button>
 
 </view>

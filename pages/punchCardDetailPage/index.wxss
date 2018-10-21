@@ -587,7 +587,7 @@
     width: auto;
     height: 40px;
     margin: 0 10px 15px 10px;
-    border: 1px solid white;
+    border: 1px solid #E3F2FD;
     border-radius: 5px;
 
     display: flex;

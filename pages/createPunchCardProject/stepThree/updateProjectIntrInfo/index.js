@@ -254,11 +254,12 @@ Page({
         let index = 0;
         for (let i = 0; i < newProjectIntrInfo.length; i++)
         {
-            // 上传图片、添加图片简介
+            // 添加新数据： 上传图片、添加图片简介
             if (parseInt(newProjectIntrInfo[i].type) === 2) {
                 uploadTask[index++] = new Promise(function (resolve) {
                     wx.uploadFile({
-                        url: app.globalData.urlRootPath + "index/PunchCardProject/addProjectIntr",
+                        url: app.globalData.urlRootPath
+                            + "index/PunchCardProject/addProjectIntr",
                         filePath: newProjectIntrInfo[i].content,
                         name: "images",
                         formData: {
@@ -275,10 +276,12 @@ Page({
                         }
                     });
                 });
-            } else if (parseInt(newProjectIntrInfo[i].type) === 1) { // 添加文本简介
+            } else if (parseInt(newProjectIntrInfo[i].type) === 1) {
+                //添加新数据： 添加文本简介
                 uploadTask[index++] = new Promise(function (resolve) {
                     wx.request({
-                        url: app.globalData.urlRootPath + 'index/PunchCardProject/addProjectIntr',
+                        url: app.globalData.urlRootPath
+                            + 'index/PunchCardProject/addProjectIntr',
                         method: "post",
                         data: {
                             project_id: parseInt(that.data.projectId),
@@ -300,7 +303,8 @@ Page({
         // 更新旧数据
         uploadTask[index] = new Promise(function (resolve) {
             wx.request({
-                url: app.globalData.urlRootPath + 'index/PunchCardProject/updateProjectIntr',
+                url: app.globalData.urlRootPath
+                    + 'index/PunchCardProject/updateProjectIntr',
                 method: "post",
                 data: {
                     projectIntrInfo: oldProjectIntrInfo
@@ -316,6 +320,7 @@ Page({
 
 
         Promise.all(uploadTask).then(function (res) {
+            // 对于出错的不进行更新
             wx.hideLoading();
             console.log(res);
             wx.navigateBack({
