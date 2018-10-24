@@ -1,0 +1,82 @@
+.container {
+    overflow: hidden;
+}
+/*文本内容编辑区域*/
+.text-comment-edit-area {
+    width: auto;
+    height: auto;
+    margin: 10px 15px ;
+    border: 1px #e5e5e5 solid;
+    padding: 25px 10px 0 10px;
+}
+.text-comment-edit-area > textarea {
+    width: 100%;
+    min-height: 160px;
+    max-height: 220px;
+    height: auto;
+    line-height: 1.4;
+    font-size: 18px;
+    color: black;
+}
+.text-comment-num-notice {
+    font-size: 13px;
+    color: #C9C9C9;
+    text-align: right;
+}
+
+/*输入为空的提示信息样式*/
+.edit-comment-notice {
+    font-size: 17px;
+    color: #8a8a8a;
+}
+
+/*音频评论添加按钮*/
+.sound-comment-btn {
+    width: 70px;
+    height: 70px;
+    margin-left: 15px;
+    border: 1px #E5E5E5 solid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.sound-comment-btn > image {
+    width: 50px;
+    height: 50px;
+}
+
+/*评论提交按钮*/
+.comment-publish-btn {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #F0B27A;
+
+    font-size: 17px;
+    color: white;
+
+    position: fixed;
+    bottom: 0;
+}
+
+.cancel-btn {
+    width: 35%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background-color: #BDBDBD;
+}
+
+
+.publish-btn {
+    width: 65%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+

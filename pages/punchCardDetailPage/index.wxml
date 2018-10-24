@@ -49,13 +49,17 @@
                                 <block wx:if="{{index <= 2 }}">
                                     <!--使用默认的小程序内置的默认头像-->
                                     <block wx:if="{{item.avatar_url == 'default_avatar'}}">
-                                        <view class="user-avatar-list-item img-{{index}}">
+                                        <view class="user-avatar-list-item img-{{index}}"
+                                              bindtap="intoPersonalHomePage"
+                                              data-user-id="{{item.id}}">
                                             <image src="../../images/default/userAvatar.png">
                                             </image>
                                         </view>
                                     </block>
                                     <block wx:else>
-                                        <view class="user-avatar-list-item img-{{index}}">
+                                        <view class="user-avatar-list-item img-{{index}}"
+                                              bindtap="intoPersonalHomePage"
+                                              data-user-id="{{item.id}}">
                                             <image src="{{item.avatar_url}}">
                                             </image>
                                         </view>
@@ -145,8 +149,303 @@
 
 
                 <!--TODO 打卡日记部分展示-->
-                <block>
+                <block wx:if="{{punchCardDiaryList.length > 0}}">
+                    <view class="separator-height-10px"></view>
                     <view class="container-not-join-in-pro-punch-card-diary">
+                        <view class="title">打卡日记</view>
+
+                        <!--只显示前十条用户打卡日记的相关信息-->
+                        <block wx:if="{{punchCardDiaryList.length > 0}}">
+                            <view class="user-punch-card-diary-list-info">
+                                <block wx:for="{{punchCardDiaryList}}">
+                                    <block wx:if="{{index !== 0}}">
+                                        <view class="separator-height-10px"></view>
+                                    </block>
+
+                                    <view class='user-punch-card-diary-item'>
+                                        <!-- 日记展示头部：日记用户头像、昵称、打卡时间、已打卡天数
+                                        、日记私密类型、置顶、删除按钮 -->
+                                        <view class='header-info'>
+                                            <!--打卡日记发表者头像 -->
+                                            <view class='publisher-avatar'
+                                                  bindtap="intoPersonalHomePage"
+                                                  data-user-id="{{item.publisher.id}}">
+                                                <!--使用默认的小程序内置的默认头像-->
+                                                <block wx:if="{{item.publisher.avatar_url == 'default_avatar'}}">
+                                                    <image src="/images/default/userAvatar.png">
+                                                        <block wx:if="{{item.publisher.sex == 1}}">
+                                                            <view class="publisher-sex-male"
+                                                                  bindtap="intoPersonalHomePage"
+                                                                  data-user-id="{{item.publisher.id}}">
+                                                                <image src="/images/button/sex_male.png">
+                                                                </image>
+                                                            </view>
+                                                        </block>
+                                                        <block wx:if="{{item.publisher.sex == 2}}">
+                                                            <view class="publisher-sex-female"
+                                                                  bindtap="intoPersonalHomePage"
+                                                                  data-user-id="{{item.publisher.id}}">
+                                                                <image src="/images/button/sex_female.png">
+                                                                </image>
+                                                            </view>
+                                                        </block>
+                                                    </image>
+                                                </block>
+                                                <block wx:else>
+                                                    <image src='{{item.publisher.avatar_url}}'>
+                                                        <block wx:if="{{item.publisher.sex == 1}}">
+                                                            <view class="publisher-sex-male"
+                                                                  bindtap="intoPersonalHomePage"
+                                                                  data-user-id="{{item.publisher.id}}">
+                                                                <image src="/images/button/sex_male.png">
+                                                                </image>
+                                                            </view>
+                                                        </block>
+                                                        <block wx:if="{{item.publisher.sex == 2}}">
+                                                            <view class="publisher-sex-female"
+                                                                  bindtap="intoPersonalHomePage"
+                                                                  data-user-id="{{item.publisher.id}}">
+                                                                <image src="/images/button/sex_female.png">
+                                                                </image>
+                                                            </view>
+                                                        </block>
+                                                    </image>
+                                                </block>
+                                            </view>
+
+                                            <!--头部中间部分信息-->
+                                            <view class='header-center-info'>
+                                                <!-- 用户昵称 -->
+                                                <view class="publisher-nick-name"
+                                                      bindtap="intoPersonalHomePage"
+                                                      data-user-id="{{item.publisher.id}}">
+                                                    {{item.publisher.nick_name}}
+                                                </view>
+
+                                                <!--打卡时间 & 坚持天数即日记在圈子的总打卡天数-->
+                                                <view class="punch-time"
+                                                      bindtap="intoDiaryDetailPage">
+                                                    <text>{{item.punch_card_time}} · 已坚持{{item.curr_diary_punch_card_day_num}}天</text>
+
+                                                    <!-- 日记隐私类型 -->
+                                                    <block wx:if="{{item.visible_type==1}}">
+                                                        <view class="diary-visible-type">
+                                                            <image src="/images/button/hide.png">
+                                                            </image>
+                                                        </view>
+                                                    </block>
+                                                </view>
+                                            </view>
+
+                                            <!--头部右部信息-->
+                                            <view class='header-info-right'>
+                                                <!-- 删除按钮 对日记发表者&&圈主可见-->
+                                                <block wx:if="{{isCreator==1 || userInfo.id==item.publisher.id}}">
+                                                    <view class="delete-diary-btn" bindtap="deleteDiary">
+                                                        <image
+                                                                src='/images/button/delete.png'>
+                                                        </image>
+                                                    </view>
+                                                </block>
+                                                <block wx:else>
+                                                    <view class="delete-diary-btn" bindtap="into">
+                                                        <image src='/images/button/more.png'>
+                                                        </image>
+                                                    </view>
+                                                </block>
+
+
+                                                <!--置顶-->
+                                                <block wx:if="{{item.have_sticky == 0}}">
+                                                    <block wx:if="{{isCreator==1}}">
+                                                        <view class="not-sticky" bindtap="setSticky">
+                                                            置顶
+                                                        </view>
+                                                    </block>
+                                                </block>
+                                                <block wx:else>
+                                                    <view class="have-sticky">
+                                                        <image src="/images/button/sticky.png">
+                                                        </image>
+                                                    </view>
+                                                </block>
+                                            </view>
+                                        </view>
+
+                                        <!--打卡日记内容-->
+                                        <view class="diary-detail-content">
+                                            <!-- 打卡文字内容 -->
+                                            <view class="diary-text"
+                                                  bindtap="intoDiaryDetailPage">
+                                                {{item.text_content}}
+                                            </view>
+
+                                            <!-- 打卡图片 & 视频 & 音频，一张图片直接显示，二张以上九宫格格式展示 -->
+                                            <view class="diary-resource">
+                                                <!--TODO 视频-->
+                                                <block wx:if="{{item.diaryResource.length>0 && item.diaryResource.length<2}}">
+                                                    <!--一张图片则根据图片大小显示-->
+                                                    <view class="one-image" catchtap="previewDiaryImage"
+                                                          data-index="{{index}}"
+                                                          data-img-url="{{item.diaryResource[0].resource_url}}">
+                                                        <image src="{{imgRootPath}}{{item.diaryResource[0].resource_url}}" mode="widthFix">
+                                                        </image>
+                                                    </view>
+                                                </block>
+                                                <block wx:else>
+                                                    <view class="diary-img-list">
+                                                        <block wx:for="{{item.diaryResource}}" wx:for-item="v"
+                                                               wx:for-index="k">
+                                                            <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px" catchtap="previewDiaryImage" data-index="{{index}}"
+                                                                  data-img-url="{{v.resource_url}}">
+                                                                <image src="{{imgRootPath}}{{v.resource_url}}">
+                                                                </image>
+                                                            </view>
+                                                        </block>
+                                                    </view>
+
+                                                </block>
+                                                <!--TODO 音频-->
+                                            </view>
+
+                                            <!-- 打卡地点 -->
+                                            <block wx:if="{{item.punch_card_address == ''}}">
+                                                <view class="not-punch-card-address">
+                                                    <image src="/images/button/diaryPunchAddress.png"></image>
+                                                    <text>银河系某个未知的神秘星球</text>
+                                                </view>
+                                            </block>
+                                            <block wx:else>
+                                                <view class="punch-card-address" bindtap="intoPunchCardAddress"
+                                                      data-diary-index="{{index}}">
+                                                    <image src="/images/button/address_light.png"></image>
+                                                    <text>{{item.punch_card_address}}</text>
+                                                </view>
+                                            </block>
+
+                                            <!-- 互动信息 -->
+                                            <view class="diary-interaction-info">
+
+                                                <!-- 点赞、评论、分享 按钮-->
+                                                <view class="diary-interaction-btn">
+                                                    <!-- 点赞 -->
+                                                    <view class="like-btn" catchtap="dealUserLike"
+                                                          data-diary-id="{{item.id}}"
+                                                          data-have-like="{{item.haveLike}}"
+                                                          data-diary-index="{{index}}">
+                                                        <!--当前用户已对本条日记点赞-->
+                                                        <block wx:if="{{item.haveLike}}">
+                                                            <image src="/images/button/like_btn.png">
+                                                            </image>
+                                                        </block>
+                                                        <block wx:else>
+                                                            <image src="/images/button/like_btn_2.png"></image>
+                                                        </block>
+                                                        <text>赞</text>
+                                                    </view>
+
+                                                    <!-- 评论 对日记发表者评论默认为一级评论-->
+                                                    <view class="comment-btn" catchtap="publishComment"
+                                                          data-pid="0" data-respondent-id="{{item.publisher.id}}"
+                                                          data-diary-id="{{item.id}}"
+                                                          data-diary-index="{{index}}">
+                                                        <image src="/images/button/comment_btn.png"></image>
+                                                        <text>评论</text>
+                                                    </view>
+
+                                                    <!-- 分享 -->
+                                                    <view class="share-btn">
+                                                        <image src="/images/button/share_btn.png"></image>
+                                                        <text>分享</text>
+                                                    </view>
+
+                                                    <!--点评-->
+                                                    <block wx:if="{{isCreator == 1}}">
+                                                        <view class="remark-diary-btn">
+                                                            <image src="/images/button/remark.png"></image>
+                                                            <text>点评</text>
+                                                        </view>
+                                                    </block>
+                                                </view>
+
+                                                <!-- 点赞用户展示，只展示服务器返回前十个用户昵称以及总赞数 -->
+                                                <block wx:if="{{item.tenLikeInfo.length > 0}}">
+                                                    <view class="like-user-info">
+                                                        <image src="/images/button/like_btn.png"></image>
+                                                        <block wx:for="{{item.tenLikeInfo}}" wx:for-item="likeUserItem"
+                                                               wx:for-index="i">
+                                                            <!--只显示十个用户昵称-->
+                                                            <block wx:if="{{i < 10}}">
+                                                                <text bindtap="intoPersonalHomePage"
+                                                                      data-user-id="{{likeUserItem.admirer.id}}">{{likeUserItem.admirer.nick_name}}<block wx:if="{{i+1 !== item.tenLikeInfo.length}}">,</block>
+                                                                </text>
+                                                            </block>
+                                                        </block>
+                                                        <block wx:if="{{item.like_user_num > 10}}">
+                                                            <text>共{{item.like_user_num}}人觉得很赞</text>
+                                                        </block>
+                                                    </view>
+                                                    <!-- 隔离带 -->
+                                                    <view style="background-color: #dbdbdb;height: 1px;"></view>
+                                                </block>
+
+                                                <!-- 评论信息 -->
+                                                <block wx:if="{{item.allCommentInfo.length > 0}}">
+                                                    <view class="commentInfo">
+                                                        <block wx:for="{{item.allCommentInfo}}" wx:for-item="i"
+                                                               wx:for-index="k">
+                                                            <view data-reviewer-id="{{i.reviewer.id}}"
+                                                                  data-reviewer-nick-name="{{i.reviewer.nick_name}}"
+                                                                  data-diary-id="{{item.id}}"
+                                                                  data-diary-index="{{index}}"
+                                                                  data-pid="{{i.pid}}"
+                                                                  data-comment-id="{{i.id}}"
+                                                                  data-comment-index="{{k}}"
+                                                                  catchtap="replyComment">
+                                                                <!--评论者昵称-->
+                                                                <text data-user-id="{{i.reviewer.id}}"
+                                                                      catchtap="intoPersonalHomePage">{{i.reviewer.nick_name}}</text>
+                                                                <!--
+                                                                    该评论所回复的用户昵称 一级评论不显示被评论者信息
+                                                                    因为被评论者是日记发表者
+                                                                -->
+                                                                <block wx:if="{{i.pid != 0}}">
+                                                                    <text style="color: black"> @ </text>
+                                                                    <text data-user-id="{{i.respondent.id}}"
+                                                                          bindtap="intoPersonalHomePage">{{i.respondent.nick_name}}</text>
+                                                                </block>
+
+                                                                <!--评论内容-->
+                                                                <text style="color: black"> : {{i.text_comment}}</text>
+                                                            </view>
+                                                        </block>
+                                                    </view>
+                                                </block>
+
+                                            </view><!-- 打卡日记交互(点赞、评论等)信息 -->
+                                        </view><!-- 打卡日记详细内容 -->
+                                    </view><!-- 我的打卡日记展示 -->
+                                </block>
+                            </view>
+
+                            <view class="separator-height-10px"></view>
+
+                            <view class="not-punch-card-diary-notice"
+                                  style="margin: 25px 15% 25px 15%">
+                                <view class="line" style="margin-right: 2px"></view>
+
+                                <view class="dot"></view>
+
+                                <view style="margin: 0 5px;">参与活动,查看更多精彩日记</view>
+
+                                <view class="dot"></view>
+
+                                <view class="line" style="margin-left: 2px"></view>
+                            </view>
+
+                            <view class="separator-height-10px"></view>
+                        </block>
+
                     </view>
                 </block>
 
@@ -320,6 +619,7 @@
                     </view>
                 </view>
 
+                <!--创建者显示管理后台按钮-->
                 <block wx:if="{{isCreator === 1}}">
                     <view class="back-stage-management-page-into-btn">
                         <image src="../../images/button/back_setting.png">
@@ -327,6 +627,7 @@
                         <text>管理后台</text>
                     </view>
                 </block>
+
                 <!--通用的功能入口列表：打卡日历、排行&勋章、设置、邀请好友-->
                 <view class="universal-function-list">
                     <!--打卡日历-->
@@ -350,7 +651,6 @@
                         <text>邀请好友</text>
                     </view>
                 </view>
-
             </view>
 
             <view class="separator-height-10px"></view>
@@ -419,23 +719,298 @@
                         </view>
                     </block>
 
-                    <!--日记展示-->
+                    <!--日记列表展示-->
                     <block wx:if="{{punchCardDiaryList.length > 0}}">
-                        <block wx:for="{{punchCardDiaryList}}">
-                            <view>{{item.text_content}}</view>
-                        </block>
+                        <view class="user-punch-card-diary-list-info">
+                            <block wx:for="{{punchCardDiaryList}}">
+                                <block wx:if="{{index !== 0}}">
+                                    <view class="separator-height-10px"></view>
+                                </block>
+
+                                <view class='user-punch-card-diary-item'>
+                                    <!-- 日记展示头部：日记用户头像、昵称、打卡时间、已打卡天数
+                                    、日记私密类型、置顶、删除按钮 -->
+                                    <view class='header-info'>
+                                        <!--打卡日记发表者头像 -->
+                                        <view class='publisher-avatar'
+                                              bindtap="intoPersonalHomePage"
+                                              data-user-id="{{item.publisher.id}}">
+                                            <!--使用默认的小程序内置的默认头像-->
+                                            <block wx:if="{{item.publisher.avatar_url == 'default_avatar'}}">
+                                                <image src="/images/default/userAvatar.png">
+                                                    <block wx:if="{{item.publisher.sex == 1}}">
+                                                        <view class="publisher-sex-male"
+                                                              bindtap="intoPersonalHomePage"
+                                                              data-user-id="{{item.publisher.id}}">
+                                                            <image src="/images/button/sex_male.png">
+                                                            </image>
+                                                        </view>
+                                                    </block>
+                                                    <block wx:if="{{item.publisher.sex == 2}}">
+                                                        <view class="publisher-sex-female"
+                                                              bindtap="intoPersonalHomePage"
+                                                              data-user-id="{{item.publisher.id}}">
+                                                            <image src="/images/button/sex_female.png">
+                                                            </image>
+                                                        </view>
+                                                    </block>
+                                                </image>
+                                            </block>
+                                            <block wx:else>
+                                                <image src='{{item.publisher.avatar_url}}'>
+                                                    <block wx:if="{{item.publisher.sex == 1}}">
+                                                        <view class="publisher-sex-male"
+                                                              bindtap="intoPersonalHomePage"
+                                                              data-user-id="{{item.publisher.id}}">
+                                                            <image src="/images/button/sex_male.png">
+                                                            </image>
+                                                        </view>
+                                                    </block>
+                                                    <block wx:if="{{item.publisher.sex == 2}}">
+                                                        <view class="publisher-sex-female"
+                                                              bindtap="intoPersonalHomePage"
+                                                              data-user-id="{{item.publisher.id}}">
+                                                            <image src="/images/button/sex_female.png">
+                                                            </image>
+                                                        </view>
+                                                    </block>
+                                                </image>
+                                            </block>
+                                        </view>
+
+                                        <!--头部中间部分信息-->
+                                        <view class='header-center-info'>
+                                            <!-- 用户昵称 -->
+                                            <view class="publisher-nick-name"
+                                                  bindtap="intoPersonalHomePage"
+                                                  data-user-id="{{item.publisher.id}}">
+                                                {{item.publisher.nick_name}}
+                                            </view>
+
+                                            <!--打卡时间 & 坚持天数即日记在圈子的总打卡天数-->
+                                            <view class="punch-time"
+                                                  bindtap="intoDiaryDetailPage">
+                                                <text>{{item.punch_card_time}} · 已坚持{{item.curr_diary_punch_card_day_num}}天</text>
+
+                                                <!-- 日记隐私类型 -->
+                                                <block wx:if="{{item.visible_type==1}}">
+                                                    <view class="diary-visible-type">
+                                                        <image src="/images/button/hide.png">
+                                                        </image>
+                                                    </view>
+                                                </block>
+                                            </view>
+                                        </view>
+
+                                        <!--头部右部信息-->
+                                        <view class='header-info-right'>
+                                            <!-- 删除按钮 对日记发表者&&圈主可见-->
+                                            <block wx:if="{{isCreator==1 || userInfo.id==item.publisher.id}}">
+                                                <view class="delete-diary-btn" bindtap="deleteDiary">
+                                                    <image
+                                                           src='/images/button/delete.png'>
+                                                    </image>
+                                                </view>
+                                            </block>
+                                            <block wx:else>
+                                                <view class="delete-diary-btn" bindtap="into">
+                                                    <image src='/images/button/more.png'>
+                                                    </image>
+                                                </view>
+                                            </block>
+
+
+                                            <!--置顶-->
+                                            <block wx:if="{{item.have_sticky == 0}}">
+                                                <block wx:if="{{isCreator==1}}">
+                                                    <view class="not-sticky" bindtap="setSticky">
+                                                        置顶
+                                                    </view>
+                                                </block>
+                                            </block>
+                                            <block wx:else>
+                                                <view class="have-sticky">
+                                                    <image src="/images/button/sticky.png">
+                                                    </image>
+                                                </view>
+                                            </block>
+                                        </view>
+                                    </view>
+
+                                    <!--打卡日记内容-->
+                                    <view class="diary-detail-content">
+                                        <!-- 打卡文字内容 -->
+                                        <view class="diary-text"
+                                              bindtap="intoDiaryDetailPage">
+                                            {{item.text_content}}
+                                        </view>
+
+                                        <!-- 打卡图片 & 视频 & 音频，一张图片直接显示，二张以上九宫格格式展示 -->
+                                        <view class="diary-resource">
+                                            <!--TODO 视频-->
+                                            <block wx:if="{{item.diaryResource.length>0 && item.diaryResource.length<2}}">
+                                                <!--一张图片则根据图片大小显示-->
+                                                <view class="one-image" catchtap="previewDiaryImage"
+                                                      data-index="{{index}}"
+                                                      data-img-url="{{item.diaryResource[0].resource_url}}">
+                                                    <image src="{{imgRootPath}}{{item.diaryResource[0].resource_url}}" mode="widthFix">
+                                                    </image>
+                                                </view>
+                                            </block>
+                                            <block wx:else>
+                                                <view class="diary-img-list">
+                                                    <block wx:for="{{item.diaryResource}}" wx:for-item="v"
+                                                           wx:for-index="k">
+                                                        <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px" catchtap="previewDiaryImage" data-index="{{index}}"
+                                                              data-img-url="{{v.resource_url}}">
+                                                            <image src="{{imgRootPath}}{{v.resource_url}}">
+                                                            </image>
+                                                        </view>
+                                                    </block>
+                                                </view>
+
+                                            </block>
+                                            <!--TODO 音频-->
+                                        </view>
+
+                                        <!-- 打卡地点 -->
+                                        <block wx:if="{{item.punch_card_address == ''}}">
+                                            <view class="not-punch-card-address">
+                                                <image src="/images/button/diaryPunchAddress.png"></image>
+                                                <text>银河系某个未知的神秘星球</text>
+                                            </view>
+                                        </block>
+                                        <block wx:else>
+                                            <view class="punch-card-address" bindtap="intoPunchCardAddress"
+                                                  data-diary-index="{{index}}">
+                                                <image src="/images/button/address_light.png"></image>
+                                                <text>{{item.punch_card_address}}</text>
+                                            </view>
+                                        </block>
+
+                                        <!-- 互动信息 -->
+                                        <view class="diary-interaction-info">
+
+                                            <!-- 点赞、评论、分享 按钮-->
+                                            <view class="diary-interaction-btn">
+                                                <!-- 点赞 -->
+                                                <view class="like-btn" catchtap="dealUserLike"
+                                                      data-diary-id="{{item.id}}"
+                                                      data-have-like="{{item.haveLike}}"
+                                                      data-diary-index="{{index}}">
+                                                    <!--当前用户已对本条日记点赞-->
+                                                    <block wx:if="{{item.haveLike}}">
+                                                        <image src="/images/button/like_btn.png">
+                                                        </image>
+                                                    </block>
+                                                    <block wx:else>
+                                                        <image src="/images/button/like_btn_2.png"></image>
+                                                    </block>
+                                                    <text>赞</text>
+                                                </view>
+
+                                                <!-- 评论 对日记发表者评论默认为一级评论-->
+                                                <view class="comment-btn" catchtap="publishComment"
+                                                      data-pid="0" data-respondent-id="{{item.publisher.id}}"
+                                                      data-diary-id="{{item.id}}" data-diary-index="{{index}}">
+                                                    <image src="/images/button/comment_btn.png"></image>
+                                                    <text>评论</text>
+                                                </view>
+
+                                                <!-- 分享 -->
+                                                <view class="share-btn">
+                                                    <image src="/images/button/share_btn.png"></image>
+                                                    <text>分享</text>
+                                                </view>
+
+                                                <!--点评-->
+                                                <block wx:if="{{isCreator == 1}}">
+                                                    <view class="remark-diary-btn">
+                                                        <image src="/images/button/remark.png"></image>
+                                                        <text>点评</text>
+                                                    </view>
+                                                </block>
+                                            </view>
+
+                                            <!-- 点赞用户展示，只展示服务器返回前十个用户昵称以及总赞数 -->
+                                            <block wx:if="{{item.tenLikeInfo.length > 0}}">
+                                                <view class="like-user-info">
+                                                    <image src="/images/button/like_btn.png"></image>
+                                                    <block wx:for="{{item.tenLikeInfo}}" wx:for-item="likeUserItem"
+                                                           wx:for-index="i">
+                                                        <!--只显示十个用户昵称-->
+                                                        <block wx:if="{{i < 10}}">
+                                                            <text bindtap="intoPersonalHomePage"
+                                                                  data-user-id="{{likeUserItem.admirer.id}}">{{likeUserItem.admirer.nick_name}}<block wx:if="{{i+1 !== item.tenLikeInfo.length}}">,</block>
+                                                            </text>
+                                                        </block>
+                                                    </block>
+                                                    <block wx:if="{{item.like_user_num > 10}}">
+                                                        <text>共{{item.like_user_num}}人觉得很赞</text>
+                                                    </block>
+                                                </view>
+                                                <!-- 隔离带 -->
+                                                <view style="background-color: #dbdbdb;height: 1px;"></view>
+                                            </block>
+
+
+                                            <!-- 评论信息 -->
+                                            <block wx:if="{{item.allCommentInfo.length > 0}}">
+                                                <view class="commentInfo">
+                                                    <block wx:for="{{item.allCommentInfo}}" wx:for-item="i"
+                                                           wx:for-index="k">
+                                                        <view data-reviewer-id="{{i.reviewer.id}}"
+                                                              data-reviewer-nick-name="{{i.reviewer.nick_name}}"
+                                                              data-diary-id="{{item.id}}"
+                                                              data-diary-index="{{index}}"
+                                                              data-pid="{{i.pid}}"
+                                                              data-comment-id="{{i.id}}"
+                                                              data-comment-index="{{k}}"
+                                                              catchtap="replyComment">
+                                                            <!--评论者昵称-->
+                                                            <text data-user-id="{{i.reviewer.id}}"
+                                                                  catchtap="intoPersonalHomePage">{{i.reviewer.nick_name}}</text>
+                                                            <!--
+                                                                该评论所回复的用户昵称 一级评论不显示被评论者信息
+                                                                因为被评论者是日记发表者
+                                                            -->
+                                                            <block wx:if="{{i.pid != 0}}">
+                                                                <text style="color: black"> @ </text>
+                                                                <text data-user-id="{{i.respondent.id}}"
+                                                                      bindtap="intoPersonalHomePage">{{i.respondent.nick_name}}</text>
+                                                            </block>
+
+                                                            <!--评论内容-->
+                                                            <text style="color: black"> : {{i.text_comment}}</text>
+                                                        </view>
+                                                    </block>
+                                                </view>
+                                            </block>
+
+                                        </view><!-- 打卡日记交互(点赞、评论等)信息 -->
+                                    </view><!-- 打卡日记详细内容 -->
+                                </view><!-- 我的打卡日记展示 -->
+                            </block>
+                        </view>
 
                         <!--底部加载更多-->
-                        <view class="weui-loadmore" hidden="{{hiddenLoadingMore}}">
+                        <view class="weui-loadmore" hidden="{{hiddenLoadingMore}}" style="margin-bottom: 60px">
                             <view class="weui-loading"></view>
                             <view class="weui-loadmore__tips">正在加载</view>
                         </view>
+                        <view class="not-punch-card-diary-notice" hidden="{{haveMore}}"
+                              style="margin: 25px 22% 80px 22%">
+                            <view class="line" style="margin-right: 2px"></view>
 
-                        <view hidden="{{haveMore}}"
-                              class="weui-loadmore weui-loadmore_line weui-loadmore_dot">
-                            <view class="weui-loadmore__tips weui-loadmore__tips_in-line weui-loadmore__tips_in-dot">
-                            </view>
+                            <view class="dot"></view>
+
+                            <view style="margin: 0 5px;">我可是有底线的哦</view>
+
+                            <view class="dot"></view>
+
+                            <view class="line" style="margin-left: 2px"></view>
                         </view>
+
                     </block>
                     <block wx:else>
                         <view class="not-punch-card-diary-notice">
@@ -452,8 +1027,8 @@
                             </view>
                         </view>
                     </block>
-
                 </view>
+
 
                 <!--当选择详情选项卡的时候显示圈子的圈主简介、圈子简介详情-->
                 <view class="project-detail-info" hidden="{{hiddenProjectDetailInfo}}">
@@ -464,13 +1039,15 @@
                             <view class="creator-intr-info-title">
                                 <text>圈主简介</text>
                             </view>
-                            <image src="../../images/button/edit.png" class="edit-icon"
-                                   bindtap="updateCreatorInfo">
-                            </image>
-                            <view class="creator-intr-info-edit-notice"
-                                  bindtap="updateCreatorInfo">
-                                编辑圈主信息
-                            </view>
+                            <block wx:if="{{isCreator==1}}">
+                                <image src="../../images/button/edit.png" class="edit-icon"
+                                       bindtap="updateCreatorInfo">
+                                </image>
+                                <view class="creator-intr-info-edit-notice"
+                                      bindtap="updateCreatorInfo">
+                                    编辑圈主信息
+                                </view>
+                            </block>
                         </view>
                         <view class="creator-base-info">
                             <!--头像-->
@@ -499,7 +1076,7 @@
                                 <view class="creator-sex-female"
                                       bindtap="intoPersonalHomePage"
                                       data-user-id="{{creatorInfo.creator_id}}">
-                                    <image src="../../images/button/sex_female.png">
+                                    <image src="/images/button/sex_female.png">
                                     </image>
                                 </view>
                             </block>
@@ -565,13 +1142,17 @@
                             <view class="project-intr-info-title">
                                 <text>圈子简介</text>
                             </view>
-                            <image src="../../images/button/edit.png" class="edit-icon"
-                                   bindtap="updateProjectIntrInfo">
-                            </image>
-                            <view class="project-intr-info-edit-notice"
-                                  bindtap="updateProjectIntrInfo">
-                                编辑圈子介绍
-                            </view>
+
+                            <block wx:if="{{isCreator==1}}">
+                                <image src="../../images/button/edit.png" class="edit-icon"
+                                       bindtap="updateProjectIntrInfo">
+                                </image>
+                                <view class="project-intr-info-edit-notice"
+                                      bindtap="updateProjectIntrInfo">
+                                    编辑圈子介绍
+                                </view>
+                            </block>
+
                         </view>
                         <!--圈子内容-->
                         <block wx:if="{{projectInfo.IntrInfoList.length > 0}}">
@@ -603,8 +1184,6 @@
                         </block>
                     </view>
                 </view>
-
-
 
                 <!--当选择成员选项卡的时候展示打卡圈子的参与用户列表-->
                 <view class="punch-Card-project-attend-user-list"
@@ -692,13 +1271,13 @@
                                 <!--性别-->
                                 <block wx:if="{{item.sex == 1}}">
                                     <view class="user-sex-male">
-                                        <image src="../../images/button/sex_male.png">
+                                        <image src="/images/button/sex_male.png">
                                         </image>
                                     </view>
                                 </block>
                                 <block wx:if="{{item.sex == 2}}">
                                     <view class="user-sex-female">
-                                        <image src="../../images/button/sex_female.png">
+                                        <image src="/images/button/sex_female.png">
                                         </image>
                                     </view>
                                 </block>

@@ -15,7 +15,8 @@
         "pages/punchCardDetailPage/index",
         "pages/createPunchCardProject/stepThree/updateCoverImg/index",
         "pages/punchCardDetailPage/publishPunchCardDiary/index",
-        "pages/position/index"
+        "pages/position/index",
+        "pages/publishComment/index"
     ],
     "window": {
         "navigationBarBackgroundColor": "#F0B27A",

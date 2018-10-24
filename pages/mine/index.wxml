@@ -207,13 +207,12 @@
                                     </block>
                                     <text>共{{item.likeUserInfo.num}}人觉得很赞</text>
                                 </view>
+                                <!-- 隔离带 -->
+                                <view style="background-color: #dbdbdb;height: 1px;"></view>
                             </block>
-                            <block wx:else></block>
 
 
-                            <!-- 隔离带 -->
-                            <view style="background-color: #dbdbdb;height: 1px;">
-                            </view>
+
 
                             <!-- 评论信息 -->
                             <block wx:if="{{item.commentInfo}}">
@@ -237,7 +236,6 @@
                                     </block>
                                 </view>
                             </block>
-                            <block wx:else></block>
 
                             <!--回复评论输入框 通过display:none 来隐藏 小程序hidden属性使用于块级元素-->
                             <!--<view class="receiverComment" style="display:{{hideCommentInputView}};">-->

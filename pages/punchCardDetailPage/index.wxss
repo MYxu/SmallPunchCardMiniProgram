@@ -226,6 +226,11 @@
 }
 
 
+/*对未加入打卡圈子的用户进行的打卡日记列表显示*/
+.container-not-join-in-pro-punch-card-diary {
+    width: 100%;
+    height: auto;
+}
 
 
 
@@ -708,6 +713,11 @@
 }
 
 /*参与用户的打卡日记展示*/
+.user-punch-card-diary-list {
+    width: 100%;
+    height: auto;
+}
+
 /*日记展示筛选器*/
 .punch-card-diary-filter-btn {
     width: auto;
@@ -744,6 +754,456 @@
 }
 
 /*打卡日记列表展示*/
+.user-punch-card-diary-list-info {
+    width: 100%;
+    height: 100%;
+}
+.user-punch-card-diary-item {
+    width: 100%;
+    height: auto;
+    padding-bottom: 10px;
+}
+
+
+/* 日记展示头部：日记用户头像、昵称、打卡时间、已打卡天数、日记私密类型、删除 按钮 */
+.header-info {
+    width: auto;
+    height: 60px;
+    margin: 0 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+
+/* 日记发表用户头像 */
+.publisher-avatar {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+.publisher-avatar > image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+/*性别*/
+.publisher-sex-male{
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.publisher-sex-male > image{
+    width: 15px;
+    height: 15px;
+}
+
+.publisher-sex-female {
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.publisher-sex-female > image{
+    width: 15px;
+    height: 15px;
+    transform: rotate(30deg);
+}
+
+/*打卡用户昵称、打卡时间、坚持天数、日记隐私类型*/
+.header-center-info {
+    width: 100%;
+    height:100%;
+
+}
+
+/* 打卡日记用户昵称 */
+.publisher-nick-name {
+    width: 100%;
+    height: 50%;
+
+    margin-left: 8px;
+    text-align: left;
+    word-break: break-word;
+    color: #F0B27A;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: flex-start;
+}
+
+
+/*打卡时间 & 坚持天数*/
+.punch-time {
+    width: 100%;
+    height: 15px;
+    margin-left: 8px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.punch-time > text {
+    width: auto;
+    height: 15px;
+    font-size: 11px;
+    color: #8a8a8a;
+    margin-right: 8px;
+}
+
+/* 打卡日记隐私类型按钮 */
+.diary-visible-type {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-self: center;
+}
+.diary-visible-type > image {
+    width: 15px;
+    height: 15px;
+}
+
+
+/* 当本人进入自己的个人主页时显示可删除按钮 */
+.header-info-right {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+/*置顶按钮 & 已置顶标志 */
+.not-sticky {
+    width: 30px;
+    height: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 11px;
+    color: #F0B27A;
+
+    border-radius: 3px;
+    border: 1px #F0B27A solid;
+}
+.have-sticky {
+    width: 40px;
+    height: 40px;
+}
+.have-sticky > image {
+    width: 40px;
+    height: 40px;
+}
+
+.delete-diary-btn {
+    width: 20px;
+    height: 20px;
+    margin-left: 6px;
+}
+
+.delete-diary-btn > image {
+    width: 20px;
+    height: 20px;
+}
+
+/* 打卡日记内容：打卡文字、图片、地址、所属打卡圈子信息、点赞、评论、分享*/
+.diary-detail-content {
+    width: auto;
+    height: auto;
+    margin:0 10px 0 58px;
+}
+
+/* 打卡文字内容 */
+.diary-text {
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+/* 打卡图片，一张图片直接显示，二张以上九宫格格式展示 */
+.diary-resource {
+    height: auto;
+    width: 100%;
+}
+/*一张图片*/
+.one-image image {
+    width: 100%;
+}
+/*多张图片*/
+.diary-img-list {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.diary-img-item {
+    margin: 0 5px 5px 0;
+}
+.diary-img-item > image{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* 打卡地址 */
+.not-punch-card-address {
+    margin-top: 5px;
+    font-size: 11px;
+    color: #8a8a8a;
+}
+
+
+.not-punch-card-address > image {
+    width: 10px;
+    height: 10px;
+    margin-top: 2px;
+    margin-right: 4px;
+}
+.punch-card-address {
+    margin-top: 5px;
+    font-size: 11px;
+    color: #F0B27A;
+}
+.punch-card-address > image {
+    width: 10px;
+    height: 10px;
+    margin-top: 2px;
+    margin-right: 4px;
+}
+
+
+/*打卡日记互动信息：点赞、评论、分享*/
+.diary-interaction-info {
+    /*background-color: cyan;*/
+    height: auto;
+    width: auto;
+}
+/* 互动按钮*/
+.diary-interaction-btn {
+    height: 20px;
+    width: 100%;
+    margin: 6px 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+/*点赞*/
+.like-btn {
+    /*background-color: greenyellow;*/
+    height: 20px;
+    width: 25%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 12px;
+    color: #8a8a8a;
+}
+
+.like-btn > image {
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+}
+
+/*评论*/
+.comment-btn {
+    /*background-color: blue;*/
+    height: 20px;
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 12px;
+    color: #8a8a8a;
+
+    margin-right: 4px;
+}
+
+.comment-btn image {
+    height: 20px;
+    width: 20px;
+    margin-right: 4px;
+
+}
+
+/*分享*/
+.share-btn {
+    /*background-color: darkorange;*/
+    height: 20px;
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 12px;
+    color: #8a8a8a;
+
+}
+
+.share-btn > image {
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+}
+
+/*点评日记按钮*/
+.remark-diary-btn {
+    height: 20px;
+    width: 25%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    /*background-color: #f9f9f9;*/
+    font-size: 12px;
+    color: #F0B27A;
+
+}
+
+.remark-diary-btn > image {
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+
+
+}
+
+/*点赞信息：点赞用户昵称*/
+.like-user-info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    word-break: break-all;
+    height: auto;
+    background-color: whitesmoke;
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+.like-user-info image {
+    height: 15px;
+    width: 15px;
+    display: inline;
+    margin-left: 6px;
+}
+
+.like-user-info text {
+    margin-left: 15rpx;
+    font-size: 14px;
+    position: relative;
+    height: 20px;
+    line-height: 20px;
+
+    /*color: #0c61dd;*/
+    color: #F0B27A;
+}
+
+/*评论信息*/
+.commentInfo {
+    height: auto;
+    padding: 15rpx 15rpx 5rpx 15rpx;
+    background-color: whitesmoke;
+}
+
+.commentInfo view {
+    height: auto;
+    line-height: 1.1;
+    margin-bottom: 3px;
+}
+
+.commentInfo text {
+    text-align:left;
+    font-size: 14px;
+    color: #F0B27A;
+}
+
+/* 评论输入框*/
+.input_null{
+    color: #C9C9C9;
+}
+
+.receiverComment{
+    display: flex;
+    align-items: flex-end; /*底部对齐*/
+    justify-content: space-between; /*两端对齐*/
+    box-sizing: border-box;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 18rpx 0 18rpx 30rpx;
+    background-color: #F7F8F7;
+    font-size: 28rpx;
+    z-index: 999;
+}
+.receiverComment .receiverInput{
+    width: 84%;
+    min-height: 37rpx;
+    max-height: 111rpx; /*最多显示三行*/
+    border-width: 15rpx 20rpx; /*使用padding与预期留白不一致，故使用border*/
+    border-style: solid;
+    border-color: #ffffff;
+    line-height: 34rpx;
+    font-size: 28rpx;
+    background-color: #ffffff;
+    border-radius: 4rpx;
+}
+.receiverComment button{
+    width: 15%;
+    margin-right: 5px;
+    margin-left: 5px;
+    padding: 3px 10px;
+}
 
 /*无打卡日记时提示信息*/
 .not-punch-card-diary-notice {

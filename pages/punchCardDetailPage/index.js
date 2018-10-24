@@ -5,6 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        userInfo: [], // 当前使用小程序的用户信息
         showLoading: true, // 在未从服务器端获取到打卡圈子信息之前则显示加载动画&&空白页面
         imgRootPath: app.globalData.imgBaseSeverUrl, // 服务器图片访问BaseURL
 
@@ -28,7 +29,7 @@ Page({
             project_name: '',
             cover_img_url: 'default_cover_img',
             IntrInfoList: [], // {id:'简介记录id',content:'简介内容',order:'排序',type:'简介类型'}
-            attendUserNum: 1,
+            attendUserNum: 2,
             punchCardNum: 88888888
         },
 
@@ -54,7 +55,7 @@ Page({
             //     address_latitude: '纬度',
             //     visible_type: '日记可见类型', // 0-公开 圈子成员可见 1--仅圈主可见
             //     curr_diary_punch_card_day_num: '当前日记已坚持天数',
-            //     have_sticky: '是否置顶', // 0--不置顶
+            //     have_sticky: '是否置顶', // 0--不置顶 1--置顶
             //     is_repair_diary: '是否为补打卡日记', // 0--不是 1--是
             //     repair_punch_card_time: '补打卡时间',
             //     publisher: {
@@ -67,15 +68,52 @@ Page({
             //         id: '打卡日记相关的资源文件记录id',
             //         resource_url: '资源文件路径信息',
             //         type: '1-图片 2-音频 3-视频'
-            //     }
+            //     },
+            //     like_user_num: 点赞总人数
+            //     comment_num: 评论总数
+            //     haveLike: 当前小程序使用者对本条日记的点赞情况 true已点赞 false未点赞
+            //     // 每条日记只显示前十条点赞记录
+            //     tenLikeInfo:[
+            //         {
+            //              id: 点赞记录id,
+            //              admirer:{
+            //                          id: 点赞者id,  nick_name: 点赞者昵称
+            //                      }
+            //         }
+            //     ],
+            //     该日记的所有评论
+            //     allCommentInfo:[{
+            //              id: 评论记录id
+            //              pid: 该条评论所属一级评论的id
+            //              diary_id: 日记记录id
+            //              text_comment: 文本评论内容
+            //              sound_comment: 音频评论内容文件路径
+            //              create_time: 评论发表时间
+            //              reviewer: {
+            //                            id: 评论者用户id
+            //                            nick_name: 评论者昵称
+            //                            sex: 评论者性别
+            //                            avatar_url: 评论者头像
+            //                        }
+            //              一级评论则不显示评论所回复的用户的信息 因为这是针对日记发表者进行评论的
+            //              respondent: {
+            //                            id: 评论所回复的用户id
+            //                            nick_name: 评论所回复的用户昵称
+            //                            sex: 评论所回复的用户性别
+            //                            avatar_url: 评论所回复的用户头像
+            //                        }
+            //        }]
             // }
         ],
         diaryListPageNo: 1, // 当前已经加载的页号
-        diaryListDataNum: 1, // 每页显示的数据条数
+        diaryListDataNum: 2, // 每页显示的数据条数
         hiddenLoadingMore: true, // 触发上拉事件时控制显示、隐藏加载更多
         haveMore: true, // 控制显示、隐藏 没有更多数据提示信息
         getDataRes: -1, // 用于记录获取数据的请求状态 -1未知 0--请求获取数据失败 1--请求并获取数据成功
         onePageDiaryListData: [], // 获取到的打卡圈子日记列表的一页数据
+        // 计算出日记2张图片以上时图片显示的长、宽度
+        diaryImgWidth: Math.floor((app.globalData.windowWidth-(10+40+8+5+5+5+10))/3),
+
 
         // 最新加入打卡圈子的三个用户信息
         attendUserInfo: [
@@ -92,7 +130,6 @@ Page({
             // }
         ],
 
-
         haveCollect: false,      // 是否已经收藏该打卡圈子 false--未收藏
         hiddenReportBtn: true, // 显示--true、隐藏--false 举报按钮
     },
@@ -106,8 +143,89 @@ Page({
         // 一定传递打卡圈子的projectId, isCreator是否为创建者若未知直接传递-1(未知)即可，
         // 后续在获取打卡圈子的详细信息的时候获取到
         that.setData({
+            userInfo: app.globalData.userInfo,
             projectId: parseInt(options.projectId),
             isCreator: parseInt(options.isCreator),
+            // 这里的打卡日记数据应该从服务器端获取
+            diaryLists: [
+                {
+                    diaryDetailContent: '这是打卡日记111111111,哈哈哈哈哈哈哈哈哈哈啦啦啦啦',
+                    likeUserInfo: {
+                        "num": 20,
+                        "info": [
+                            {"nick_name": 'MYXuu1', "open_id": 111},
+                            {"nick_name": 'MYXuu2', "open_id": 222},
+                            {"nick_name": 'MYXuu3', "open_id": 333},
+                            {"nick_name": 'MYXuu4', "open_id": 111},
+                            {"nick_name": 'MYXuu5', "open_id": 222},
+                            {"nick_name": 'MYXuu6', "open_id": 333},
+                            {"nick_name": 'MYXuu7', "open_id": 111},
+                            {"nick_name": 'MYXuu8', "open_id": 222},
+                            {"nick_name": 'MYXuu9', "open_id": 222},
+                            {"nick_name": 'MYXuu10', "open_id": 333}
+                        ]
+                    },
+                    commentInfo: [
+                        {
+                            "content": '超级赞dnf哈哈哈哈哈哈啦啦啦啦哈哈哈哈哈哈哈哈哈哈',
+                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
+                            'receiver': ''
+                        },
+                        {
+                            "content": '谢谢!',
+                            "sender": {'nick_name': 'MYXuu', 'open_id': 456},
+                            'receiver': {'nick_name': 'MYXu', 'open_id': 123}
+                        },
+                        {
+                            "content": '啦啦啦啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿',
+                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
+                            'receiver': {'nick_name': 'MYXuu', 'open_id': 456}
+                        },
+                        {
+                            "content": '测试一下啦啦啦啦啦啦啦啦绿啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿' +
+                                '绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿',
+                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
+                            'receiver': ''
+                        }
+                    ]
+                },
+                {
+                    diaryDetailContent: '这是打卡日记222222222,哈哈哈哈哈哈哈哈哈哈啦啦啦啦',
+                    likeUserInfo: {
+                        "num": 20,
+                        "info": [
+                            {"nick_name": 'MYXuu1', "open_id": 111},
+                            {"nick_name": 'MYXuu2', "open_id": 222},
+                            {"nick_name": 'MYXuu3', "open_id": 333},
+                            {"nick_name": 'MYXuu4', "open_id": 111},
+                            {"nick_name": 'MYXuu5', "open_id": 222},
+                            {"nick_name": 'MYXuu6', "open_id": 333},
+                            {"nick_name": 'MYXuu7', "open_id": 111},
+                            {"nick_name": 'MYXuu8', "open_id": 222},
+                            {"nick_name": 'MYXuu9', "open_id": 222},
+                            {"nick_name": 'MYXuu10', "open_id": 333}
+                        ]
+                    },
+                    commentInfo: [
+                        {
+                            "content": '超级赞dnf哈哈哈哈哈哈啦啦啦啦哈哈哈哈哈哈哈哈哈哈',
+                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
+                            'receiver': ''
+                        },
+                        {
+                            "content": '谢谢',
+                            "sender": {'nick_name': 'MYXuu', 'open_id': 456},
+                            'receiver': {'nick_name': 'MYXu', 'open_id': 123}
+                        },
+                        {
+                            "content": '啦啦啦啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿',
+                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
+                            'receiver': {'nick_name': 'MYXuu', 'open_id': 456}
+                        }
+                    ]
+
+                }
+            ]
         });
 
     },
@@ -177,6 +295,7 @@ Page({
 
 
         });
+
         // 2.获取该打卡圈子的相关信息 & 圈主的基本信息
         promise[1] = new Promise(function (resolve) {
             let id = setTimeout(function () {
@@ -196,17 +315,6 @@ Page({
                         case 200:
                             let data = res.data.data;
 
-                            let attendUserList = data.attendUserList;
-                            // 对参与的用户数据进行根据加入时间降序排序，因为返回的数据顺序是时间升序排序的
-                            // 因此只要对数组的首尾元素对换即可,同时只要对换floor(length/2)即可 floor向下取整
-                            let length = attendUserList.length;
-                            for (let i = 0; i < Math.floor(length/2) ; i++)
-                            {
-                                let temp = attendUserList[i];
-                                attendUserList[i] = attendUserList[length-i-1];
-                                attendUserList[length-i-1] = temp;
-                            }
-
                             let isCreatorFlag = parseInt(data.creator_id)
                                 === parseInt(app.globalData.userInfo.id);
 
@@ -214,7 +322,7 @@ Page({
                                 'projectInfo.project_name': data.project_name,
                                 'projectInfo.cover_img_url' : data.cover_img_url,
                                 'projectInfo.IntrInfoList' : data.projectIntrInfo,
-                                'projectInfo.attendUserNum' : attendUserList.length,
+                                'projectInfo.attendUserNum' : data.attendUserList.length,
 
                                 'creatorInfo.creator_id' : data.creator_id,
                                 'creatorInfo.nick_name' : data.creator_nick_name,
@@ -223,7 +331,7 @@ Page({
                                 'creatorInfo.introduce' : data.creator_introduce,
                                 'creatorInfo.weChat' : data.weixin_num,
 
-                                attendUserInfo: attendUserList,
+                                attendUserInfo: data.attendUserList,
                                 isCreator: isCreatorFlag ? 1:0
                             });
                             resolve(true);
@@ -258,8 +366,61 @@ Page({
                 wx.setNavigationBarTitle({
                     title: that.data.joinInPunchCardProjectFlag === 0 ? '圈子详情' : '打卡详情页'
                 });
-
                 wx.hideLoading();
+
+                // 页面显示时获取第一页打卡日记列表
+                
+                // 1.从发表日记界面返回但发布失败则不更新数据
+                if (that.data.publishDiaryRes !== 'undefined' && that.data.publishDiaryRes === false) {
+                    return true;
+                }
+
+                // 2.防止预览日记、圈子图片后页面重新加载数据 但若是从发表页面返回且发表成功可以进行获取新数据
+                if (that.data.punchCardDiaryList.length > 0 ) {
+                    if (that.data.publishDiaryRes !== true) {
+                        return true;
+                    }
+                }
+
+                // 3. 若是从评论页面返回则不进行打卡日记数据的重新获取
+                console.log(that.data.commentPageReturn);
+                if (that.data.commentPageReturn !== undefined)
+                    return true;
+
+                // 4.若是当前进入圈子打卡详情页的用户未加入打卡圈子，只能显示十条打卡日记,禁止了上拉加载更多
+                if (that.data.joinInPunchCardProjectFlag === 0)
+                    that.getPunchCardDiaryList(1,10);
+                else
+                    that.getPunchCardDiaryList(1,that.data.diaryListDataNum);
+
+                let timeout = 20000;
+                let id = setInterval(function () {
+                    timeout -= 500;
+                    if (that.data.getDataRes === 1) {
+                        let newData = that.data.onePageDiaryListData;
+
+                        that.setData({
+                            showLoading: false, // 隐藏加载时显示的全屏空白页，显示获取到内容
+                            punchCardDiaryList: newData
+                        });
+                        clearInterval(id);
+
+                    } else if(that.data.getDataRes === 0) {
+                        // 请求获取数据失败
+                        clearInterval(id);
+                    }
+
+                    // 获取超时
+                    if (timeout === 0) {
+                        wx.showToast({
+                            title: '请求超时,无法获取数据,请下拉重试!',
+                            icon: 'none',
+                            duration: 2000
+                        });
+                        clearInterval(id);
+                    }
+                },500);
+
             } else {
                 wx.hideLoading();
                 wx.showToast({
@@ -276,39 +437,6 @@ Page({
                 })
             }
         });
-
-
-        // 获取第一页打卡日记列表
-        that.data.punchCardDiaryList = []; // 清空原先的数据
-        that.getPunchCardDiaryList(1,that.data.diaryListDataNum);
-
-        let timeout = 20000;
-        let id = setInterval(function () {
-            timeout -= 500;
-            if (that.data.getDataRes === 1) {
-                let newData = that.data.onePageDiaryListData;
-
-                that.setData({
-                    showLoading: false, // 隐藏加载时显示的全屏空白页，显示获取到内容
-                    punchCardDiaryList: newData
-                });
-                clearInterval(id);
-
-            } else if(that.data.getDataRes === 0) {
-                // 请求获取数据失败
-                clearInterval(id);
-            }
-
-            // 获取超时
-            if (timeout === 0) {
-                wx.showToast({
-                    title: '请求超时,无法获取数据,请下拉重试!',
-                    icon: 'none',
-                    duration: 2000
-                });
-                clearInterval(id);
-            }
-        },500);
     },
 
     /**
@@ -334,7 +462,12 @@ Page({
         // 下拉刷新，重新获取第一页的打卡日记列表
         let that = this;
         that.data.punchCardDiaryList = []; // 清空原先的数据
-        that.getPunchCardDiaryList(1,that.data.diaryListDataNum);
+
+        // 对于未加入圈子的用户只显示前十条打卡日记
+        if (that.data.joinInPunchCardProjectFlag === 0)
+            that.getPunchCardDiaryList(1,10);
+        else
+            that.getPunchCardDiaryList(1,that.data.diaryListDataNum);
 
         let timeout = 20000;
         let id = setInterval(function () {
@@ -378,127 +511,73 @@ Page({
      */
     onReachBottom: function () {
         let that = this;
-        let currPunchCardDiaryList = that.data.punchCardDiaryList;
 
-        that.setData({
-            haveMore: true, // 加载更多之前 假设还有数据可以加载
-            hiddenLoadingMore: false // 显示加载更多动画
-        });
+        // 只有当前用户已参与该圈子 && 选择的选项卡是日记选项时
+        // 才能在页面上拉时进行加载更多日记数据
+        if (that.data.hiddenDiaryInfo === false && that.data.joinInPunchCardProjectFlag !== 0) {
+            that.setData({
+                haveMore: true, // 加载更多之前 假设还有数据可以加载
+                hiddenLoadingMore: false // 显示加载更多动画
+            });
 
-        // 获取下一页数据
-        that.getPunchCardDiaryList(that.data.diaryListPageNo+1,that.data.diaryListDataNum);
-        let timeout = 20000;
-        let id = setInterval(function () {
-            timeout -= 500;
-            if (that.data.getDataRes === 1) {
-                //  请求并获取数据成功 将获取的数据添加到当前已经获取到的打卡圈子日记列表数据中
-                let newData = that.data.onePageDiaryListData,
-                    newDataLength = newData.length;
+            // 获取下一页数据
+            that.getPunchCardDiaryList(that.data.diaryListPageNo+1,that.data.diaryListDataNum);
+            let timeout = 20000;
+            let id = setInterval(function () {
+                timeout -= 500;
+                if (that.data.getDataRes === 1) {
+                    //  请求并获取数据成功 将获取的数据添加到当前已经获取到的打卡圈子日记列表数据中
+                    let newData = that.data.onePageDiaryListData,
+                        newDataLength = newData.length;
 
-                if (newDataLength > 0) {
-                    // 追加形式添加数据
-                    for (let i = 0; i < newDataLength; i++) {
-                        currPunchCardDiaryList.push(newData[i]);
+                    if (newDataLength > 0) {
+                        // 追加形式添加数据
+                        for (let i = 0; i < newDataLength; i++) {
+                            that.data.punchCardDiaryList.push(newData[i]);
+                        }
+                    } else {
+                        // 没有更多数据了 显示底部的没有更多数据提示信息
+                        that.data.haveMore = false;
                     }
-                } else {
-                    // 没有更多数据了 显示底部的没有更多数据提示信息
-                    that.data.haveMore = false;
+
+                    that.setData({
+                        punchCardDiaryList: that.data.punchCardDiaryList,
+                        haveMore: that.data.haveMore,
+                        hiddenLoadingMore: true // 关闭加载更多动画
+                    });
+                    console.log(that.data.punchCardDiaryList);
+                    clearInterval(id);
+
+                } else if(that.data.getDataRes === 0) {
+                    // 请求获取数据失败
+                    that.setData({
+                        haveMore: true,
+                        hiddenLoadingMore: true // 关闭加载更多动画
+                    });
+                    clearInterval(id);
                 }
 
-                that.setData({
-                    punchCardProjectRecommendList: currPunchCardDiaryList,
-                    haveMore: that.data.haveMore,
-                    hiddenLoadingMore: true // 关闭加载更多动画
-                });
-                clearInterval(id);
-
-            } else if(that.data.getDataRes === 0) {
-                // 请求获取数据失败
-                that.setData({
-                    haveMore: true,
-                    hiddenLoadingMore: true // 关闭加载更多动画
-                });
-                clearInterval(id);
-            }
-
-            // 获取超时
-            if (timeout === 0) {
-                that.setData({
-                    haveMore: true,
-                    hiddenLoadingMore: true // 关闭加载更多动画
-                });
-                wx.showToast({
-                    title: '加载超时...',
-                    icon: 'none',
-                    duration: 2000
-                });
-                clearInterval(id);
-            }
-        },500);
-
-
+                // 获取超时
+                if (timeout === 0) {
+                    that.setData({
+                        haveMore: true,
+                        hiddenLoadingMore: true // 关闭加载更多动画
+                    });
+                    wx.showToast({
+                        title: '加载超时...',
+                        icon: 'none',
+                        duration: 2000
+                    });
+                    clearInterval(id);
+                }
+            },500);
+        }
     },
 
     /**
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
-
-    },
-
-    // 获取打卡圈子的打卡日记
-    getPunchCardDiaryList: function(pageNo,dataNum) {
-        console.log(dataNum);
-        let that = this;
-        wx.request({
-            url: app.globalData.urlRootPath_local
-                + 'index/punchCardDiary/getDiaryListByProjectId',
-            method: 'post',
-            data: {
-                isCreator: that.data.isCreator,
-                pageNo: pageNo,
-                dataNum: dataNum,
-                projectId: that.data.projectId
-            },
-            success: function (res) {
-                console.log(res);
-                let data = res.data;
-                switch (res.statusCode) {
-                    case 200:
-                        // 若是当前页pageNo没有数据则说明总页数为pageNo-1
-                        if (data.data.length <= 0)
-                            pageNo = pageNo-1;
-
-                        // 清空之前的数据
-                        that.data.onePageDiaryListData = [];
-
-                        that.setData({
-                            onePageDiaryListData: data.data,
-                            diaryListPageNo: pageNo
-                        });
-                        that.data.getDataRes = 1; // 标明获取数据成功
-                        break;
-                    default:
-                        wx.showToast({
-                            title: data.errMsg,
-                            icon: 'none',
-                            duration: 2000
-                        });
-                        that.data.getDataRes = 0; // 标明获取数据失败
-                        break;
-                }
-                console.log(res);
-            },
-            fail: function () {
-                that.data.getDataRes = 0; // 标明获取数据失败
-                wx.showToast({
-                    title: '网络异常,无法获取打卡日记',
-                    icon: 'none',
-                    duration: 2000
-                });
-            }
-        })
-
 
     },
 
@@ -641,7 +720,7 @@ Page({
         })
     },
 
-    // 处理用户关注、取消关注
+    // 私信圈主
     contactCreator: function() {
         wx.showToast({
             title: 'todo',
@@ -663,6 +742,342 @@ Page({
             hiddenAttendUserList: true     // 隐藏圈子参加用户列表
         });
     },
+
+
+    // 获取打卡圈子的打卡日记
+    getPunchCardDiaryList: function(pageNo,dataNum) {
+        console.log(pageNo);
+        let that = this;
+        wx.request({
+            url: app.globalData.urlRootPath
+                + 'index/punchCardDiary/getDiaryListByProjectId',
+            method: 'post',
+            data: {
+                isCreator: that.data.isCreator,
+                pageNo: pageNo,
+                dataNum: dataNum,
+                projectId: that.data.projectId,
+                userId: app.globalData.userInfo.id
+            },
+            success: function (res) {
+                console.log(res);
+                let data = res.data;
+                switch (res.statusCode) {
+                    case 200:
+                        // 若是当前页pageNo没有数据则说明总页数为pageNo-1
+                        if (data.data.length <= 0)
+                            pageNo = pageNo-1;
+
+                        // 清空之前的数据
+                        that.data.onePageDiaryListData = [];
+
+                        that.setData({
+                            onePageDiaryListData: data.data,
+                            diaryListPageNo: pageNo
+                        });
+                        that.data.getDataRes = 1; // 标明获取数据成功
+                        break;
+                    default:
+                        wx.showToast({
+                            title: data.errMsg,
+                            icon: 'none',
+                            duration: 2000
+                        });
+                        that.data.getDataRes = 0; // 标明获取数据失败
+                        break;
+                }
+            },
+            fail: function () {
+                that.data.getDataRes = 0; // 标明获取数据失败
+                wx.showToast({
+                    title: '网络异常,无法获取打卡日记',
+                    icon: 'none',
+                    duration: 2000
+                });
+            }
+        })
+
+
+    },
+
+    // 置顶
+    setSticky: function() {
+        wx.showToast({
+            title: 'TODO'
+        })
+    },
+
+    // 删除打卡日记
+    deleteDiary: function() {
+      wx.showToast({
+          title: 'TODO'
+      })
+    },
+
+    // 预览日记图片
+    previewDiaryImage: function(e){
+        let that = this;
+        let index = e.currentTarget.dataset.index; // 需要预览的图片所属日记的索引
+        let diaryResourceList = that.data.punchCardDiaryList[index].diaryResource,
+            length = diaryResourceList.length;
+
+        let ImgResourceList = [];
+        index = 0;
+        for (let i = 0; i < length; i++)
+        {
+            if (parseInt(diaryResourceList[i].type) === 1)
+            // 加上图片访问的baseUrl  注意一定要改为http 不然预览网络图片一直黑屏
+                ImgResourceList[index++] =
+                    "http://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
+                    + diaryResourceList[i].resource_url;
+        }
+
+        console.log(e.currentTarget.dataset.index);
+        wx.previewImage({
+            // 当前显示图片的http链接
+            current: "http://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
+                + e.currentTarget.dataset.imgUrl,
+
+            // 需要预览的图片http链接列表
+            urls: ImgResourceList,
+            fail: function (res) {
+                console.log(res);
+            }
+        })
+    },
+
+    // 点击打卡地址进入地图
+    intoPunchCardAddress: function(e) {
+        console.log(e);
+        let that = this,
+            index = e.currentTarget.dataset.diaryIndex;
+      wx.openLocation({
+          longitude: parseFloat(that.data.punchCardDiaryList[index].address_longitude),
+          latitude: parseFloat(that.data.punchCardDiaryList[index].address_latitude)
+      })
+    },
+
+    // 处理用户的点赞、取消点赞点击事件
+    dealUserLike: function(e) {
+        console.log(e);
+        let diaryIndex = e.currentTarget.dataset.diaryIndex,
+            diaryId = e.currentTarget.dataset.diaryId,
+            haveLike = e.currentTarget.dataset.haveLike,
+            that = this;
+
+        let tenLikeInfo = that.data.punchCardDiaryList[diaryIndex].tenLikeInfo,
+            likeRecordId = 0;
+
+        // 已经点赞 则需要取消点赞
+        if (haveLike === true)
+        {
+            // 获取该用户的点赞记录id
+            let i = 0;
+            for (i; i < tenLikeInfo.length; i++) {
+                let admirer = tenLikeInfo[i].admirer;
+                if (parseInt(that.data.userInfo.id) === parseInt(admirer.id)) {
+                    likeRecordId = tenLikeInfo[i].id;
+                    break;
+                }
+            }
+            wx.request({
+                url: app.globalData.urlRootPath + 'index/DiaryLike/cancelLike',
+                method: 'post',
+                data: {
+                    likeRecordId: likeRecordId,
+                    diaryId: diaryId,
+                },
+                success: function (res) {
+                    console.log(res);
+                    let data = res.data;
+                    switch (res.statusCode) {
+                        case 200:
+                            // 设置当前用户对当前这条日记未点赞 点赞总人数-1
+                            that.data.punchCardDiaryList[diaryIndex].haveLike = false;
+                            that.data.punchCardDiaryList[diaryIndex].like_user_num -= 1;
+
+                            // 清除当前日记的该用户的点赞信息
+                            tenLikeInfo.splice(i,1);
+                            that.data.punchCardDiaryList[diaryIndex].tenLikeInfo = tenLikeInfo;
+
+                            that.setData({
+                                punchCardDiaryList: that.data.punchCardDiaryList
+                            });
+                            break;
+                        default:
+                            wx.showToast({
+                                title: data.errMsg,
+                                icon: 'none',
+                                duration: 2000
+                            });
+                            break;
+                    }
+                },
+                fail: function () {
+                    wx.showToast({
+                        title: '网络异常',
+                        icon: 'none',
+                        duration: 2000
+                    });
+                }
+            });
+
+        } else {
+            // 进行点赞
+            wx.request({
+                url: app.globalData.urlRootPath + 'index/DiaryLike/like',
+                method: 'post',
+                data: {
+                    diary_id: diaryId,
+                    liked_user_id: that.data.punchCardDiaryList[diaryIndex].publisher.id, // 被点赞者
+                    'admirer_id': that.data.userInfo.id
+                },
+                success: function (res) {
+                    console.log(res);
+                    let data = res.data;
+                    switch (res.statusCode) {
+                        case 200:
+                            // 设置当前用户对当前这条日记已点赞 点赞总人数+1
+                            that.data.punchCardDiaryList[diaryIndex].haveLike = true;
+                            that.data.punchCardDiaryList[diaryIndex].like_user_num += 1;
+
+                            // 将该条点赞记录添加至最点赞记录首部
+                            let newLikeInfo =
+                                [{
+                                    id: data.data.like_record_id,
+                                    admirer:{
+                                        id: that.data.userInfo.id, nick_name: that.data.userInfo.nick_name
+                                    }
+                                }];
+                            newLikeInfo.concat(tenLikeInfo);
+                            that.data.punchCardDiaryList[diaryIndex].tenLikeInfo = newLikeInfo;
+                            that.setData({
+                                punchCardDiaryList: that.data.punchCardDiaryList
+                            });
+                            break;
+                        default:
+                            wx.showToast({
+                                title: data.errMsg,
+                                icon: 'none',
+                                duration: 2000
+                            });
+                            break;
+                    }
+                },
+                fail: function () {
+                    wx.showToast({
+                        title: '网络异常',
+                        icon: 'none',
+                        duration: 2000
+                    });
+                }
+
+            })
+        }
+    },
+
+    // 点击评论按钮，发表对日记的一级评论 即对日记发表者进行评论
+    publishComment: function(e) {
+        console.log(e);
+
+        let paramStr = "?diaryId=" + e.currentTarget.dataset.diaryId
+                        + '&diaryIndex=' + e.currentTarget.dataset.diaryIndex
+                        + '&pid=' + e.currentTarget.dataset.pid
+                        + '&respondentId=' + e.currentTarget.dataset.respondentId
+                        + '&placeholder=' + '写评论';
+
+        wx.navigateTo({
+            url: '../publishComment/index' + paramStr
+        });
+    },
+
+    // 点击某条评论信息进行回复 若是点击了自己发表的评论信息则显示删除按钮
+    replyComment: function(e) {
+        console.log(e);
+        let that = this;
+
+        let commentId = e.currentTarget.dataset.commentId,  // 所点击的评论的记录id
+            commentIndex = e.currentTarget.dataset.commentIndex, // 该评论在当前日记评论数据中的下标索引
+            diaryId = e.currentTarget.dataset.diaryId,      // 评论记录所属日记的记录id
+            diaryIndex = e.currentTarget.dataset.diaryIndex,// 日记对应的下标索引
+            pid = e.currentTarget.dataset.pid,              // 一级、二级评论的标志id
+            reviewerId = e.currentTarget.dataset.reviewerId,// 该条评论的评论者userId
+            reviewerNickName = e.currentTarget.dataset.reviewerNickName; // 该条记录评论者的用户昵称
+
+        // 如果该评论为小程序当前用户所发表显示删除按钮
+        if (parseInt(app.globalData.userInfo.id) === parseInt(reviewerId)) {
+            wx.showModal({
+                title: '',
+                content: '确定删除评论?',
+                success: function (res) {
+                    // 确认删除
+                    if (res.confirm)
+                    {
+                        wx.request({
+                            url: app.globalData.urlRootPath
+                                + 'index/DiaryComment/deleteComment',
+                            method: 'post',
+                            data: {
+                                diaryId: diaryId,
+                                commentId: commentId
+                            },
+                            success: function (res) {
+                                console.log(res);
+                                let respData = res.data;
+                                switch (res.statusCode) {
+                                    case 200:
+                                        // 将本地打卡日记数据集中的对应的评论记录删除
+                                        that.data.punchCardDiaryList[diaryIndex]
+                                            .allCommentInfo.splice(commentIndex,1);
+
+                                        that.setData({
+                                            punchCardDiaryList: that.data.punchCardDiaryList
+                                        });
+
+                                        wx.showToast({
+                                            title: '删除评论成功'
+                                        });
+                                        break;
+                                    default:
+                                        wx.showToast({
+                                            title: respData.errMsg,
+                                            icon: 'none',
+                                            duration: 2000
+                                        });
+                                        break;
+                                }
+                            },
+                            fail: function () {
+                                wx.showToast({
+                                    title: '网络异常',
+                                    icon: 'none',
+                                    duration: 2000
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+            return true;
+        }
+
+        // 否则进入评论发表界面对该评论进行回复
+        // 若新评论回复的是二级评论，那新评论与它所回复的二级评论属于相同的二级评论
+        // 否则所回复的是一级评论，即新评论为所回复的一级评论的二级评论
+        pid = parseInt(pid) === 0 ? commentId : pid;
+        let paramStr = "?diaryId=" + diaryId
+            + '&diaryIndex=' + diaryIndex
+            + '&pid=' + pid
+            + '&respondentId=' + e.currentTarget.dataset.respondentId
+            + '&placeholder=' + '回复: @' + reviewerNickName;
+
+        wx.navigateTo({
+            url: '../publishComment/index' + paramStr
+        });
+
+
+    },
+
 
 
     // 点击详情选项卡，展示打卡圈子详情信息：创建者详情、圈子简介详情
@@ -845,9 +1260,45 @@ Page({
 
     // 加入打卡圈子
     attendPunchCardProject: function() {
-        wx.showToast({
-            title: 'TODO',
-            icon: 'none'
+        let that = this;
+
+        console.log(that.data.projectId);
+        wx.request({
+            url: app.globalData.urlRootPath + '/index/PunchCardProject/joinInProject',
+            method: 'post',
+            data: {
+                user_id: that.data.userInfo.id,
+                project_id: that.data.projectId
+            },
+            success: function (res) {
+                console.log(res);
+                let respData = res.data;
+                switch (res.statusCode) {
+                    case 200:
+                        wx.showToast({
+                            title: '加入成功!',
+                            duration: 1000
+                        });
+                        setTimeout(function () {
+                            that.onShow(); // 重新获取数据
+                        },1000);
+                        break;
+                    default:
+                        wx.showToast({
+                            title: respData.errMsg,
+                            icon: 'none',
+                            duration: 2000
+                        });
+                        break
+                }
+            },
+            fail: function () {
+                wx.showToast({
+                    title: '网络异常',
+                    icon: 'none',
+                    duration: 2000
+                });
+            }
         });
     },
 

@@ -1,0 +1,40 @@
+<view class="container">
+
+    <!--
+        作用：如果直接设置文本编辑区域对容器margin-top会导致出现滚动条
+             因此在文本编辑区域上面增加一个隔离view,针对这个隔离view margin-top
+             则不会出现滚动条
+
+        为什么出现这个问题，我的理解是容器的高度设置了100%,而编辑区域对对容器设置了margin-top
+        导致在100%的基础上撑大了容器从而出现了滚动条
+
+        发现了另一个更简单的解决方法：设置容器属性 overflow: hidden 即可
+    -->
+    <!--<view style="width: 100%;height: 1px"></view>-->
+
+    <!--文本评论编辑区域-->
+    <view class="text-comment-edit-area">
+        <textarea placeholder="{{placeholder}}" auto-height="{{true}}"
+                  adjust-position="{{false}}" show-confirm-bar="{{false}}"
+                  placeholder-class="edit-comment-notice" maxlength="500"
+                  bindinput="editTextComment">
+        </textarea>
+        <view class="text-comment-num-notice">
+            {{textCommentLength}}/500
+        </view>
+    </view>
+
+    <!--TODO 音频评论显示-->
+
+    <!--音频评论添加按钮-->
+    <view class="sound-comment-btn">
+        <image src="/images/bottomIcon/sound.png"></image>
+    </view>
+
+    <!--评论提交按钮-->
+
+    <view class="comment-publish-btn">
+        <view class="cancel-btn" bindtap="cancelComment">取消</view>
+        <view class="publish-btn" bindtap="publishComment">发表评论</view>
+    </view>
+</view>

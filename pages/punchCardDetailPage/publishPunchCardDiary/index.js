@@ -223,10 +223,18 @@ Page({
 
             let result = '发表成功!';
 
+            // 根据发布结果对圈子打卡详情页进行通知更新获取最新数据
+            let pages = getCurrentPages();
+            let prePage = pages[pages.length - 2]; // 获取打卡详情页的页面对象
+            let publishDiaryRes = false; // 假设发布失败
+
             // 打卡日记的基本信息已提交成功
             if (res === true)
             {
-                // 进行处理打卡日记存在的资源文件 TODO 目前只支持上传图片资源
+                // 1.若只有打卡日记没有资源文件上传 则此时已经发布成功 则设置通知更新
+                publishDiaryRes = true;
+
+                // 2.存在则进行处理打卡日记存在的资源文件 TODO 目前只支持上传图片资源
                 let resourceNum = that.data.chooseImg.length;
                 if (resourceNum > 0)
                 {
@@ -269,8 +277,17 @@ Page({
                         successNum += 1;
                     }
 
-                    if (successNum !== resourceNum)
-                        result = "日记发表失败!"
+                    // 假设资源文件也发布成功
+                    publishDiaryRes = true;
+
+
+                    if (successNum !== resourceNum) {
+                        result = "日记发表失败!";
+
+                        // 发表失败不进行更新
+                        publishDiaryRes = true;
+
+                    }
                 }
 
                 wx.showToast({
@@ -278,6 +295,9 @@ Page({
                     duration: 1000
                 });
                 setTimeout(function () {
+                    prePage.setData({
+                        publishDiaryRes: publishDiaryRes
+                });
                     wx.navigateBack({
                         delta: 1
                     });
