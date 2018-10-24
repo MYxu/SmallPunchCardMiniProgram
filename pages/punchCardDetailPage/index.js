@@ -903,6 +903,7 @@ Page({
                             that.setData({
                                 punchCardDiaryList: that.data.punchCardDiaryList
                             });
+                            console.log(that.data.punchCardDiaryList[diaryIndex].tenLikeInfo);
                             break;
                         default:
                             wx.showToast({
@@ -939,7 +940,8 @@ Page({
                         case 200:
                             // 设置当前用户对当前这条日记已点赞 点赞总人数+1
                             that.data.punchCardDiaryList[diaryIndex].haveLike = true;
-                            that.data.punchCardDiaryList[diaryIndex].like_user_num += 1;
+                            that.data.punchCardDiaryList[diaryIndex].like_user_num =
+                                parseInt(that.data.punchCardDiaryList[diaryIndex].like_user_num) + 1;
 
                             // 将该条点赞记录添加至最点赞记录首部
                             let newLikeInfo =
@@ -949,11 +951,16 @@ Page({
                                         id: that.data.userInfo.id, nick_name: that.data.userInfo.nick_name
                                     }
                                 }];
-                            newLikeInfo.concat(tenLikeInfo);
+                            for (let i = 0; i < tenLikeInfo.length; i++) {
+                                newLikeInfo[newLikeInfo.length] = tenLikeInfo[i];
+                            }
                             that.data.punchCardDiaryList[diaryIndex].tenLikeInfo = newLikeInfo;
                             that.setData({
                                 punchCardDiaryList: that.data.punchCardDiaryList
                             });
+                            console.log(newLikeInfo);
+                            console.log(tenLikeInfo);
+                            console.log(that.data.punchCardDiaryList[diaryIndex].tenLikeInfo);
                             break;
                         default:
                             wx.showToast({
