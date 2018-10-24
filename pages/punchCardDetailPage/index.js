@@ -1068,7 +1068,7 @@ Page({
         let paramStr = "?diaryId=" + diaryId
             + '&diaryIndex=' + diaryIndex
             + '&pid=' + pid
-            + '&respondentId=' + e.currentTarget.dataset.respondentId
+            + '&respondentId=' + reviewerId
             + '&placeholder=' + '回复: @' + reviewerNickName;
 
         wx.navigateTo({

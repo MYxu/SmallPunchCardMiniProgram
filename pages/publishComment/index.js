@@ -97,7 +97,11 @@ Page({
                     case 200:
                         // 将新的评论数据追加至本地日记数据集对应的评论列表中
                         let newCommentInfo = respData.data;
-                        that.data.diaryList[that.data.diaryIndex].allCommentInfo.push(newCommentInfo);
+                        let commentInfo = that.data.diaryList[that.data.diaryIndex].allCommentInfo;
+                        commentInfo[commentInfo.length] = newCommentInfo;
+
+                        that.data.diaryList[that.data.diaryIndex].allCommentInfo = commentInfo;
+
                         that.data.punchCardDetailPage.setData({
                             punchCardDiaryList: that.data.diaryList
                         });
