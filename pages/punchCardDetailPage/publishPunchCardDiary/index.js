@@ -383,6 +383,7 @@ Page({
                     + 'index/PunchCardDiary/deleteDiaryById',
                 method: 'post',
                 data: {
+                    projectId: that.data.projectId,
                     diaryId: that.data.diaryId
                 },
                 success: function (res) {

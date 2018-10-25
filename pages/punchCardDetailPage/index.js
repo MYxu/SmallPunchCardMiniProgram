@@ -30,7 +30,7 @@ Page({
             cover_img_url: 'default_cover_img',
             IntrInfoList: [], // {id:'简介记录id',content:'简介内容',order:'排序',type:'简介类型'}
             attendUserNum: 2,
-            punchCardNum: 88888888
+            allPunchCardNum: 0
         },
 
         // 圈主基本信息
@@ -322,7 +322,8 @@ Page({
                                 'projectInfo.project_name': data.project_name,
                                 'projectInfo.cover_img_url' : data.cover_img_url,
                                 'projectInfo.IntrInfoList' : data.projectIntrInfo,
-                                'projectInfo.attendUserNum' : data.attendUserList.length,
+                                'projectInfo.attendUserNum' : parseInt(data.attend_user_num),
+                                'projectInfo.allPunchCardNum' : parseInt(data.all_punch_card_num),
 
                                 'creatorInfo.creator_id' : data.creator_id,
                                 'creatorInfo.nick_name' : data.creator_nick_name,
