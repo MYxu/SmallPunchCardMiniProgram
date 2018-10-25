@@ -113,6 +113,7 @@ Page({
         onePageDiaryListData: [], // 获取到的打卡圈子日记列表的一页数据
         // 计算出日记2张图片以上时图片显示的长、宽度
         diaryImgWidth: Math.floor((app.globalData.windowWidth-(10+40+8+5+5+5+10))/3),
+        hiddenMoreDiaryOperateBtn: true, // 控制对日记更多操作按钮显示、隐藏
 
 
         // 最新加入打卡圈子的三个用户信息
@@ -801,31 +802,42 @@ Page({
 
     },
 
-    // 置顶
-    setSticky: function(e) {
+    // 置顶、取消
+    dealSticky: function(e) {
         console.log(e);
         let that = this;
-        let diaryIndex = e.currentTarget.dataset.diaryIndex;
+        let diaryIndex = e.currentTarget.dataset.diaryIndex,
+            haveStick = parseInt(that.data.punchCardDiaryList[diaryIndex].have_sticky);
+
         wx.request({
             url: app.globalData.urlRootPath
                 + 'index/PunchCardDiary/dealDiarySticky',
             method: 'post',
             data: {
                 diaryId: that.data.punchCardDiaryList[diaryIndex].id,
-                haveSticky: 1 // 置顶
+                haveSticky: haveStick === 1 ? 0 : 1 // 1--置顶 0--不置顶
             },
             success: function (res) {
                 console.log(res);
                 let respData = res.data;
                 switch (res.statusCode) {
                     case 200:
-                        // 修改本地数据设置该条日记为置顶状态
-                        that.data.punchCardDiaryList[diaryIndex].have_sticky = 1;
+                        // 修改本地数据设置该条日记为的置顶状态 之前置顶则改为不置顶 反之不置顶改为置顶
+                        that.data.punchCardDiaryList[diaryIndex].have_sticky =
+                            (haveStick === 1 ? 0 : 1);
+
                         that.setData({
                             punchCardDiaryList: that.data.punchCardDiaryList
                         });
+
+                        let title =
+                            (haveStick === 1 ? '取消置顶成功,请下拉刷新!' : '置顶成功,请下拉刷新!');
+
+                        // 若是当前操作为取消置顶 取消成功后需要关闭更多按钮模态框
+                        that.closeDiaryOperateBtn();
+
                         wx.showToast({
-                            title: '置顶成功,请下拉刷新!'
+                            title: title
 
                         });
                         break;
@@ -848,12 +860,105 @@ Page({
         });
     },
 
-    // 删除打卡日记
-    deleteDiary: function() {
-      wx.showToast({
-          title: 'TODO'
-      })
+    // 弹出模态对话框，显示更多的日记操作按钮 取消置顶、删除、投诉
+    showDiaryOperateBtn: function(e) {
+        console.log(e);
+        let that = this;
+        let diaryIndex  = e.currentTarget.dataset.diaryIndex,
+            publisherId = e.currentTarget.dataset.publisherId,
+            haveSticky  = e.currentTarget.dataset.haveSticky;
+
+
+        that.setData({
+            hiddenMoreDiaryOperateBtn: false, // 显示更多操作按钮
+
+            // 显示取消置顶按钮 显示条件 当前用户为圈主 && 日记已被置顶
+            hiddenCancelStickyBtn: !(parseInt(that.data.isCreator) === 1 &&
+                parseInt(haveSticky) === 1),
+
+            // 显示删除日记按钮 显示条件 当前用户为圈主 || 当前用户为日记发表者
+            hiddenDeleteDiaryBtn: !(parseInt(that.data.userInfo.id) === parseInt(publisherId) ||
+                parseInt(that.data.isCreator) === 1),
+
+            // 显示投诉日记按钮 显示条件 当前用户不为日记发表者
+            hiddenComplainDiaryBtn: !(parseInt(that.data.userInfo.id) !== parseInt(publisherId)),
+
+            // 当前操作所针对的日记的日记数据集下标索引
+            currDiaryIndex: diaryIndex
+        });
     },
+
+    // 隐藏模态对话框
+    closeDiaryOperateBtn: function(e) {
+        let that = this;
+        that.setData({
+            hiddenMoreDiaryOperateBtn: true
+        });
+    },
+
+
+    // 删除打卡日记
+    deleteDiary: function(e) {
+        console.log(e);
+        let that = this;
+        let diaryIndex = e.currentTarget.dataset.diaryIndex;
+        wx.showModal({
+            title: '温馨提示',
+            content: '打卡日记删除后不可恢复,请谨慎删除!',
+            confirmText: '确认删除',
+            confirmColor: '#E53935',
+            success: function (res) {
+                // 关闭更多按钮模态框
+                that.closeDiaryOperateBtn();
+
+                // 确认删除
+                if (res.confirm) {
+                    wx.request({
+                        url: app.globalData.urlRootPath
+                            + 'index/PunchCardDiary/deleteDiaryById',
+                        method: 'post',
+                        data: {
+                            projectId: that.data.projectId,
+                            diaryId: that.data.punchCardDiaryList[diaryIndex].id
+                        },
+                        success: function (res) {
+                            console.log(res);
+                            let data = res.data;
+                            switch (res.statusCode) {
+                                case 200:
+                                    // 删除本地该条打卡日记
+                                    that.data.punchCardDiaryList.splice(diaryIndex,1);
+                                    that.setData({
+                                        punchCardDiaryList: that.data.punchCardDiaryList
+                                    });
+                                    break;
+                                default:
+                                    wx.showToast({
+                                        title: data.errMsg,
+                                        icon: 'none',
+                                        duration: 2000
+                                    });
+                                    break;
+                            }
+                        },
+                        fail: function () {
+                            wx.showToast({
+                                title: '网络异常!'
+                            });
+                        }
+                    });
+                }
+            }
+        });
+    },
+
+    // 投诉打卡日记
+    complainDiary: function(e) {
+        wx.showToast({
+            title: 'TODO'
+        })
+    },
+
 
     // 预览日记图片
     previewDiaryImage: function(e){

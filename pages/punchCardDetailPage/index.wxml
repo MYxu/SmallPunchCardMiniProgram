@@ -118,7 +118,6 @@
                     </view>
                 </block>
 
-
                 <!--圈主简介-->
                 <block wx:if="{{creatorInfo.introduce !== ''}}">
                     <!--与圈子简介分隔-->
@@ -239,26 +238,25 @@
 
                                             <!--头部右部信息-->
                                             <view class='header-info-right'>
-                                                <!-- 删除按钮 对日记发表者&&圈主可见-->
-                                                <block wx:if="{{isCreator==1 || userInfo.id==item.publisher.id}}">
-                                                    <view class="delete-diary-btn" bindtap="deleteDiary">
-                                                        <image
-                                                                src='/images/button/delete.png'>
-                                                        </image>
-                                                    </view>
-                                                </block>
-                                                <block wx:else>
-                                                    <view class="delete-diary-btn" bindtap="into">
-                                                        <image src='/images/button/more.png'>
-                                                        </image>
-                                                    </view>
-                                                </block>
+                                                <!--显示日记更多操作按钮（自定义模态框）:
+                                               圈主可删除、取消置顶(日记已置顶状态下)
+                                               日记发表者显示可删除按钮
+                                               普遍成员显示投诉按钮
+                                           -->
+                                                <view class="diary-more-operate-btn"
+                                                      catchtap="showDiaryOperateBtn"
+                                                      data-diary-index="{{index}}"
+                                                      data-have-sticky="{{item.have_sticky}}"
+                                                      data-publisher-id="{{item.publisher.id}}">
+                                                    <image src='/images/button/more.png'>
+                                                    </image>
+                                                </view>
 
-
-                                                <!--置顶-->
+                                                <!--置顶按钮-->
                                                 <block wx:if="{{item.have_sticky == 0}}">
                                                     <block wx:if="{{isCreator==1}}">
-                                                        <view class="not-sticky" bindtap="setSticky">
+                                                        <view class="not-sticky" catchtap="dealSticky"
+                                                              data-diary-index="{{index}}">
                                                             置顶
                                                         </view>
                                                     </block>
@@ -429,8 +427,52 @@
                                 </block>
                             </view>
 
-                            <view class="separator-height-10px"></view>
+                            <!--日记的更多操作按钮模态框-->
+                            <view class="mask" hidden="{{hiddenMoreDiaryOperateBtn}}"
+                                  catchtouchmove="preventTouchMove" catchtap="preventTab">
+                                <!--蒙层内容：更多按钮-->
+                                <view class="mask-content-more-diary-operate-btn">
+                                    <!--日记当前被置顶 && 当前用户为圈主-->
+                                    <view class="more-diary-operate-btn-item"
+                                          data-diary-index="{{currDiaryIndex}}"
+                                          bindtap="dealSticky"
+                                          hidden="{{hiddenCancelStickyBtn}}">取消置顶
+                                    </view>
 
+                                    <block wx:if="{{hiddenDeleteDiaryBtn === false}}">
+                                        <view class="separator-height-1px"></view>
+                                    </block>
+
+                                    <!--圈主或者日记发表者可显示-->
+                                    <view class="more-diary-operate-btn-item"
+                                          data-diary-index="{{currDiaryIndex}}"
+                                          bindtap="deleteDiary"
+                                          hidden="{{hiddenDeleteDiaryBtn}}">删除
+                                    </view>
+
+                                    <block wx:if="{{hiddenComplainDiaryBtn === false}}">
+                                        <view class="separator-height-1px"></view>
+                                    </block>
+
+                                    <!--自己不可以投诉自己发表的日记-->
+                                    <view class="more-diary-operate-btn-item"
+                                          data-diary-index="{{currDiaryIndex}}"
+                                          bindtap="complainDiary"
+                                          hidden="{{hiddenComplainDiaryBtn}}">
+                                        投诉
+                                    </view>
+                                </view>
+
+                                <!--隐藏模态框按钮-->
+                                <view class="close-more-diary-operate-btn"
+                                      bindtap="closeDiaryOperateBtn">
+                                    <image src="/images/button/close_2.png">
+                                    </image>
+                                </view>
+                            </view>
+
+                            <!--底部信息-->
+                            <view class="separator-height-10px"></view>
                             <view class="not-punch-card-diary-notice"
                                   style="margin: 25px 15% 25px 15%">
                                 <view class="line" style="margin-right: 2px"></view>
@@ -805,26 +847,38 @@
 
                                         <!--头部右部信息-->
                                         <view class='header-info-right'>
-                                            <!-- 删除按钮 对日记发表者&&圈主可见-->
-                                            <block wx:if="{{isCreator==1 || userInfo.id==item.publisher.id}}">
-                                                <view class="delete-diary-btn" bindtap="deleteDiary">
-                                                    <image
-                                                           src='/images/button/delete.png'>
-                                                    </image>
-                                                </view>
-                                            </block>
-                                            <block wx:else>
-                                                <view class="delete-diary-btn" bindtap="into">
-                                                    <image src='/images/button/more.png'>
-                                                    </image>
-                                                </view>
-                                            </block>
+                                            <!--显示日记更多操作按钮（自定义模态框）:
+                                                圈主可删除、取消置顶(日记已置顶状态下)
+                                                日记发表者显示可删除按钮
+                                                普遍成员显示投诉按钮
+                                            -->
+                                            <view class="diary-more-operate-btn"
+                                                  catchtap="showDiaryOperateBtn"
+                                                  data-diary-index="{{index}}"
+                                                  data-have-sticky="{{item.have_sticky}}"
+                                                  data-publisher-id="{{item.publisher.id}}">
+                                                <image src='/images/button/more.png'>
+                                                </image>
+                                            </view>
 
+                                            <!--<block wx:if="{{isCreator==1 || userInfo.id==item.publisher.id}}">-->
+                                                <!--<view class="delete-diary-btn" bindtap="deleteDiary">-->
+                                                    <!--<image-->
+                                                           <!--src='/images/button/delete.png'>-->
+                                                    <!--</image>-->
+                                                <!--</view>-->
+                                            <!--</block>-->
+                                            <!--<block wx:else>-->
+                                                <!--<view class="delete-diary-btn" bindtap="into">-->
+                                                    <!--<image src='/images/button/more.png'>-->
+                                                    <!--</image>-->
+                                                <!--</view>-->
+                                            <!--</block>-->
 
-                                            <!--置顶-->
+                                            <!--置顶按钮-->
                                             <block wx:if="{{item.have_sticky == 0}}">
                                                 <block wx:if="{{isCreator==1}}">
-                                                    <view class="not-sticky" catchtap="setSticky"
+                                                    <view class="not-sticky" catchtap="dealSticky"
                                                           data-diary-index="{{index}}">
                                                         置顶
                                                     </view>
@@ -993,6 +1047,50 @@
                                     </view><!-- 打卡日记详细内容 -->
                                 </view><!-- 我的打卡日记展示 -->
                             </block>
+                        </view>
+
+                        <!--日记的更多操作按钮模态框-->
+                        <view class="mask" hidden="{{hiddenMoreDiaryOperateBtn}}"
+                              catchtouchmove="preventTouchMove" catchtap="preventTab">
+                            <!--蒙层内容：更多按钮-->
+                            <view class="mask-content-more-diary-operate-btn">
+                                <!--日记当前被置顶 && 当前用户为圈主-->
+                                <view class="more-diary-operate-btn-item"
+                                      data-diary-index="{{currDiaryIndex}}"
+                                      bindtap="dealSticky"
+                                      hidden="{{hiddenCancelStickyBtn}}">取消置顶
+                                </view>
+
+                                <block wx:if="{{hiddenDeleteDiaryBtn === false}}">
+                                    <view class="separator-height-1px"></view>
+                                </block>
+
+                                <!--圈主或者日记发表者可显示-->
+                                <view class="more-diary-operate-btn-item"
+                                      data-diary-index="{{currDiaryIndex}}"
+                                      bindtap="deleteDiary"
+                                      hidden="{{hiddenDeleteDiaryBtn}}">删除
+                                </view>
+
+                                <block wx:if="{{hiddenComplainDiaryBtn === false}}">
+                                    <view class="separator-height-1px"></view>
+                                </block>
+
+                                <!--自己不可以投诉自己发表的日记-->
+                                <view class="more-diary-operate-btn-item"
+                                      data-diary-index="{{currDiaryIndex}}"
+                                      bindtap="complainDiary"
+                                      hidden="{{hiddenComplainDiaryBtn}}">
+                                    投诉
+                                </view>
+                            </view>
+
+                            <!--隐藏模态框按钮-->
+                            <view class="close-more-diary-operate-btn"
+                                  bindtap="closeDiaryOperateBtn">
+                                <image src="/images/button/close_2.png">
+                                </image>
+                            </view>
                         </view>
 
                         <!--底部加载更多-->
