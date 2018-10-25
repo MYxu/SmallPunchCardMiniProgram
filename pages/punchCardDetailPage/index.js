@@ -802,10 +802,50 @@ Page({
     },
 
     // 置顶
-    setSticky: function() {
-        wx.showToast({
-            title: 'TODO'
-        })
+    setSticky: function(e) {
+        console.log(e);
+        let that = this;
+        let diaryIndex = e.currentTarget.dataset.diaryIndex;
+        wx.request({
+            url: app.globalData.urlRootPath
+                + 'index/PunchCardDiary/dealDiarySticky',
+            method: 'post',
+            data: {
+                diaryId: that.data.punchCardDiaryList[diaryIndex].id,
+                haveSticky: 1 // 置顶
+            },
+            success: function (res) {
+                console.log(res);
+                let respData = res.data;
+                switch (res.statusCode) {
+                    case 200:
+                        // 修改本地数据设置该条日记为置顶状态
+                        that.data.punchCardDiaryList[diaryIndex].have_sticky = 1;
+                        that.setData({
+                            punchCardDiaryList: that.data.punchCardDiaryList
+                        });
+                        wx.showToast({
+                            title: '置顶成功,请下拉刷新!'
+
+                        });
+                        break;
+                    default:
+                        wx.showToast({
+                            title: respData.errMsg,
+                            icon: 'none',
+                            duration: 2000
+                        });
+                        break;
+                }
+            },
+            fail: function () {
+                wx.showToast({
+                    title: '网络异常',
+                    icon: 'none',
+                    duration: 2000
+                });
+            }
+        });
     },
 
     // 删除打卡日记

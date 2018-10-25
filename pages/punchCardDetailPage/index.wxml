@@ -82,7 +82,7 @@
 
                         <!--总打卡次数-->
                         <view class="all-punch-card-num">
-                            {{projectInfo.punchCardNum}}次打卡</view>
+                            {{projectInfo.allPunchCardNum}}次打卡</view>
                     </view>
                 </view>
 
@@ -385,12 +385,13 @@
                                                             <text>共{{item.like_user_num}}人觉得很赞</text>
                                                         </block>
                                                     </view>
-                                                    <!-- 隔离带 -->
-                                                    <view style="background-color: #dbdbdb;height: 1px;"></view>
+
                                                 </block>
 
                                                 <!-- 评论信息 -->
                                                 <block wx:if="{{item.allCommentInfo.length > 0}}">
+                                                    <!-- 隔离带 -->
+                                                    <view style="background-color: #dbdbdb;height: 1px;"></view>
                                                     <view class="commentInfo">
                                                         <block wx:for="{{item.allCommentInfo}}" wx:for-item="i"
                                                                wx:for-index="k">
@@ -573,7 +574,7 @@
                             </view>
 
                             <view class="all-punch-card-num">
-                                {{projectInfo.punchCardNum}}次打卡
+                                {{projectInfo.allPunchCardNum}}次打卡
                             </view>
                         </view>
 
@@ -823,7 +824,8 @@
                                             <!--置顶-->
                                             <block wx:if="{{item.have_sticky == 0}}">
                                                 <block wx:if="{{isCreator==1}}">
-                                                    <view class="not-sticky" bindtap="setSticky">
+                                                    <view class="not-sticky" catchtap="setSticky"
+                                                          data-diary-index="{{index}}">
                                                         置顶
                                                     </view>
                                                 </block>
@@ -949,13 +951,13 @@
                                                         <text>共{{item.like_user_num}}人觉得很赞</text>
                                                     </block>
                                                 </view>
-                                                <!-- 隔离带 -->
-                                                <view style="background-color: #dbdbdb;height: 1px;"></view>
                                             </block>
 
 
                                             <!-- 评论信息 -->
                                             <block wx:if="{{item.allCommentInfo.length > 0}}">
+                                                <!-- 隔离带 -->
+                                                <view style="background-color: #dbdbdb;height: 1px;"></view>
                                                 <view class="commentInfo">
                                                     <block wx:for="{{item.allCommentInfo}}" wx:for-item="i"
                                                            wx:for-index="k">
