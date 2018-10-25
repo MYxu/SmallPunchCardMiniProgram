@@ -25,6 +25,54 @@
     border: 1px solid white;
 }
 
+/*性别*/
+.user-sex-male {
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: absolute;
+    left: 50%;
+    margin-top: 65px;
+    margin-left: 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.user-sex-male > image{
+    width: 15px;
+    height: 15px;
+}
+
+.user-sex-female {
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: absolute;
+    left: 50%;
+    margin-top: 65px;
+    margin-left: 20px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.user-sex-female > image{
+    width: 15px;
+    height: 15px;
+    transform: rotate(30deg);
+}
+
 /*我的打卡项目*/
 .punch-card-project {
     height: auto;

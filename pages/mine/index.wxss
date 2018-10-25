@@ -28,6 +28,55 @@
     border-radius: 50%;
 }
 
+
+/*性别*/
+.user-sex-male {
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: absolute;
+    left: 45px;
+    top: 45px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.user-sex-male > image{
+    width: 15px;
+    height: 15px;
+}
+
+.user-sex-female {
+    width: 17px;
+    height: 17px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: absolute;
+    left: 45px;
+    top: 45px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.user-sex-female > image{
+    width: 15px;
+    height: 15px;
+    transform: rotate(30deg);
+}
+
+
+
 /* 用户id、昵称、进入个人主页按钮图标*/
 .nickname_userId {
     height: 100%;

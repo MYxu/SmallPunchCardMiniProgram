@@ -7,10 +7,35 @@
             <!--使用默认的小程序内置的默认头像-->
             <block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">
                 <image class="avatar" src="../../images/default/userAvatar.png">
+                    <block wx:if="{{userInfo.sex == 1}}">
+                        <view class="user-sex-male">
+                            <image src="/images/button/sex_male.png">
+                            </image>
+                        </view>
+                    </block>
+                    <block wx:if="{{userInfo.sex == 2}}">
+                        <view class="user-sex-female">
+                            <image src="/images/button/sex_female.png">
+                            </image>
+                        </view>
+                    </block>
                 </image>
             </block>
             <block wx:else>
-                <image class='avatar' src='{{userInfo.avatar_url}}'></image>
+                <image class='avatar' src='{{userInfo.avatar_url}}'>
+                    <block wx:if="{{userInfo.sex == 1}}">
+                        <view class="user-sex-male">
+                            <image src="/images/button/sex_male.png">
+                            </image>
+                        </view>
+                    </block>
+                    <block wx:if="{{userInfo.sex == 2}}">
+                        <view class="user-sex-female">
+                            <image src="/images/button/sex_female.png">
+                            </image>
+                        </view>
+                    </block>
+                </image>
             </block>
         </view>
 
