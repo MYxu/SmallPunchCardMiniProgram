@@ -15,8 +15,6 @@ Page({
         curCoverImgUrl: '', // 修改前使用的封面图片的路径
         systemRecommendCoverImgList: [
             // {"img_url":"../../../../images/backgroundImg/img_1.png"},
-            // {"img_url":"../../../../images/backgroundImg/img_1.png"},
-            // {"img_url":"../../../../images/backgroundImg/img_1.png"}
         ],
         sysRecommendCoverImgLoadNotice: "图片加载中...",
 

@@ -1,0 +1,97 @@
+<view class="container">
+    <!--容器头部：圈子名称及修改按钮、圈子编号信息-->
+    <view class="container-header">
+        <!--圈子名称-->
+        <view class="project-name">
+            <text>{{projectName}}</text>
+            <image src="../../images/bottomIcon/edit_2.png"
+                   bindtap="showUpdateProjectNameModal">
+            </image>
+            <!--修改圈子名称自定义模态框-->
+            <block wx:if="{{showUpdateProjectNameModel}}">
+                <!--弹出层蒙层-->
+                <view class="modal-mask"
+                      catchtouchmove="preventTouchMove"
+                      catchtap="preventTab">
+                </view>
+                <!--模态对话框-->
+                <view class="modal-dialog">
+                    <view class="modal-title">填写圈子名称</view>
+                    <view class="modal-content">
+                        <view class="modal-input">
+                            <input type="text"
+                                   placeholder-class="input-holder"
+                                   maxlength="15"
+                                   bindblur="checkInputProjectName"
+                                   class="input"
+                                   placeholder="最多输入十五个字"
+                                   value="{{projectName}}"
+                            />
+                        </view>
+                    </view>
+                    <view class="modal-footer">
+                        <view class="btn-cancel" bindtap="onCancel"
+                              data-status="cancel">取消
+                        </view>
+                        <view class="btn-confirm" bindtap="onConfirm"
+                              data-status="confirm">确定
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+
+        <!--圈子编号-->
+        <view class="project-id">圈子编号: {{projectId}}</view>
+    </view>
+
+    <view class="separator-height-10px"></view>
+
+    <!--昨日圈子数据统计面板：访问人数 & 已打卡人数 & 点赞条数 & 评论数-->
+    <view class="project-data-statistics-panel">
+        <!--面板标题 & 数据更新时间-->
+        <view class="panel-title">
+            <text>昨日数据报告</text>
+            <text class="data-update-time">数据更新至{{dataUpdateTime}}</text>
+        </view>
+
+        <!--面板统计数据 & 统计数据详情页面进入提示图标-->
+        <view class="data-statistics-content">
+            <!--统计数据显示-->
+            <view class="data-statistics-list">
+                <!--访问人数-->
+                <view class="data-statistics-item">
+                    <view class="data">0</view>
+                    <view>访问 (人)</view>
+                </view>
+
+                <!--已打卡人数-->
+                <view class="data-statistics-item">
+                    <view class="data">0</view>
+                    <view>访问 (人)</view>
+                </view>
+
+                <!--点赞人数-->
+                <view class="data-statistics-item">
+                    <view class="data">0</view>
+                    <view>访问 (人)</view>
+                </view>
+
+                <!--评论人数-->
+                <view class="data-statistics-item">
+                    <view class="data">0</view>
+                    <view>访问 (人)</view>
+                </view>
+            </view>
+
+            <!--统计数据详情页进入图标-->
+            <view class="into-data-statistics-detail-page-icon">
+                <image src="/images/button/into_btn_gray.png"></image>
+            </view>
+        </view>
+    </view>
+
+    <view class="separator-height-10px"></view>
+
+    <view class="container-footer" bindtap="problemFeedback">问题反馈</view>
+</view>

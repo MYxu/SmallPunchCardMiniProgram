@@ -147,86 +147,6 @@ Page({
             userInfo: app.globalData.userInfo,
             projectId: parseInt(options.projectId),
             isCreator: parseInt(options.isCreator),
-            // 这里的打卡日记数据应该从服务器端获取
-            diaryLists: [
-                {
-                    diaryDetailContent: '这是打卡日记111111111,哈哈哈哈哈哈哈哈哈哈啦啦啦啦',
-                    likeUserInfo: {
-                        "num": 20,
-                        "info": [
-                            {"nick_name": 'MYXuu1', "open_id": 111},
-                            {"nick_name": 'MYXuu2', "open_id": 222},
-                            {"nick_name": 'MYXuu3', "open_id": 333},
-                            {"nick_name": 'MYXuu4', "open_id": 111},
-                            {"nick_name": 'MYXuu5', "open_id": 222},
-                            {"nick_name": 'MYXuu6', "open_id": 333},
-                            {"nick_name": 'MYXuu7', "open_id": 111},
-                            {"nick_name": 'MYXuu8', "open_id": 222},
-                            {"nick_name": 'MYXuu9', "open_id": 222},
-                            {"nick_name": 'MYXuu10', "open_id": 333}
-                        ]
-                    },
-                    commentInfo: [
-                        {
-                            "content": '超级赞dnf哈哈哈哈哈哈啦啦啦啦哈哈哈哈哈哈哈哈哈哈',
-                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
-                            'receiver': ''
-                        },
-                        {
-                            "content": '谢谢!',
-                            "sender": {'nick_name': 'MYXuu', 'open_id': 456},
-                            'receiver': {'nick_name': 'MYXu', 'open_id': 123}
-                        },
-                        {
-                            "content": '啦啦啦啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿',
-                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
-                            'receiver': {'nick_name': 'MYXuu', 'open_id': 456}
-                        },
-                        {
-                            "content": '测试一下啦啦啦啦啦啦啦啦绿啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿' +
-                                '绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿',
-                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
-                            'receiver': ''
-                        }
-                    ]
-                },
-                {
-                    diaryDetailContent: '这是打卡日记222222222,哈哈哈哈哈哈哈哈哈哈啦啦啦啦',
-                    likeUserInfo: {
-                        "num": 20,
-                        "info": [
-                            {"nick_name": 'MYXuu1', "open_id": 111},
-                            {"nick_name": 'MYXuu2', "open_id": 222},
-                            {"nick_name": 'MYXuu3', "open_id": 333},
-                            {"nick_name": 'MYXuu4', "open_id": 111},
-                            {"nick_name": 'MYXuu5', "open_id": 222},
-                            {"nick_name": 'MYXuu6', "open_id": 333},
-                            {"nick_name": 'MYXuu7', "open_id": 111},
-                            {"nick_name": 'MYXuu8', "open_id": 222},
-                            {"nick_name": 'MYXuu9', "open_id": 222},
-                            {"nick_name": 'MYXuu10', "open_id": 333}
-                        ]
-                    },
-                    commentInfo: [
-                        {
-                            "content": '超级赞dnf哈哈哈哈哈哈啦啦啦啦哈哈哈哈哈哈哈哈哈哈',
-                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
-                            'receiver': ''
-                        },
-                        {
-                            "content": '谢谢',
-                            "sender": {'nick_name': 'MYXuu', 'open_id': 456},
-                            'receiver': {'nick_name': 'MYXu', 'open_id': 123}
-                        },
-                        {
-                            "content": '啦啦啦啦啦啦啦啦绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿绿',
-                            "sender": {'nick_name': 'MYXu', 'open_id': 123},
-                            'receiver': {'nick_name': 'MYXuu', 'open_id': 456}
-                        }
-                    ]
-
-                }
-            ]
         });
 
     },
@@ -728,6 +648,16 @@ Page({
             title: 'todo',
             icon: 'none'
         })
+    },
+
+    // 圈主进入后台管理系统
+    intoProjectBackStageManage: function() {
+        let that = this;
+        wx.navigateTo({
+            url: '/pages/projectBackStageManage/index'
+                + '?projectId='+ that.data.projectId
+                + '&projectName='+ that.data.projectInfo.project_name
+        });
     },
 
     // 点击日记选项卡，展示参与用户的打卡日记

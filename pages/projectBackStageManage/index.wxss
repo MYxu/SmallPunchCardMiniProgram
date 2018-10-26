@@ -1,0 +1,217 @@
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.container-header {
+    width: auto;
+    height: auto;
+    margin: 0 15px;
+    padding: 10px 0;
+}
+
+/*圈子名称*/
+.project-name {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.project-name image {
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+}
+.project-name > text {
+    font-size: 17px;
+    font-weight: bolder;
+    color: black;
+}
+
+/*自定义的修改圈子名称模态框*/
+/*弹出层蒙层*/
+.modal-mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.5;
+    overflow: hidden;
+    z-index: 9000;
+    color: #fff;
+}
+
+/*模态对话框*/
+.modal-dialog {
+    width: 80%;
+    overflow: hidden;
+    position: fixed;
+    top: 50%;
+    left: 0;
+    z-index: 9999;
+    background: #f9f9f9;
+    margin: -100px 10%;
+    border-radius: 10px;
+}
+/*对话框标题*/
+.modal-title {
+    padding-top: 20px;
+    font-size: 18px;
+    font-weight: bolder;
+    color: black;
+    text-align: center;
+}
+/*对话框内容*/
+.modal-content {
+    padding: 15px 15px;
+}
+
+/*对话框内容：添加自定义标签输入框*/
+.modal-input {
+    display: flex;
+    background: #fff;
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/*输入框*/
+.input {
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    color: black;
+}
+/*输入框placeholder样式*/
+.input-holder {
+    color: #666;
+    font-size: 14px;
+}
+
+/*对话框按钮*/
+.modal-footer {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    border-top: 1px solid #dedede;
+    font-size: 17px;
+    line-height: 50px;
+}
+/*取消按钮*/
+.btn-cancel {
+    width: 50%;
+    color: #666;
+    text-align: center;
+    border-right: 1px solid #dedede;
+}
+/*确认按钮*/
+.btn-confirm {
+    width: 50%;
+    color: #F0B27A;
+    text-align: center;
+}
+
+/*圈子编号*/
+.project-id {
+    width: 100%;
+    height: auto;
+    font-size: 13px;
+    color: #C9C9C9;
+}
+
+/*昨日圈子数据统计面板：访问人数 & 已打卡人数 & 点赞条数 & 评论数*/
+.project-data-statistics-panel {
+    width: auto;
+    height: auto;
+    margin: 0 15px;
+}
+/*统计面板标题 & 统计时间*/
+.panel-title {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 16px;
+    color: black;
+
+    border-bottom: 1px #C9C9C9 solid;
+}
+
+.data-update-time {
+    font-size: 11px;
+    color: #C9C9C9;
+}
+
+/*面板统计数据 & 统计数据详情页面进入提示图标*/
+.data-statistics-content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/*统计数据显示*/
+.data-statistics-list {
+    width: 90%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.data-statistics-item {
+    width: 50%;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+
+    font-size: 12px;
+    color: #C9C9C9;
+    background-color: cornflowerblue;
+}
+.data {
+    font-size: 15px;
+    color: black;
+}
+
+/*统计数据详情页进入图标*/
+.into-data-statistics-detail-page-icon {
+    width: 10%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.into-data-statistics-detail-page-icon > image {
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+/*页脚问题反馈按钮*/
+.container-footer {
+    width: 100%;
+    height: auto;
+    font-size: 14px;
+    color: cornflowerblue;
+    text-align: center;
+}

@@ -664,7 +664,8 @@
 
                 <!--创建者显示管理后台按钮-->
                 <block wx:if="{{isCreator === 1}}">
-                    <view class="back-stage-management-page-into-btn">
+                    <view class="back-stage-management-page-into-btn"
+                          bindtap="intoProjectBackStageManage">
                         <image src="../../images/button/back_setting.png">
                         </image>
                         <text>管理后台</text>
