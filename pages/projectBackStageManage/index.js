@@ -181,6 +181,34 @@ Page({
         });
     },
 
+    // 进入统计数据详情页
+    intoDataStatisticsDetailPage: function() {
+        wx.showToast({
+            title: 'todo'
+        })
+    },
+
+    // 进入圈子竞争力排名详情页
+    intoProjectCompeteRankDetailPage: function() {
+        wx.showToast({
+            title: 'todo'
+        })
+    },
+
+    // 进入创建打卡契约详情页
+    intoCreatePunchCardConventionPage: function() {
+        wx.showToast({
+            title: 'todo'
+        })
+    },
+
+    // 打卡契约详情页简介信息
+    conventionHelp: function() {
+        wx.showToast({
+            title: '打卡契约说明todo'
+        })
+    },
+
     problemFeedback: function () {
       wx.showToast({
           title: 'TODO',

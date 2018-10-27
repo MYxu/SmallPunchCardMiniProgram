@@ -56,31 +56,31 @@
         </view>
 
         <!--面板统计数据 & 统计数据详情页面进入提示图标-->
-        <view class="data-statistics-content">
+        <view class="data-statistics-content" bindtap="intoDataStatisticsDetailPage">
             <!--统计数据显示-->
             <view class="data-statistics-list">
                 <!--访问人数-->
                 <view class="data-statistics-item">
                     <view class="data">0</view>
-                    <view>访问 (人)</view>
+                    <view>访问 （人）</view>
                 </view>
 
                 <!--已打卡人数-->
                 <view class="data-statistics-item">
                     <view class="data">0</view>
-                    <view>访问 (人)</view>
+                    <view>已打卡 （人）</view>
                 </view>
 
                 <!--点赞人数-->
                 <view class="data-statistics-item">
                     <view class="data">0</view>
-                    <view>访问 (人)</view>
+                    <view>点赞 （人）</view>
                 </view>
 
                 <!--评论人数-->
                 <view class="data-statistics-item">
                     <view class="data">0</view>
-                    <view>访问 (人)</view>
+                    <view>评论 （人）</view>
                 </view>
             </view>
 
@@ -92,6 +92,69 @@
     </view>
 
     <view class="separator-height-10px"></view>
+
+    <!--竞争力排名-->
+    <view class="project-compete-rank" bindtap="intoProjectCompeteRankDetailPage">
+        <view>竞争力排名</view>
+        <text class="rank">差</text>
+        <image src="/images/button/into_btn_gray.png"></image>
+    </view>
+
+    <view class="separator-height-10px"></view>
+
+    <!--打卡契约-->
+    <view class="punch-card-convention" bindtap="intoCreatePunchCardConventionPage">
+        <view class="punch-card-convention-help">
+            <text>打卡契约</text>
+            <image catchtap="conventionHelp" src="/images/button/question.png">
+            </image>
+        </view>
+
+        <view class="into-create-punch-card-convention-page">
+            <image src="/images/button/into_btn_gray.png"></image>
+        </view>
+    </view>
+
+    <view class="separator-height-10px"></view>
+
+    <!--管理功能列表-->
+    <view class="back-stage-manage-function-list">
+        <!--基础设置-->
+        <view class="function-item">
+            <image src="/images/button/base_setting.png"></image>
+            <text>基础设置</text>
+        </view>
+
+        <!--编辑圈子详情-->
+        <view class="function-item">
+            <image src="/images/button/edit_project_detail.png"></image>
+            <text>编辑圈子详情</text>
+        </view>
+
+        <!--成员管理-->
+        <view class="function-item">
+            <image src="/images/button/member_manage.png"></image>
+            <text>成员管理</text>
+        </view>
+
+        <!--圈主营销工具-->
+        <view class="function-item">
+            <image src="/images/button/creator_marketing_tool.png"></image>
+            <text>圈主营销工具</text>
+        </view>
+
+        <!--圈主学院-->
+        <view class="function-item">
+            <image src="/images/button/creator_college.png"></image>
+            <text>圈主学院</text>
+        </view>
+
+        <!--电脑版后台-->
+        <view class="function-item">
+            <image src="/images/button/pc_back_stage.png"></image>
+            <text>电脑版后台</text>
+        </view>
+    </view>
 
     <view class="container-footer" bindtap="problemFeedback">问题反馈</view>
 </view>
