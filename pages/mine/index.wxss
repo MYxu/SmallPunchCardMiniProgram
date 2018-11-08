@@ -1,8 +1,6 @@
-/* pages/mine/index.wxss */
-.touch {
+.container {
     width: 100%;
     height: 100%;
-    /* background-color: yellow; */
 }
 
 .container_userInfo {
@@ -81,20 +79,19 @@
 .nickname_userId {
     height: 100%;
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-.nick_name {
-    margin-top: 20px;
-    margin-bottom: 5px;
+.nick-name {
+    margin-top: 16px;
     font-size: 18px;
-    text-align: left;
-    display: block;
 }
 
-.user_id {
-    text-align: left;
-    font-size: 12px;
-    display: block;
+.user-id {
+    font-size: 11px;
 }
 
 /* 进入个人主页按钮 */
@@ -102,22 +99,18 @@
     width: 40%;
     height: 80px;
 
-    font-size: 13px;
-    text-align: center;
-    line-height: 80px;
-    display: table;
-    vertical-align: middle;
-}
+    font-size: 12px;
 
-.mine text {
-    display: inline;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .into_mine_page {
     width: 30px;
-    height: 40px;
-
-    vertical-align: middle;
+    height: 30px;
+    margin-right: 10px;
 }
 
  /* 间隔线 */
@@ -127,96 +120,101 @@
     background-color: whitesmoke;
 }
 
-
-.line {
+/*相关功能*/
+.functional-module {
     width: 100%;
-    height: 90px;
+    height: auto;
+    margin-top: 20px;
+
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
     align-items: center;
+    justify-content: flex-start;
+
     font-size: 12px;
-    text-align: center;
+
 }
 
-.my_follow {
-    width: 40px;
-    height: 40px;
-    background-color: #73E68C;
+/*我的关注*/
+.my-follow {
+    width: 25%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-follow > image {
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
-    flex-grow: 0;    
-}
-
-.my_follow image {
-    width: 100%;
-    height: 100%;
     margin-bottom: 5px;
 }
 
-
-.my_follower {
-    width: 40px;
-    height: 40px;
-    background-color: rgb(30, 199, 199);
-    border-radius: 5px;
-    flex-grow: 0;    
+/*我的粉丝*/
+.my-follower {
+    width: 25%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.my_follower image {
-    width: 100%;
-    height: 100%;
+.my-follower > image {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
     margin-bottom: 5px;    
 }
 
-.my_collect {
-    width: 40px;
-    height: 40px;
-    background-color: rgb(211, 211, 13);
+/*我的收藏*/
+.my-collect {
+    width: 25%;
+    height: 70px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.my-collect > image {
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
-    flex-grow: 0;    
+    margin-bottom: 5px;
 }
 
-.my_collect image {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 5px;    
+/*我创建的打卡圈子*/
+.my-create-project {
+    width: 25%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-
-.my_create_project {
-    width: 40px;
-    height: 40px;
-    background-color: #F0B27A;
+.my-create-project > image {
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
-    flex-grow: 0;    
+    margin-bottom: 5px;
 }
 
-.my_create_project image {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 5px;    
-}
-
+/*设置*/
 .setting {
-    width: 40px;
-    height: 40px;
-    background-color: rgb(66, 120, 236);
-    border-radius: 5px;
-    flex-grow: 0;    
+    width: 25%;
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.setting image{
-    width: 100%;
-    height: 100%;
-    margin-bottom: 5px;    
-}
-
-.blank {
-    width: 40px;
-    height: 40px;
+.setting > image{
+    width: 30px;
+    height: 30px;
     border-radius: 5px;
-    flex-grow: 0; 
+    margin-bottom: 5px;
 }
 
 

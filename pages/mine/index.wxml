@@ -1,4 +1,4 @@
-<view class="touch">
+<view class="container">
 
     <!--用户信息 -->
     <view class="container_userInfo" bindtap='intoUserInfoDetailPage'>
@@ -41,8 +41,8 @@
 
         <!-- 昵称、用户ID -->
         <view class='nickname_userId'>
-            <text class='nick_name'>{{userInfo.nick_name}}</text>
-            <text class='user_id'>用户ID：{{userInfo.id}}</text>
+            <view class='nick-name'>{{userInfo.nick_name}}</view>
+            <view class='user-id'>用户ID：{{userInfo.id}}</view>
         </view>
 
         <!-- 查看我的主页 -->
@@ -53,51 +53,41 @@
         </view>
     </view>
 
+    <!--TODO访客记录-->
 
-    <!--相关功能 -->
-    <view class='functionalModule'>
 
-        <!-- 第一行 -->
-        <view class='line'>
-            <!-- 我的关注 -->
-            <view class='my_follow'>
-                <image src='/images/button/my_follow.png'></image>
-                <text>关注</text>
-            </view>
+    <!--相关功能-->
+    <view class='functional-module'>
 
-            <!-- 我的粉丝 -->
-            <view class='my_follower'>
-                <image src='/images/button/my_follower.png'></image>
-                <text>粉丝</text>
-            </view>
-
-            <!-- 我的收藏 -->
-            <view class='my_collect'>
-                <image src='/images/button/my_collect.png'></image>
-                <text>收藏</text>
-            </view>
-
-            <!-- 我建的圈子 -->
-            <view class='my_create_project'>
-                <image src='/images/button/my_create_project.png'></image>
-                <text>圈子</text>
-            </view>
+        <!-- 我的关注 -->
+        <view class='my-follow'>
+            <image src='/images/button/my_follow_2.png'></image>
+            <text>我的关注</text>
         </view>
 
-        <!-- 第二行 -->
-        <view class='line'>
-            <!-- 设置 -->
-            <view class='setting'>
-                <image src='/images/button/setting.png'></image>
-                <text>设置</text>
-            </view>
-
-            <!-- 占位 -->
-            <view class='blank'></view>
-            <view class='blank'></view>
-            <view class='blank'></view>
+        <!-- 我的粉丝 -->
+        <view class='my-follower'>
+            <image src='/images/button/my_follower_2.png'></image>
+            <text>我的粉丝</text>
         </view>
 
+        <!-- 我的收藏 -->
+        <view class='my-collect'>
+            <image src='/images/button/my_collect_2.png'></image>
+            <text>我的收藏</text>
+        </view>
+
+        <!-- 我建的圈子 -->
+        <view class='my-create-project'>
+            <image src='/images/button/my_create_project_2.png'></image>
+            <text>我建的圈子</text>
+        </view>
+
+        <!-- 设置 -->
+        <view class='setting'>
+            <image src='/images/button/setting_2.png'></image>
+            <text>设置</text>
+        </view>
 
     </view>
 
@@ -127,7 +117,7 @@
                         <view class='headerLeft' bindtap='intoUserInfoDetailPage'>
                             <!--使用默认的小程序内置的默认头像-->
                             <block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">
-                                <image src="../../images/default/userAvatar.png">
+                                <image src="/images/default/userAvatar.png">
                                 </image>
                             </block>
                             <block wx:else>
@@ -167,7 +157,7 @@
 
                         <!-- 打卡图片，一张图片直接显示，二张以上九宫格格式展示 -->
                         <view class="diaryImages">
-                            <image src="../../../images/default/userAvatar.png">
+                            <image src="/images/default/userAvatar.png">
                             </image>
                         </view>
 
