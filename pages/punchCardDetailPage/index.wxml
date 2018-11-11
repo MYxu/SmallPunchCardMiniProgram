@@ -675,22 +675,25 @@
                 <!--通用的功能入口列表：打卡日历、排行&勋章、设置、邀请好友-->
                 <view class="universal-function-list">
                     <!--打卡日历-->
-                    <view class="list-item">
+                    <view class="list-item" bindtap="intoPunchCardCalendarDetailPage">
                         <image src="../../images/button/calendar.png"></image>
                         <text>打卡日历</text>
                     </view>
+
                     <!--排行&勋章-->
-                    <view class="list-item">
+                    <view class="list-item" bindtap="intoPunchCardArrangePage">
                         <image src="../../images/button/honour.png"></image>
                         <text>排行&勋章</text>
                     </view>
+
                     <!--设置-->
-                    <view class="list-item">
+                    <view class="list-item" bindtap="intoProjectBaseSettingPage">
                         <image src="../../images/button/setting-black.png"></image>
                         <text>设置</text>
                     </view>
+
                     <!--邀请好友-->
-                    <view class="list-item">
+                    <view class="list-item" bindtap="inviteFriends">
                         <image src="../../images/button/invite.png"></image>
                         <text>邀请好友</text>
                     </view>
@@ -711,7 +714,6 @@
                 </view>
                 <view class="separator-height-10px"></view>
             </block>
-
 
             <!--打卡圈子内容：成员的打卡日记、详情（圈主、圈子简介详情）、成员列表-->
             <view class="punch-card-project-content">
@@ -742,6 +744,7 @@
                         </block>
                     </view>
                 </view>
+
                 <!--标识出当前选择的选项卡 默认为日记-->
                 <view class="selected-tab-indicate" animation="{{animation}}">
                 </view>
@@ -861,20 +864,6 @@
                                                 <image src='/images/button/more.png'>
                                                 </image>
                                             </view>
-
-                                            <!--<block wx:if="{{isCreator==1 || userInfo.id==item.publisher.id}}">-->
-                                                <!--<view class="delete-diary-btn" bindtap="deleteDiary">-->
-                                                    <!--<image-->
-                                                           <!--src='/images/button/delete.png'>-->
-                                                    <!--</image>-->
-                                                <!--</view>-->
-                                            <!--</block>-->
-                                            <!--<block wx:else>-->
-                                                <!--<view class="delete-diary-btn" bindtap="into">-->
-                                                    <!--<image src='/images/button/more.png'>-->
-                                                    <!--</image>-->
-                                                <!--</view>-->
-                                            <!--</block>-->
 
                                             <!--置顶按钮-->
                                             <block wx:if="{{item.have_sticky == 0}}">
@@ -1034,7 +1023,7 @@
                                                             <block wx:if="{{i.pid != 0}}">
                                                                 <text style="color: black"> @ </text>
                                                                 <text data-user-id="{{i.respondent.id}}"
-                                                                      bindtap="intoPersonalHomePage">{{i.respondent.nick_name}}</text>
+                                                                      catchtap="intoPersonalHomePage">{{i.respondent.nick_name}}</text>
                                                             </block>
 
                                                             <!--评论内容-->
@@ -1129,7 +1118,6 @@
                         </view>
                     </block>
                 </view>
-
 
                 <!--当选择详情选项卡的时候显示圈子的圈主简介、圈子简介详情-->
                 <view class="project-detail-info" hidden="{{hiddenProjectDetailInfo}}">

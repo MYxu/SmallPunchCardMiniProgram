@@ -118,7 +118,7 @@ Page({
 
         // 最新加入打卡圈子的三个用户信息
         attendUserInfo: [
-            // 数据格式
+            // 属性值说明
             // {
             //     id: '用户id',
             //     nick_name: '用户名',
@@ -141,7 +141,7 @@ Page({
     onLoad: function (options) {
         console.log(options);
         let that = this;
-        // 一定传递打卡圈子的projectId, isCreator是否为创建者若未知直接传递-1(未知)即可，
+        // 一定传递打卡圈子的projectId, isCreator代表是否为创建者 若未知直接传递-1(未知)即可，
         // 后续在获取打卡圈子的详细信息的时候获取到
         that.setData({
             userInfo: app.globalData.userInfo,
@@ -659,6 +659,48 @@ Page({
                 + '&projectName='+ that.data.projectInfo.project_name
         });
     },
+
+    // 进入个人的打卡日历详情页面
+    intoPunchCardCalendarDetailPage: function() {
+        // let that = this;
+        // wx.navigateTo({
+        //     url: '/pages/projectBackStageManage/index'
+        //         + '?projectId='+ that.data.projectId
+        //         + '&projectName='+ that.data.projectInfo.project_name
+        // });
+        wx.showToast({
+            title: 'todo'
+        });
+    },
+
+
+    // 进入个人的打卡排行&获取到的打卡勋章详情页
+    intoPunchCardArrangePage: function() {
+        // let that = this;
+        // wx.navigateTo({
+        //     url: '/pages/projectBackStageManage/index'
+        //         + '?projectId='+ that.data.projectId
+        //         + '&projectName='+ that.data.projectInfo.project_name
+        // });
+        wx.showToast({
+            title: 'todo'
+        });
+    },
+
+    // 进入圈子的基本设置页面
+    intoProjectBaseSettingPage: function() {
+        // let that = this;
+        // wx.navigateTo({
+        //     url: '/pages/projectBackStageManage/index'
+        //         + '?projectId='+ that.data.projectId
+        //         + '&projectName='+ that.data.projectInfo.project_name
+        // });
+        wx.showToast({
+            title: 'todo'
+        });
+    },
+
+
 
     // 点击日记选项卡，展示参与用户的打卡日记
     showPunchCardDiary: function() {

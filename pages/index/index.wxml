@@ -54,7 +54,7 @@
                                 <!--打卡圈子封面-->
                                 <view class="project-cover-img">
                                     <block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">
-                                        <image src="../../images/default/project_cover_img.png">
+                                        <image src="/images/default/project_cover_img.png">
                                         </image>
                                     </block>
                                     <block wx:else>
@@ -83,7 +83,7 @@
                                     <!--打卡圈子名称-->
                                     <view class="project-name">
                                         <view>{{item.project_name}}
-                                            <block wx:if="{{item.is_creator}}">
+                                            <block wx:if="{{item.is_creator == 1}}">
                                                 <text class="is-creator">圈主</text>
                                             </block>
                                         </view>
@@ -133,7 +133,7 @@
                                     <!--打卡圈子名称-->
                                     <view class="project-name">
                                         <view>{{item.project_name}}
-                                            <block wx:if="{{item.is_creator == '1'}}">
+                                            <block wx:if="{{item.is_creator == 1}}">
                                                 <text class="is-creator">圈主</text>
                                             </block>
                                         </view>

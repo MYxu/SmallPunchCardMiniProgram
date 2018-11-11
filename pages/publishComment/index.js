@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        punchCardDetailPage: '', // 圈子打卡详情页
+        prePage: '', // 发表评论页面的上一个页面
 
         diaryId: 0,        // 需要评论的日记记录id
         diaryIndex:0,      // 需要评论的日记在总的日记数据集中的索引
@@ -31,12 +31,12 @@ Page({
             placeholder: options.placeholder
         });
 
-        // 获取打卡圈子详情页面
+        // 获取发表页面的上一个页面
         let pages = getCurrentPages();
-        that.data.punchCardDetailPage = pages[pages.length - 2];
+        that.data.prePage = pages[pages.length - 2];
 
         // 获取日记总数据集
-        that.data.diaryList = that.data.punchCardDetailPage.data.punchCardDiaryList;
+        that.data.diaryList = that.data.prePage.data.punchCardDiaryList;
 
         console.log(that.data);
     },
@@ -45,7 +45,7 @@ Page({
         // 返回圈子的打卡详情页时告知为由评论也返回，
         // 在打卡详情页的onShow中不要进行打卡日记的重新获取
         let that = this;
-        that.data.punchCardDetailPage.setData({
+        that.data.prePage.setData({
            commentPageReturn: true
         });
 
@@ -102,7 +102,7 @@ Page({
 
                         that.data.diaryList[that.data.diaryIndex].allCommentInfo = commentInfo;
 
-                        that.data.punchCardDetailPage.setData({
+                        that.data.prePage.setData({
                             punchCardDiaryList: that.data.diaryList
                         });
                         wx.showToast({
