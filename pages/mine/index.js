@@ -80,8 +80,6 @@ Page({
         emptyDiaryListNotice: false, // 控制还没有日记列表数据时的提示信息
         moreDiaryDataLoad: false, // 控制下拉加载更多打卡日记的加载动画
         notMoreDiaryData: false, // 打卡日记已全部加载
-        // 日记存在2张以上的图片时图片显示的长、宽度
-        diaryImgWidth: Math.floor((app.globalData.windowWidth-(10+40+8+5+5+5+10))/3),
     },
 
     /**
@@ -338,7 +336,4 @@ Page({
 
         })
     },
-
-
-
 });

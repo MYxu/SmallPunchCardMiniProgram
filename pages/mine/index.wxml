@@ -94,6 +94,7 @@
     <!-- 分割线 -->
     <view class='interval_line'></view>
 
+    <!--我的打卡日记列表-->
     <block wx:if="{{showDiaryListLoading}}">
         <view class="weui-loadmore">
             <view class="weui-loading"></view>
@@ -129,26 +130,11 @@
             </block>
         </view>
 
-
-
         <!--底部加载更多-->
         <view class="weui-loadmore" hidden="{{!moreDiaryDataLoad}}" style="margin-bottom: 60px">
             <view class="weui-loading"></view>
             <view class="weui-loadmore__tips">正在加载</view>
         </view>
-        <!--<view class="not-punch-card-diary-notice" hidden="{{haveMore}}"-->
-              <!--style="margin: 25px 22% 80px 22%">-->
-            <!--<view class="line" style="margin-right: 2px"></view>-->
-
-            <!--<view class="dot"></view>-->
-
-            <!--<view style="margin: 0 5px;">我可是有底线的哦</view>-->
-
-            <!--<view class="dot"></view>-->
-
-            <!--<view class="line" style="margin-left: 2px"></view>-->
-        <!--</view>-->
-
     </block>
 
     <!-- 底线  -->

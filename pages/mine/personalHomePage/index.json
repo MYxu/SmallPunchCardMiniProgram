@@ -1,1 +1,6 @@
-{}
+{
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "mine-diary-item": "/components/mine/diaryItem"
+  }
+}

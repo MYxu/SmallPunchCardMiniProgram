@@ -119,7 +119,6 @@ Component({
             let diaryIndex  = e.currentTarget.dataset.diaryIndex,
                 publisherId = e.currentTarget.dataset.publisherId;
 
-
             that.setData({
                 hiddenMoreDiaryOperateBtn: false, // 显示更多操作按钮
 
