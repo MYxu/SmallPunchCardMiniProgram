@@ -452,7 +452,8 @@ Page({
             url: app.globalData.urlRootPath + 'index/User/getUserPunchCardDiaryList',
             method: 'post',
             data: {
-                userId: that.data.visitedUserId,
+                visitedUserId: that.data.visitedUserId, // 被查看打卡日记列表的用户的id
+                visitorUserId: that.data.visitorUserId, // 查看者的id
                 pageNo: parseInt(pageNo),
                 dataNum: parseInt(dataNum),
 

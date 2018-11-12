@@ -288,7 +288,8 @@ Page({
             url: app.globalData.urlRootPath + 'index/User/getUserPunchCardDiaryList',
             method: 'post',
             data: {
-                userId: app.globalData.userInfo.id,
+                visitedUserId: app.globalData.userInfo.id, // 被查看打卡日记列表的用户的id
+                visitorUserId: app.globalData.userInfo.id, // 查看者的id
                 pageNo: parseInt(pageNo),
                 dataNum: parseInt(dataNum),
                 isDiaryCreator: 1, // 代表查询自己的打卡日记列表 0则代表查看他人的
