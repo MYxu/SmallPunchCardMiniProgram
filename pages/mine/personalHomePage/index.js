@@ -474,4 +474,15 @@ Page({
             }
         });
     },
+
+    // 进入打卡圈子的打卡详情页
+    intoProjectDetailPage: function (e) {
+        let that = this;
+        console.log(e);
+        wx.navigateTo({
+            url: '/pages/punchCardDetailPage/index'
+                + "?projectId=" + e.currentTarget.dataset.projectId
+                + "&isCreator=" + -1
+        });
+    },
 });

@@ -118,7 +118,9 @@
                     <!--遍历展示所加入的打卡圈子相关信息：圈子名称、我的打卡天数、打卡排名-->
                     <block wx:for="{{joinInPunchCardProjectList}}">
                         <view class="joinInPunchCardProjectItem"
-                              style="background-color: {{item.bg_color}}">
+                              style="background-color: {{item.bg_color}}"
+                              data-project-id="{{item.id}}"
+                              bindtap="intoProjectDetailPage">
                             <!-- TODO 获取动态的我加入的打卡圈子相关信息-->
                             <!-- 打卡圈子名称 -->
                             <view class="punchCardProjectName">
