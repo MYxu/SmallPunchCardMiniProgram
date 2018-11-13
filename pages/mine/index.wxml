@@ -125,7 +125,7 @@
                 </block>
                 <!--组件化形式显示每条打卡日记-->
                 <mine-diary-item diary-item-data="{{item}}" diary-item-index="{{index}}"
-                                 user-info="{{userInfo}}" bind:dealUserLikeSuccess="dealUserLike">
+                                 user-info="{{userInfo}}">
                 </mine-diary-item>
             </block>
         </view>

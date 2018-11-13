@@ -264,7 +264,7 @@ Page({
                 },
                 fail: function () {
                     wx.showToast({
-                        title: '网络异常,无法获取打卡日记',
+                        title: '网络异常,无法获取打卡圈子列表',
                         icon: 'none',
                         duration: 2000
                     });
@@ -474,23 +474,4 @@ Page({
             }
         });
     },
-
-    // 组件触发点赞||取消点赞事件并服务器处理成功后，主页面需要进行本地数据更新
-    dealUserLike: function (e) {
-        let that = this;
-        console.log(e);
-        console.log(that.data.punchCardDiaryList[e.detail.diaryIndex]);
-        that.data.punchCardDiaryList[e.detail.diaryIndex].haveLike = e.detail.haveLike;
-        that.data.punchCardDiaryList[e.detail.diaryIndex].like_user_num = e.detail.like_user_num;
-        that.data.punchCardDiaryList[e.detail.diaryIndex].tenLikeInfo = e.detail.tenLikeInfo;
-
-        that.setData({
-            punchCardDiaryList: that.data.punchCardDiaryList
-        });
-
-    },
-
-
-
-
 });

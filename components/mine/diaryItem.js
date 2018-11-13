@@ -296,7 +296,7 @@ Component({
                         let data = res.data;
                         switch (res.statusCode) {
                             case 200:
-                                // 取消成功后则通知父页面进行本地数据的更新
+                                // 取消成功后则对页面的本地点赞数据的更新
                                 let detail = {};
                                 // 设置当前用户对当前这条日记未点赞 点赞总人数-1
                                 detail.haveLike = false;
@@ -309,7 +309,7 @@ Component({
                                 // 当前被取消点赞的日记的下标索引
                                 detail.diaryIndex = diaryIndex;
 
-                                that.triggerEvent('dealUserLikeSuccess', detail);
+                                that._dealSuccessUpdateLocalData(detail);
 
                                 break;
                             default:
@@ -345,7 +345,7 @@ Component({
                         let data = res.data;
                         switch (res.statusCode) {
                             case 200:
-                                // 点赞成功后则通知父页面进行本地数据的更新
+                                // 点赞成功后则对页面进行本地点赞数据的更新
                                 let detail = {};
 
                                 // 设置当前用户对当前这条日记已点赞 点赞总人数+1
@@ -370,7 +370,7 @@ Component({
                                 // 当前被点赞的日记的下标索引
                                 detail.diaryIndex = diaryIndex;
 
-                                that.triggerEvent('dealUserLikeSuccess', detail);
+                                that._dealSuccessUpdateLocalData(detail);
 
                                 break;
                             default:
@@ -392,6 +392,26 @@ Component({
 
                 })
             }
+        },
+
+        // 组件触发点赞||取消点赞事件并服务器处理成功后，主页面需要进行本地点赞数据更新
+        _dealSuccessUpdateLocalData: function (data) {
+
+            // 获取当前组件所处的页面
+            let pages = getCurrentPages(),
+                currPage = pages[pages.length - 1];
+
+            // 获取当前页面获取到的日记总数据集
+            let diaryList = currPage.data.punchCardDiaryList;
+
+            // 修改对应打卡日记的本地点赞数据
+            diaryList[data.diaryIndex].haveLike = data.haveLike;
+            diaryList[data.diaryIndex].like_user_num = data.like_user_num;
+            diaryList[data.diaryIndex].tenLikeInfo = data.tenLikeInfo;
+
+            currPage.setData({
+                punchCardDiaryList: diaryList
+            });
         },
 
         // 点击评论按钮，发表对日记的一级评论 即对日记发表者进行评论
