@@ -767,7 +767,13 @@
                     </block>
 
                     <!--日记列表展示-->
-                    <block wx:if="{{punchCardDiaryList.length > 0}}">
+                    <block wx:if="{{showDiaryListLoading}}">
+                        <view class="weui-loadmore">
+                            <view class="weui-loading"></view>
+                            <view class="weui-loadmore__tips">正在加载</view>
+                        </view>
+                    </block>
+                    <block wx:elif="{{punchCardDiaryList.length > 0}}">
                         <view class="user-punch-card-diary-list-info">
                             <block wx:for="{{punchCardDiaryList}}">
                                 <block wx:if="{{index !== 0}}">

@@ -107,6 +107,7 @@ Page({
         ],
         diaryListPageNo: 1, // 当前已经加载的页号
         diaryListDataNum: 2, // 每页显示的数据条数
+        showDiaryListLoading: true, // 控制页面初次加载时日记列表数据获取的加载动画
         hiddenLoadingMore: true, // 触发上拉事件时控制显示、隐藏加载更多
         haveMore: true, // 控制显示、隐藏 没有更多数据提示信息
         getDataRes: -1, // 用于记录获取数据的请求状态 -1未知 0--请求获取数据失败 1--请求并获取数据成功
@@ -323,6 +324,7 @@ Page({
 
                         that.setData({
                             showLoading: false, // 隐藏加载时显示的全屏空白页，显示获取到内容
+                            showDiaryListLoading: false,
                             punchCardDiaryList: newData
                         });
                         clearInterval(id);
