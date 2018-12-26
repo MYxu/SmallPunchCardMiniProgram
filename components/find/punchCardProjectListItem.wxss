@@ -1,0 +1,64 @@
+.punch-card-project-list-item {
+    width: 100%;
+    height: auto;
+    padding: 15px 0;
+    margin-left: 10px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+
+    border-bottom: 1px whitesmoke solid;
+}
+
+.project-cover-img {
+    width: 100px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-right: 5px;
+
+}
+.project-cover-img > image {
+    width: 100px;
+    height: 60px;
+
+    border-radius: 3px;
+}
+
+.project-base-info {
+    /*高度由js控制，使之占满父级宽度除去左边图片宽度之外的区域*/
+    height: auto;
+    /*background-color: cornflowerblue;*/
+}
+
+.project-name {
+    width: 100%;
+    height: auto;
+    margin-bottom: 4px;
+
+    font-size: 16px;
+    color: black;
+    font-weight: bolder;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.punch-card-info {
+    height: auto;
+    width: 100%;
+
+    font-size: 12px;
+    color: #8a8a8a;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.attend-num-info {
+    margin-right: 15px;
+}

@@ -1,0 +1,31 @@
+<view class="punch-card-project-list-item"
+      data-project-id="{{punchCardProjectItemData.id}}"
+      bindtap="_intoPunchCardDetail">
+    <!--圈子封面-->
+    <view class="project-cover-img">
+        <block wx:if="{{punchCardProjectItemData.cover_img_url == 'default_cover_img'}}">
+            <image src="/images/default/project_cover_img.png">
+            </image>
+        </block>
+        <block wx:else>
+            <image src="{{imgRootPath}}{{punchCardProjectItemData.cover_img_url}}">
+            </image>
+        </block>
+    </view>
+
+    <!--圈子信息-->
+    <view class="project-base-info"
+          style="width: {{projectBaseInfoWidth}}px">
+        <view class="project-name">
+            {{punchCardProjectItemData.project_name}}
+        </view>
+        <view class="punch-card-info">
+            <view class="attend-num-info">
+                {{punchCardProjectItemData.attend_user_num}}人参加
+            </view>
+            <view class="punch-card-num-info">
+                {{punchCardProjectItemData.all_punch_card_num}}次打卡
+            </view>
+        </view>
+    </view>
+</view>

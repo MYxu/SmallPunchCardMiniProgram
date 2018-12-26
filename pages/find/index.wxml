@@ -96,38 +96,9 @@
 
             <view class="punch-card-project-recommend-list">
                 <block wx:for="{{punchCardProjectRecommendList}}">
-                    <view class="punch-card-project-recommend-list-item"
-                          data-project-id="{{item.id}}"
-                          bindtap="intoPunchCardDetail">
-                        <!--圈子封面-->
-                        <view class="project-cover-img">
-                            <block wx:if="{{item.cover_img_url == 'default_cover_img'}}">
-                                <image src="../../images/default/project_cover_img.png">
-                                </image>
-                            </block>
-                            <block wx:else>
-                                <image src="{{imgRootPath}}{{item.cover_img_url}}">
-                                </image>
-                            </block>
-                        </view>
-
-                        <!--圈子信息-->
-                        <view class="project-base-info"
-                              style="width: {{projectBaseInfoWidth}}px">
-                            <view class="project-name">
-                                {{item.project_name}}
-                            </view>
-                            <view class="punch-card-info">
-                                <view class="attend-num-info">
-                                    {{item.attend_user_num}}人参加
-                                </view>
-                                <view class="punch-card-num-info">
-                                    {{item.all_punch_card_num}}次打卡
-                                </view>
-                            </view>
-                        </view>
-                        <!--TODO 报名费 && 推荐原因???-->
-                    </view>
+                    <!--打卡圈子列表子项组件-->
+                    <punch-card-project-item punch-card-project-item-data="{{item}}">
+                    </punch-card-project-item>
                 </block>
             </view>
 

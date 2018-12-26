@@ -17,7 +17,8 @@
         "pages/punchCardDetailPage/publishPunchCardDiary/index",
         "pages/position/index",
         "pages/publishComment/index",
-        "pages/projectBackStageManage/index"
+        "pages/projectBackStageManage/index",
+        "pages/find/searchPunchCardProject/index"
     ],
     "window": {
         "navigationBarBackgroundColor": "#F0B27A",

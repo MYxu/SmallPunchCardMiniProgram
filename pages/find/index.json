@@ -1,3 +1,7 @@
 {
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+
+  "usingComponents": {
+    "punch-card-project-item": "/components/find/punchCardProjectListItem"
+  }
 }

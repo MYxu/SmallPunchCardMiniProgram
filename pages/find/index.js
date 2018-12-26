@@ -23,7 +23,7 @@ Page({
         // 当前已经获取到的打卡圈子推荐列表数据
         punchCardProjectRecommendList: [
             // {
-            //     project_id: 1,
+            //     id: 1,
             //     cover_img_url: 'default_cover_img',
             //     project_name: '项目名1',
             //     all_punch_card_num: 9999,
@@ -37,9 +37,6 @@ Page({
         dataNum: 10,  // 每次请求获取的打卡圈子数，也就是每页数据包含的打卡圈子个数
         onePagePunchCardProjectRecommendList: [], // 获取到的打卡圈子推荐列表的一页数据
         getDataRes: -1, // 用于记录获取数据的请求状态 -1未知 0--请求获取数据失败 1--请求并获取数据成功
-
-        // 打卡圈子推荐列表子项右边圈子信息的宽度
-        projectBaseInfoWidth: app.globalData.windowWidth - (10 + 100 + 5 + 10 ),
     },
 
     /**
@@ -246,10 +243,9 @@ Page({
 
     // 进入打卡圈子搜索页
     intoSearchProjectPage: function () {
-      wx.showToast({
-         title: 'TODO',
-         icon: 'none'
-      });
+      wx.navigateTo({
+          url: 'searchPunchCardProject/index'
+      })
     },
 
     // 进入打卡圈子精选专题页
@@ -321,16 +317,6 @@ Page({
             }
 
         })
-    },
-
-    // 进入指定的打卡圈子的打卡详情页
-    intoPunchCardDetail: function (e) {
-        console.log(e);
-        wx.navigateTo({
-            url: '../punchCardDetailPage/index'
-                + "?projectId=" + e.currentTarget.dataset.projectId
-                + "&isCreator=" + -1 // 未知是否为创建者
-        });
     },
 
     // 创建新的打卡圈子按钮点击事件
