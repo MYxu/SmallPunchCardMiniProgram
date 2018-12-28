@@ -1,0 +1,8 @@
+{
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "搜索页",
+
+  "usingComponents": {
+    "punch-card-project-item": "/components/find/punchCardProjectListItem"
+  }
+}
