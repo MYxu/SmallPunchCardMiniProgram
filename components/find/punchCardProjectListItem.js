@@ -38,7 +38,7 @@ Component({
         _intoPunchCardDetail: function (e) {
             console.log(e);
             wx.navigateTo({
-                url: '../punchCardDetailPage/index'
+                url: '/pages/punchCardDetailPage/index'
                     + "?projectId=" + e.currentTarget.dataset.projectId
                     + "&isCreator=" + -1 // 未知是否为创建者
             });
