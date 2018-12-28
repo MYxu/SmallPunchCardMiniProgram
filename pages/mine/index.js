@@ -78,7 +78,7 @@ Page({
         diaryListDataNum: 2, // 每页显示的打卡日记条数
         showDiaryListLoading: true, // 控制页面初次加载时日记列表数据获取的加载动画
         emptyDiaryListNotice: false, // 控制还没有日记列表数据时的提示信息
-        moreDiaryDataLoad: false, // 控制下拉加载更多打卡日记的加载动画
+        moreDiaryDataLoad: false, // 控制上拉加载更多打卡日记的加载动画
         notMoreDiaryData: false, // 打卡日记已全部加载
     },
 

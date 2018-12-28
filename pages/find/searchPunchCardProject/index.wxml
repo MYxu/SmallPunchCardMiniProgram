@@ -1,0 +1,61 @@
+<view class="container">
+    <!--搜索输入框-->
+    <view class="weui-search-bar">
+        <view class="weui-search-bar__form">
+            <view class="weui-search-bar__box">
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                <input type="text" class="weui-search-bar__input" placeholder="搜索"
+                       value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping"
+                       confirm-type="search" bindconfirm="search"/>
+
+                <!--清除已输入的搜索文字&&上次搜索到打卡圈子记录-->
+                <block wx:if="{{inputVal.length > 0}}">
+                    <view class="weui-icon-clear" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </block>
+            </view>
+
+            <block wx:if="{{!inputShowed}}">
+                <label class="weui-search-bar__label" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </block>
+        </view>
+
+        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}"
+              bindtap="hideInput">
+            取消
+        </view>
+    </view>
+
+    <!--显示搜索到的打卡圈子列表-->
+    <block wx:if="{{showSearchLoading}}">
+        <view class="weui-loadmore">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">搜索中...</view>
+        </view>
+    </block>
+    <block wx:elif="{{punchCardProjectList.length > 0}}">
+        <view class="search-result-list">
+            <block wx:for="{{punchCardProjectList}}">
+                <!--打卡圈子列表子项组件-->
+                <punch-card-project-item punch-card-project-item-data="{{item}}">
+                </punch-card-project-item>
+            </block>
+
+            <!--底部加载更多-->
+            <view class="weui-loadmore" hidden="{{!moreSearchDataLoad}}"
+                  style="margin-bottom: 60px">
+                <view class="weui-loading"></view>
+                <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+        </view>
+    </block>
+
+    <!-- 底线  -->
+    <view class="bottom" hidden="{{!notMoreSearchData}}">
+        ——· 我也是有顶线的哦 ·——
+    </view>
+</view>

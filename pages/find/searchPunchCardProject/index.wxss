@@ -1,0 +1,21 @@
+.weui-search-bar {
+    border-bottom: 1px solid white;
+}
+
+.search-result-list {
+    width: auto;
+    height: auto;
+}
+
+/* 底部*/
+.bottom {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin-bottom: 15px;
+    padding-top: 10px;
+    text-align: center;
+
+    color: #8a8a8a;
+    font-size: 15px;
+}
