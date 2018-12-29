@@ -121,7 +121,9 @@ Page({
         // 当前被点击的标签的相关信息
         let childId     = e.currentTarget.dataset.childid,
             childName   = e.currentTarget.dataset.childlabelname,
+            parentName = e.currentTarget.dataset.parentName,
             parentIndex = e.currentTarget.dataset.parentindex; // 当前被点击的子标签位于父标签的位置索引
+        console.log(parentName);
 
         let num = that.data.chooseLabelNum; // 记录当前被选中的标签数
 
@@ -167,11 +169,11 @@ Page({
                         else
                             pLabel[parentIndex].chooseLabelNameStr += ("," + childName);
 
-                        // 添加至总的被选中的子级标签名字符串中
+                        // 添加至总的被选中的子级标签名字符串中(每个子级标签前面附带所属的父级标签名)
                         if (allChooseLabelNameStr === "")
-                            allChooseLabelNameStr += childName;
+                            allChooseLabelNameStr += (parentName + '-' + childName);
                         else
-                            allChooseLabelNameStr += ("," + childName);
+                            allChooseLabelNameStr += ("," + parentName + '-' + childName);
 
                         console.log("add-all-str:" + allChooseLabelNameStr);
                     }

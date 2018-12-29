@@ -9,7 +9,8 @@
                 <!--父级标签Icon-->
                 <view class="label-img">
                     <!--TODO 图标我先定死，后期有空再改为存数据库然后动态获取-->
-                    <image src="../../../images/bottomIcon/project_label_icon_{{p_index}}.png"></image>
+                    <image src="/images/bottomIcon/project_label_icon_{{p_index}}.png">
+                    </image>
                 </view>
                 <!--父级标签名-->
                 <view class="label-name">
@@ -21,7 +22,7 @@
                 </view>
                 <!--显示、隐藏子级的Icon-->
                 <view class="show-child-label-btn">
-                    <image src="../../../images/button/up_btn.png"
+                    <image src="/images/button/up_btn.png"
                            class='show-child-label {{parentItem.show && "hidden-child-label"}}'></image>
                 </view>
             </view>
@@ -34,7 +35,8 @@
                             <view class='child-label-item {{childItem.choose && "child-label-item-choose"}}' bindtap="childLabelBeChoose"
                                   data-childId="{{childItem.id}}"
                                   data-parentIndex="{{p_index}}"
-                                  data-childLabelName="{{childItem.label_name}}">
+                                  data-childLabelName="{{childItem.label_name}}"
+                                  data-parent-name="{{parentItem.label_name}}">
                                 {{childItem.label_name}}
                             </view>
                         </block>
@@ -51,7 +53,7 @@
             <view class="parent-label-item" bindtap="showDialogBtn">
                 <!--自定义标签Icon-->
                 <view class="label-img">
-                    <image src="../../../images/bottomIcon/custom_label_icon.png">
+                    <image src="/images/bottomIcon/custom_label_icon.png">
                     </image>
                 </view>
                 <view class="label-name">自定义</view>
@@ -61,7 +63,7 @@
                 </view>
                 <!--添加自定义的按钮Icon-->
                 <view class="add-custom-project-label-btn">
-                    <image src="../../../images/button/down_btn.png"></image>
+                    <image src="/images/button/down_btn.png"></image>
                 </view>
             </view>
 
