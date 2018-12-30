@@ -57,6 +57,8 @@
                     {{item.label_name}}
                 </view>
             </block>
+            <!--标识出当前选择的类型选项卡 默认为全部（即父类标签类型以及父类下的子类类型）-->
+            <view class="selected-tab-indicate" animation="{{animation}}"></view>
         </scroll-view>
         <!--用户自主选择的对应类型的打卡圈子展示-->
         <block wx:if="{{showGetDataLoading}}">

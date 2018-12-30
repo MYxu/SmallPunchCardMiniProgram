@@ -1,6 +1,6 @@
 .project-children-type-navigation {
     width: auto;
-    height: 40px;
+    height: 42px;
     margin-left: 10px;
     white-space: nowrap;
 
@@ -12,10 +12,16 @@
     width: auto;
     margin-right: 40px;
 
-    border-bottom: 2px solid #F0B27A;
-
     display: inline-block;
+}
 
+/*标识出当前选择的圈子类型*/
+.selected-tab-indicate{
+    width: 16px;
+    height: 2px;
+    /*默认定位到第一个类型选项卡中间*/
+    margin-left: 10px;
+    background-color: #F0B27A;
 }
 
 /*没有该类型的打卡圈子数据提示*/

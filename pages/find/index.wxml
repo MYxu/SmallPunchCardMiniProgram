@@ -48,9 +48,9 @@
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
-                  data-type="生活">
+                  data-type="健康生活">
                 <image src="../../images/bottomIcon/project_label_icon_2.png"></image>
-                <text>生活</text>
+                <text>健康生活</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
@@ -72,9 +72,9 @@
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
-                  data-type="变美">
+                  data-type="美妆">
                 <image src="../../images/bottomIcon/project_label_icon_1.png"></image>
-                <text>变美</text>
+                <text>美妆</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"

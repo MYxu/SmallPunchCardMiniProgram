@@ -426,7 +426,37 @@ Page({
     selectTap: function (e) {
         let that = this,
             childrenIndex = e.currentTarget.dataset.index,
-            labelName = e.currentTarget.dataset.labelName;
+            labelName = e.currentTarget.dataset.labelName,
+            offsetLeft = e.currentTarget.offsetLeft; // 当前所点击子类型标签与第一个类型标签的水平偏移值
+
+        console.log(e);
+
+        // 获取当前选择的打卡圈子类型元素的宽度
+        let getTabWidth = new Promise(function (resolve) {
+            wx.createSelectorQuery().selectAll('.children-label-item').boundingClientRect(function(rects){
+                resolve(rects[childrenIndex].width);
+            }).exec();
+        });
+
+        // 获取元素的宽度成功之后，结合当前类型节点与第一个节点的水平偏移量，计算出总水平偏移量，使之处于当前选择节点的中间位置
+        getTabWidth.then(function (tabWidth) {
+            let indicatorWidth = 16, // 指示器的宽度
+            offset = (offsetLeft - 10) + parseInt((tabWidth - indicatorWidth) / 2); //总水平偏移量
+            // 之所以offsetLeft-10 那是因为offsetLeft是针对标签的，而指示器本身就相对标签向左移动了10px，因此需要右移10px
+
+            // 获取动画实例 用于在切换选择打卡圈子类型的时候执行对应移动的动画
+            let animation = wx.createAnimation({
+                duration: 400
+            });
+
+            console.log(offsetLeft);
+
+            animation.translate(offset,0).step();
+            that.setData({
+                animation: animation.export()
+            });
+        });
+
 
         for (let i = 0; i < that.data.childrenLabelList.length; i++) {
             that.data.childrenLabelList[i].selectedStatus = (i === parseInt(childrenIndex));
