@@ -13,18 +13,18 @@
         </view>
 
         <!--swiper组件 展示精选打卡圈子专题-->
-        <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}"
-                circular="{{true}}" indicator-active-color="#F0B27A">
-            <block wx:for="{{punchCardProjectSpecialSubject}}">
-                <swiper-item class="project-special-subject-swiper-container">
-                    <view class="project-special-subject-item"
-                          data-subject-id="{{index}}"
-                          bindtap="intoProjectSpecialSubject">
-                        {{item}}
-                    </view>
-                </swiper-item>
-            </block>
-        </swiper>
+        <!--<swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}"-->
+                <!--circular="{{true}}" indicator-active-color="#F0B27A">-->
+            <!--<block wx:for="{{punchCardProjectSpecialSubject}}">-->
+                <!--<swiper-item class="project-special-subject-swiper-container">-->
+                    <!--<view class="project-special-subject-item"-->
+                          <!--data-subject-id="{{index}}"-->
+                          <!--bindtap="intoProjectSpecialSubject">-->
+                        <!--{{item}}-->
+                    <!--</view>-->
+                <!--</swiper-item>-->
+            <!--</block>-->
+        <!--</swiper>-->
 
         <!--打卡圈子类型标签：点击后进入显示对应类型的打卡圈子-->
         <view class="punch-card-project-type">
@@ -126,6 +126,5 @@
                 <text>创建打卡圈子</text>
             </view>
         </block>
-
     </block>
 </view>

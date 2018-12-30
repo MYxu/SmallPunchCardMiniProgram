@@ -193,7 +193,7 @@ Page({
                     title: '网络异常!',
                     icon: 'none',
                     duration: 2000
-                })
+                });
             }
         })
     }

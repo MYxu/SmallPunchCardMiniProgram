@@ -1,6 +1,5 @@
 {
   "enablePullDownRefresh": true,
-  "navigationBarTitleText": "发现",
 
   "usingComponents": {
     "punch-card-project-item": "/components/find/punchCardProjectListItem"

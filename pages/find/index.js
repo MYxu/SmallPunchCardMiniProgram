@@ -91,9 +91,7 @@ Page({
      * 生命周期函数--监听页面初次渲染完成
      */
     onReady: function () {
-        wx.setNavigationBarTitle({
-            title: '发现'
-        });
+
     },
 
     /**
@@ -257,16 +255,14 @@ Page({
     searchProjectByType: function (e) {
         console.log(e);
         let type = e.currentTarget.dataset.type;
-        wx.showToast({
-            title: '选择了'+ type,
-            icon: 'none'
-        });
+
+        wx.navigateTo({
+            url: '/pages/find/showPunchCardProjectByType/index' + '?typeName=' + type
+        })
     },
 
     // 获取下一页的打卡圈子推荐列表数据 每页最多十条数据
     getPunchCardProjectRecommendList: function (pageNo) {
-        console.log('pageNo:' + pageNo);
-
         let that = this;
         wx.request({
             url: app.globalData.urlRootPath
