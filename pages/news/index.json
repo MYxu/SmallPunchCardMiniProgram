@@ -1,6 +1,4 @@
 {
-      "window": {
-        "navigationBarTitleText": "消息",
-        "enablePullDownRefresh": false
-      }
+    "navigationBarTitleText": "消息",
+    "enablePullDownRefresh": false
 }

@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <view class="container">
     <!--文本内容编辑区域-->
     <view class="text-content-edit-area">
@@ -11,7 +12,95 @@
         </view>
     </view>
 
-    <!--TODO 显示上传的音频-->
+    <!--音频录制控制按钮视图-->
+    <view class="audio-record-view" hidden="{{hiddenAudioRecordView}}">
+        <!--取消录音按钮-->
+        <image class="cancel-audio-record" src="/images/button/close_red.png"
+               bindtap="cancelAudioRecord">
+        </image>
+
+        <view class="separator-line"></view>
+
+        <!--录音时间动画-->
+        <bolck wx:if="{{showPauseAudioRecordBtn}}">
+            <!--正在录音 显示录音进行中的闪烁动画-->
+            <view class="time-animation recording"></view>
+        </bolck>
+        <block wx:else>
+            <!--录音暂停 不显示闪烁动画-->
+            <view class="time-animation record-pause"></view>
+        </block>
+
+        <!--录音时间计数-->
+        <view class="time-count">{{min}}:{{sec}}</view>
+
+        <!--暂停&开始按钮-->
+        <block wx:if="{{showPauseAudioRecordBtn}}">
+            <!--正在录音 显示暂停按钮-->
+            <view class="audio-record-control-btn" bindtap="pauseAudioRecord">
+                <image src="/images/button/pause.png"
+                       style="width: 20px; height: 20px;">
+                </image>
+            </view>
+        </block>
+        <block wx:else>
+            <!--停止录音 显示继续录音按钮-->
+            <view class="audio-record-control-btn" bindtap="resumeAudioRecord">
+                <image src="/images/button/start.png"></image>
+            </view>
+        </block>
+
+        <!--结束录音按钮-->
+        <view class="audio-record-end-btn" bindtap="endAudioRecord">完成</view>
+    </view>
+
+    <!--录音结束后 显示已录制好的音频播放视图-->
+    <block wx:if="{{showAudioPlayView}}">
+        <view class="audio-play-view">
+            <!--控制按钮区域-->
+            <view class="audio-control-btn-area">
+                <block wx:if="{{audioPlayStatus == 'pause'}}">
+                    <!--音频暂停播放中 显示播放按钮-->
+                    <view class="audio-control-btn" bindtap="startAudioPlay">
+                        <image src="/images/button/audio_play.png"></image>
+                    </view>
+                </block>
+                <block wx:else>
+                    <!--音频播放中 显示暂停按钮-->
+                    <view class="audio-control-btn" bindtap="pauseAudioPlay">
+                        <image src="/images/button/audio_pause.png"></image>
+                    </view>
+                </block>
+            </view>
+
+            <!--播放进度条区域-->
+            <view class="audio-play-progress-area">
+                <view class="audio-name">录音音频</view>
+                <view class="audio-play-progress">
+                    <!--音频当前播放时间-->
+                    <view class="audio-play-last-time">{{audioPlayCurrTimeStr}}</view>
+
+                    <!--音频播放进度条-->
+                    <view class="audio-play-progress-item">
+                        <slider max="{{audioPlayEndTime}}" value="{{audioPlayCurrTime}}"
+                                block-size="12">
+                        </slider>
+                    </view>
+                    <!--音频总时长-->
+                    <view class="audio-play-end-time">{{audioPlayEndTimeStr}}</view>
+                </view>
+            </view>
+
+            <!--取消该录音音频的上传按钮-->
+            <view class="cancel-audio-record-upload">
+                <image src="/images/button/cancel_red.png"
+                       bindtap="cancelAudioRecordUpload">
+                </image>
+            </view>
+        </view>
+    </block>
+
+
 
     <!--图片、音频、视频添加上传按钮-->
     <view class="upload-btn-list">
@@ -35,7 +124,8 @@
         </view>
 
         <!--音频添加按钮-->
-        <view class="btn-list-item sound-upload-btn" bindtap="chooseSound">
+        <view class="btn-list-item sound-upload-btn" bindtap="startAudioRecord"
+              hidden="{{hiddenAddAudioBtn}}">
             <image src="../../../images/bottomIcon/sound.png">
             </image>
         </view>

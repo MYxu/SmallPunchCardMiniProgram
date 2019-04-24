@@ -31,6 +31,197 @@
 }
 
 
+/*音频录制控制按钮视图*/
+.audio-record-view {
+    height: 60px;
+    width: auto;
+    margin: 0 15px 15px 15px;
+    border-radius: 5px;
+    border: 1px #e5e5e5 solid;
+    background-color: #FAFAFA;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/*取消录音按钮*/
+.cancel-audio-record {
+    height: 20px;
+    width: 20px;
+    margin-left: 10px;
+}
+
+.separator-line {
+    width: 1px;
+    height: 20px;
+    margin-left: 10px;
+    background-color: #BDBDBD;
+}
+
+/*录音时间动画*/
+.time-animation {
+    margin-left: 10px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+
+}
+
+/*录音进行中显示 小红点闪烁动画*/
+.recording {
+    /*alternate: 动画会在奇数次数（1、3、5 等等）正常播放，而在偶数次数（2、4、6 等等）向后播放*/
+    animation: twinkle 500ms alternate infinite;
+}
+@keyframes twinkle{
+    from{background: white;}
+    to{background: red;}
+}
+
+/*录音暂停只显示一个红色圆点*/
+.record-pause {
+    background-color: red;
+}
+
+/*录音时间计数*/
+.time-count {
+    margin-left: 7px;
+    color: red;
+    font-size: 18px;
+}
+
+/*暂停&开始按钮*/
+.audio-record-control-btn {
+    margin-left: 120px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    /*box-shadow: 2px 2px 2px #aaaaaa;*/
+    border: 3px solid #d9d9d9;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.audio-record-control-btn > image {
+    width: 30px;
+    height: 30px;
+}
+
+/*结束录音按钮*/
+.audio-record-end-btn {
+    color: #64DD17;
+    font-size: 17px;
+    margin-left: 20px;
+}
+
+/*录音完成 显示已录制的音频播放视图*/
+.audio-play-view {
+    width: auto;
+    height: 70px;
+    margin: 10px 15px 15px 15px;
+
+    background-color: #B2DFDB;
+
+    border-radius: 7px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/*音频播放视图 控制按钮区块*/
+.audio-control-btn-area {
+    /*background-color: #64DD17;*/
+    width: 20%;
+    height: 70px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.audio-control-btn {
+    width: 60%;
+    height: 60%;
+    border: 3px solid whitesmoke;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.audio-control-btn > image {
+    width: 20px;
+    height: 20px;
+}
+
+/*音频播放视图 播放进度条区域*/
+.audio-play-progress-area {
+    width: 60%;
+    height: 70px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.audio-name {
+    height: 13px;
+    line-height: 13px;
+    margin: 8px 0 8px 15px;
+
+    font-size: 13px;
+    color: white;
+}
+
+.audio-play-progress {
+    height: auto;
+    margin-left: 15px;
+    font-size: 13px;
+    color: white;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.audio-play-last-time .audio-play-end-time {
+    color: whitesmoke;
+    font-size: 12px;
+    width: auto;
+}
+
+.audio-play-progress-item {
+    width: 150px;
+}
+
+/*取消该录音音频的上传按钮*/
+.cancel-audio-record-upload {
+    height: 70px;
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.cancel-audio-record-upload > image {
+    width: 25px;
+    height: 25px;
+}
+
 /*图片、音频、视频添加上传按钮*/
 .upload-btn-list {
     width: auto;
