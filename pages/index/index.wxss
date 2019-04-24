@@ -1,274 +1,376 @@
 
-/*首页头部显示：用户头像*/
-.container-header {
-    width: 100%;
-    height: 50px;
-    border-radius:0 0 100% 100%/0 0 88px 88px;
-    background-color: #F0B27A;
+/*!*首页头部显示：用户头像*!*/
+/*.container-header {*/
+    /*width: 100%;*/
+    /*height: 50px;*/
+    /*border-radius:0 0 100% 100%/0 0 88px 88px;*/
+    /*background-color: #F0B27A;*/
+/*}*/
+/*.user-avatar {*/
+    /*width: 50px;*/
+    /*height: 50px;*/
+
+    /*position: absolute;*/
+    /*!*水平居中*!*/
+    /*left: 50%;*/
+    /*margin-left: -35px;*/
+
+    /*!*垂直居中*!*/
+    /*margin-top: 15px; !*父级H 50px,子级H 70px 只需要下移15px 即可被父级下边框对半分割*!*/
+/*}*/
+/*.user-avatar > image {*/
+    /*width: 70px;*/
+    /*height: 70px;*/
+    /*border-radius: 50%;*/
+    /*border: 1px solid white;*/
+/*}*/
+
+/*!*性别*!*/
+/*.user-sex-male {*/
+    /*width: 17px;*/
+    /*height: 17px;*/
+
+    /*border-radius: 50%;*/
+    /*background-color: white;*/
+
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*margin-top: 65px;*/
+    /*margin-left: 20px;*/
+
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: space-around;*/
+    /*align-items: center;*/
+
+/*}*/
+/*.user-sex-male > image{*/
+    /*width: 15px;*/
+    /*height: 15px;*/
+/*}*/
+
+/*.user-sex-female {*/
+    /*width: 17px;*/
+    /*height: 17px;*/
+
+    /*border-radius: 50%;*/
+    /*background-color: white;*/
+
+    /*position: absolute;*/
+    /*left: 50%;*/
+    /*margin-top: 65px;*/
+    /*margin-left: 20px;*/
+
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: space-around;*/
+    /*align-items: center;*/
+
+/*}*/
+/*.user-sex-female > image{*/
+    /*width: 15px;*/
+    /*height: 15px;*/
+    /*transform: rotate(30deg);*/
+/*}*/
+
+/*!*我的打卡项目*!*/
+/*.punch-card-project {*/
+    /*height: auto;*/
+    /*margin-top: 45px;*/
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
+    /*padding-bottom: 5px;*/
+    /*!*background-color: yellow;*!*/
+/*}*/
+
+/*!*创建打卡项目按钮*!*/
+/*.create-punch-card-project-btn {*/
+    /*background-color: white;*/
+    /*width: 100%;*/
+    /*height: 20px;*/
+    /*margin-bottom: 5px;*/
+
+    /*display: flex;*/
+    /*align-items: center;*/
+
+    /*color: #F0B27A;*/
+    /*font-size: 15px;*/
+/*}*/
+/*!*按钮图标*!*/
+/*.create-punch-card-project-btn > image {*/
+    /*width: 15px;*/
+    /*height: 15px;*/
+    /*margin-right: 8px;*/
+/*}*/
+
+/*!*尚未存在参与的打卡圈子时展示的按钮*!*/
+/*.create-punch-card-project-btn-none {*/
+    /*width: 150px;*/
+    /*height: 30px;*/
+    /*border: 1px solid #F0B27A;*/
+    /*border-radius: 3px;*/
+    /*margin-bottom: 5px;*/
+    /*padding: 0 5px 0 5px;*/
+
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+
+    /*!*居中设置*!*/
+    /*position: relative;*/
+    /*left: 50%;*/
+    /*margin-left: -81px;*/
+
+    /*color: #F0B27A;*/
+    /*font-size: 15px;*/
+/*}*/
+/*.create-punch-card-project-btn-none > image {*/
+    /*width: 15px;*/
+    /*height: 15px;*/
+    /*margin-right: 8px;*/
+/*}*/
+
+
+/*!*当前我所参与的打卡圈子列表*!*/
+/*.my-punch-card-project-list {*/
+    /*width: 100%;*/
+    /*height: auto;*/
+/*}*/
+
+/*!*打卡圈子信息*!*/
+/*.my-punch-card-project-item {*/
+    /*width: 100%;*/
+    /*height: 60px;*/
+    /*margin-bottom: 10px;*/
+    /*padding-top: 10px;*/
+    /*padding-bottom: 5px;*/
+
+    /*border: 1px solid whitesmoke;*/
+
+    /*box-shadow:  0 0 1px rgba(99, 99, 99, 0.50);*/
+
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*flex-wrap: nowrap;*/
+    /*justify-content: space-between;*/
+    /*align-items: center;*/
+
+/*}*/
+
+/*!*打卡圈子封面*!*/
+/*.project-cover-img {*/
+    /*width: 18%;*/
+    /*height: 100%;*/
+/*}*/
+
+/*.project-cover-img > image {*/
+    /*width: 40px;*/
+    /*height: 40px;*/
+
+    /*position: relative;*/
+    /*top: 50%;*/
+    /*margin-top: -20px;*/
+    /*left: 50%;*/
+    /*margin-left: -20px;*/
+
+/*}*/
+
+
+/*!*打卡圈子详细信息*!*/
+/*.project-detail-info {*/
+    /*width: 60%;*/
+    /*height: 100%;*/
+
+    /*display: flex;*/
+    /*flex-direction: column-reverse;*/
+/*}*/
+/*!*打卡圈子名称*!*/
+/*.project-name {*/
+    /*max-height: 75%;*/
+    /*min-height: 40%;*/
+    /*width: 100%;*/
+    /*margin-bottom: 3px;*/
+    /*line-height: 1.2;*/
+    /*text-align: left;*/
+    /*display: flex;*/
+    /*align-items: flex-start;*/
+
+/*}*/
+
+/*!*是否为圈主*!*/
+/*.is-creator {*/
+    /*margin-left: 5px;*/
+    /*line-height: 21px;*/
+    /*font-size: 13px;*/
+    /*color: white;*/
+    /*padding: 1px 3px;*/
+    /*border: 1px solid #F0B27A;*/
+    /*border-radius: 3px;*/
+    /*background-color: #F0B27A;*/
+/*}*/
+
+/*!*打卡提醒时间 && 本日打卡人数*!*/
+/*.row {*/
+    /*height: 40%;*/
+    /*width: 100%;*/
+    /*display: flex;*/
+    /*align-items: flex-start;*/
+    /*font-size: 13px;*/
+    /*color: #9d9d9d;*/
+/*}*/
+
+/*!*打卡时间提醒*!*/
+/*.remind-time {*/
+    /*margin-right: 8px;*/
+/*}*/
+/*.remind-time-icon {*/
+    /*width: 13px;*/
+    /*height: 13px;*/
+    /*margin-right: 5px;*/
+/*}*/
+
+/*!*本地打卡人数*!*/
+/*.punch-card-num-today-icon {*/
+    /*width: 15px;*/
+    /*height: 14px;*/
+    /*margin-right: 5px;*/
+/*}*/
+
+
+/*!*打卡按钮*!*/
+/*.punch-card-btn {*/
+    /*width: 22%;*/
+    /*height: 100%;*/
+
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+/*}*/
+
+/*.punch-card-btn > text {*/
+    /*border: 1px solid #F0B27A;*/
+    /*border-radius: 3px;*/
+    /*background-color: #F0B27A;*/
+    /*color: white;*/
+    /*padding: 5px 10px;*/
+
+/*}*/
+
+
+
+/*!*查看更多我的圈子信息按钮*!*/
+/*.morePunchCardProject {*/
+    /*width: 56px;*/
+    /*padding: 5px 10px;*/
+    /*border: 1px solid whitesmoke;*/
+    /*border-radius: 2px;*/
+    /*font-size: 14px;*/
+    /*color: #F0B27A;*/
+
+    /*!*居中设置*!*/
+    /*position: relative;*/
+    /*left: 50%;*/
+    /*margin-left: -38px;*/
+/*}*/
+
+/*滚动列表展示我参与、创建的打卡圈子 && 创建、查看全部、发现更多打卡圈子按钮*/
+.punch-card-project-lists {
+    height: 80px;
+    width: auto;
+    padding-right: 10px;
+    padding-left: 5px;
+    white-space: nowrap;
 }
-.user-avatar {
-    width: 50px;
-    height: 50px;
 
-    position: absolute;
-    /*水平居中*/
-    left: 50%;
-    margin-left: -35px;
-
-    /*垂直居中*/
-    margin-top: 15px; /*父级H 50px,子级H 70px 只需要下移15px 即可被父级下边框对半分割*/
-}
-.user-avatar > image {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 1px solid white;
-}
-
-/*性别*/
-.user-sex-male {
-    width: 17px;
-    height: 17px;
-
-    border-radius: 50%;
-    background-color: white;
-
-    position: absolute;
-    left: 50%;
-    margin-top: 65px;
-    margin-left: 20px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
-}
-.user-sex-male > image{
-    width: 15px;
-    height: 15px;
-}
-
-.user-sex-female {
-    width: 17px;
-    height: 17px;
-
-    border-radius: 50%;
-    background-color: white;
-
-    position: absolute;
-    left: 50%;
-    margin-top: 65px;
-    margin-left: 20px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-
-}
-.user-sex-female > image{
-    width: 15px;
-    height: 15px;
-    transform: rotate(30deg);
-}
-
-/*我的打卡项目*/
-.punch-card-project {
-    height: auto;
-    margin-top: 45px;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding-bottom: 5px;
-    /*background-color: yellow;*/
-}
-
-/*创建打卡项目按钮*/
-.create-punch-card-project-btn {
-    background-color: white;
-    width: 100%;
-    height: 20px;
-    margin-bottom: 5px;
-
-    display: flex;
-    align-items: center;
-
-    color: #F0B27A;
-    font-size: 15px;
-}
-/*按钮图标*/
-.create-punch-card-project-btn > image {
-    width: 15px;
-    height: 15px;
-    margin-right: 8px;
-}
-
-/*尚未存在参与的打卡圈子时展示的按钮*/
-.create-punch-card-project-btn-none {
-    width: 150px;
-    height: 30px;
-    border: 1px solid #F0B27A;
-    border-radius: 3px;
-    margin-bottom: 5px;
-    padding: 0 5px 0 5px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    /*居中设置*/
-    position: relative;
-    left: 50%;
-    margin-left: -81px;
-
-    color: #F0B27A;
-    font-size: 15px;
-}
-.create-punch-card-project-btn-none > image {
-    width: 15px;
-    height: 15px;
-    margin-right: 8px;
-}
-
-
-/*当前我所参与的打卡圈子列表*/
-.my-punch-card-project-list {
-    width: 100%;
-    height: auto;
-}
-
-/*打卡圈子信息*/
-.my-punch-card-project-item {
-    width: 100%;
-    height: 60px;
-    margin-bottom: 10px;
-    padding-top: 10px;
-    padding-bottom: 5px;
-
-    border: 1px solid whitesmoke;
-
-    box-shadow:  0 0 1px rgba(99, 99, 99, 0.50);
-
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    align-items: center;
-
-}
-
-/*打卡圈子封面*/
-.project-cover-img {
-    width: 18%;
-    height: 100%;
-}
-
-.project-cover-img > image {
-    width: 40px;
-    height: 40px;
-
-    position: relative;
-    top: 50%;
-    margin-top: -20px;
-    left: 50%;
-    margin-left: -20px;
-
-}
-
-
-/*打卡圈子详细信息*/
-.project-detail-info {
-    width: 60%;
-    height: 100%;
-
-    display: flex;
-    flex-direction: column-reverse;
-}
-/*打卡圈子名称*/
-.project-name {
-    max-height: 75%;
-    min-height: 40%;
-    width: 100%;
-    margin-bottom: 3px;
-    line-height: 1.2;
-    text-align: left;
-    display: flex;
-    align-items: flex-start;
-
-}
-
-/*是否为圈主*/
-.is-creator {
+/*scroll-view子项*/
+.container-item {
+    height: 80px;
     margin-left: 5px;
-    line-height: 21px;
-    font-size: 13px;
-    color: white;
-    padding: 1px 3px;
-    border: 1px solid #F0B27A;
-    border-radius: 3px;
-    background-color: #F0B27A;
+    display: inline-block;
+    border-radius: 5px;
+    /*解决scroll-view子项顶部不对齐问题*/
+    vertical-align: top;
 }
 
-/*打卡提醒时间 && 本日打卡人数*/
-.row {
-    height: 40%;
-    width: 100%;
+/*创建圈子按钮、查看我全部打卡圈子按钮、发现更多精彩圈子按钮*/
+.operator-btn-view {
+    height: 80px;
+    width: 80px;
     display: flex;
-    align-items: flex-start;
-    font-size: 13px;
-    color: #9d9d9d;
-}
-
-/*打卡时间提醒*/
-.remind-time {
-    margin-right: 8px;
-}
-.remind-time-icon {
-    width: 13px;
-    height: 13px;
-    margin-right: 5px;
-}
-
-/*本地打卡人数*/
-.punch-card-num-today-icon {
-    width: 15px;
-    height: 14px;
-    margin-right: 5px;
-}
-
-
-/*打卡按钮*/
-.punch-card-btn {
-    width: 22%;
-    height: 100%;
-
-    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-}
+    justify-content: flex-start;
 
-.punch-card-btn > text {
-    border: 1px solid #F0B27A;
-    border-radius: 3px;
-    background-color: #F0B27A;
-    color: white;
-    padding: 5px 10px;
-
-}
-
-
-
-/*查看更多我的圈子信息按钮*/
-.morePunchCardProject {
-    width: 56px;
-    padding: 5px 10px;
-    border: 1px solid whitesmoke;
-    border-radius: 2px;
     font-size: 14px;
-    color: #F0B27A;
+    color: white;
+}
 
-    /*居中设置*/
+/*css3颜色渐变：各个按钮对应的渐变*/
+.btn-color-1 {
+    border-radius: 5px;
+    background-color: #FBAB7E;
+    background-image: linear-gradient(120deg,#FBAB7E 0%,#F7CE68 100%);
+    background-image: -webkit-linear-gradient(120deg,#FBAB7E 0%,#F7CE68 100%);
+    background-image: -moz-linear-gradient(120deg,#FBAB7E 0%,#F7CE68 100%);
+    background-image: -o-linear-gradient(120deg,#FBAB7E 0%,#F7CE68 100%);
+}
+
+.btn-color-2 {
+    border-radius: 5px;
+    background-color: #FA8BFF;
+    background-image: linear-gradient(45deg,#FA8BFF 0%,#2BD2FF 52%,#2BFF88 90%);
+    background-image: -webkit-linear-gradient(45deg,#FA8BFF 0%,#2BD2FF 52%,#2BFF88 90%);
+    background-image: -moz-linear-gradient(45deg,#FA8BFF 0%,#2BD2FF 52%,#2BFF88 90%);
+    background-image: -o-linear-gradient(45deg,#FA8BFF 0%,#2BD2FF 52%,#2BFF88 90%);
+}
+
+.btn-color-3 {
+    border-radius: 5px;
+    background-color: #8EC5FC;
+    background-image: linear-gradient(62deg,#8EC5FC 0%,#E0C3FC 100%);
+    background-image: -webkit-linear-gradient(62deg,#8EC5FC 0%,#E0C3FC 100%);
+    background-image: -moz-linear-gradient(62deg,#8EC5FC 0%,#E0C3FC 100%);
+    background-image: -o-linear-gradient(62deg,#8EC5FC 0%,#E0C3FC 100%);
+}
+
+.operator-btn-view > image {
+    width: 30px;
+    height: 30px;
+    margin: 15px 0 3px 0;
+
+}
+
+
+.punch-card-project-item-view {
+    width: 100px;
+    height: 80px;
     position: relative;
-    left: 50%;
-    margin-left: -38px;
+}
+.punch-card-project-item-view > image {
+    border-radius: 5px;
+
+    height: 80px;
+    width: 100px;
+    filter: brightness(35%);
+
+}
+
+.project-name {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 100px;
+    height: 40px;
+}
+
+.project-name > text {
+    /*单行省略*/
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+
+    font-size: 13px;
+    color: white;
+
 }

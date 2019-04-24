@@ -96,6 +96,9 @@ Page({
 
                 // 没有符合搜索关键字的打卡圈子数据
                 case 400:
+                    that.setData({
+                        showSearchLoading: false
+                    });
                     wx.showToast({
                         title: '没有符合的打卡圈子',
                         icon: 'none',

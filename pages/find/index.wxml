@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <view class="container">
 
     <!--在未从服务器端获取到数据之前显示空白页并显示加载动画-->
@@ -8,7 +9,7 @@
     <block wx:else><!--成功获取数据后关闭加载动画显示获取的数据内容-->
         <!--搜索按钮-->
         <view class="search-punch-card-project-btn" bindtap="intoSearchProjectPage">
-            <image src="../../images/bottomIcon/search.png"></image>
+            <image src="/images/bottomIcon/search.png"></image>
             <text>搜索</text>
         </view>
 
@@ -30,62 +31,62 @@
         <view class="punch-card-project-type">
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="推荐">
-                <image src="../../images/bottomIcon/recommend.png">
+                <image src="/images/bottomIcon/recommend.png">
                 </image>
                 <text>推荐</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="外语">
-                <image src="../../images/bottomIcon/project_label_icon_0.png"></image>
+                <image src="/images/bottomIcon/project_label_icon_0.png"></image>
                 <text>外语</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="阅读">
-                <image src="../../images/bottomIcon/project_label_icon_8.png"></image>
+                <image src="/images/bottomIcon/project_label_icon_8.png"></image>
                 <text>阅读</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="健康生活">
-                <image src="../../images/bottomIcon/project_label_icon_2.png"></image>
+                <image src="/images/bottomIcon/project_label_icon_2.png"></image>
                 <text>健康生活</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="教育">
-                <image src="../../images/bottomIcon/project_label_icon_4.png"></image>
+                <image src="/images/bottomIcon/project_label_icon_4.png"></image>
                 <text>教育</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="亲子幼教">
-                <image src="../../images/bottomIcon/project_label_icon_5.png"></image>
+                <image src="/images/bottomIcon/project_label_icon_5.png"></image>
                 <text>亲子幼教</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="艺术兴趣">
-                <image src="../../images/bottomIcon/project_label_icon_6.png"></image>
+                <image src="/images/bottomIcon/project_label_icon_6.png"></image>
                 <text>艺术兴趣</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="美妆">
-                <image src="../../images/bottomIcon/project_label_icon_1.png"></image>
+                <image src="/images/bottomIcon/project_label_icon_1.png"></image>
                 <text>美妆</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="运动">
-                <image src="../../images/bottomIcon/project_label_icon_7.png"></image>
+                <image src="/images/bottomIcon/project_label_icon_7.png"></image>
                 <text>运动</text>
             </view>
 
             <view class="punch-card-project-type-item" bindtap="searchProjectByType"
                   data-type="职场">
-                <image src="../../images/bottomIcon/project_label_icon_3.png"></image>
+                <image src="/images/bottomIcon/project_label_icon_3.png"></image>
                 <text>职场</text>
             </view>
         </view>
@@ -122,7 +123,7 @@
             </view>
             <view class="create-punch-card-project-btn"
                   bindtap="createNewPunchCardProject">
-                <image src="../../images/button/add.png"></image>
+                <image src="/images/button/add.png"></image>
                 <text>创建打卡圈子</text>
             </view>
         </block>

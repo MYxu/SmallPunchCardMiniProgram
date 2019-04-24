@@ -1,0 +1,105 @@
+.my-all-punch-card-project-lists {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
+.punch-card-project-item {
+    width: 100%;
+    height: 70px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.punch-card-project-cover-img {
+    width: 20%;
+    height: 100%;
+    margin-left: 10px;
+}
+.punch-card-project-cover-img > image{
+    width: 70px;
+    height: 50px;
+
+    position: relative;
+    top: 50%;
+    margin-top: -25px;
+    left: 50%;
+    margin-left: -35px;
+}
+
+.punch-card-project-info {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    margin-left: 10px;
+}
+
+.info-head {
+    max-height: 75%;
+    min-height: 40%;
+    width: 100%;
+}
+
+.punch-card-project-name {
+    margin-top: 10px;
+    margin-bottom: 3px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+}
+
+.punch-card-project-creator {
+    margin-left: 5px;
+    line-height: 11px;
+    font-size: 11px;
+    color: white;
+    padding: 0 2px;
+    border: 1px solid #F9A825;
+    border-radius: 3px;
+    background-color: #F9A825;
+}
+
+.info-tail {
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    font-size: 11px;
+    color: #8a8a8a;
+
+}
+
+
+
+.go-to-punch-card-btn {
+    width: 25%;
+    height: 100%;
+    margin-right: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.go-to-punch-card-btn > text {
+    border: 1px solid #F0B27A;
+    border-radius: 3px;
+    background-color: #F0B27A;
+    color: white;
+    padding: 2px 5px;
+}
+
+
+
+
+

@@ -19,7 +19,8 @@
         "pages/publishComment/index",
         "pages/projectBackStageManage/index",
         "pages/find/searchPunchCardProject/index",
-        "pages/find/showPunchCardProjectByType/index"
+        "pages/find/showPunchCardProjectByType/index",
+        "pages/index/allProjectList/index"
     ],
     "window": {
         "navigationBarBackgroundColor": "#F0B27A",
@@ -59,5 +60,6 @@
         "request": 10000,
         "downloadFile": 10000
     },
-    "debug": true
+    "debug": true,
+    "sitemapLocation": "sitemap.json"
 }

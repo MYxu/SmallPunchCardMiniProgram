@@ -1,174 +1,233 @@
 <view class="container">
 
     <!--在未从服务器端获取到数据之前显示空白页并显示加载动画-->
+    <!--<block wx:if="{{showLoading}}">-->
+        <!--&lt;!&ndash;显示空白页&ndash;&gt;-->
+        <!--<view></view>-->
+    <!--</block>-->
+    <!--<block wx:else>&lt;!&ndash;成功获取数据后关闭加载动画显示获取的数据内容&ndash;&gt;-->
+        <!--&lt;!&ndash;顶部&ndash;&gt;-->
+        <!--<view class="container-header">-->
+            <!--<view class="user-avatar" bindtap="intoPersonalHomePage">-->
+                <!--&lt;!&ndash;使用默认的小程序内置的默认头像&ndash;&gt;-->
+                <!--<block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">-->
+                    <!--<image src="../../images/default/userAvatar.png"></image>-->
+                <!--</block>-->
+                <!--<block wx:else>-->
+                    <!--<image src="{{userInfo.avatar_url}}"></image>-->
+                <!--</block>-->
+            <!--</view>-->
+            <!--<block wx:if="{{userInfo.sex == 1}}">-->
+                <!--<view class="user-sex-male">-->
+                    <!--<image src="/images/button/sex_male.png">-->
+                    <!--</image>-->
+                <!--</view>-->
+            <!--</block>-->
+            <!--<block wx:if="{{userInfo.sex == 2}}">-->
+                <!--<view class="user-sex-female">-->
+                    <!--<image src="/images/button/sex_female.png">-->
+                    <!--</image>-->
+                <!--</view>-->
+            <!--</block>-->
+        <!--</view>-->
+
+        <!--&lt;!&ndash;创建打卡圈子 && 展示我加入加入的打卡圈子 &ndash;&gt;-->
+        <!--<view class="punch-card-project">-->
+            <!--<block wx:if="{{punchCardProjectList}}"> &lt;!&ndash;存在参与的打卡圈子&ndash;&gt;-->
+                <!--&lt;!&ndash;创建打卡圈子按钮&ndash;&gt;-->
+                <!--<view class="create-punch-card-project-btn"-->
+                      <!--bindtap="createNewPunchCardProject">-->
+                    <!--<image src="/images/button/add.png"></image>-->
+                    <!--<text>新建打卡圈</text>-->
+                <!--</view>-->
+
+                <!--&lt;!&ndash;我参与的打卡圈子列表&ndash;&gt;-->
+                <!--<view class="my-punch-card-project-list">-->
+                    <!--<block wx:for="{{punchCardProjectList}}">-->
+                        <!--&lt;!&ndash;隐藏第三个之后的所有打卡圈子,点击查看更多按钮才显示后面全部打卡圈子&ndash;&gt;-->
+                        <!--<block wx:if="{{(index + 1) > 3}}">-->
+                            <!--<view class="my-punch-card-project-item"-->
+                                  <!--hidden="{{projectHidden}}"-->
+                                  <!--bindtap="intoPunchCardDetail"-->
+                                  <!--data-project_id="{{item.id}}"-->
+                                  <!--data-is_creator="{{item.is_creator}}">-->
+                                <!--&lt;!&ndash;打卡圈子封面&ndash;&gt;-->
+                                <!--<view class="project-cover-img">-->
+                                    <!--<block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">-->
+                                        <!--<image src="/images/default/project_cover_img.png">-->
+                                        <!--</image>-->
+                                    <!--</block>-->
+                                    <!--<block wx:else>-->
+                                        <!--<image src="{{imgRootPath}}{{item.cover_img_url}}">-->
+                                        <!--</image>-->
+                                    <!--</block>-->
+                                <!--</view>-->
+                                <!--&lt;!&ndash;打卡圈子相关信息：打卡圈子名称 && 是否为圈子创建者  &&-->
+                                 <!--打卡提示时间 && 本日打卡人数&ndash;&gt;-->
+                                <!--<view class="project-detail-info">-->
+                                    <!--&lt;!&ndash;打卡提醒时间 && 本日打卡人数&ndash;&gt;-->
+                                    <!--<view class="row">-->
+                                        <!--<view class="remind-time">-->
+                                            <!--<image class="remind-time-icon"-->
+                                                   <!--src="/images/button/time.png">-->
+                                            <!--</image>-->
+                                            <!--<text>20:00</text>-->
+                                        <!--</view>-->
+                                        <!--<view class="punch-card-num-today">-->
+                                            <!--<image class="punch-card-num-today-icon"-->
+                                                   <!--src="/images/button/people.png">-->
+                                            <!--</image>-->
+                                            <!--<text>0人已打卡</text>-->
+                                        <!--</view>-->
+                                    <!--</view>-->
+                                    <!--&lt;!&ndash;打卡圈子名称&ndash;&gt;-->
+                                    <!--<view class="project-name">-->
+                                        <!--<view>{{item.project_name}}-->
+                                            <!--<block wx:if="{{item.is_creator == 1}}">-->
+                                                <!--<text class="is-creator">圈主</text>-->
+                                            <!--</block>-->
+                                        <!--</view>-->
+                                    <!--</view>-->
+
+                                <!--</view>-->
+                                <!--&lt;!&ndash;打卡按钮&ndash;&gt;-->
+                                <!--<view class="punch-card-btn">-->
+                                    <!--<text>打卡</text>-->
+                                <!--</view>-->
+                            <!--</view>-->
+                        <!--</block>-->
+                        <!--<block wx:else>-->
+                            <!--&lt;!&ndash;第1到3个打卡圈子列表&ndash;&gt;-->
+                            <!--<view class="my-punch-card-project-item"-->
+                                  <!--bindtap="intoPunchCardDetail"-->
+                                  <!--data-project_id="{{item.id}}"-->
+                                  <!--data-is_creator="{{item.is_creator}}">-->
+                                <!--&lt;!&ndash;打卡圈子封面&ndash;&gt;-->
+                                <!--<view class="project-cover-img">-->
+                                    <!--<block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">-->
+                                        <!--<image src="../../images/default/project_cover_img.png"></image>-->
+                                    <!--</block>-->
+                                    <!--<block wx:else>-->
+                                        <!--<image src="{{imgRootPath}}{{item.cover_img_url}}">-->
+                                        <!--</image>-->
+                                    <!--</block>-->
+                                <!--</view>-->
+                                <!--&lt;!&ndash;打卡圈子相关信息：打卡圈子名称 && 是否为圈子创建者  &&-->
+                                 <!--打卡提示时间 && 本日打卡人数&ndash;&gt;-->
+                                <!--<view class="project-detail-info">-->
+                                    <!--&lt;!&ndash;打卡提醒时间 && 本日打卡人数&ndash;&gt;-->
+                                    <!--<view class="row">-->
+                                        <!--<view class="remind-time">-->
+                                            <!--<image class="remind-time-icon"-->
+                                                   <!--src="/images/button/time.png">-->
+                                            <!--</image>-->
+                                            <!--<text>20:00</text>-->
+                                        <!--</view>-->
+                                        <!--<view class="punch-card-num-today">-->
+                                            <!--<image class="punch-card-num-today-icon"-->
+                                                   <!--src="/images/button/people.png">-->
+                                            <!--</image>-->
+                                            <!--<text>0人已打卡</text>-->
+                                        <!--</view>-->
+                                    <!--</view>-->
+                                    <!--&lt;!&ndash;打卡圈子名称&ndash;&gt;-->
+                                    <!--<view class="project-name">-->
+                                        <!--<view>{{item.project_name}}-->
+                                            <!--<block wx:if="{{item.is_creator == 1}}">-->
+                                                <!--<text class="is-creator">圈主</text>-->
+                                            <!--</block>-->
+                                        <!--</view>-->
+                                    <!--</view>-->
+
+                                <!--</view>-->
+                                <!--&lt;!&ndash;打卡按钮&ndash;&gt;-->
+                                <!--<view class="punch-card-btn">-->
+                                    <!--<text>打卡</text>-->
+                                <!--</view>-->
+                            <!--</view>-->
+                        <!--</block>-->
+                    <!--</block>-->
+                <!--</view>-->
+
+                <!--&lt;!&ndash;查看更多的打卡圈子按钮&ndash;&gt;-->
+                <!--<block wx:if="{{projectNum >= 4 }}">-->
+                    <!--<view class="morePunchCardProject" hidden="{{moreProjectInfo}}"-->
+                          <!--bindtap="showMorePunchCardProject">-->
+                        <!--<text>查看更多</text>-->
+                    <!--</view>-->
+                <!--</block>-->
+            <!--</block>-->
+            <!--<block wx:else>                          &lt;!&ndash;尚未存在参与的打卡圈子&ndash;&gt;-->
+                <!--<view class="create-punch-card-project-btn-none"-->
+                      <!--bindtap="createNewPunchCardProject">-->
+                    <!--<image src="/images/button/add.png"></image>-->
+                    <!--<text>创建我的打卡圈</text>-->
+                <!--</view>-->
+            <!--</block>-->
+        <!--</view>-->
+
+        <!--<view class="container-bottom">-->
+        <!--</view>-->
+    <!--</block>-->
+
+
+    <!--在未从服务器端获取到数据之前显示空白页并显示加载动画-->
     <block wx:if="{{showLoading}}">
-        <!--显示空白页-->
-        <view></view>
+    <!--显示空白页-->
+    <view></view>
     </block>
-    <block wx:else><!--成功获取数据后关闭加载动画显示获取的数据内容-->
-        <!--顶部-->
-        <view class="container-header">
-            <view class="user-avatar" bindtap="intoPersonalHomePage">
-                <!--使用默认的小程序内置的默认头像-->
-                <block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">
-                    <image src="../../images/default/userAvatar.png"></image>
-                </block>
-                <block wx:else>
-                    <image src="{{userInfo.avatar_url}}"></image>
-                </block>
+    <block wx:else>
+        <!--滚动列表展示我参与、创建的打卡圈子 && 创建、查看全部、发现更多打卡圈子按钮-->
+        <scroll-view scroll-x class="punch-card-project-lists" scroll-left>
+            <view class="container-item" bindtap="createNewPunchCardProject">
+                <view class="operator-btn-view btn-color-1">
+                    <image src="/images/button/add_200.png"></image>
+                    <view>新建圈子</view>
+                </view>
             </view>
-            <block wx:if="{{userInfo.sex == 1}}">
-                <view class="user-sex-male">
-                    <image src="/images/button/sex_male.png">
-                    </image>
-                </view>
-            </block>
-            <block wx:if="{{userInfo.sex == 2}}">
-                <view class="user-sex-female">
-                    <image src="/images/button/sex_female.png">
-                    </image>
-                </view>
-            </block>
-        </view>
 
-        <!--创建打卡圈子 && 展示我加入加入的打卡圈子 -->
-        <view class="punch-card-project">
-            <block wx:if="{{punchCardProjectList}}"> <!--存在参与的打卡圈子-->
-                <!--创建打卡圈子按钮-->
-                <view class="create-punch-card-project-btn"
-                      bindtap="createNewPunchCardProject">
-                    <image src="/images/button/add.png"></image>
-                    <text>新建打卡圈</text>
-                </view>
-
-                <!--我参与的打卡圈子列表-->
-                <view class="my-punch-card-project-list">
-                    <block wx:for="{{punchCardProjectList}}">
-                        <!--隐藏第三个之后的所有打卡圈子,点击查看更多按钮才显示后面全部打卡圈子-->
-                        <block wx:if="{{(index + 1) > 3}}">
-                            <view class="my-punch-card-project-item"
-                                  hidden="{{projectHidden}}"
-                                  bindtap="intoPunchCardDetail"
-                                  data-project_id="{{item.id}}"
-                                  data-is_creator="{{item.is_creator}}">
-                                <!--打卡圈子封面-->
-                                <view class="project-cover-img">
-                                    <block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">
-                                        <image src="/images/default/project_cover_img.png">
-                                        </image>
-                                    </block>
-                                    <block wx:else>
-                                        <image src="{{imgRootPath}}{{item.cover_img_url}}">
-                                        </image>
-                                    </block>
-                                </view>
-                                <!--打卡圈子相关信息：打卡圈子名称 && 是否为圈子创建者  &&
-                                 打卡提示时间 && 本日打卡人数-->
-                                <view class="project-detail-info">
-                                    <!--打卡提醒时间 && 本日打卡人数-->
-                                    <view class="row">
-                                        <view class="remind-time">
-                                            <image class="remind-time-icon"
-                                                   src="/images/button/time.png">
-                                            </image>
-                                            <text>20:00</text>
-                                        </view>
-                                        <view class="punch-card-num-today">
-                                            <image class="punch-card-num-today-icon"
-                                                   src="/images/button/people.png">
-                                            </image>
-                                            <text>0人已打卡</text>
-                                        </view>
-                                    </view>
-                                    <!--打卡圈子名称-->
-                                    <view class="project-name">
-                                        <view>{{item.project_name}}
-                                            <block wx:if="{{item.is_creator == 1}}">
-                                                <text class="is-creator">圈主</text>
-                                            </block>
-                                        </view>
-                                    </view>
-
-                                </view>
-                                <!--打卡按钮-->
-                                <view class="punch-card-btn">
-                                    <text>打卡</text>
+            <!--展示前四个打卡圈子-->
+            <block wx:if="{{projectNum > 0}}">
+                <block wx:for="{{punchCardProjectList}}">
+                    <block wx:if="{{index <= 3}}">
+                        <view class="container-item">
+                            <view class="punch-card-project-item-view"
+                            bindtap="intoPunchCardDetail"
+                            data-project_id="{{item.id}}"
+                            data-is_creator="{{item.is_creator}}">
+                                <block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">
+                                    <image src="/images/default/project_cover_img.png">
+                                    </image>
+                                </block>
+                                <block wx:else>
+                                    <image src="{{imgRootPath}}{{item.cover_img_url}}">
+                                    </image>
+                                </block>
+                                <view class="project-name">
+                                    <text>{{item.project_name}}</text>
                                 </view>
                             </view>
-                        </block>
-                        <block wx:else>
-                            <!--第1到3个打卡圈子列表-->
-                            <view class="my-punch-card-project-item"
-                                  bindtap="intoPunchCardDetail"
-                                  data-project_id="{{item.id}}"
-                                  data-is_creator="{{item.is_creator}}">
-                                <!--打卡圈子封面-->
-                                <view class="project-cover-img">
-                                    <block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">
-                                        <image src="../../images/default/project_cover_img.png"></image>
-                                    </block>
-                                    <block wx:else>
-                                        <image src="{{imgRootPath}}{{item.cover_img_url}}">
-                                        </image>
-                                    </block>
-                                </view>
-                                <!--打卡圈子相关信息：打卡圈子名称 && 是否为圈子创建者  &&
-                                 打卡提示时间 && 本日打卡人数-->
-                                <view class="project-detail-info">
-                                    <!--打卡提醒时间 && 本日打卡人数-->
-                                    <view class="row">
-                                        <view class="remind-time">
-                                            <image class="remind-time-icon"
-                                                   src="/images/button/time.png">
-                                            </image>
-                                            <text>20:00</text>
-                                        </view>
-                                        <view class="punch-card-num-today">
-                                            <image class="punch-card-num-today-icon"
-                                                   src="/images/button/people.png">
-                                            </image>
-                                            <text>0人已打卡</text>
-                                        </view>
-                                    </view>
-                                    <!--打卡圈子名称-->
-                                    <view class="project-name">
-                                        <view>{{item.project_name}}
-                                            <block wx:if="{{item.is_creator == 1}}">
-                                                <text class="is-creator">圈主</text>
-                                            </block>
-                                        </view>
-                                    </view>
-
-                                </view>
-                                <!--打卡按钮-->
-                                <view class="punch-card-btn">
-                                    <text>打卡</text>
-                                </view>
-                            </view>
-                        </block>
+                        </view>
                     </block>
-                </view>
-
-                <!--查看更多的打卡圈子按钮-->
-                <block wx:if="{{projectNum >= 4 }}">
-                    <view class="morePunchCardProject" hidden="{{moreProjectInfo}}"
-                          bindtap="showMorePunchCardProject">
-                        <text>查看更多</text>
-                    </view>
                 </block>
             </block>
-            <block wx:else>                          <!--尚未存在参与的打卡圈子-->
-                <view class="create-punch-card-project-btn-none"
-                      bindtap="createNewPunchCardProject">
-                    <image src="/images/button/add.png"></image>
-                    <text>创建我的打卡圈</text>
+
+            <block wx:if="{{projectNum > 0}}">
+                <view class="container-item" bindtap="showMyPunchCardProjectList">
+                    <view class="operator-btn-view btn-color-2">
+                        <image src="/images/button/more_200.png"></image>
+                        <view>查看全部</view>
+                    </view>
                 </view>
             </block>
-        </view>
 
-        <view class="container-bottom">
-        </view>
+            <view class="container-item" bindtap="intoFindMorePunchCardProject">
+                <view class="operator-btn-view btn-color-3">
+                    <image src="/images/button/like_200.png"></image>
+                    <view>精彩推荐</view>
+                </view>
+            </view>
+        </scroll-view>
     </block>
-
 
 </view>

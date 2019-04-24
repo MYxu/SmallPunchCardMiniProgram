@@ -357,4 +357,21 @@ Page({
         });
     },
 
+    // 查看我创建、参与的所有打卡圈子
+    showMyPunchCardProjectList: function () {
+        let that = this;
+        wx.navigateTo({
+            url: '/pages/index/allProjectList/index'
+                + "?punchCardProjectList="
+                + JSON.stringify(that.data.punchCardProjectList)
+        });
+    },
+
+    // 点击精彩推荐按钮进入发现页
+    intoFindMorePunchCardProject: function () {
+        wx.switchTab({
+           url: '/pages/find/index'
+        });
+    }
+
 });

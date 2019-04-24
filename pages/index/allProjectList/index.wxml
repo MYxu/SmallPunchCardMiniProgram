@@ -1,0 +1,44 @@
+<view class="my-all-punch-card-project-lists">
+    <block wx:if="{{punchCardProjectList.length > 0}}">
+        <block wx:for="{{punchCardProjectList}}">
+            <view class="punch-card-project-item" bindtap="intoPunchCardDetail"
+            data-project-id="{{item.id}}" data-is-creator="{{item.is_creator}}">
+                <view class="punch-card-project-cover-img">
+                    <block wx:if ="{{item.cover_img_url === 'default_cover_img'}}">
+                        <image src="/images/default/project_cover_img.png"></image>
+                    </block>
+                    <block wx:else>
+                        <image src="{{imgRootPath}}{{item.cover_img_url}}"></image>
+                    </block>
+                </view>
+
+                <view class="punch-card-project-info">
+                    <view class="info-head">
+                        <view class="punch-card-project-name">
+                            <view>{{item.project_name}}
+                                <block wx:if="{{item.is_creator == 1}}">
+                                    <text class="punch-card-project-creator">圈主</text>
+                                </block>
+                            </view>
+                        </view>
+
+                    </view>
+
+                    <view class="info-tail">
+                        <view class="today-punch-card-people-num">
+                            暂无人打卡
+                        </view>
+                    </view>
+
+                </view>
+
+                <view class="go-to-punch-card-btn">
+                    <text>去打卡</text>
+                </view>
+            </view>
+            <block wx:if="{{index < punchCardProjectList.length - 1 }}">
+                <view class="separator-height-1px"></view>
+            </block>
+        </block>
+    </block>
+</view>
