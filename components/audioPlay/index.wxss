@@ -1,0 +1,88 @@
+/*音频播放视图*/
+.punch-card-diary-audio-play-item {
+    width: auto;
+    height: 65px;
+    margin: 10px 0;
+
+    background-color: #B2DFDB;
+
+    border-radius: 7px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/*音频播放视图 控制按钮区块*/
+.audio-control-btn-area {
+    /*background-color: #64DD17;*/
+    width: 20%;
+    height: 65px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.audio-control-btn {
+    width: 60%;
+    height: 60%;
+    border: 3px solid whitesmoke;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.audio-control-btn > image {
+    width: 20px;
+    height: 20px;
+}
+
+/*音频播放视图 播放进度条区域*/
+.audio-play-progress-area {
+    width: 75%;
+    height: 65px;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.audio-name {
+    height: 13px;
+    line-height: 13px;
+    margin: 10px 0 10px 15px;
+
+    font-size: 13px;
+    color: white;
+}
+
+.audio-play-progress {
+    height: 20px;
+    margin-left: 15px;
+    font-size: 13px;
+    color: white;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.audio-play-last-time .audio-play-end-time {
+    color: whitesmoke;
+    font-size: 12px;
+    width: auto;
+}
+
+.audio-play-progress-item {
+    width: 150px;
+}

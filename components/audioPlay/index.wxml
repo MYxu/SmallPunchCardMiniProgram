@@ -1,0 +1,37 @@
+<!--suppress HtmlDeprecatedTag -->
+<view class="punch-card-diary-audio-play-item">
+    <!--控制按钮区域-->
+    <view class="audio-control-btn-area">
+        <block wx:if="{{audioPlayStatus == 'pause'}}">
+            <!--音频暂停播放中 显示播放按钮-->
+            <view class="audio-control-btn" bindtap="startAudioPlay">
+                <image src="/images/button/audio_play.png"></image>
+            </view>
+        </block>
+        <block wx:else>
+            <!--音频播放中 显示暂停按钮-->
+            <view class="audio-control-btn" bindtap="pauseAudioPlay">
+                <!--suppress HtmlDeprecatedTag -->
+                <image src="/images/button/audio_pause.png"></image>
+            </view>
+        </block>
+    </view>
+
+    <!--播放进度条区域-->
+    <view class="audio-play-progress-area">
+        <view class="audio-name">{{audioName}}</view>
+        <view class="audio-play-progress">
+            <!--音频当前播放时间-->
+            <view class="audio-play-last-time">{{audioPlayCurrTimeStr}}</view>
+
+            <!--音频播放进度条-->
+            <view class="audio-play-progress-item">
+                <slider max="{{audioPlayEndTime}}" value="{{audioPlayCurrTime}}"
+                        block-size="12">
+                </slider>
+            </view>
+            <!--音频总时长-->
+            <view class="audio-play-end-time">{{audioPlayEndTimeStr}}</view>
+        </view>
+    </view>
+</view>

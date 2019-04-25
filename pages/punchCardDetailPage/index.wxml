@@ -5,6 +5,7 @@
 3.若是普通参与成员进入不显示管理后台按钮、显示是否关注圈主的相关信息
 4.未加入打卡圈子的用户进入
 -->
+<!--suppress ALL -->
 <view class="container">
     <!--在未从服务器端获取到数据之前显示空白页并显示加载动画-->
     <block wx:if="{{showLoading}}">
@@ -281,7 +282,7 @@
                                             <!-- 打卡图片 & 视频 & 音频，一张图片直接显示，二张以上九宫格格式展示 -->
                                             <view class="diary-resource">
                                                 <!--TODO 视频-->
-                                                <block wx:if="{{item.diaryResource.length>0 && item.diaryResource.length<2}}">
+                                                <block wx:if="{{(item.diaryResource.length == 1 && item.diaryResource[0].type == '1' ) || (item.diaryResource.length == 2 && item.diaryResource[1].type == '2')}}">
                                                     <!--一张图片则根据图片大小显示-->
                                                     <view class="one-image" catchtap="previewDiaryImage"
                                                           data-index="{{index}}"
@@ -294,16 +295,26 @@
                                                     <view class="diary-img-list">
                                                         <block wx:for="{{item.diaryResource}}" wx:for-item="v"
                                                                wx:for-index="k">
-                                                            <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px" catchtap="previewDiaryImage" data-index="{{index}}"
-                                                                  data-img-url="{{v.resource_url}}">
-                                                                <image src="{{imgRootPath}}{{v.resource_url}}">
-                                                                </image>
-                                                            </view>
+                                                            <block wx:if="{{v.type == '1'}}">
+                                                                <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px" catchtap="previewDiaryImage" data-index="{{index}}"
+                                                                      data-img-url="{{v.resource_url}}">
+                                                                    <image src="{{imgRootPath}}{{v.resource_url}}">
+                                                                    </image>
+                                                                </view>
+                                                            </block>
                                                         </block>
                                                     </view>
-
                                                 </block>
-                                                <!--TODO 音频-->
+
+                                                <!--音频-->
+                                                <block wx:for="{{item.diaryResource}}" wx:for-item="audioItem">
+                                                    <block wx:if="{{audioItem.type == '2'}}">
+                                                        <punch-card-diary-audio-play
+                                                                audio-name="{{item.publisher.nick_name}}的录音视频"
+                                                                audio-file-info="{{audioItem}}">
+                                                        </punch-card-diary-audio-play>
+                                                    </block>
+                                                </block>
                                             </view>
 
                                             <!-- 打卡地点 -->
@@ -900,7 +911,7 @@
                                         <!-- 打卡图片 & 视频 & 音频，一张图片直接显示，二张以上九宫格格式展示 -->
                                         <view class="diary-resource">
                                             <!--TODO 视频-->
-                                            <block wx:if="{{item.diaryResource.length>0 && item.diaryResource.length<2}}">
+                                            <block wx:if="{{(item.diaryResource.length == 1 && item.diaryResource[0].type == '1' ) || (item.diaryResource.length == 2 && item.diaryResource[1].type == '2')}}">
                                                 <!--一张图片则根据图片大小显示-->
                                                 <view class="one-image" catchtap="previewDiaryImage"
                                                       data-index="{{index}}"
@@ -913,16 +924,28 @@
                                                 <view class="diary-img-list">
                                                     <block wx:for="{{item.diaryResource}}" wx:for-item="v"
                                                            wx:for-index="k">
-                                                        <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px" catchtap="previewDiaryImage" data-index="{{index}}"
-                                                              data-img-url="{{v.resource_url}}">
-                                                            <image src="{{imgRootPath}}{{v.resource_url}}">
-                                                            </image>
-                                                        </view>
+                                                        <block wx:if="{{v.type == '1'}}">
+                                                            <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px" catchtap="previewDiaryImage" data-index="{{index}}"
+                                                                  data-img-url="{{v.resource_url}}">
+                                                                <image src="{{imgRootPath}}{{v.resource_url}}">
+                                                                </image>
+                                                            </view>
+                                                        </block>
                                                     </block>
                                                 </view>
 
                                             </block>
-                                            <!--TODO 音频-->
+
+                                            <!--音频-->
+                                            <!--音频-->
+                                            <block wx:for="{{item.diaryResource}}" wx:for-item="audioItem">
+                                                <block wx:if="{{audioItem.type == '2'}}">
+                                                    <punch-card-diary-audio-play
+                                                            audio-name="{{item.publisher.nick_name}}的录音视频"
+                                                            audio-file-info="{{audioItem}}" >
+                                                    </punch-card-diary-audio-play>
+                                                </block>
+                                            </block>
                                         </view>
 
                                         <!-- 打卡地点 -->

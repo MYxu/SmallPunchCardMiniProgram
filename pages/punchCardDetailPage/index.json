@@ -2,5 +2,8 @@
   "navigationBarTitleText": "",
   "navigationBarTextStyle": "white",
   "backgroundTextStyle": "light",
-  "enablePullDownRefresh": true
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "punch-card-diary-audio-play": "/components/audioPlay/index"
+  }
 }

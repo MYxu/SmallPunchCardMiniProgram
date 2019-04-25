@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <view class="punch-card-project-list-item"
       data-project-id="{{punchCardProjectItemData.id}}"
       bindtap="_intoPunchCardDetail">

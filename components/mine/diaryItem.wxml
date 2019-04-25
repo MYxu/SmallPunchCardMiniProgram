@@ -1,3 +1,4 @@
+<!--suppress ALL -->
 <view class='user-punch-card-diary-item'>
     <!-- 日记展示头部：日记用户头像、昵称、打卡时间、已打卡天数
     、日记私密类型、更多按钮 -->
@@ -100,7 +101,9 @@
         <!-- 打卡图片 & 视频 & 音频，一张图片直接显示，二张以上九宫格格式展示 -->
         <view class="diary-resource">
             <!--TODO 视频-->
-            <block wx:if="{{diaryItemData.diaryResource.length > 0 && diaryItemData.diaryResource.length < 2}}">
+
+            <!--图片-->
+            <block wx:if="{{diaryImgCount > 0 && diaryImgCount < 2}}">
                 <!--一张图片则根据图片大小显示-->
                 <view class="one-image" catchtap="_previewDiaryImage"
                       data-img-url="{{diaryItemData.diaryResource[0].resource_url}}">
@@ -112,17 +115,27 @@
                 <view class="diary-img-list">
                     <block wx:for="{{diaryItemData.diaryResource}}" wx:for-item="v"
                            wx:for-index="k">
-                        <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px"
-                              catchtap="_previewDiaryImage"
-                              data-img-url="{{v.resource_url}}">
-                            <image src="{{imgRootPath}}{{v.resource_url}}">
-                            </image>
-                        </view>
+                        <block wx:if="{{v.type == '1'}}">
+                            <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px"
+                                  catchtap="_previewDiaryImage"
+                                  data-img-url="{{v.resource_url}}">
+                                <image src="{{imgRootPath}}{{v.resource_url}}">
+                                </image>
+                            </view>
+                        </block>
                     </block>
                 </view>
-
             </block>
-            <!--TODO 音频-->
+
+            <!--音频-->
+            <block wx:for="{{diaryItemData.diaryResource}}" wx:for-item="audioItem">
+                <block wx:if="{{audioItem.type == '2'}}">
+                    <punch-card-diary-audio-play audio-file-info="{{audioItem}}"
+                                                 audio-name="{{diaryItemData.publisher.nick_name}}的录音视频">
+                    </punch-card-diary-audio-play>
+                </block>
+            </block>
+
         </view>
 
         <!-- 打卡地点 -->

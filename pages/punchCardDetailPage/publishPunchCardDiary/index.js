@@ -397,6 +397,7 @@ Page({
         });
 
     },
+
     // 取消已选择的地理位置
     cancelLocationAddress: function () {
         let that = this;

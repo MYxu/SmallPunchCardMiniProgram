@@ -85,7 +85,28 @@ Component({
 
         // 日记存在两张以上图片时每张图片显示的长、宽度
         diaryImgWidth: Math.floor((app.globalData.windowWidth-(10+40+8+5+5+5+10))/3),
+        diaryImgCount: 0, // 打卡日记的图片张数
         hiddenMoreDiaryOperateBtn: true, // 控制对日记更多操作按钮显示、隐藏
+    },
+
+    /*
+     * 组件的周期函数
+     *
+     * 在组件实例化后统计该组件也就是该条打卡日记拥有的图片资源数
+     */
+    attached: function () {
+        let that = this;
+        let diaryResource = that.data.diaryItemData.diaryResource;
+
+        that.data.diaryImgCount = 0;
+        for (let i = 0; i <diaryResource.length ; i++) {
+            if (parseInt(diaryResource[i].type) === 1) { // type = 1 为图片资源
+                that.data.diaryImgCount += 1;
+            }
+        }
+        that.setData({
+            diaryImgCount: that.data.diaryImgCount
+        });
     },
 
     /**
