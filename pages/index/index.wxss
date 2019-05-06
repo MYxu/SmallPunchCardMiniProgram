@@ -1,278 +1,4 @@
 
-/*!*首页头部显示：用户头像*!*/
-/*.container-header {*/
-    /*width: 100%;*/
-    /*height: 50px;*/
-    /*border-radius:0 0 100% 100%/0 0 88px 88px;*/
-    /*background-color: #F0B27A;*/
-/*}*/
-/*.user-avatar {*/
-    /*width: 50px;*/
-    /*height: 50px;*/
-
-    /*position: absolute;*/
-    /*!*水平居中*!*/
-    /*left: 50%;*/
-    /*margin-left: -35px;*/
-
-    /*!*垂直居中*!*/
-    /*margin-top: 15px; !*父级H 50px,子级H 70px 只需要下移15px 即可被父级下边框对半分割*!*/
-/*}*/
-/*.user-avatar > image {*/
-    /*width: 70px;*/
-    /*height: 70px;*/
-    /*border-radius: 50%;*/
-    /*border: 1px solid white;*/
-/*}*/
-
-/*!*性别*!*/
-/*.user-sex-male {*/
-    /*width: 17px;*/
-    /*height: 17px;*/
-
-    /*border-radius: 50%;*/
-    /*background-color: white;*/
-
-    /*position: absolute;*/
-    /*left: 50%;*/
-    /*margin-top: 65px;*/
-    /*margin-left: 20px;*/
-
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*justify-content: space-around;*/
-    /*align-items: center;*/
-
-/*}*/
-/*.user-sex-male > image{*/
-    /*width: 15px;*/
-    /*height: 15px;*/
-/*}*/
-
-/*.user-sex-female {*/
-    /*width: 17px;*/
-    /*height: 17px;*/
-
-    /*border-radius: 50%;*/
-    /*background-color: white;*/
-
-    /*position: absolute;*/
-    /*left: 50%;*/
-    /*margin-top: 65px;*/
-    /*margin-left: 20px;*/
-
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*justify-content: space-around;*/
-    /*align-items: center;*/
-
-/*}*/
-/*.user-sex-female > image{*/
-    /*width: 15px;*/
-    /*height: 15px;*/
-    /*transform: rotate(30deg);*/
-/*}*/
-
-/*!*我的打卡项目*!*/
-/*.punch-card-project {*/
-    /*height: auto;*/
-    /*margin-top: 45px;*/
-    /*margin-left: 10px;*/
-    /*margin-right: 10px;*/
-    /*padding-bottom: 5px;*/
-    /*!*background-color: yellow;*!*/
-/*}*/
-
-/*!*创建打卡项目按钮*!*/
-/*.create-punch-card-project-btn {*/
-    /*background-color: white;*/
-    /*width: 100%;*/
-    /*height: 20px;*/
-    /*margin-bottom: 5px;*/
-
-    /*display: flex;*/
-    /*align-items: center;*/
-
-    /*color: #F0B27A;*/
-    /*font-size: 15px;*/
-/*}*/
-/*!*按钮图标*!*/
-/*.create-punch-card-project-btn > image {*/
-    /*width: 15px;*/
-    /*height: 15px;*/
-    /*margin-right: 8px;*/
-/*}*/
-
-/*!*尚未存在参与的打卡圈子时展示的按钮*!*/
-/*.create-punch-card-project-btn-none {*/
-    /*width: 150px;*/
-    /*height: 30px;*/
-    /*border: 1px solid #F0B27A;*/
-    /*border-radius: 3px;*/
-    /*margin-bottom: 5px;*/
-    /*padding: 0 5px 0 5px;*/
-
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-
-    /*!*居中设置*!*/
-    /*position: relative;*/
-    /*left: 50%;*/
-    /*margin-left: -81px;*/
-
-    /*color: #F0B27A;*/
-    /*font-size: 15px;*/
-/*}*/
-/*.create-punch-card-project-btn-none > image {*/
-    /*width: 15px;*/
-    /*height: 15px;*/
-    /*margin-right: 8px;*/
-/*}*/
-
-
-/*!*当前我所参与的打卡圈子列表*!*/
-/*.my-punch-card-project-list {*/
-    /*width: 100%;*/
-    /*height: auto;*/
-/*}*/
-
-/*!*打卡圈子信息*!*/
-/*.my-punch-card-project-item {*/
-    /*width: 100%;*/
-    /*height: 60px;*/
-    /*margin-bottom: 10px;*/
-    /*padding-top: 10px;*/
-    /*padding-bottom: 5px;*/
-
-    /*border: 1px solid whitesmoke;*/
-
-    /*box-shadow:  0 0 1px rgba(99, 99, 99, 0.50);*/
-
-    /*display: flex;*/
-    /*flex-direction: row;*/
-    /*flex-wrap: nowrap;*/
-    /*justify-content: space-between;*/
-    /*align-items: center;*/
-
-/*}*/
-
-/*!*打卡圈子封面*!*/
-/*.project-cover-img {*/
-    /*width: 18%;*/
-    /*height: 100%;*/
-/*}*/
-
-/*.project-cover-img > image {*/
-    /*width: 40px;*/
-    /*height: 40px;*/
-
-    /*position: relative;*/
-    /*top: 50%;*/
-    /*margin-top: -20px;*/
-    /*left: 50%;*/
-    /*margin-left: -20px;*/
-
-/*}*/
-
-
-/*!*打卡圈子详细信息*!*/
-/*.project-detail-info {*/
-    /*width: 60%;*/
-    /*height: 100%;*/
-
-    /*display: flex;*/
-    /*flex-direction: column-reverse;*/
-/*}*/
-/*!*打卡圈子名称*!*/
-/*.project-name {*/
-    /*max-height: 75%;*/
-    /*min-height: 40%;*/
-    /*width: 100%;*/
-    /*margin-bottom: 3px;*/
-    /*line-height: 1.2;*/
-    /*text-align: left;*/
-    /*display: flex;*/
-    /*align-items: flex-start;*/
-
-/*}*/
-
-/*!*是否为圈主*!*/
-/*.is-creator {*/
-    /*margin-left: 5px;*/
-    /*line-height: 21px;*/
-    /*font-size: 13px;*/
-    /*color: white;*/
-    /*padding: 1px 3px;*/
-    /*border: 1px solid #F0B27A;*/
-    /*border-radius: 3px;*/
-    /*background-color: #F0B27A;*/
-/*}*/
-
-/*!*打卡提醒时间 && 本日打卡人数*!*/
-/*.row {*/
-    /*height: 40%;*/
-    /*width: 100%;*/
-    /*display: flex;*/
-    /*align-items: flex-start;*/
-    /*font-size: 13px;*/
-    /*color: #9d9d9d;*/
-/*}*/
-
-/*!*打卡时间提醒*!*/
-/*.remind-time {*/
-    /*margin-right: 8px;*/
-/*}*/
-/*.remind-time-icon {*/
-    /*width: 13px;*/
-    /*height: 13px;*/
-    /*margin-right: 5px;*/
-/*}*/
-
-/*!*本地打卡人数*!*/
-/*.punch-card-num-today-icon {*/
-    /*width: 15px;*/
-    /*height: 14px;*/
-    /*margin-right: 5px;*/
-/*}*/
-
-
-/*!*打卡按钮*!*/
-/*.punch-card-btn {*/
-    /*width: 22%;*/
-    /*height: 100%;*/
-
-    /*display: flex;*/
-    /*align-items: center;*/
-    /*justify-content: center;*/
-/*}*/
-
-/*.punch-card-btn > text {*/
-    /*border: 1px solid #F0B27A;*/
-    /*border-radius: 3px;*/
-    /*background-color: #F0B27A;*/
-    /*color: white;*/
-    /*padding: 5px 10px;*/
-
-/*}*/
-
-
-
-/*!*查看更多我的圈子信息按钮*!*/
-/*.morePunchCardProject {*/
-    /*width: 56px;*/
-    /*padding: 5px 10px;*/
-    /*border: 1px solid whitesmoke;*/
-    /*border-radius: 2px;*/
-    /*font-size: 14px;*/
-    /*color: #F0B27A;*/
-
-    /*!*居中设置*!*/
-    /*position: relative;*/
-    /*left: 50%;*/
-    /*margin-left: -38px;*/
-/*}*/
-
 /*滚动列表展示我参与、创建的打卡圈子 && 创建、查看全部、发现更多打卡圈子按钮*/
 .punch-card-project-lists {
     height: 80px;
@@ -374,3 +100,429 @@
     color: white;
 
 }
+
+
+/*功能导航栏*/
+.navigation-bar-container {
+    width: 100%;
+    height: 53px;
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+/*导航栏吸附顶部*/
+.navigation-bar-fix {
+    position: fixed;
+    top: 0;
+    margin-top: 0;
+    z-index: 99999
+}
+
+.navigation-bar {
+    width: auto;
+    height: auto;
+    margin-left: 20px;
+    font-size: 17px;
+    line-height: 17px;
+    color: whitesmoke;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.navigation-bar-item {
+    width: auto;
+    height: 100%;
+    margin-right: 30px;
+    margin-bottom: 10px;
+    color: #B0BEC5;
+}
+
+/*标识出当前选择的选项卡*/
+.selected-tab-indicate{
+    width: 38px;
+    height: 3px;
+    /*默认定位到第二个导航按钮（推荐）中间,20（margin-left） + 38(bar width) + 30(bar margin-right)*/
+    position: absolute;
+    /*left: 88px;*/
+    left: 20px;
+    background-color: #F0B27A;
+}
+
+/*用户关注推荐内容视图*/
+.follow-recommend-view {
+
+}
+
+/*打卡日记推荐内容视图*/
+.diary-recommend-view {
+    width: 100%;
+    height: auto;
+}
+
+/*打卡日记列表为空时的提示信息展示*/
+.empty-diary-list-notice {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+}
+.empty-diary-list-notice > image {
+    margin: 25px 0 10px 0;
+    width: 120px;
+    height: 120px;
+}
+
+/*跳转至我参与的打卡圈子列表即首页*/
+.goto-punch-card-list-page > text {
+    color: #F0B27A;
+}
+
+/*打卡日记子项*/
+.diary-recommend-item {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+/*头部打卡圈子相关信息*/
+.punch-card-project-info {
+    width: 100%;
+    height: 65px;
+    background-color: whitesmoke;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.project-cover-img-info {
+    /*background-color: #8EC5FC;*/
+    width: 20%;
+    height: 65px;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: center;
+}
+.project-cover-img-info > image {
+    width: 50px;
+    height: 50px;
+    margin-left: 15px;
+    border-radius: 5px;
+}
+.project-intr-info {
+    width: 50%;
+    height: 100%;
+    color: black;
+    font-size: 15px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.project-name-info {
+    margin-top: 10px;
+    width: 100%;
+
+    /*单行隐藏显示省略号*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+/*最新加入的三个参与者头像*/
+.project-attend-user-info {
+    width: 20%;
+    height: 100%;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+.user-avatar-item {
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-right: -6px;
+}
+.user-avatar-item > image {
+    width: 24px;
+    height: 24px;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
+.into-project-detail-page {
+    width: 10%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+.into-project-detail-page > image {
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+
+}
+
+/*中间的打卡日记相关信息*/
+.punch-card-diary-info {
+    /*宽度通过js获取 直接在元素中设置为终端宽度-30px margin-left 30px */
+    /*width: auto;*/
+    height: auto;
+}
+.diary-text-content {
+    font-size: 17px;
+    line-height: 135%;
+    color: black;
+    width: 100%;
+    height: auto;
+    margin: 5px 0;
+}
+.diary-resource-show {
+    width: 100%;
+    height: 100%;
+}
+/*一张图片*/
+.one-image image {
+    width: 100%;
+}
+/*多张图片*/
+.diary-img-list {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.diary-img-item {
+    margin: 0 5px 5px 0;
+}
+.diary-img-item > image{
+    width: 100%;
+    height: 100%;
+}
+
+/*发布者信息*/
+.diary-publisher-info {
+    width: auto;
+    height: 30px;
+    margin: 10px 0 10px 15px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.diary-publisher-avatar {
+    width: 35px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    position: relative;
+}
+
+.diary-publisher-avatar > image {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+/*性别*/
+.publisher-sex-male{
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: absolute;
+    right: 5px;
+    bottom: 3px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.publisher-sex-male > image{
+    width: 10px;
+    height: 10px;
+}
+
+.publisher-sex-female {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+    background-color: white;
+
+    position: absolute;
+    right: 5px;
+    bottom: 3px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.publisher-sex-female > image{
+    width: 10px;
+    height: 10px;
+    transform: rotate(30deg);
+}
+
+.diary-publisher-nick-name {
+    font-size: 12px;
+    color: #C8C8CD;
+}
+.diary-publisher-nick-name > text {
+    color: #2979FF;
+}
+
+/*底部打卡日记互动（点赞等）信息*/
+.punch-card-diary-interaction-info {
+    width: auto;
+    height: 40px;
+    margin: 0 15px;
+
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/*点赞*/
+.diary-like-btn {
+    /*background-color: greenyellow;*/
+    height: 40px;
+    width: 100px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 12px;
+    color: #8a8a8a;
+}
+
+.diary-like-btn > image {
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+}
+
+/*评论*/
+.diary-comment-btn {
+    /*background-color: blue;*/
+    height: 40px;
+    width: 100px;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 12px;
+    color: #8a8a8a;
+
+}
+
+.diary-comment-btn image {
+    height: 20px;
+    width: 20px;
+    margin-right: 4px;
+
+}
+
+/*分享*/
+.diary-share-btn {
+    /*background-color: darkorange;*/
+    height: 40px;
+    width: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 12px;
+    color: #8a8a8a;
+
+}
+
+.diary-share-btn > image {
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+}
+
+/*打卡日记加载完毕提示信息*/
+.not-more-punch-card-diary-notice {
+    width: auto;
+    height: auto;
+    margin: 25px 25% 0 25%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    font-size: 12px;
+    color: #8a8a8a;
+}
+.line {
+    width: 40px;
+    height: 1px;
+    background-color: #C9C9C9;
+}
+.dot {
+    width: 4px;
+    height: 4px;
+    background-color: #C9C9C9;
+    border-radius: 50%;
+}
+
+

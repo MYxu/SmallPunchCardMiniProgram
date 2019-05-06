@@ -937,7 +937,6 @@
                                             </block>
 
                                             <!--音频-->
-                                            <!--音频-->
                                             <block wx:for="{{item.diaryResource}}" wx:for-item="audioItem">
                                                 <block wx:if="{{audioItem.type == '2'}}">
                                                     <punch-card-diary-audio-play

@@ -706,7 +706,6 @@ Page({
 
     // 点击日记选项卡，展示参与用户的打卡日记
     showPunchCardDiary: function() {
-        console.log(1);
         let that = this;
 
         // 动画：将标识当前选项卡的指示器移动到日记选项，指示器的默认初始位置就是在日记选项，重置即可
@@ -1209,7 +1208,6 @@ Page({
 
     // 点击详情选项卡，展示打卡圈子详情信息：创建者详情、圈子简介详情
     showPunchCardProjectDetailInfo: function() {
-        console.log(2);
 
         let that = this;
 

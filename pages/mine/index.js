@@ -106,6 +106,7 @@ Page({
                     {
                         setTimeout(function () {
                             that.setData({
+                                emptyDiaryListNotice: false,
                                 showDiaryListLoading: false, // 关闭初次获取打卡日记时的加载动画
                                 punchCardDiaryList: respData.data,
                                 diaryListPageNo: 1 // 设置当前已加载的页码为1
@@ -113,6 +114,7 @@ Page({
                         },500);
                     } else  {
                         that.setData({
+                            emptyDiaryListNotice: false,
                             showDiaryListLoading: false,
                             punchCardDiaryList: respData.data,
                             diaryListPageNo: 1
@@ -173,6 +175,7 @@ Page({
                 case 200:
                     that.data.punchCardDiaryList = []; // 清空列表
                     that.setData({
+                        emptyDiaryListNotice: false,
                         showDiaryListLoading: false,
                         punchCardDiaryList: respData.data,
                         diaryListPageNo: 1,
