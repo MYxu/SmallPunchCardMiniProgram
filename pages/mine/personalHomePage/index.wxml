@@ -111,7 +111,12 @@
             <!--分割线-->
             <view class="breakupLineMax"></view>
             <view class="joinInPunchCardProject">
-                <text>我加入的圈子</text>
+                <block wx:if="{{isMyself}}">
+                    <text>我加入的圈子</text>
+                </block>
+                <block wx:else>
+                    <text>他加入的圈子</text>
+                </block>
 
                 <!-- 加入的打卡圈子列表 -->
                 <scroll-view class="joinInPunchCardProjectList" scroll-x
@@ -165,7 +170,12 @@
             <view class="breakupLineMax"></view>
 
             <!--标题-->
-            <view class="title">我的打卡日记</view>
+            <block wx:if="{{isMyself}}">
+                <view class="title">我的打卡日记</view>
+            </block>
+            <block wx:else>
+                <view class="title">他的打卡日记</view>
+            </block>
 
             <!--日记列表展示-->
             <view class="user-punch-card-diary-list-info">
