@@ -618,6 +618,7 @@ Page({
                 pageNo: pageNo,
                 dataNum: dataNum,
                 projectIdList: that.data.punchCardProjectIdList
+                // projectIdList: []
 
             },
 
@@ -848,7 +849,7 @@ Page({
                 let respData = res.data;
                 // 关闭评论框
                 that.closeCommentBox();
-                
+
                 switch (res.statusCode) {
                     case 200:
                         // 设置评论数+1

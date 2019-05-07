@@ -128,19 +128,21 @@ Page({
     onLoad: function (options) {
 
         let that = this;
+        // 检测是自身访问或者他人访问我的主页 设置变量isMyself表示
         that.data.visitedUserId = parseInt(options.visitedUserId);
         that.data.visitorUserId = parseInt(app.globalData.userInfo.id);
         that.data.isMyself = that.data.visitorUserId === that.data.visitedUserId;
         console.log(that.data.isMyself);
 
         this.setData({
+            isMyself: that.data.isMyself,
             userInfo: app.globalData.userInfo,
             //TODO 动态获取个人标签数据
-            // personalLabelLists:[
-            //     '小学生','大学生','外语','阅读',
-            //     '托福雅思','国学','亲子幼教',
-            //     '考院','音乐','绘画','运动健身'
-            // ],
+            personalLabelLists:[
+                '小学生','大学生','外语','阅读',
+                '托福雅思','国学','亲子幼教',
+                '考院','音乐','绘画','运动健身'
+            ],
             // TODO 动态获取最新五个访客的头像地址
             latestFiveUserAvatarList: [
                 app.globalData.userInfo.avatar_url,

@@ -14,9 +14,12 @@
             </image>
 
             <!-- 进入个人主页设置按钮 -->
-            <view class="intoUserInfoSetBtn">
-                <image src="/images/button/userInfoSetBtn.png"></image>主页设置
-            </view>
+            <block wx:if="{{isMyself}}">
+                <view class="intoUserInfoSetBtn">
+                    <image src="/images/button/userInfoSetBtn.png"></image>主页设置
+                </view>
+            </block>
+
 
             <!-- 用户头像 -->
             <block wx:if="{{visitedUserInfo.avatar_url == 'default_avatar'}}">
@@ -63,16 +66,21 @@
                 </block>
 
                 <!-- 小号添加按钮 -->
-                <view class="minLabelItem">
-                    <image src="/images/button/add.png"></image>
-                    <text>添加</text>
-                </view>
+                <block wx:if="{{isMyself}}">
+                    <view class="minLabelItem">
+                        <image src="/images/button/add.png"></image>
+                        <text>添加</text>
+                    </view>
+                </block>
+
             </block>
             <block wx:else>
                 <!-- 大号的添加按钮 -->
-                <view class="maxLabelItem">
-                    <image src="/images/button/add.png"></image>添加你的标签
-                </view>
+                <block wx:if="{{isMyself}}">
+                    <view class="maxLabelItem">
+                        <image src="/images/button/add.png"></image>添加你的标签
+                    </view>
+                </block>
             </block>
         </view>
 
@@ -83,7 +91,12 @@
         <view class="visitorRecord">
             <!-- 访客人数 -->
             <!--TODO 动态获取访客人数-->
-            <view class="visitorNum">9999人来看过你</view>
+            <block wx:if="{{isMyself}}">
+                <view class="visitorNum">9999人来看过你</view>
+            </block>
+            <block wx:else>
+                <view class="visitorNum">9999人来看过他</view>
+            </block>
 
             <!-- 最新五个访客头像 -->
             <!--TODO 动态获取最新五个访客的头像-->
