@@ -250,6 +250,26 @@
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+.project-type-label-lists {
+    width: 100%;
+    /*background-color: aqua;*/
+    font-size: 12px;
+    line-height: 12px;
+    margin-top: 2px;
+    color: #2979FF;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+.project-type-label-item {
+    height: 100%;
+    width: auto;
+    margin-right: 4px;
+}
 /*最新加入的三个参与者头像*/
 .project-attend-user-info {
     width: 20%;
@@ -476,6 +496,61 @@
     width: 20px;
     margin-right: 4px;
 
+}
+
+
+/*评论框*/
+.back-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+    /*使用rgba来设置父级元素的背景颜色和透明度 子级元素不继承*/
+    background: rgba(0,0,0,0.2);
+}
+
+.release {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 20rpx 12rpx;
+    background: #FFFFFF;
+}
+
+.release .text {
+    background: #F7F7F7;
+    border-radius: 8rpx;
+    width: 612rpx;
+    min-height: 40rpx;
+    max-height: 120rpx;
+    border-width: 10rpx 20rpx;
+    border-style: solid;
+    border-color: #F7F7F7;
+    line-height: 40rpx;
+    font-size: 28rpx;
+    color: #333333;
+}
+
+.release .submit {
+    width: 138rpx;
+    font-size: 32rpx;
+    color: #1B9AF4;
+    text-align: center;
+    height: 64rpx;
+    line-height: 64rpx;
+}
+
+.input_null {
+    margin-left: 12rpx;
+    font-size: 28rpx;
+    color: #939393;
 }
 
 /*分享*/

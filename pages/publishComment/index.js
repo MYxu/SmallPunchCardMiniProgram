@@ -86,9 +86,9 @@ Page({
             data: {
                 diary_id: that.data.diaryId,
                 pid: that.data.pid,
-                reviewer_id: app.globalData.userInfo.id,
+                reviewer_id: app.globalData.userInfo.id, // 评论者id
                 text_comment: that.data.textComment,
-                respondent_id: that.data.respondentId
+                respondent_id: that.data.respondentId // 被评论者id
             },
             success: function (res) {
                 console.log(res);

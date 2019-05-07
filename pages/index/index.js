@@ -70,6 +70,14 @@ Page({
         moreRecommendDiaryListLoad: false, // 控制上拉加载更多的推荐打卡日记数据的加载动画的显示 false 不显示
         notMoreRecommendDiaryData: false, // 推荐的打卡日记是否全部加载标志 true=>全部加载完毕
         emptyRecommendDiaryListNotice: false, // 没有存在推荐的打卡日记时 显示对应的提示页面
+
+        placeholder: '写评论', // 评论框 评论为空时占位符
+        hiddenCommentBox: true, // 控制评论框的显示、关闭
+        diaryId: 0, // 当前被评论的日记ID编号
+        diaryIndex: 0, // 当前被评论日记所处日记列表中下标索引
+        pid: 0, // 当前评论所属的父级评论的id
+        respondentId: 0, // 被评论用户的id编号
+        commentText: '', // 评论内容
     },
 
 
@@ -629,6 +637,16 @@ Page({
 
     },
 
+    // 根据选择的打卡圈子标签，查找到对应的父类标签，显示该父类标签的所有打卡圈子
+    searchProjectByType: function (e) {
+        console.log(e);
+        let parentName = e.currentTarget.dataset.parentName;
+
+        wx.navigateTo({
+            url: '/pages/find/showPunchCardProjectByType/index' + '?typeName=' + parentName
+        })
+    },
+
     // 预览日记图片
     previewDiaryImage: function(e){
         let that = this;
@@ -763,19 +781,105 @@ Page({
         }
     },
 
-    // 点击评论按钮，发表对日记的一级评论 即对日记发表者进行评论
-    publishComment: function(e) {
+    // 点击评论按钮显示评论框
+    showCommentBox: function(e) {
         console.log(e);
+        let that = this;
+        that.data.diaryId = parseInt(e.currentTarget.dataset.diaryId);
+        that.data.diaryIndex = parseInt(e.currentTarget.dataset.diaryIndex);
+        that.data.pid = parseInt(e.currentTarget.dataset.pid);
+        that.data.respondentId = parseInt(e.currentTarget.dataset.respondentId);
 
-        let paramStr = "?diaryId=" + e.currentTarget.dataset.diaryId
-            + '&diaryIndex=' + e.currentTarget.dataset.diaryIndex
-            + '&pid=' + e.currentTarget.dataset.pid
-            + '&respondentId=' + e.currentTarget.dataset.respondentId
-            + '&placeholder=' + '写评论';
-
-        wx.navigateTo({
-            url: '../publishComment/index' + paramStr
+        that.setData({
+            hiddenCommentBox: false,
+            commentText: '',
         });
     },
+
+    // 监听评论内容的输入
+    editComment: function (e) {
+        let that = this;
+        that.data.commentText = e.detail.value;
+
+        that.setData({
+            commentText: that.data.commentText
+        });
+    },
+
+    // 显示评论框的时候，同时显示灰幕遮挡打卡日记列表，设置touchmove事件
+    // 来阻拦对打卡日记列表的滑动
+    preventTouchMove: function() {
+        // 什么操作都不用进行即可阻拦
+    },
+
+    // 关闭评论框
+    closeCommentBox: function() {
+        let that = this;
+        that.setData({
+            hiddenCommentBox: true,
+        });
+    },
+
+    // 点击评论发送按钮，发表对日记的一级评论 即对日记发表者进行评论，数据发送至服务器
+    // 发表评论
+    publishComment: function () {
+        let  that = this;
+
+        if (that.data.commentText <= 0) {
+            wx.showToast({
+                title: '评论内容不能为空!',
+                icon: 'none',
+                duration: 2000
+            });
+            return false;
+        }
+        wx.request({
+            url: app.globalData.urlRootPath + 'index/DiaryComment/addComment',
+            method: 'post',
+            data: {
+                diary_id: that.data.diaryId,
+                pid: that.data.pid,
+                reviewer_id: app.globalData.userInfo.id, // 评论者id
+                text_comment: that.data.commentText,
+                respondent_id: that.data.respondentId // 被评论者id
+            },
+            success: function (res) {
+                console.log(res);
+                let respData = res.data;
+                // 关闭评论框
+                that.closeCommentBox();
+                
+                switch (res.statusCode) {
+                    case 200:
+                        // 设置评论数+1
+                        let currDiary = that.data.recommendDiaryList[that.data.diaryIndex];
+                        currDiary.comment_num = parseInt(currDiary.comment_num) + 1;
+
+                        that.setData({
+                            recommendDiaryList: that.data.recommendDiaryList
+                        });
+                        wx.showToast({
+                            title: '评论成功'
+                        });
+
+                        break;
+                    default:
+                        wx.showToast({
+                            title: respData.errMsg,
+                            icon: 'none',
+                            duration: 2000
+                        });
+                        break;
+                }
+            },
+            fail: function () {
+                wx.showToast({
+                    title: '网络异常',
+                    icon: 'none',
+                    duration: 2000
+                });
+            }
+        })
+    }
 
 });

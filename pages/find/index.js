@@ -251,7 +251,7 @@ Page({
         console.log(e);
     },
 
-    // 根据选择的打卡圈子类型查找、显示对应的打卡圈子
+    // 根据选择的打卡圈子父类类型查找、显示对应的打卡圈子
     searchProjectByType: function (e) {
         console.log(e);
         let type = e.currentTarget.dataset.type;

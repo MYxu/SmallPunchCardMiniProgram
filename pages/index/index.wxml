@@ -1,4 +1,5 @@
-<!--suppress HtmlDeprecatedTag -->
+<!--suppress ALL -->
+
 <view class="container">
     <!--在未从服务器端获取到用户&相关打卡圈子列表数据之前显示空白页并显示加载动画-->
     <block wx:if="{{showLoading}}">
@@ -137,6 +138,15 @@
                                 <view class="project-intr-info">
                                     <view class="project-name-info">
                                         {{item.projectInfo.project_name}}
+                                    </view>
+                                    <view class="project-type-label-lists">
+                                        <block wx:for="{{item.projectInfo.type_label}}" wx:for-item="l">
+                                            <view class="project-type-label-item"
+                                                  data-parent-name="{{l.parent_label}}"
+                                                  catchtap="searchProjectByType">
+                                                {{l.child_label}}
+                                            </view>
+                                        </block>
                                     </view>
                                 </view>
 
@@ -294,7 +304,7 @@
 
                                 <!-- 评论 对日记发表者评论默认为一级评论-->
                                 <block wx:if="{{item.comment_num > 0}}">
-                                    <view class="diary-comment-btn" catchtap="publishComment"
+                                    <view class="diary-comment-btn" catchtap="showCommentBox"
                                           data-pid="0" data-respondent-id="{{item.publisher.id}}"
                                           data-diary-id="{{item.id}}" data-diary-index="{{index}}">
                                         <image src="/images/button/comment_btn.png"></image>
@@ -302,11 +312,25 @@
                                     </view>
                                 </block>
                                 <block wx:else>
-                                    <view class="diary-comment-btn" catchtap="publishComment"
+                                    <view class="diary-comment-btn" catchtap="showCommentBox"
                                           data-pid="0" data-respondent-id="{{item.publisher.id}}"
                                           data-diary-id="{{item.id}}" data-diary-index="{{index}}">
                                         <image src="/images/button/comment_btn.png"></image>
                                         <text>评论</text>
+                                    </view>
+
+                                    <!--评论框-->
+                                    <view catchtap="closeCommentBox" hidden="{{hiddenCommentBox}}"
+                                          catchtouchmove="preventTouchMove" class="back-page" >
+                                        <view class="release">
+                                            <textarea autoHeight="true" class="text" cursorSpacing="20"
+                                                      bindinput="editComment" fixed="true"
+                                                      placeholder="{{placeholder}}"
+                                                      placeholderClass="input_null" showConfirmBar=""
+                                                      value="{{commentText}}">
+                                            </textarea>
+                                            <view catchtap="publishComment" class="submit">发送</view>
+                                        </view>
                                     </view>
                                 </block>
 
