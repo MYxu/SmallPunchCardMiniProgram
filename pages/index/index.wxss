@@ -554,10 +554,16 @@
 }
 
 /*分享*/
+button::after {
+    /*清除button默认样式*/
+    border: none;
+}
 .diary-share-btn {
     /*background-color: darkorange;*/
     height: 40px;
     width: 60px;
+    padding: 0;
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

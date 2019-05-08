@@ -1,0 +1,27 @@
+<!--suppress ALL -->
+<view class="container" style="padding-top:{{statusBarHeight + titleBarHeight}}px">
+    <!--自定义状态栏 & 标题栏-->
+    <view class="header">
+        <view class="status-bar" style="height:{{statusBarHeight}}px"></view>
+        <view class="title-bar" style="height:{{titleBarHeight}}px">
+            <block wx:if="{{pageNum > 1}}">
+                <view class="back-pre-page-btn" bindtap="goBackPrePage">
+                    <image src="/images/button/into_btn_gray.png"></image>
+                </view>
+            </block>
+            <block wx:else>
+                <view class="back-index-page-btn" bindtap="goBackIndexPage">
+                    <image src="/images/button/into_index_gray.png"></image>
+                </view>
+            </block>
+            <view class="page-title">日记详情</view>
+        </view>
+    </view>
+    <view class="body">
+        <view class="scroll-content">
+            <block wx:for="{{50}}">
+                <view class="item">{{item}}</view>
+            </block>
+        </view>
+    </view>
+</view>

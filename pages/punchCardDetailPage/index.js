@@ -142,6 +142,10 @@ Page({
     onLoad: function (options) {
         console.log(options);
         let that = this;
+
+        // 关闭本页面右上角的转发按钮 想要转发只能通过button实现
+        wx.hideShareMenu();
+
         // 一定传递打卡圈子的projectId, isCreator代表是否为创建者 若未知直接传递-1(未知)即可，
         // 后续在获取打卡圈子的详细信息的时候获取到
         that.setData({
@@ -255,7 +259,7 @@ Page({
                                 'creatorInfo.weChat' : data.weixin_num,
 
                                 attendUserInfo: data.attendUserList,
-                                isCreator: isCreatorFlag ? 1:0
+                                isCreator: isCreatorFlag ? 1:0 // 1为创建者
                             });
                             resolve(true);
                             break;
@@ -501,8 +505,52 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
+    onShareAppMessage: function (options) {
+        console.log(options);
 
+        // 获取当前被分享的打卡日记相关数据
+        let currDiary = options.target.dataset.diary;
+
+        // 当前用户id
+        let currUserId = parseInt(app.globalData.userInfo.id);
+        // 与该打卡日记的用户id对比 检测当前用户是否为该日记的发表者
+        let isDiaryPublisher = (currUserId === parseInt(currDiary.publisher.id));
+
+        // 设置分享的标题
+        let shareTitle = '';
+        if (isDiaryPublisher) {
+            // 分享的是自己的打卡日记
+            shareTitle = '【' + app.globalData.userInfo.nick_name + '】的打卡日记';
+        } else {
+            shareTitle = currDiary.publisher.nick_name + '的打卡日记';
+        }
+
+        // 设置分享的图片的url
+        let imgUrl = '';
+        if (currDiary.diaryResource.length <= 0 || parseInt(currDiary.diaryResource[0].type) === 2) {
+            // 资源列表为空或者资源列表第一个元素存放的不是图片（type=1）都说明该日记不存在图片资源
+            //  分享一张已设置的图片
+            imgUrl = 'http://myxu.xyz/SmallPunchMiniProgramAfterEnd/public/image_upload' +
+                '/project_cover_img/sys_recommend/20181001/520d70c0a777ec055df58c3fed943b37.png';
+        } else {
+            // 存在图片资源 设置第一张图片为分享图片
+            imgUrl = app.globalData.imgBaseSeverUrl + currDiary.diaryResource[0].resource_url;
+        }
+        console.log(imgUrl);
+
+
+        return {
+            title: shareTitle,
+            path: '/pages/diaryDetailPage/index' + '?diaryId=' + currDiary.id,
+            imageUrl: imgUrl
+        };
+
+
+    },
+
+    // 用于阻止点击事件向上冒泡 用于在点击分享按钮的时候不再触发进入该打卡日记所属的打卡圈子详情页中
+    preventTap:function () {
+        // 不用进行任何操作
     },
 
 

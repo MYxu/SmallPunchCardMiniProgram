@@ -396,10 +396,16 @@
 }
 
 /*分享*/
+button::after {
+    /*清除button默认样式*/
+    border: none;
+}
 .share-btn {
     /*background-color: darkorange;*/
     height: 20px;
     width: 25%;
+    padding: 0;
+    background-color: white;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

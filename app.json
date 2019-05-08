@@ -20,11 +20,13 @@
         "pages/projectBackStageManage/index",
         "pages/find/searchPunchCardProject/index",
         "pages/find/showPunchCardProjectByType/index",
-        "pages/index/allProjectList/index"
+        "pages/index/allProjectList/index",
+        "pages/diaryDetailPage/index"
     ],
     "window": {
         "navigationBarBackgroundColor": "#F0B27A",
-        "navigationBarTitleText": ""
+        "navigationBarTitleText": "",
+        "navigationStyle": "default"
     },
     "tabBar": {
         "color": "#8a8a8a",

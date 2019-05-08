@@ -209,10 +209,11 @@
                 </view>
 
                 <!-- 分享 -->
-                <view class="share-btn">
+                <button class="share-btn" open-type="share"
+                        catchtap="_preventTap" data-diary="{{diaryItemData}}">
                     <image src="/images/button/share_btn.png"></image>
                     <text>分享</text>
-                </view>
+                </button>
 
                 <!--点评-->
                 <block wx:if="{{isCreator == 1}}">

@@ -1,0 +1,76 @@
+page {
+    height: 100%;
+}
+.container {
+    box-sizing: border-box;
+    height: 100%;
+
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+}
+
+.status-bar {
+    /*background-color: #2BD2FF;*/
+}
+
+.title-bar {
+    /*background-color: #2BD2FF;*/
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.back-pre-page-btn {
+    margin-left: 15px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.back-pre-page-btn > image {
+    width: 30px;
+    height: 30px;
+    transform: rotateZ(180deg);
+}
+.back-index-page-btn {
+    margin-left: 15px;
+    padding: 3px 13px;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #cccccc;
+    border-radius: 20px;
+}
+.back-index-page-btn > image {
+    width: 20px;
+    height: 20px;
+}
+
+.page-title {
+    position: absolute;
+    left: 50%;
+    margin-left: -36px;
+
+}
+
+.body {
+    height: 100%;
+    overflow: auto;
+}
+
+.scroll-content {
+    text-align: center;
+}
+
+.scroll-content .item {
+    height: 60rpx;
+    line-height: 60rpx;
+    border-bottom: 1rpx solid #eee;
+}

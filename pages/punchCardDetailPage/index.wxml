@@ -33,8 +33,8 @@
                     </block>
 
                     <!--邀请按钮-->
-                    <view class="not-join-in-project-invite-btn">
-                        <image src="../../images/button/invite-btn.png"></image>
+                    <view class="not-join-in-project-invite-btn" >
+                        <image src="/images/button/invite-btn.png"></image>
                         <text>邀请好友</text>
                     </view>
                     <!--圈子名称-->
@@ -363,10 +363,11 @@
                                                     </view>
 
                                                     <!-- 分享 -->
-                                                    <view class="share-btn">
+                                                    <button class="share-btn" open-type="share"
+                                                          catchtap="preventTap" data-diary="{{item}}">
                                                         <image src="/images/button/share_btn.png"></image>
                                                         <text>分享</text>
-                                                    </view>
+                                                    </button>
 
                                                     <!--点评-->
                                                     <block wx:if="{{isCreator == 1}}">
@@ -658,8 +659,8 @@
                                 </image>
                             </view>
 
-                            <!--对当前非圈子创建者的用户显示其与创建者的关注按钮 & 私信按钮-->
-                            <block wx:if="{{isCreator != 0}}">
+                            <!--对当前非圈子创建者的用户（1为创建者）显示其与创建者的关注按钮 & 私信按钮-->
+                            <block wx:if="{{isCreator != 1}}">
                                 <!--TODO 关注情况-->
                                 <view class="user-follow-info" bindtap="dealUserFollow">
                                     <text>关注</text>
@@ -992,10 +993,11 @@
                                                 </view>
 
                                                 <!-- 分享 -->
-                                                <view class="share-btn">
+                                                <button class="share-btn"  open-type="share"
+                                                        catchtap="preventTap" data-diary="{{item}}">
                                                     <image src="/images/button/share_btn.png"></image>
                                                     <text>分享</text>
-                                                </view>
+                                                </button>
 
                                                 <!--点评-->
                                                 <block wx:if="{{isCreator == 1}}">

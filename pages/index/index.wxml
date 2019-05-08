@@ -177,7 +177,7 @@
                             <!--中间的打卡日记相关信息-->
                             <view class="punch-card-diary-info"
                                   style="width: {{windowWidth - 30}}px;margin-left: 15px">
-                                <view class="diary-text-content">
+                                <view class="diary-text-content" catchtap="intoDiaryDetailPage">
                                     {{item.text_content}}
                                 </view>
                                 <view class="diary-resource-show">
@@ -335,10 +335,11 @@
                                 </block>
 
                                 <!-- 分享 -->
-                                <view class="diary-share-btn">
+                                <button class="diary-share-btn" open-type="share" catchtap="preventTap"
+                                        data-diary="{{item}}">
                                     <image src="/images/button/share_btn.png"></image>
                                     <text>分享</text>
-                                </view>
+                                </button>
                             </view>
                         </view>
                     </block>
