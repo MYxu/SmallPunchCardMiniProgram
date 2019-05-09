@@ -78,6 +78,16 @@ Page({
         pid: 0, // 当前评论所属的父级评论的id
         respondentId: 0, // 被评论用户的id编号
         commentText: '', // 评论内容
+
+        /*
+         * 用于检测日记的点赞、评论数据的改变
+         * 当在首页点击对应的打卡日记，进入到日记详情页时
+         * 然后在打卡日记详情页进行了点赞、取消点赞、评论、删除评论操作后
+         * 日记详情页中会为上一个页面（首页）设置变量来标明数据发生了改变
+         * 则在返回到首页后，首页则会根据这个变量去进行对应操作（即是否要更新日记数据）
+         * true 需要更新 false 不需要更新
+         */
+        diaryLikeAndCommentStatus: false,
     },
 
 
@@ -179,10 +189,17 @@ Page({
      */
     onShow: function () {
         let that = this;
+        console.log('diaryLikeAndCommentStatus:' + that.data.diaryLikeAndCommentStatus);
 
-        // 防止在首页进入其他页面后然后返回首页时 重复去请求获取打卡圈子&推荐的打卡日记列表api
-        if (that.data.punchCardProjectList.length > 0 && that.data.recommendDiaryList.length > 0)
-            return false;
+        // 由首页进入了其他页面然后返回 触发onShow函数
+        if (that.data.punchCardProjectList.length > 0 && that.data.recommendDiaryList.length > 0) {
+            // 1.其他页面没有更改数据 不需要重新获取数据
+            if (that.data.diaryLikeAndCommentStatus === false)  {
+                return false;
+            }
+
+            // 2.当前页面还没有打卡圈子、日记列表或者其他页面更改了数据 需要重新获取
+        }
 
         // 在获取用户的打卡圈子列表之前要确保已获取到用户id
         let promise = new Promise(function (resolve) {
@@ -213,6 +230,8 @@ Page({
             // 获取当前用户参与的打卡圈子信息 && 获取打卡圈子列表成功后获取推荐的打卡日记列表数据（第一页）
             that.getMyPunchCardProject();
 
+            // 重置用于检测日记的点赞、评论数据的变量
+            that.data.diaryLikeAndCommentStatus = false;
         });
     },
 
@@ -227,6 +246,9 @@ Page({
             notMoreRecommendDiaryData: false, // 重置推荐的打卡日记列表未加载完毕状态
         });
         that.getMyPunchCardProject();
+
+        // 重置用于检测日记的点赞、评论数据的变量
+        that.data.diaryLikeAndCommentStatus = false;
 
     },
 
@@ -679,9 +701,12 @@ Page({
     },
 
     // 进入指定的打卡日记详情页
-    intoDiaryDetailPage:function () {
+    intoDiaryDetailPage:function (e) {
+        console.log(e);
+        let diaryId = e.currentTarget.dataset.diaryId;
         wx.navigateTo({
            url: '/pages/diaryDetailPage/index'
+               + '?diaryId=' + diaryId
         });
     },
 

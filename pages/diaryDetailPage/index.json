@@ -3,5 +3,7 @@
   "navigationBarBackgroundColor": "#FFFFFF",
   "navigationBarTextStyle": "black",
   "navigationStyle": "custom",
-  "usingComponents": {}
+  "usingComponents": {
+    "punch-card-diary-audio-play": "/components/audioPlay/index"
+  }
 }

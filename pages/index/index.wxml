@@ -177,7 +177,8 @@
                             <!--中间的打卡日记相关信息-->
                             <view class="punch-card-diary-info"
                                   style="width: {{windowWidth - 30}}px;margin-left: 15px">
-                                <view class="diary-text-content" catchtap="intoDiaryDetailPage">
+                                <view class="diary-text-content" catchtap="intoDiaryDetailPage"
+                                      data-diary-id="{{item.id}}">
                                     {{item.text_content}}
                                 </view>
                                 <view class="diary-resource-show">
@@ -304,9 +305,8 @@
 
                                 <!-- 评论 对日记发表者评论默认为一级评论-->
                                 <block wx:if="{{item.comment_num > 0}}">
-                                    <view class="diary-comment-btn" catchtap="showCommentBox"
-                                          data-pid="0" data-respondent-id="{{item.publisher.id}}"
-                                          data-diary-id="{{item.id}}" data-diary-index="{{index}}">
+                                    <view class="diary-comment-btn" catchtap="intoDiaryDetailPage"
+                                          data-diary-id="{{item.id}}">
                                         <image src="/images/button/comment_btn.png"></image>
                                         <text>{{item.comment_num}}</text>
                                     </view>

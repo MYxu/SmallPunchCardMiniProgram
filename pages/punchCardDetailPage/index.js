@@ -823,6 +823,16 @@ Page({
 
     },
 
+    // 进入指定的打卡日记详情页
+    intoDiaryDetailPage:function (e) {
+        console.log(e);
+        let diaryId = e.currentTarget.dataset.diaryId;
+        wx.navigateTo({
+            url: '/pages/diaryDetailPage/index'
+                + '?diaryId=' + diaryId
+        });
+    },
+
     // 置顶、取消
     dealSticky: function(e) {
         console.log(e);

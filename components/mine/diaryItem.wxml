@@ -61,7 +61,8 @@
 
             <!--打卡时间 & 坚持天数即日记在圈子的总打卡天数-->
             <view class="punch-time"
-                  bindtap="intoDiaryDetailPage">
+                  bindtap="_intoDiaryDetailPage"
+                  data-diary-id="{{diaryItemData.id}}">
                 <text>{{diaryItemData.punch_card_time}} · 已坚持{{diaryItemData.curr_diary_punch_card_day_num}}天</text>
 
                 <!-- 日记隐私类型 -->
@@ -94,7 +95,8 @@
     <view class="diary-detail-content">
         <!-- 打卡文字内容 -->
         <view class="diary-text"
-              bindtap="intoDiaryDetailPage">
+              bindtap="_intoDiaryDetailPage"
+              data-diary-id="{{diaryItemData.id}}">
             {{diaryItemData.text_content}}
         </view>
 

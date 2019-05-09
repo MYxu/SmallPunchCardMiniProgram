@@ -224,7 +224,8 @@
 
                                                 <!--打卡时间 & 坚持天数即日记在圈子的总打卡天数-->
                                                 <view class="punch-time"
-                                                      bindtap="intoDiaryDetailPage">
+                                                      bindtap="intoDiaryDetailPage"
+                                                      data-diary-id="{{item.id}}">
                                                     <text>{{item.punch_card_time}} · 已坚持{{item.curr_diary_punch_card_day_num}}天</text>
 
                                                     <!-- 日记隐私类型 -->
@@ -275,7 +276,8 @@
                                         <view class="diary-detail-content">
                                             <!-- 打卡文字内容 -->
                                             <view class="diary-text"
-                                                  bindtap="intoDiaryDetailPage">
+                                                  bindtap="intoDiaryDetailPage"
+                                                  data-diary-id="{{item.id}}">
                                                 {{item.text_content}}
                                             </view>
 
@@ -854,7 +856,8 @@
 
                                             <!--打卡时间 & 坚持天数即日记在圈子的总打卡天数-->
                                             <view class="punch-time"
-                                                  bindtap="intoDiaryDetailPage">
+                                                  bindtap="intoDiaryDetailPage"
+                                                  data-diary-id="{{item.id}}">
                                                 <text>{{item.punch_card_time}} · 已坚持{{item.curr_diary_punch_card_day_num}}天</text>
 
                                                 <!-- 日记隐私类型 -->
@@ -905,7 +908,8 @@
                                     <view class="diary-detail-content">
                                         <!-- 打卡文字内容 -->
                                         <view class="diary-text"
-                                              bindtap="intoDiaryDetailPage">
+                                              bindtap="intoDiaryDetailPage"
+                                              data-diary-id="{{item.id}}">
                                             {{item.text_content}}
                                         </view>
 
@@ -1377,7 +1381,7 @@
                                 <block wx:if="{{item.avatar_url=='default_avatar'}}">
                                     <!--头像: 在头像右下角标识性别-->
                                     <view class="user-avatar">
-                                        <image src="../../images/default/userAvatar.png">
+                                        <image src="/images/default/userAvatar.png">
                                         </image>
                                     </view>
                                 </block>

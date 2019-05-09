@@ -126,6 +126,16 @@ Component({
             });
         },
 
+        // 进入指定的打卡日记详情页
+        _intoDiaryDetailPage:function (e) {
+            console.log(e);
+            let diaryId = e.currentTarget.dataset.diaryId;
+            wx.navigateTo({
+                url: '/pages/diaryDetailPage/index'
+                    + '?diaryId=' + diaryId
+            });
+        },
+
         // 阻止模态框之外的页面点击事件
         _preventTab: function () {},
 
