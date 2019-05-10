@@ -84,38 +84,47 @@
             </block>
         </view>
 
-        <!-- 分割线 -->
-        <view class="breakupLineMin"></view>
+
 
         <!-- 个人主页访客记录: 访客人数 & 最近访问的五个人头像 & 详细访问记录页面入口 -->
-        <view class="visitorRecord">
-            <!-- 访客人数 -->
-            <!--TODO 动态获取访客人数-->
-            <block wx:if="{{isMyself}}">
-                <view class="visitorNum">9999人来看过你</view>
-            </block>
-            <block wx:else>
-                <view class="visitorNum">9999人来看过他</view>
-            </block>
-
-            <!-- 最新五个访客头像 -->
-            <!--TODO 动态获取最新五个访客的头像-->
-            <view class="visitorAvatarList">
-                <!--遍历展示访客头像-->
-                <block wx:if="{{latestFiveUserAvatarList}}">
-                    <block wx:for="{{latestFiveUserAvatarList}}">
-                        <view class="visitorAvatarItem">
-                            <image src="{{item}}"></image>
-                        </view>
-                    </block>
+        <block wx:if="{{visitedUserInfo.personal_page_visit_num > 0}}">
+            <!-- 分割线 -->
+            <view class="breakupLineMin"></view>
+            <view class="visitorRecord">
+                <!-- 访客人数 -->
+                <!--TODO 动态获取访客人数-->
+                <block wx:if="{{isMyself}}">
+                    <view class="visitorNum">{{visitedUserInfo.personal_page_visit_num}}人来看过你</view>
                 </block>
-            </view>
+                <block wx:else>
+                    <view class="visitorNum">{{visitedUserInfo.personal_page_visit_num}}人来看过他</view>
+                </block>
 
-            <!-- 查看详细访客记录信息的进入图标 -->
-            <view class="intoVisitorDetailPageIcon">
-                <image src="/images/button/into_btn_gray.png"></image>
+                <!-- 最新五个访客头像 -->
+                <!--TODO 动态获取最新五个访客的头像-->
+                <view class="visitorAvatarList">
+                    <!--遍历展示访客头像-->
+                    <block wx:if="{{visitedUserInfo.fivePersonalPageVisitRecord.length > 0}}">
+                        <block wx:for="{{visitedUserInfo.fivePersonalPageVisitRecord}}" wx:for-item="visitRecordItem">
+                            <view class="visitorAvatarItem">
+                                <block wx:if="{{visitRecordItem.visitorInfo.avatar_url == 'default_avatar'}}">
+                                    <!--使用默认的小程序内置的默认头像-->
+                                    <image src="/images/default/userAvatar.png"></image>
+                                </block>
+                                <block wx:else>
+                                    <image src="{{visitRecordItem.visitorInfo.avatar_url}}"></image>
+                                </block>
+                            </view>
+                        </block>
+                    </block>
+                </view>
+
+                <!-- 查看详细访客记录信息的进入图标 -->
+                <view class="intoVisitorDetailPageIcon">
+                    <image src="/images/button/into_btn_gray.png"></image>
+                </view>
             </view>
-        </view>
+        </block>
 
 
 

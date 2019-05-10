@@ -14,13 +14,25 @@ Page({
 
         // 被查看主页的用户基本信息
         visitedUserInfo: {
-            id: 0,
-            nick_name: '',
-            sex: 0,
-            avatar_url: '',
-            birthday: '',
-            person_sign: '',
-            weixin_num: ''
+            //  属性说明
+            // "id": 1,
+            // "avatar_url": "用户头像地址",
+            // "nick_name": "MYXuu",
+            // "weixin_num": null,
+            // "birthday": null,
+            // "sex": 1,
+            // "person_sign": null,
+            // "personal_page_visit_num": 2,
+            // // 前五条访问记录信息
+            // "fivePersonalPageVisitRecord": [{
+            //     "id": 12,
+            //     "visited_id": 1, // 被访问者用户id
+            //     "create_time": "2019-05-10 12:02:00",
+            //     "visitorInfo": {
+            //         "id": 8, // 访问者用户id
+            //         "avatar_url": "访问者头像"
+            //     }
+            // }]
         },
 
         userInfo:{}, // 当前小程序使用者信息，也就是主页访问者信息
@@ -173,12 +185,13 @@ Page({
         });
 
         // 获取指定用户的获取详细的信息
-        // 1.用户基本信息、TODO 2.个人主页背景图、3.粉丝、关注者情况、4.个人标签、5.访问者记录
+        // 1.用户基本信息、5.访问者记录 TODO 2.个人主页背景图、3.粉丝、关注者情况、4.个人标签、
         wx.request({
             url: app.globalData.urlRootPath + 'index/User/getUserDetailInfoById',
             method: 'post',
             data: {
-                userId: that.data.visitedUserId
+                visited_id: that.data.visitedUserId,
+                visitor_id: that.data.visitorUserId
             },
             success: function (res) {
                 console.log(res);
@@ -191,13 +204,7 @@ Page({
                         });
                         that.setData({
                             showLoading: false,
-                            'visitedUserInfo.id': data.data.id,
-                            'visitedUserInfo.nick_name': data.data.nick_name,
-                            'visitedUserInfo.sex': parseInt(data.data.sex),
-                            'visitedUserInfo.avatar_url': data.data.avatar_url,
-                            'visitedUserInfo.birthday': data.data.birthday,
-                            'visitedUserInfo.person_sign': data.data.person_sign,
-                            'visitedUserInfo.weixin_num': data.data.weixin_num
+                            visitedUserInfo: data.data,
                         });
                         break;
                     default:
