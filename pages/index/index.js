@@ -232,6 +232,9 @@ Page({
 
             // 重置用于检测日记的点赞、评论数据的变量
             that.data.diaryLikeAndCommentStatus = false;
+
+            // 获取我的未读消息数
+            that.getUnreadNewsNum();
         });
     },
 
@@ -249,6 +252,9 @@ Page({
 
         // 重置用于检测日记的点赞、评论数据的变量
         that.data.diaryLikeAndCommentStatus = false;
+
+        // 获取我的未读消息数
+        that.getUnreadNewsNum();
 
     },
 
@@ -950,6 +956,42 @@ Page({
     // 用于阻止点击事件向上冒泡 用于在点击分享按钮的时候不再触发进入该打卡日记所属的打卡圈子详情页中
     preventTap:function () {
         // 不用进行任何操作
+    },
+
+    // 获取我的未读消息条数
+    getUnreadNewsNum: function () {
+      let that = this;
+      wx.request({
+          url: app.globalData.urlRootPath
+              + 'index/UnreadNewsCount/getUnreadNewsNum',
+          method: 'post',
+          data: {
+              user_id: that.data.userInfo.id
+          },
+          success: function (res) {
+              let respData = res.data;
+              if (res.statusCode === 200) {
+                  let unreadLikeNewsNum = parseInt(respData.data.unreadLikeNewsNum);
+                  let unreadCommentNewsNum = parseInt(respData.data.unreadCommentNewsNum);
+                  if ((unreadLikeNewsNum + unreadCommentNewsNum) !== 0) {
+                      // 在小程序tab页右上角设置文本 即未读的消息数
+                      wx.setTabBarBadge({
+                          index: 2,
+                          text: unreadCommentNewsNum + unreadLikeNewsNum + ''
+                      });
+                  }
+
+              } else {
+              }
+          },
+          fail: function () {
+              wx.showToast({
+                  title: '网络异常,无法获取未读消息',
+                  icon: 'none',
+                  duration: 1000
+              })
+          }
+      })
     },
 
 });

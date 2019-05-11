@@ -21,7 +21,8 @@
         "pages/find/searchPunchCardProject/index",
         "pages/find/showPunchCardProjectByType/index",
         "pages/index/allProjectList/index",
-        "pages/diaryDetailPage/index"
+        "pages/diaryDetailPage/index",
+        "pages/newsDetailPage/index"
     ],
     "window": {
         "navigationBarBackgroundColor": "#F0B27A",

@@ -1,4 +1,4 @@
 {
     "navigationBarTitleText": "消息",
-    "enablePullDownRefresh": false
+    "enablePullDownRefresh": true
 }

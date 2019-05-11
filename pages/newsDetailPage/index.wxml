@@ -1,0 +1,89 @@
+<!--suppress ALL -->
+<block wx:if="{{showDataLoading}}">
+    <!--数据加载时，显示空白页，显示加载动画-->
+    <view class="weui-loadmore">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+</block>
+<block wx:elif="{{emptyNewsList}}">
+    <!--没有被点赞或者被评论的消息时，显示空内容提示-->
+    <view class="empty-content-notice">{{emptyContentNotice}}</view>
+</block>
+<block wx:else>
+    <view class="container">
+        <!--显示对应的被点赞或者被评论消息列表-->
+
+        <block wx:if="{{newsType == 'likeNews'}}">
+            <!-- 显示日记被点赞的记录列表-->
+            <block wx:for="{{myLikedList}}">
+                <view class="liked-news-list-item" bindtap="intoDiaryDetailPage"
+                      data-diary-id="{{item.diary_id}}">
+                    <view class="admirer-avatar"
+                          catchtap="intoPersonalHomePage"
+                          data-user-id="{{item.admirer.id}}">
+                        <block wx:if="{{item.admirer.avatar_url == 'default_avatar'}}">
+                            <image src="/images/default/userAvatar.png"></image>
+                        </block>
+                        <block wx:else>
+                            <image src='{{item.admirer.avatar_url}}'></image>
+                        </block>
+                    </view>
+                    <view class="like-info-area" style="width: {{windowWidth - 70}}px;">
+                        <view class="like-info">
+                            <view class="admirer-nikc-name"
+                                  catchtap="intoPersonalHomePage"
+                                  data-user-id="{{item.admirer.id}}">{{item.admirer.nick_name}} 赞了你的日记</view>
+                            <view class="like-create_time">{{item.create_time}}</view>
+                        </view>
+                        <view class="into-diary-detail-page-btn">
+                            <image src="/images/button/into_btn_gray.png"></image>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="item-separator"></view>
+            </block>
+        </block>
+        <block wx:else>
+            <!-- 显示r日记被评论的记录列表-->
+            <block wx:for="{{myCommentedList}}">
+                <view class="commented-news-list-item" bindtap="intoDiaryDetailPage"
+                      data-diary-id="{{item.diary_id}}">
+                    <view class="reviewer-avatar"
+                          catchtap="intoPersonalHomePage"
+                          data-user-id="{{item.reviewer.id}}">
+                        <block wx:if="{{item.reviewer.avatar_url == 'default_avatar'}}">
+                            <image src="/images/default/userAvatar.png"></image>
+                        </block>
+                        <block wx:else>
+                            <image src='{{item.reviewer.avatar_url}}'></image>
+                        </block>
+                    </view>
+                    <view class="comment-info-area" style="width: {{windowWidth - 70}}px;">
+                        <view class="comment-info">
+                            <view class="comment-user-info">
+                                <view class="reviewer-nick-name"
+                                      catchtap="intoPersonalHomePage"
+                                      data-user-id="{{item.reviewer.id}}">{{item.reviewer.nick_name}}</view>
+                                <view style="margin: 0 2px;">回复@</view>
+                                <view class="respondent-nick-name"
+                                      catchtap="intoPersonalHomePage"
+                                      data-user-id="{{userInfo.id}}">{{userInfo.nick_name}}</view>
+                            </view>
+                            <view class="comment-text">{{item.text_comment}}</view>
+                            <view class="comment-create_time">{{item.create_time}}</view>
+                        </view>
+                        <view class="comment-news-into-diary-detail-page-btn">
+                            <image src="/images/button/into_btn_gray.png"></image>
+                        </view>
+                    </view>
+                </view>
+
+                <view class="item-separator"></view>
+            </block>
+            <view style="width: 100%;height: 30px;background-color: white"></view>
+        </block>
+    </view>
+
+</block>

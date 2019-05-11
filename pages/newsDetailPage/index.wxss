@@ -1,0 +1,161 @@
+.container {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+.empty-content-notice {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: black;
+}
+
+
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+.liked-news-list-item{
+    width: auto;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.admirer-avatar {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.admirer-avatar > image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.like-info-area {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: #F0B27A;
+    font-size: 16px;
+}
+.like-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.like-create_time {
+    font-size: 12px;
+    color: black;
+}
+
+.into-diary-detail-page-btn {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.into-diary-detail-page-btn > image {
+    height: 32px;
+    width: 32px;
+}
+
+.item-separator {
+    width: 100%;
+    height: 1px;
+    background-color: #e5e5e5;
+    margin-left: 70px;
+}
+
+/*---------------------------------------------------------------*/
+.commented-news-list-item{
+    width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 15px;
+}
+.reviewer-avatar {
+    width: 70px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.reviewer-avatar > image {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.comment-info-area {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    font-size: 16px;
+}
+.comment-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.comment-user-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+.respondent-nick-name, .reviewer-nick-name {
+    color: #F0B27A;
+}
+.comment-text {
+    color: black;
+    font-size: 14px;
+}
+.comment-create_time {
+    font-size: 12px;
+    color: #C9C9C9;
+    margin-bottom: 10px;
+}
+
+.comment-news-into-diary-detail-page-btn {
+    width: 50px;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.comment-news-into-diary-detail-page-btn > image {
+    height: 32px;
+    width: 32px;
+}
+

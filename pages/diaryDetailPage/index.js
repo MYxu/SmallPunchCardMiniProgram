@@ -273,6 +273,7 @@ Page({
                         // 日记不存在
                         wx.showToast({
                             title: respData.errMsg,
+                            icon: 'none',
                             duration: 1000,
                         });
                         setTimeout(function () {

@@ -1,4 +1,47 @@
-<view>
-<text>news</text>
+<!--suppress ALL -->
+<view class="container">
+    <block wx:if="{{showLoading}}">
+        <view></view>
+    </block>
+    <block wx:else>
+        <!--评论记录-->
+        <view class="comment-news" bindtap="intoCommentNewsListsPage">
+            <view class="comment-news-icon">
+                <image src="/images/button/news_comment.png"></image>
+            </view>
+            <view class="comment-news-title-area" style="width: {{windowWidth - 70}}px;">
+                <view>日记评论</view>
+                <view class="into-comment-lists-page-icon">
+                    <block wx:if="{{unreadCommentNewsNum > 0}}">
+                        <view class="unread-news-notice">{{unreadCommentNewsNum}}</view>
+                    </block>
+                    <block wx:else>
+                        <image src="/images/button/into_btn_gray.png"></image>
+                    </block>
+                </view>
+            </view>
+        </view>
 
+        <view class="item-separator"></view>
+
+        <!--点赞记录-->
+        <view class="like-news" bindtap="intoLikeNewsListsPage">
+            <view class="like-news-icon">
+                <image src="/images/button/news_like.png"></image>
+            </view>
+            <view class="like-news-title-area" style="width: {{windowWidth - 70}}px;">
+                <view>日记点赞</view>
+                <view class="into-like-lists-page-icon">
+                    <block wx:if="{{unreadLikeNewsNum > 0}}">
+                        <view class="unread-news-notice">{{unreadLikeNewsNum}}</view>
+                    </block>
+                    <block wx:else>
+                        <image src="/images/button/into_btn_gray.png"></image>
+                    </block>
+                </view>
+            </view>
+        </view>
+
+        <view class="item-separator"></view>
+    </block>
 </view>

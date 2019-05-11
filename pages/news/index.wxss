@@ -1,6 +1,64 @@
-/* pages/news/index.wxss */
-.touch {
+.container {
       width: 100%;
       height: 100%;
+}
+.comment-news, .like-news{
+      width: auto;
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+}
+.comment-news-icon, .like-news-icon{
+      width: 70px;
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+}
+.comment-news-icon > image, .like-news-icon > image {
+      width: 45px;
+      height: 45px;
+}
 
+.comment-news-title-area, .like-news-title-area {
+      width: 100%;
+      height: 70px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      color: black;
+      font-size: 15px;
+}
+.into-comment-lists-page-icon, .into-like-lists-page-icon{
+      width: 50px;
+      height: 50px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+}
+.unread-news-notice {
+      width: 15px;
+      height: 15px;
+      background-color: red;
+      border-radius: 50%;
+      font-size: 11px;
+      line-height: 11px;
+      text-align: center;
+      color: white;
+}
+.into-comment-lists-page-icon > image, .into-like-lists-page-icon > image{
+      height: 32px;
+      width: 32px;
+}
+
+.item-separator {
+      width: 100%;
+      height: 1px;
+      background-color: #e5e5e5;
+      margin-left: 70px;
 }
