@@ -18,7 +18,7 @@
 
             <!--展示前四个打卡圈子-->
             <block wx:if="{{projectNum > 0}}">
-                <block wx:for="{{punchCardProjectList}}">
+                <block wx:for="{{punchCardProjectList}}" wx:key="{{item.id}}">
                     <block wx:if="{{index <= 3}}">
                         <view class="container-item">
                             <view class="punch-card-project-item-view"
@@ -116,16 +116,19 @@
             </block>
             <block wx:else>
                 <view class="diary-recommend-view">
-                    <block wx:for="{{recommendDiaryList}}">
-                        <view class="diary-recommend-item"  bindtap="intoPunchCardDetail"
-                              data-project_id="{{item.projectInfo.id}}"
-                              data-is_creator="-1">
+                    <block wx:for="{{recommendDiaryList}}" wx:key="{{item.id}}">
+                        <view class="diary-recommend-item"
+                              catchtap="intoDiaryDetailPage"
+                              data-diary-id="{{item.id}}">
                             <block wx:if="{{index != 0}}">
                                 <view class="separator-height-8px" style="background-color: #ebebeb"></view>
                             </block>
 
                             <!--头部打卡圈子相关信息-->
-                            <view class="punch-card-project-info">
+                            <view class="punch-card-project-info"
+                                  catchtap="intoPunchCardDetail"
+                                  data-project_id="{{item.projectInfo.id}}"
+                                  data-is_creator="-1" >
                                 <view class="project-cover-img-info">
                                     <block wx:if="{{item.projectInfo.cover_img_url == 'default_avatar'}}">
                                         <image src="/images/default/project_cover_img.png"></image>
@@ -140,7 +143,8 @@
                                         {{item.projectInfo.project_name}}
                                     </view>
                                     <view class="project-type-label-lists">
-                                        <block wx:for="{{item.projectInfo.type_label}}" wx:for-item="l">
+                                        <block wx:for="{{item.projectInfo.type_label}}" wx:for-item="l"
+                                               wx:key="{{l.child_label}}">
                                             <view class="project-type-label-item"
                                                   data-parent-name="{{l.parent_label}}"
                                                   catchtap="searchProjectByType">
@@ -153,7 +157,7 @@
                                 <!--TODO 最新加入的三个参与者头像-->
                                 <view class="project-attend-user-info">
                                     <block wx:for="{{item.recentThreeAttendUserList}}" wx:for-item="a"
-                                           wx:for-index="i">
+                                           wx:for-index="i" wx:key="{{i}}">
                                         <view class="user-avatar-item">
                                             <block wx:if="{{a.avatar_url == 'default_avatar'}}">
                                                 <image src="/images/default/project_cover_img.png"
@@ -177,9 +181,8 @@
                             <!--中间的打卡日记相关信息-->
                             <view class="punch-card-diary-info"
                                   style="width: {{windowWidth - 30}}px;margin-left: 15px">
-                                <view class="diary-text-content" catchtap="intoDiaryDetailPage"
-                                      data-diary-id="{{item.id}}">
-                                    {{item.text_content}}
+                                <view class="diary-text-content">
+                                    <text>{{item.text_content}}</text>
                                 </view>
                                 <view class="diary-resource-show">
                                     <!--图片展示-->
@@ -195,7 +198,7 @@
                                     <block wx:else>
                                         <view class="diary-img-list">
                                             <block wx:for="{{item.diaryResource}}" wx:for-item="v"
-                                                   wx:for-index="k">
+                                                   wx:for-index="k" wx:key="{{v.id}}">
                                                 <block wx:if="{{v.type == '1'}}">
                                                     <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px" catchtap="previewDiaryImage" data-index="{{index}}"
                                                           data-img-url="{{v.resource_url}}">
@@ -208,7 +211,8 @@
                                     </block>
 
                                     <!--音频-->
-                                    <block wx:for="{{item.diaryResource}}" wx:for-item="audioItem">
+                                    <block wx:for="{{item.diaryResource}}" wx:for-item="audioItem"
+                                           wx:key="{{audioItem.id}}">
                                         <block wx:if="{{audioItem.type == '2'}}">
                                             <punch-card-diary-audio-play
                                                     audio-name="{{item.publisher.nick_name}}的录音视频"
@@ -324,8 +328,8 @@
                                           catchtouchmove="preventTouchMove" class="back-page" >
                                         <view class="release">
                                             <textarea autoHeight="true" class="text" cursorSpacing="20"
-                                                      bindinput="editComment" fixed="true"
-                                                      placeholder="{{placeholder}}"
+                                                      bindinput="editComment" catchtap="preventTouchMove"
+                                                      fixed="true" placeholder="{{placeholder}}"
                                                       placeholderClass="input_null" showConfirmBar=""
                                                       value="{{commentText}}">
                                             </textarea>

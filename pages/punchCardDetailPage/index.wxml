@@ -278,7 +278,7 @@
                                             <view class="diary-text"
                                                   bindtap="intoDiaryDetailPage"
                                                   data-diary-id="{{item.id}}">
-                                                {{item.text_content}}
+                                                <text>{{item.text_content}}</text>
                                             </view>
 
                                             <!-- 打卡图片 & 视频 & 音频，一张图片直接显示，二张以上九宫格格式展示 -->
@@ -910,7 +910,7 @@
                                         <view class="diary-text"
                                               bindtap="intoDiaryDetailPage"
                                               data-diary-id="{{item.id}}">
-                                            {{item.text_content}}
+                                            <text>{{item.text_content}}</text>
                                         </view>
 
                                         <!-- 打卡图片 & 视频 & 音频，一张图片直接显示，二张以上九宫格格式展示 -->

@@ -97,6 +97,7 @@ Page({
             (that.data.textContent.length > 0 || that.data.chooseImg.length > 0) ||
             that.data.audioRecordFileSrc.length > 0
         );
+        console.log(e.detail.value);
 
         that.setData({
             textContentLength: that.data.textContent.length,

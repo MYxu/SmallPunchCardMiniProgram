@@ -121,7 +121,7 @@
                 <view class="diary-detail-content">
                     <!-- 打卡文字内容 -->
                     <view class="diary-text">
-                        {{diaryInfo.text_content}}
+                        <text>{{diaryInfo.text_content}}</text>
                     </view>
 
                     <!-- 打卡图片 & 视频 & 音频，一张图片直接显示，二张以上九宫格格式展示 -->
@@ -140,7 +140,7 @@
                         <block wx:else>
                             <view class="diary-img-list">
                                 <block wx:for="{{diaryInfo.diaryResource}}" wx:for-item="v"
-                                       wx:for-index="k">
+                                       wx:for-index="k" wx:key="{{v.id}}">
                                     <block wx:if="{{v.type == '1'}}">
                                         <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px"
                                               catchtap="_previewDiaryImage"
@@ -154,7 +154,9 @@
                         </block>
 
                         <!--音频-->
-                        <block wx:for="{{diaryInfo.diaryResource}}" wx:for-item="audioItem">
+                        <block wx:for="{{diaryInfo.diaryResource}}"
+                               wx:for-item="audioItem"
+                               wx:key="{{audioItem.id}}">
                             <block wx:if="{{audioItem.type == '2'}}">
                                 <punch-card-diary-audio-play audio-file-info="{{audioItem}}"
                                                              audio-name="{{diaryInfo.publisher.nick_name}}的录音视频">
@@ -214,7 +216,8 @@
                         </view>
                         <view class="diary-like-user-list">
                             <block wx:for="{{diaryInfo.allLikeInfo}}"
-                                   wx:for-item="likeItem">
+                                   wx:for-item="likeItem"
+                                   wx:key="{{likeItem.id}}">
                                 <view class="diary-like-user-list-item"
                                       data-user-id="{{likeItem.admirer.id}}"
                                       catchtap="_intoPersonalHomePage">
@@ -240,7 +243,8 @@
 
                     <view class="diary-comment-show">
                         <block wx:for="{{diaryInfo.allCommentInfo}}"
-                               wx:for-item="cItem">
+                               wx:for-item="cItem"
+                               wx:key="{{cItem.id}}">
                             <block wx:if="{{cItem.pid == 0}}">
                                 <block wx:if="{{index != 0}}">
                                     <view class="separator-height-1px"></view>
@@ -321,8 +325,10 @@
 
                                     <!--该一级评论下的二级评论-->
                                     <view class="child-comment-list" style="width: {{childCommentWidth}}px;">
-                                        <block wx:for="{{diaryInfo.allCommentInfo}}" wx:for-item="childCItem"
-                                               wx:for-index="i">
+                                        <block wx:for="{{diaryInfo.allCommentInfo}}"
+                                               wx:for-item="childCItem"
+                                               wx:for-index="i"
+                                               wx:key="{{childCItem.id}}">
                                             <block wx:if="{{childCItem.pid == cItem.id}}">
                                                 <view class="child-comment-list-item">
                                                     <text class="reviewer-nick-name"
@@ -470,8 +476,8 @@
                   catchtouchmove="_preventTouchMove" class="back-page" >
                 <view class="release">
                 <textarea autoHeight="true" class="text" cursorSpacing="20"
-                          bindinput="editComment" fixed="true"
-                          placeholder="{{placeholder}}"
+                          bindinput="editComment" catchtap="preventTouchMove"
+                          fixed="true" placeholder="{{placeholder}}"
                           placeholderClass="input_null" showConfirmBar=""
                           value="{{commentText}}">
                 </textarea>

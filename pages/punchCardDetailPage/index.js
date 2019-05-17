@@ -291,7 +291,7 @@ Page({
                 });
 
                 wx.setNavigationBarTitle({
-                    title: that.data.joinInPunchCardProjectFlag === 0 ? '圈子详情' : '打卡详情页'
+                    title: that.data.joinInPunchCardProjectFlag === 0 ? '圈子详情' : '打卡圈子详情'
                 });
                 wx.hideLoading();
 

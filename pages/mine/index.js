@@ -363,11 +363,19 @@ Page({
         })
     },
 
-    //
     intoDiaryDetailPage: function () {
         wx.showToast({
             title: '进入打卡日记详情页'
 
         })
     },
+
+    todoNotice: function () {
+      wx.showToast({
+          icon: 'none',
+          title: '功能开发中',
+          duration: 1000
+      })
+    },
+
 });

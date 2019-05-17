@@ -111,7 +111,7 @@
                 <block wx:else>
                     <image src="{{userAvatar}}"></image>
                 </block>
-                <text>{{creatorNickName}} | 999次打卡</text>
+                <text>{{creatorNickName}} | 0次打卡</text>
             </view>
         </view>
 

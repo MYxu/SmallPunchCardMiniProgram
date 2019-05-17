@@ -58,7 +58,7 @@
 
 
     <!--相关功能-->
-    <view class='functional-module'>
+    <view class='functional-module' bindtap="todoNotice">
 
         <!-- 我的关注 -->
         <view class='my-follow'>
