@@ -421,14 +421,12 @@ Page({
             if (parseInt(diaryResourceList[i].type) === 1)
             // 加上图片访问的baseUrl  注意一定要改为http 不然预览网络图片一直黑屏
                 ImgResourceList[index++] =
-                    "http://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
-                    + diaryResourceList[i].resource_url;
+                    that.data.imgRootPath + diaryResourceList[i].resource_url;
         }
 
         wx.previewImage({
             // 当前显示图片的http链接
-            current: "http://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
-                + e.currentTarget.dataset.imgUrl,
+            current: that.data.imgRootPath + e.currentTarget.dataset.imgUrl,
 
             // 需要预览的图片http链接列表
             urls: ImgResourceList,

@@ -732,18 +732,21 @@ Page({
             if (parseInt(diaryResourceList[i].type) === 1)
             // 加上图片访问的baseUrl  注意一定要改为http 不然预览网络图片一直黑屏
                 ImgResourceList[index++] =
-                    "http://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
+                    "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
                     + diaryResourceList[i].resource_url;
         }
 
         console.log(e.currentTarget.dataset.index);
         wx.previewImage({
             // 当前显示图片的http链接
-            current: "http://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
+            current: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/"
                 + e.currentTarget.dataset.imgUrl,
 
             // 需要预览的图片http链接列表
             urls: ImgResourceList,
+            success: function(res) {
+                console.log(res);
+            },
             fail: function (res) {
                 console.log(res);
             }

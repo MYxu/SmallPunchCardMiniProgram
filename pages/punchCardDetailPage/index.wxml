@@ -680,7 +680,7 @@
                 <block wx:if="{{isCreator === 1}}">
                     <view class="back-stage-management-page-into-btn"
                           bindtap="intoProjectBackStageManage">
-                        <image src="../../images/button/back_setting.png">
+                        <image src="/images/button/back_setting.png">
                         </image>
                         <text>管理后台</text>
                     </view>
@@ -690,25 +690,25 @@
                 <view class="universal-function-list">
                     <!--打卡日历-->
                     <view class="list-item" bindtap="intoPunchCardCalendarDetailPage">
-                        <image src="../../images/button/calendar.png"></image>
+                        <image src="/images/button/calendar.png"></image>
                         <text>打卡日历</text>
                     </view>
 
                     <!--排行&勋章-->
                     <view class="list-item" bindtap="intoPunchCardArrangePage">
-                        <image src="../../images/button/honour.png"></image>
+                        <image src="/images/button/honour.png"></image>
                         <text>排行&勋章</text>
                     </view>
 
                     <!--设置-->
                     <view class="list-item" bindtap="intoProjectBaseSettingPage">
-                        <image src="../../images/button/setting-black.png"></image>
+                        <image src="/images/button/setting-black.png"></image>
                         <text>设置</text>
                     </view>
 
                     <!--邀请好友-->
                     <view class="list-item" bindtap="inviteFriends">
-                        <image src="../../images/button/invite.png"></image>
+                        <image src="/images/button/invite.png"></image>
                         <text>邀请好友</text>
                     </view>
                 </view>
@@ -722,7 +722,7 @@
             <block wx:if="{{isCreator == 1}}">
                 <view class="punch-card-theme">
                     <view class="add-punch-card-theme-btn">
-                        <image src="../../images/button/add.png"></image>
+                        <image src="/images/button/add.png"></image>
                         <text>添加打卡主题</text>
                     </view>
                 </view>
