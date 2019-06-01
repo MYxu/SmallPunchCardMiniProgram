@@ -1411,6 +1411,10 @@ button::after {
     height: 15px;
     transform: rotate(30deg);
 }
+.creator-sex-unknown {
+    width: 17px;
+    height: 17px;
+}
 
 /*圈主昵称*/
 .creator-base-info-nick-name {
@@ -1704,6 +1708,10 @@ button::after {
     width: 15px;
     height: 15px;
     transform: rotate(30deg);
+}
+.user-sex-unknown {
+    width: 17px;
+    height: 17px;
 }
 /*用户昵称*/
 .user-nick-name {
