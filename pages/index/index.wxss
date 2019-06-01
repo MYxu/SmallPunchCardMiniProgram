@@ -146,12 +146,12 @@
 
 /*标识出当前选择的选项卡*/
 .selected-tab-indicate{
-    width: 38px;
-    height: 3px;
-    /*默认定位到第二个导航按钮（推荐）中间,20（margin-left） + 38(bar width) + 30(bar margin-right)*/
+    width: 34px;
+    height: 2px;
+    /*默认定位到第二个导航按钮（推荐）中间,20（margin-left） + 34(bar width) + 30(bar margin-right)*/
     position: absolute;
-    /*left: 88px;*/
-    left: 20px;
+    left: 84px;
+    /*left: 20px;*/
     background-color: #F0B27A;
 }
 

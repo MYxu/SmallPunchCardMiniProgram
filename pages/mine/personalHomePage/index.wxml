@@ -84,8 +84,6 @@
             </block>
         </view>
 
-
-
         <!-- 个人主页访客记录: 访客人数 & 最近访问的五个人头像 & 详细访问记录页面入口 -->
         <block wx:if="{{visitedUserInfo.personal_page_visit_num > 0}}">
             <!-- 分割线 -->
@@ -105,7 +103,9 @@
                 <view class="visitorAvatarList">
                     <!--遍历展示访客头像-->
                     <block wx:if="{{visitedUserInfo.fivePersonalPageVisitRecord.length > 0}}">
-                        <block wx:for="{{visitedUserInfo.fivePersonalPageVisitRecord}}" wx:for-item="visitRecordItem">
+                        <block wx:for="{{visitedUserInfo.fivePersonalPageVisitRecord}}"
+                               wx:for-item="visitRecordItem"
+                               wx:key="{{visitRecordItem.id}}">
                             <view class="visitorAvatarItem">
                                 <block wx:if="{{visitRecordItem.visitorInfo.avatar_url == 'default_avatar'}}">
                                     <!--使用默认的小程序内置的默认头像-->
@@ -126,8 +126,6 @@
             </view>
         </block>
 
-
-
         <!-- 我加入的打卡圈子 -->
         <block wx:if="{{joinInPunchCardProjectList.length > 0}}">
             <!--分割线-->
@@ -144,7 +142,8 @@
                 <scroll-view class="joinInPunchCardProjectList" scroll-x
                              scroll-left="{{true}}">
                     <!--遍历展示所加入的打卡圈子相关信息：圈子名称、我的打卡天数、打卡排名-->
-                    <block wx:for="{{joinInPunchCardProjectList}}">
+                    <block wx:for="{{joinInPunchCardProjectList}}"
+                           wx:key="{{item.id}}">
                         <view class="joinInPunchCardProjectItem"
                               style="background-color: {{item.bg_color}}"
                               data-project-id="{{item.id}}"
@@ -165,10 +164,6 @@
                 </scroll-view>
             </view>
         </block>
-
-
-
-
 
         <!-- 我的打卡日记列表展示
              若是其他用户访问我的主页只显示公开类型的打卡圈子及该圈子下的公开类型日记
@@ -201,7 +196,7 @@
 
             <!--日记列表展示-->
             <view class="user-punch-card-diary-list-info">
-                <block wx:for="{{punchCardDiaryList}}">
+                <block wx:for="{{punchCardDiaryList}}" wx:key="{{item.id}}">
                     <!--分割符-->
                     <block wx:if="{{index !== 0}}">
                         <view class="separator-height-10px"></view>

@@ -116,7 +116,7 @@
             <block wx:else>
                 <view class="diary-img-list">
                     <block wx:for="{{diaryItemData.diaryResource}}" wx:for-item="v"
-                           wx:for-index="k">
+                           wx:for-index="k" wx:key="{{v.id}}">
                         <block wx:if="{{v.type == '1'}}">
                             <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px"
                                   catchtap="_previewDiaryImage"
@@ -130,7 +130,8 @@
             </block>
 
             <!--音频-->
-            <block wx:for="{{diaryItemData.diaryResource}}" wx:for-item="audioItem">
+            <block wx:for="{{diaryItemData.diaryResource}}" wx:for-item="audioItem"
+                   wx:key="{{audioItem.id}}">
                 <block wx:if="{{audioItem.type == '2'}}">
                     <punch-card-diary-audio-play audio-file-info="{{audioItem}}"
                                                  audio-name="{{diaryItemData.publisher.nick_name}}的录音视频">
@@ -231,7 +232,7 @@
                 <view class="like-user-info">
                     <image src="/images/button/like_btn.png"></image>
                     <block wx:for="{{diaryItemData.tenLikeInfo}}" wx:for-item="likeUserItem"
-                           wx:for-index="i">
+                           wx:for-index="i" wx:key="{{likeUserItem.id}}">
                         <!--只显示十个用户昵称-->
                         <block wx:if="{{i < 10}}">
                             <text bindtap="_intoPersonalHomePage"
@@ -255,7 +256,7 @@
 
                 <view class="commentInfo">
                     <block wx:for="{{diaryItemData.allCommentInfo}}" wx:for-item="i"
-                           wx:for-index="k">
+                           wx:for-index="k" wx:key="{{i.id}}">
                         <view data-reviewer-id="{{i.reviewer.id}}"
                               data-reviewer-nick-name="{{i.reviewer.nick_name}}"
                               data-diary-id="{{diaryItemData.id}}"

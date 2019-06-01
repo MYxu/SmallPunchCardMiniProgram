@@ -188,6 +188,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    border-radius: 6px;
 }
 .more-diary-operate-btn-item {
     width: 100%;

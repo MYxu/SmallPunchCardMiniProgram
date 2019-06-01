@@ -194,7 +194,8 @@ Component({
                             method: 'post',
                             data: {
                                 projectId: that.data.diaryItemData.punchCardProject.id,
-                                diaryId: that.data.diaryItemData.id
+                                diaryId: that.data.diaryItemData.id,
+                                userId: parseInt(that.data.diaryItemData.publisher.id)
                             },
                             success: function (res) {
                                 console.log(res);

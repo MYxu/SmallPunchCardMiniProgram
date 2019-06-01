@@ -635,8 +635,8 @@ Page({
     showFollowRecommendView: function () {
         let that = this;
         // 动画：将标识当前选项卡的指示器移动到用户关注推荐选项(第一个) 需要向左移动
-        // 38(bar width) + 30(bar margin-right) = 68px
-        this.animation.translate(-68,0).step();
+        // 34(bar width) + 30(bar margin-right) = 64px
+        this.animation.translate(-64,0).step();
         that.setData({
                 animation: this.animation.export(),
                 showFollowRecommendView: true,        // 显示用户关注推荐页面

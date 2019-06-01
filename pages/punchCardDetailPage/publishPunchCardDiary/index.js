@@ -532,7 +532,9 @@ Page({
                                         + 'index/PunchCardDiary/deleteDiaryById',
                                     method: 'post',
                                     data: {
-                                        diaryId: that.data.diaryId
+                                        diaryId: that.data.diaryId,
+                                        projectId: that.data.projectId,
+                                        userId: that.globalData.userInfo.id
                                     },
                                     success: function (res) {
                                         console.log(res);
@@ -661,7 +663,8 @@ Page({
                 method: 'post',
                 data: {
                     projectId: that.data.projectId,
-                    diaryId: that.data.diaryId
+                    diaryId: that.data.diaryId,
+                    userId: that.globalData.userInfo.id
                 },
                 success: function (res) {
                     console.log(res);

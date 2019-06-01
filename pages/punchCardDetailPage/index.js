@@ -933,6 +933,7 @@ Page({
         console.log(e);
         let that = this;
         let diaryIndex = e.currentTarget.dataset.diaryIndex;
+        let userId = that.data.punchCardDiaryList[diaryIndex].publisher.id;
         wx.showModal({
             title: '温馨提示',
             content: '打卡日记删除后不可恢复,请谨慎删除!',
@@ -950,7 +951,8 @@ Page({
                         method: 'post',
                         data: {
                             projectId: that.data.projectId,
-                            diaryId: that.data.punchCardDiaryList[diaryIndex].id
+                            diaryId: that.data.punchCardDiaryList[diaryIndex].id,
+                            userId: userId
                         },
                         success: function (res) {
                             console.log(res);

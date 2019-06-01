@@ -369,7 +369,8 @@ Page({
                         method: 'post',
                         data: {
                             projectId: that.data.diaryInfo.projectInfo.id,
-                            diaryId: that.data.diaryInfo.id
+                            diaryId: that.data.diaryInfo.id,
+                            userId: parseInt(that.data.diaryInfo.publisher.id)
                         },
                         success: function (res) {
                             console.log(res);

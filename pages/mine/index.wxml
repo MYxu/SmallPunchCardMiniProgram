@@ -119,7 +119,7 @@
         <view class="title">我的打卡日记</view>
         <!--日记列表展示-->
         <view class="user-punch-card-diary-list-info">
-            <block wx:for="{{punchCardDiaryList}}">
+            <block wx:for="{{punchCardDiaryList}}" wx:key="id">
                 <!--分割符-->
                 <block wx:if="{{index !== 0}}">
                     <view class="separator-height-10px"></view>

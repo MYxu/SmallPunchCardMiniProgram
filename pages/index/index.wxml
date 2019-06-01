@@ -62,14 +62,14 @@
         <!--导航条 目前只有推荐日记功能-->
         <view class="navigation-bar-container {{navigationBarFix}}">
             <view class="navigation-bar">
-<!--                <view class="navigation-bar-item" bindtap="showFollowRecommendView">-->
-<!--                    <block wx:if="{{showFollowRecommendView}}">-->
-<!--                        <text style="color: black">关注</text>-->
-<!--                    </block>-->
-<!--                    <block wx:else>-->
-<!--                        <text>关注</text>-->
-<!--                    </block>-->
-<!--                </view>-->
+                <view class="navigation-bar-item" bindtap="showFollowRecommendView">
+                    <block wx:if="{{showFollowRecommendView}}">
+                        <text style="color: black">关注</text>
+                    </block>
+                    <block wx:else>
+                        <text>关注</text>
+                    </block>
+                </view>
 
                 <view class="navigation-bar-item" bindtap="showDiaryRecommendView">
                     <block wx:if="{{showDiaryRecommendView}}">
