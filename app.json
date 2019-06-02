@@ -24,6 +24,11 @@
         "pages/diaryDetailPage/index",
         "pages/newsDetailPage/index"
     ],
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于推荐附近的小打卡用户、打卡地点定位"
+        }
+    },
     "window": {
         "navigationBarBackgroundColor": "#F0B27A",
         "navigationBarTitleText": "",
