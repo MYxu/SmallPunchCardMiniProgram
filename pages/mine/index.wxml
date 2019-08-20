@@ -126,7 +126,9 @@
                 </block>
                 <!--组件化形式显示每条打卡日记-->
                 <mine-diary-item diary-item-data="{{item}}" diary-item-index="{{index}}"
-                                 user-info="{{userInfo}}">
+                                 user-info="{{userInfo}}"
+                                 audio-play-diary-index="{{currPlayAudioDiaryItemIndex}}"
+                                 bind:audioStatusChangeNotice="parentPageGetAudioPlayStatus">
                 </mine-diary-item>
             </block>
         </view>

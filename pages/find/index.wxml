@@ -96,7 +96,7 @@
             <view class="separator-height-10px"></view>
 
             <view class="punch-card-project-recommend-list">
-                <block wx:for="{{punchCardProjectRecommendList}}">
+                <block wx:for="{{punchCardProjectRecommendList}}" wx:key="{{item.id}}">
                     <!--打卡圈子列表子项组件-->
                     <punch-card-project-item punch-card-project-item-data="{{item}}">
                     </punch-card-project-item>

@@ -252,6 +252,7 @@ page {
     background-color: white;
     width: 300px;
     height: auto;
+    border-radius: 7px;
 
     display: flex;
     flex-direction: column;
@@ -752,7 +753,7 @@ button::after {
     /*background-color: darkorange;*/
     height: 20px;
     padding: 0;
-    /*background-color: whitesmoke;*/
+    background-color: whitesmoke;
     display: flex;
     flex-direction: row;
     justify-content: center;

@@ -6,15 +6,24 @@
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
+		"enhance": false,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
 		"nodeModules": true,
 		"autoAudits": false,
-		"checkInvalidKey": true
+		"uglifyFileName": true,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.6.6",
+	"libVersion": "2.7.2",
 	"appid": "wx5948189d45b17788",
 	"projectname": "SmallPunch_FrontEnd",
 	"debugOptions": {
