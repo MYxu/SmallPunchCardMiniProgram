@@ -1,5 +1,3 @@
-// TODO 该组件存在问题：当一个页面存在多个该音频组件时，会造成可以同时播放多个音频
-// TODO 无法实现点击一个音频而自动关掉上一个播放的音频 后续再想怎么实现了
 import {formatSeconds} from "../../utils/common";
 
 let app = getApp();
@@ -42,7 +40,6 @@ Component({
   attached: function () {
     let that = this;
     let innerAudioContext = that.getInnerAudioContext();
-    console.log(that.data);
 
     // 设置音频文件播放源
     innerAudioContext.src = that.data.resRootPath + that.data.audioFileInfo.resource_url;
@@ -64,7 +61,7 @@ Component({
   
   observers: {
     'audioPlayStatusFlag': function (audioPlayStatusFlag) {
-      console.log('音频组件播放状态'+ audioPlayStatusFlag);
+      console.log('音频组件--'+ this.data.audioFileInfo.id +'播放状态'+ audioPlayStatusFlag);
       if (audioPlayStatusFlag === 'play') {
         this.startAudioPlayNoNotify()
       }
@@ -131,12 +128,11 @@ Component({
 
         console.log('音频暂停');
         // 音频组件播放状态发生改变，通知父级组件或者使用该组件的页面
-        that.triggerEvent('audioStatusChangeNotice', {audioPlayStatus: 'pause'});
-      });
-
-      innerAudioContext.onError(function (res) {
-        console.log(res.errMsg);
-        console.log(res.errCode);
+        let eventDetail = {
+          audioId: that.data.audioFileInfo.id,
+          audioPlayStatus: 'pause'
+        };
+        that.triggerEvent('audioStatusChangeNotice', eventDetail);
       });
 
       that.setData({
@@ -145,7 +141,11 @@ Component({
 
       console.log('音频播放');
       // 音频组件播放状态发生改变，通知父级组件或者使用该组件的页面
-      this.triggerEvent('audioStatusChangeNotice', {audioPlayStatus: 'play'});
+      let eventDetail = {
+        audioId: that.data.audioFileInfo.id,
+        audioPlayStatus: 'play'
+      };
+      that.triggerEvent('audioStatusChangeNotice', eventDetail);
     },
     startAudioPlayNoNotify: function () {
       let that = this;
@@ -209,7 +209,11 @@ Component({
 
       console.log('音频暂停');
       // 音频组件播放状态发生改变，通知父级组件或者使用该组件的页面
-      that.triggerEvent('audioStatusChangeNotice', {audioPlayStatus: 'pause'});
+      let eventDetail = {
+        audioId: that.data.audioFileInfo.id,
+        audioPlayStatus: 'pause'
+      };
+      that.triggerEvent('audioStatusChangeNotice', eventDetail);
     },
     pauseAudioPlayNoNotify: function () {
       let that = this;

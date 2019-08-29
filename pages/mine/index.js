@@ -81,6 +81,7 @@ Page({
     moreDiaryDataLoad: false, // 控制上拉加载更多打卡日记的加载动画
     notMoreDiaryData: false, // 打卡日记已全部加载
 
+    // 记录当前播放音频的打卡日记的下标 -1代表所有的打卡日记都没有播放音频
     currPlayAudioDiaryItemIndex: -1,
   },
 
@@ -380,6 +381,8 @@ Page({
     })
   },
 
+  // 当音频组件的播放状态发生改变时，会触发父组件该方法
+  // 父组件会重新更新一个用来标识是哪个打卡日记中的音频文件被播放的变量的值
   parentPageGetAudioPlayStatus: function (e) {
     // console.log('父级页面接收到音频组件播放状态改变通知:');
     // console.log(e);

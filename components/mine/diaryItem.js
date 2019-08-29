@@ -75,6 +75,9 @@ Component({
     userInfo: {
       type: Object
     },
+
+    // 当前播放音频的打卡日记子项的在整个打卡日记列表中的下标
+    // 如果这个下标 === 本打卡日记组件的下标则说明用户点击的是本条打卡日记中的音频
     audioPlayDiaryIndex: {
       type: Number
     }
@@ -94,12 +97,13 @@ Component({
     audioPlayStatus: 'pause'
   },
 
+  // 监听当前播放音频的打卡日记子项的在整个打卡日记列表中的下标
   observers: {
     'audioPlayDiaryIndex': function (audioPlayDiaryIndex) {
       let that = this;
       console.log(that.data.diaryItemIndex + '--' + audioPlayDiaryIndex);
 
-      that.data.audioPlayStatus = 'pause';
+      that.data.audioPlayStatus = 'pause'; // 先预设播放的不是本条打卡日记的音频文件
 
       if (that.data.diaryItemIndex === audioPlayDiaryIndex) {
         that.data.audioPlayStatus = 'play';

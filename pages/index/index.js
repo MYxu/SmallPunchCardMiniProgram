@@ -88,6 +88,9 @@ Page({
          * true 需要更新 false 不需要更新
          */
         diaryLikeAndCommentStatus: false,
+
+        // 当前所播放的音频ID，-1代表所有的音频都处于暂停状态
+        audioIdCurrentlyPlay: -1,
     },
 
 
@@ -996,5 +999,32 @@ Page({
           }
       })
     },
+
+  // 当音频组件的播放状态发生改变时，会触发父组件该方法
+  // 父组件会重新更新一个用来标识是哪个打卡日记中的音频文件被播放的变量的值
+  parentPageGetAudioPlayStatus: function (e) {
+    console.log('父级页面接收到音频组件播放状态改变时所传递的参数:');
+    console.log(e);
+
+    let audioId = e.detail.audioId,
+        audioPlayStatus = e.detail.audioPlayStatus;
+    console.log('发生状态改变的音频的ID为: ' + audioId);
+    console.log('音频播放状态发生改变，此时的状态是：' + audioPlayStatus);
+    let that = this;
+
+    if (audioPlayStatus === 'pause') {
+      that.data.audioIdCurrentlyPlay = -1;
+      console.log('没有音频需要播放')
+    }
+
+    if (audioPlayStatus === 'play') {
+      that.data.audioIdCurrentlyPlay = audioId;
+      console.log('audioId--' + audioId + '进行播放')
+    }
+
+    that.setData({
+      audioIdCurrentlyPlay: that.data.audioIdCurrentlyPlay
+    });
+  }
 
 });

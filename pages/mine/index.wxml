@@ -1,148 +1,148 @@
 <!--suppress ALL -->
 <view class="container">
 
-    <!--用户信息 -->
-    <view class="container_userInfo" bindtap='intoUserInfoDetailPage'>
-        <!-- 头像 -->
-        <view class='userInfo_avatar'>
-            <!--使用默认的小程序内置的默认头像-->
-            <block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">
-                <image class="avatar" src="/images/default/userAvatar.png">
-                    <block wx:if="{{userInfo.sex == 1}}">
-                        <view class="user-sex-male">
-                            <image src="/images/button/sex_male.png">
-                            </image>
-                        </view>
-                    </block>
-                    <block wx:if="{{userInfo.sex == 2}}">
-                        <view class="user-sex-female">
-                            <image src="/images/button/sex_female.png">
-                            </image>
-                        </view>
-                    </block>
-                </image>
-            </block>
-            <block wx:else>
-                <image class='avatar' src='{{userInfo.avatar_url}}'>
-                    <block wx:if="{{userInfo.sex == 1}}">
-                        <view class="user-sex-male">
-                            <image src="/images/button/sex_male.png">
-                            </image>
-                        </view>
-                    </block>
-                    <block wx:if="{{userInfo.sex == 2}}">
-                        <view class="user-sex-female">
-                            <image src="/images/button/sex_female.png">
-                            </image>
-                        </view>
-                    </block>
-                </image>
-            </block>
-        </view>
-
-        <!-- 昵称、用户ID -->
-        <view class='nickname_userId'>
-            <view class='nick-name'>{{userInfo.nick_name}}</view>
-            <view class='user-id'>用户ID：{{userInfo.id}}</view>
-        </view>
-
-        <!-- 查看我的主页 -->
-        <view class='mine'>
-            <text>查看我的主页</text>
-            <image class='into_mine_page' src='/images/button/into_button.png'>
-            </image>
-        </view>
-    </view>
-
-    <!--TODO访客记录-->
-
-
-    <!--相关功能-->
-    <view class='functional-module' bindtap="todoNotice">
-
-        <!-- 我的关注 -->
-        <view class='my-follow'>
-            <image src='/images/button/my_follow_2.png'></image>
-            <text>我的关注</text>
-        </view>
-
-        <!-- 我的粉丝 -->
-        <view class='my-follower'>
-            <image src='/images/button/my_follower_2.png'></image>
-            <text>我的粉丝</text>
-        </view>
-
-        <!-- 我的收藏 -->
-        <view class='my-collect'>
-            <image src='/images/button/my_collect_2.png'></image>
-            <text>我的收藏</text>
-        </view>
-
-        <!-- 我建的圈子 -->
-        <view class='my-create-project'>
-            <image src='/images/button/my_create_project_2.png'></image>
-            <text>我建的圈子</text>
-        </view>
-
-        <!-- 设置 -->
-        <view class='setting'>
-            <image src='/images/button/setting_2.png'></image>
-            <text>设置</text>
-        </view>
-
-    </view>
-
-    <!-- 分割线 -->
-    <view class='interval_line'></view>
-
-    <!--我的打卡日记列表-->
-    <block wx:if="{{showDiaryListLoading}}">
-        <view class="weui-loadmore">
-            <view class="weui-loading"></view>
-            <view class="weui-loadmore__tips">正在加载</view>
-        </view>
-    </block>
-    <block wx:elif="{{emptyDiaryListNotice}}">
-        <!--还没有打卡日记时的提示信息-->
-        <view class="empty-diary-list-notice">
-            <image src="/images/default/empty_notice.png">
-            </image>
-            <text>暂无打卡日记~</text>
-            <view class="goto-punch-card-list-page">
-                快去发布打卡日记吧
-                <text bindtap="intoPunchCardListPage">去打卡列表</text>
+  <!--用户信息 -->
+  <view class="container_userInfo" bindtap='intoUserInfoDetailPage'>
+    <!-- 头像 -->
+    <view class='userInfo_avatar'>
+      <!--使用默认的小程序内置的默认头像-->
+      <block wx:if="{{userInfo.avatar_url == 'default_avatar'}}">
+        <image class="avatar" src="/images/default/userAvatar.png">
+          <block wx:if="{{userInfo.sex == 1}}">
+            <view class="user-sex-male">
+              <image src="/images/button/sex_male.png">
+              </image>
             </view>
-        </view>
-    </block>
-    <block wx:elif="{{punchCardDiaryList.length > 0}}">
-        <!--标题-->
-        <view class="title">我的打卡日记</view>
-        <!--日记列表展示-->
-        <view class="user-punch-card-diary-list-info">
-            <block wx:for="{{punchCardDiaryList}}" wx:key="id">
-                <!--分割符-->
-                <block wx:if="{{index !== 0}}">
-                    <view class="separator-height-10px"></view>
-                </block>
-                <!--组件化形式显示每条打卡日记-->
-                <mine-diary-item diary-item-data="{{item}}" diary-item-index="{{index}}"
-                                 user-info="{{userInfo}}"
-                                 audio-play-diary-index="{{currPlayAudioDiaryItemIndex}}"
-                                 bind:audioStatusChangeNotice="parentPageGetAudioPlayStatus">
-                </mine-diary-item>
-            </block>
-        </view>
-
-        <!--底部加载更多-->
-        <view class="weui-loadmore" hidden="{{!moreDiaryDataLoad}}" style="margin-bottom: 60px">
-            <view class="weui-loading"></view>
-            <view class="weui-loadmore__tips">正在加载</view>
-        </view>
-    </block>
-
-    <!-- 底线  -->
-    <view class="bottom" hidden="{{!notMoreDiaryData}}">
-         ——· 我也是有顶线的哦 ·——
+          </block>
+          <block wx:if="{{userInfo.sex == 2}}">
+            <view class="user-sex-female">
+              <image src="/images/button/sex_female.png">
+              </image>
+            </view>
+          </block>
+        </image>
+      </block>
+      <block wx:else>
+        <image class='avatar' src='{{userInfo.avatar_url}}'>
+          <block wx:if="{{userInfo.sex == 1}}">
+            <view class="user-sex-male">
+              <image src="/images/button/sex_male.png">
+              </image>
+            </view>
+          </block>
+          <block wx:if="{{userInfo.sex == 2}}">
+            <view class="user-sex-female">
+              <image src="/images/button/sex_female.png">
+              </image>
+            </view>
+          </block>
+        </image>
+      </block>
     </view>
+
+    <!-- 昵称、用户ID -->
+    <view class='nickname_userId'>
+      <view class='nick-name'>{{userInfo.nick_name}}</view>
+      <view class='user-id'>用户ID：{{userInfo.id}}</view>
+    </view>
+
+    <!-- 查看我的主页 -->
+    <view class='mine'>
+      <text>查看我的主页</text>
+      <image class='into_mine_page' src='/images/button/into_button.png'>
+      </image>
+    </view>
+  </view>
+
+  <!--TODO访客记录-->
+
+
+  <!--相关功能-->
+  <view class='functional-module' bindtap="todoNotice">
+
+    <!-- 我的关注 -->
+    <view class='my-follow'>
+      <image src='/images/button/my_follow_2.png'></image>
+      <text>我的关注</text>
+    </view>
+
+    <!-- 我的粉丝 -->
+    <view class='my-follower'>
+      <image src='/images/button/my_follower_2.png'></image>
+      <text>我的粉丝</text>
+    </view>
+
+    <!-- 我的收藏 -->
+    <view class='my-collect'>
+      <image src='/images/button/my_collect_2.png'></image>
+      <text>我的收藏</text>
+    </view>
+
+    <!-- 我建的圈子 -->
+    <view class='my-create-project'>
+      <image src='/images/button/my_create_project_2.png'></image>
+      <text>我建的圈子</text>
+    </view>
+
+    <!-- 设置 -->
+    <view class='setting'>
+      <image src='/images/button/setting_2.png'></image>
+      <text>设置</text>
+    </view>
+
+  </view>
+
+  <!-- 分割线 -->
+  <view class='interval_line'></view>
+
+  <!--我的打卡日记列表-->
+  <block wx:if="{{showDiaryListLoading}}">
+    <view class="weui-loadmore">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+  </block>
+  <block wx:elif="{{emptyDiaryListNotice}}">
+    <!--还没有打卡日记时的提示信息-->
+    <view class="empty-diary-list-notice">
+      <image src="/images/default/empty_notice.png">
+      </image>
+      <text>暂无打卡日记~</text>
+      <view class="goto-punch-card-list-page">
+        快去发布打卡日记吧
+        <text bindtap="intoPunchCardListPage">去打卡列表</text>
+      </view>
+    </view>
+  </block>
+  <block wx:elif="{{punchCardDiaryList.length > 0}}">
+    <!--标题-->
+    <view class="title">我的打卡日记</view>
+    <!--日记列表展示-->
+    <view class="user-punch-card-diary-list-info">
+      <block wx:for="{{punchCardDiaryList}}" wx:key="id">
+        <!--分割符-->
+        <block wx:if="{{index !== 0}}">
+          <view class="separator-height-10px"></view>
+        </block>
+        <!--组件化形式显示每条打卡日记-->
+        <mine-diary-item diary-item-data="{{item}}" diary-item-index="{{index}}"
+                         user-info="{{userInfo}}"
+                         audio-play-diary-index="{{currPlayAudioDiaryItemIndex}}"
+                         bind:audioStatusChangeNotice="parentPageGetAudioPlayStatus">
+        </mine-diary-item>
+      </block>
+    </view>
+
+    <!--底部加载更多-->
+    <view class="weui-loadmore" hidden="{{!moreDiaryDataLoad}}" style="margin-bottom: 60px">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+  </block>
+
+  <!-- 底线  -->
+  <view class="bottom" hidden="{{!notMoreDiaryData}}">
+    ——· 我也是有顶线的哦 ·——
+  </view>
 
 </view>
