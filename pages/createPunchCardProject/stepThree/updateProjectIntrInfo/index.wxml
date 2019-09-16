@@ -16,7 +16,7 @@
         <view class="project-intr-info-list">
             <block wx:for="{{projectIntrInfoList}}">
                 <!--如果为文字信息简介-->
-                <block wx:if="{{item.type === '1'}}">
+                <block wx:if="{{item.type === 1}}">
                     <view class="intr-info-btn">
                         <view class="edit-area-title">文字</view>
                         <!--上移按钮-->
@@ -62,7 +62,7 @@
                 </block>
 
                 <!--如果为图片信息简介-->
-                <block wx:if="{{item.type === '2'}}">
+                <block wx:if="{{item.type === 2}}">
                     <view class="intr-info-btn">
                         <view class="edit-area-title">图片</view>
                         <!--上移按钮-->

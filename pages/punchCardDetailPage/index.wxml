@@ -1296,13 +1296,13 @@
               <view class="project-intr-content">
                 <block wx:for="{{projectInfo.IntrInfoList}}" wx:key="{{item.id}}">
                   <!--文本简介类型-->
-                  <block wx:if="{{item.type === '1'}}">
+                  <block wx:if="{{item.type === 1}}">
                     <view class="project-text-intr">
-                      {{item.content}}
+                      {{item.content}}123
                     </view>
                   </block>
                   <!--图片简介类型-->
-                  <block wx:if="{{item.type === '2'}}">
+                  <block wx:if="{{item.type === 2}}">
                     <view class="project-image-intr"
                           bindtap="previewProjectIntrImage"
                           data-img-url="{{item.content}}">
