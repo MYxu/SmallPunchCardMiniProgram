@@ -1298,7 +1298,7 @@
                   <!--文本简介类型-->
                   <block wx:if="{{item.type === 1}}">
                     <view class="project-text-intr">
-                      {{item.content}}123
+                      {{item.content}}
                     </view>
                   </block>
                   <!--图片简介类型-->

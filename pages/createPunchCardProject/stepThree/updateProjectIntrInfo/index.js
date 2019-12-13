@@ -76,7 +76,7 @@ Page({
     // 实际为向projectIntrInfoList数组后面添加一条type为textarea的数据项
     addTextEditArea: function () {
         let that = this;
-        that.addDataToArray('1','');
+        that.addDataToArray(1,'');
     },
 
     // 向编辑区域添加图片简介,type='2' 为图片
@@ -89,7 +89,7 @@ Page({
                 console.log(res);
                 // 将拍摄、选择的图片的路径信息添加至projectIntrInfoList中进行预览
                 for (let i = 0; i < res.tempFilePaths.length ; i++) {
-                    that.addDataToArray('2',res.tempFilePaths[i]);
+                    that.addDataToArray(2,res.tempFilePaths[i]);
                 }
             }
         });
