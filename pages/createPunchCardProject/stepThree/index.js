@@ -6,7 +6,7 @@ Page({
      */
     data: {
         // 用于访问服务器图片
-        imgRootPath: "https://myxu.xyz/SmallPunchMiniProgramAfterEnd/",
+        imgRootPath: app.globalData.imgBaseSeverUrl,
 
         userAvatar: app.globalData.userInfo.avatar_url,
         creatorNickName: app.globalData.userInfo.nick_name,
