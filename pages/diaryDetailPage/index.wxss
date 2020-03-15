@@ -26,8 +26,8 @@ page {
     align-items: center;
 }
 .back-pre-page-btn {
-    margin-left: 10px;
-    margin-top: 5px;
+    margin-left: 20rpx;
+    margin-top: 10rpx;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -35,33 +35,32 @@ page {
     align-items: center;
 }
 .back-pre-page-btn > image {
-    width: 30px;
-    height: 30px;
+    width: 60rpx;
+    height: 60rpx;
     transform: rotateZ(180deg);
 }
 .back-index-page-btn {
-    margin-left: 15px;
-    margin-top: 5px;
-    padding: 3px 13px;
+    margin-left: 30rpx;
+    margin-top: 10rpx;
+    padding: 6rpx 26rpx;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 1px solid #cccccc;
-    border-radius: 20px;
+    border: 2rpx solid #cccccc;
+    border-radius: 40rpx;
 }
 .back-index-page-btn > image {
-    width: 20px;
-    height: 20px;
+    width: 40rpx;
+    height: 40rpx;
 }
 
 .page-title {
     position: absolute;
     left: 50%;
-    margin-top: 5px;
-    margin-left: -36px;
-
+    margin-top: 10rpx;
+    margin-left: -72rpx;
 }
 
 .body {
@@ -78,19 +77,18 @@ page {
 /* 日记展示头部：日记用户头像、昵称、打卡时间、已打卡天数、日记私密类型、更多操作按钮 */
 .header-info {
     width: auto;
-    height: 60px;
-    margin: 0 10px;
+    height: 120rpx;
+    margin: 0 20rpx;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-
 }
 
 /* 日记发表用户头像 */
 .publisher-avatar {
-    width: 40px;
-    height: 60px;
+    width: 80rpx;
+    height: 120rpx;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -100,44 +98,43 @@ page {
 }
 
 .publisher-avatar > image {
-    width: 40px;
-    height: 40px;
+    width: 80rpx;
+    height: 80rpx;
     border-radius: 50%;
 }
 
 /*性别*/
-.publisher-sex-male{
-    width: 17px;
-    height: 17px;
+.publisher-sex-male {
+    width: 34rpx;
+    height: 34rpx;
 
     border-radius: 50%;
     background-color: white;
 
     position: absolute;
     right: 0;
-    bottom: 10px;
+    bottom: 20rpx;
 
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-
 }
 .publisher-sex-male > image{
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
 }
 
 .publisher-sex-female {
-    width: 17px;
-    height: 17px;
+    width: 34rpx;
+    height: 34rpx;
 
     border-radius: 50%;
     background-color: white;
 
     position: absolute;
     right: 0;
-    bottom: 10px;
+    bottom: 20rpx;
 
     display: flex;
     flex-direction: row;
@@ -146,28 +143,28 @@ page {
 
 }
 .publisher-sex-female > image{
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
     transform: rotate(30deg);
 }
 
 /*打卡用户昵称、打卡时间、坚持天数、日记隐私类型*/
 .header-center-info {
     width: 100%;
-    height: 60px;
+    height: 120rpx;
 
 }
 
 /* 打卡日记用户昵称 */
 .publisher-nick-name {
     width: 100%;
-    height: 30px;
+    height: 60rpx;
 
-    margin-left: 8px;
-    margin-top: 4px;
+    margin-left: 16rpx;
+    margin-top: 8rpx;
     text-align: left;
     word-break: break-word;
-    font-size: 16px;
+    font-size: 32rpx;
     color: #F0B27A;
     display: flex;
     flex-direction: column-reverse;
@@ -178,8 +175,8 @@ page {
 /*打卡时间 & 坚持天数*/
 .punch-time {
     width: 100%;
-    height: 15px;
-    margin-left: 8px;
+    height: 30rpx;
+    margin-left: 16rpx;
 
     display: flex;
     flex-direction: row;
@@ -188,24 +185,24 @@ page {
 }
 .punch-time > text {
     width: auto;
-    height: 15px;
-    font-size: 11px;
+    height: 30rpx;
+    font-size: 22rpx;
     color: #8a8a8a;
-    margin-right: 8px;
+    margin-right: 16rpx;
 }
 
 /* 打卡日记隐私类型按钮 */
 .diary-visible-type {
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-self: center;
 }
 .diary-visible-type > image {
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
 }
 
 
@@ -222,14 +219,14 @@ page {
 
 /*日记显示更多操作的控制按钮：*/
 .diary-more-operate-btn {
-    width: 20px;
-    height: 20px;
-    margin-left: 6px;
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 12rpx;
 }
 
 .diary-more-operate-btn > image {
-    width: 20px;
-    height: 20px;
+    width: 40rpx;
+    height: 40rpx;
 }
 
 /*自定义模态框显示对应的操作按钮：取消置顶、删除、投诉*/
@@ -250,9 +247,9 @@ page {
 /*蒙层中间的操作按钮*/
 .mask-content-more-diary-operate-btn {
     background-color: white;
-    width: 300px;
+    width: 600rpx;
     height: auto;
-    border-radius: 7px;
+    border-radius: 14rpx;
 
     display: flex;
     flex-direction: column;
@@ -261,21 +258,21 @@ page {
 }
 .more-diary-operate-btn-item {
     width: 100%;
-    height: 45px;
-    line-height: 45px;
-    font-size: 15px;
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 30rpx;
     color: black;
-    margin-left: 25px;
+    margin-left: 50rpx;
 }
 
 .close-more-diary-operate-btn {
     position: fixed;
-    top: 80px;
-    right: 30px;
+    top: 160rpx;
+    right: 60rpx;
 }
 .close-more-diary-operate-btn > image {
-    width: 20px;
-    height: 20px;
+    width: 40rpx;
+    height: 40rpx;
 }
 
 
@@ -284,13 +281,13 @@ page {
 .diary-detail-content {
     width: auto;
     height: auto;
-    margin:0 10px 30px 10px;
+    margin:0 20rpx 60rpx 20rpx;
 }
 
 /* 打卡文字内容 */
 .diary-text {
-    margin-bottom: 5px;
-    font-size: 17px;
+    margin-bottom: 10rpx;
+    font-size: 34rpx;
 }
 
 /* 打卡图片，一张图片直接显示，二张以上九宫格格式展示 */
@@ -301,6 +298,7 @@ page {
 /*一张图片*/
 .one-image image {
     width: 100%;
+    border-radius: 12rpx;
 }
 /*多张图片*/
 .diary-img-list {
@@ -313,7 +311,7 @@ page {
     flex-wrap: wrap;
 }
 .diary-img-item {
-    margin: 0 5px 5px 0;
+    margin: 0 10rpx 10rpx 0;
 }
 .diary-img-item > image{
     width: 100%;
@@ -324,38 +322,38 @@ page {
 
 /* 打卡地址 */
 .not-punch-card-address {
-    margin-top: 5px;
-    font-size: 11px;
+    margin-top: 10rpx;
+    font-size: 22rpx;
     color: #8a8a8a;
 }
 
 
 .not-punch-card-address > image {
-    width: 10px;
-    height: 10px;
-    margin-top: 2px;
-    margin-right: 4px;
+    width: 20rpx;
+    height: 20rpx;
+    margin-top: 4rpx;
+    margin-right: 8rpx;
 }
 .punch-card-address {
-    margin-top: 5px;
-    font-size: 11px;
+    margin-top: 10rpx;
+    font-size: 22rpx;
     color: #F0B27A;
 }
 .punch-card-address > image {
-    width: 10px;
-    height: 10px;
-    margin-top: 2px;
-    margin-right: 4px;
+    width: 20rpx;
+    height: 20rpx;
+    margin-top: 4rpx;
+    margin-right: 8rpx;
 }
 
 
 /* 打卡圈子信息*/
 .punch-card-project-info {
     width: 100%;
-    height: 65px;
+    height: 130rpx;
     background-color: whitesmoke;
-    border-radius: 7px;
-    margin-top: 8px;
+    border-radius: 14rpx;
+    margin-top: 16rpx;
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -365,8 +363,8 @@ page {
 
 .project-cover-img-info {
     width: 20%;
-    height: 65px;
-    margin-right: 8px;
+    height: 130rpx;
+    margin-right: 16rpx;
 
     display: flex;
     flex-direction: row;
@@ -375,16 +373,16 @@ page {
     align-items: center;
 }
 .project-cover-img-info > image {
-    width: 50px;
-    height: 50px;
-    margin-left: 15px;
-    border-radius: 5px;
+    width: 100rpx;
+    height: 100rpx;
+    margin-left: 30rpx;
+    border-radius: 10rpx;
 }
 .project-intr-info {
     width: 55%;
     height: 100%;
     color: black;
-    font-size: 15px;
+    font-size: 30rpx;
 
     display: flex;
     flex-wrap: nowrap;
@@ -393,9 +391,17 @@ page {
     justify-content: flex-start;
 }
 .project-name-info {
-    margin-top: 10px;
+    margin-top: 20rpx;
     width: 100%;
     padding: 0;
+
+    background-color: #FBDA61;
+    background-image: linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
+    background-image: -webkit-linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
+    background-image: -moz-linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
+    background-image: -o-linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 
     /*单行隐藏显示省略号*/
     overflow: hidden;
@@ -406,9 +412,9 @@ page {
 .project-punch-card-info {
     width: 100%;
     /*background-color: aqua;*/
-    font-size: 12px;
-    line-height: 12px;
-    margin-top: 2px;
+    font-size: 24rpx;
+    line-height: 24rpx;
+    margin-top: 4rpx;
     color: #2979FF;
 
     display: flex;
@@ -421,11 +427,11 @@ page {
 .into-project-detail-page {
     width: auto;
     height: auto;
-    border-radius: 12px;
-    padding: 2px 12px;
-    border: 1px solid #2979FF;
+    border-radius: 24rpx;
+    padding: 4rpx 24rpx;
+    border: 2rpx solid #2979FF;
     color: #2979FF;
-    font-size: 14px;
+    font-size: 28rpx;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -433,12 +439,10 @@ page {
     justify-content: center;
 }
 .into-project-detail-page > image {
-    width: 25px;
-    height: 25px;
-    margin-right: 15px;
-
+    width: 50rpx;
+    height: 50rpx;
+    margin-right: 30rpx;
 }
-
 
 
 /*打卡日记互动信息：点赞、评论、分享*/
@@ -467,9 +471,9 @@ page {
     justify-content: center;
 }
 .diary-like-icon > image {
-    width: 18px;
-    height: 18px;
-    margin-top: 18px;
+    width: 36rpx;
+    height: 36rpx;
+    margin-top: 36rpx;
 }
 .diary-like-user-list {
     width: 90%;
@@ -484,30 +488,30 @@ page {
 }
 
 .diary-like-user-list-item {
-    width: 35px;
-    height: 39px;
+    width: 70rpx;
+    height: 78rpx;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: flex-start;
 }
 .diary-like-user-list-item > image {
-    width: 30px;
-    height: 30px;
+    width: 60rpx;
+    height: 60rpx;
     border-radius: 50%;
 }
 .separator-like-comment {
     background-color: white;
     width: auto;
-    height: 15px;
-    border-bottom: 1px solid #e5e5e5;
-    margin: 0 10px;
+    height: 50rpx;
+    border-bottom: 2rpx solid #e5e5e5;
+    margin: 0 20rpx;
 }
 
 .diary-comment-show {
     width: auto;
     height: auto;
-    margin: 0 10px;
+    margin: 0 20rpx;
 }
 
 .diary-comment-item {
@@ -521,7 +525,7 @@ page {
 
 .parent-comment-user-info {
     width: auto;
-    height: 60px;
+    height: 120rpx;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -530,8 +534,8 @@ page {
 }
 
 .comment-user-avatar-info {
-    width: 40px;
-    height: 60px;
+    width: 80rpx;
+    height: 120rpx;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -541,22 +545,22 @@ page {
 }
 
 .comment-user-avatar-info > image {
-    width: 35px;
-    height: 35px;
+    width: 70rpx;
+    height: 70rpx;
     border-radius: 50%;
 }
 
 /*性别*/
 .comment-publisher-sex-male{
-    width: 17px;
-    height: 17px;
+    width: 34rpx;
+    height: 34rpx;
 
     border-radius: 50%;
     background-color: white;
 
     position: absolute;
     right: 0;
-    bottom: 10px;
+    bottom: 20rpx;
 
     display: flex;
     flex-direction: row;
@@ -565,20 +569,20 @@ page {
 
 }
 .comment-publisher-sex-male > image{
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
 }
 
 .comment-publisher-sex-female {
-    width: 17px;
-    height: 17px;
+    width: 34rpx;
+    height: 34rpx;
 
     border-radius: 50%;
     background-color: white;
 
     position: absolute;
     right: 0;
-    bottom: 10px;
+    bottom: 20rpx;
 
     display: flex;
     flex-direction: row;
@@ -587,26 +591,26 @@ page {
 
 }
 .comment-publisher-sex-female > image{
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
     transform: rotate(30deg);
 }
 
 .comment-user-info-right {
     width: 100%;
-    height: 60px;
+    height: 120rpx;
 
 }
 
 .comment-user-name {
     width: 100%;
-    height: 30px;
+    height: 60rpx;
 
-    margin-left: 8px;
-    margin-top: 4px;
+    margin-left: 16rpx;
+    margin-top: 8rpx;
     text-align: left;
     word-break: break-word;
-    font-size: 16px;
+    font-size: 32rpx;
     color: #F0B27A;
     display: flex;
     flex-direction: column-reverse;
@@ -616,72 +620,72 @@ page {
 
 .comment-time {
     width: 100%;
-    height: 15px;
-    margin-left: 8px;
+    height: 30rpx;
+    margin-left: 16rpx;
 
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 
-    font-size: 11px;
+    font-size: 22rpx;
     color: #8a8a8a;
 }
 
 .parent-comment-content {
-    margin-left: 43px;
-    margin-bottom: 10px;
+    margin-left: 86rpx;
+    margin-bottom: 20rpx;
     width: auto;
     height: auto;
-    font-size: 14px;
+    font-size: 28rpx;
     color: black;
 }
 
 .child-comment-list {
-    margin-left: 43px;
-    margin-right: 10px;
-    margin-bottom: 20px;
+    margin-left: 86rpx;
+    margin-right: 20rpx;
+    margin-bottom: 40rpx;
     height: auto;
-    font-size: 14px;
+    font-size: 28rpx;
     color: black;
-    border-radius: 8px;
+    border-radius: 16rpx;
     background-color: whitesmoke;
 }
 .child-comment-list >  view:first-child {
-    margin-top: 5px;
+    margin-top: 10rpx;
 }
 
 .child-comment-list >  view:last-child {
-    margin-bottom: 5px;
+    margin-bottom: 10rpx;
 }
 .child-comment-list-item {
-    margin: 0 5px;
+    margin: 0 10rpx;
     width: 100%;
 }
 
 
 .reviewer-nick-name {
     color: #F0B27A;
-    font-size: 14px;
-    margin-right: 3px;
+    font-size: 28rpx;
+    margin-right: 6rpx;
 }
 
 .respondent-nick-name {
     color: #F0B27A;
-    font-size: 14px;
-    margin-left: 3px;
+    font-size: 28rpx;
+    margin-left: 6rpx;
 }
 
 
 /*底部互动按钮: 点赞、评论、分享、加入圈子*/
 .bottom-diary-interaction-btn {
     width: 100%;
-    height: 50px;
+    height: 100rpx;
     background-color: whitesmoke;
-    margin-top: 80px;
+    margin-top: 160rpx;
     position: fixed;
     bottom: 0;
-    border-top: 1px solid #e5e5e5;
+    border-top: 2rpx solid #e5e5e5;
 
     display: flex;
     flex-direction: row;
@@ -705,43 +709,42 @@ page {
 /*点赞*/
 .diary-like-btn {
     /*background-color: greenyellow;*/
-    height: 20px;
+    height: 40rpx;
 
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
-    font-size: 12px;
+    font-size: 24rpx;
     color: #8a8a8a;
 }
 
 .diary-like-btn > image {
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
+    height: 30rpx;
+    width: 30rpx;
+    margin-right: 8rpx;
 }
 
 /*评论*/
 .diary-comment-btn {
     /*background-color: blue;*/
-    height: 20px;
+    height: 40rpx;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 
-    font-size: 12px;
+    font-size: 24rpx;
     color: #8a8a8a;
 
-    margin-right: 4px;
+    margin-right: 8rpx;
 }
 
 .diary-comment-btn image {
-    height: 20px;
-    width: 20px;
-    margin-right: 4px;
-
+    height: 40rpx;
+    width: 40rpx;
+    margin-right: 8rpx;
 }
 
 /*分享*/
@@ -751,7 +754,7 @@ button::after {
 }
 .diary-share-btn {
     /*background-color: darkorange;*/
-    height: 20px;
+    height: 40rpx;
     padding: 0;
     background-color: whitesmoke;
     display: flex;
@@ -759,20 +762,20 @@ button::after {
     justify-content: center;
     align-items: center;
 
-    font-size: 12px;
+    font-size: 24rpx;
     color: #8a8a8a;
 
 }
 
 .diary-share-btn > image {
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
+    height: 30rpx;
+    width: 30rpx;
+    margin-right: 8rpx;
 }
 
 
 .attend-punch-card-project-btn {
-    height: 20px;
+    height: 40rpx;
     border-left: 1px solid #e5e5e5;
 
     display: flex;
@@ -782,14 +785,14 @@ button::after {
     align-items: center;
 }
 .attend-punch-card-project-btn > text {
-    height: 20px;
-    line-height: 20px;
+    height: 40rpx;
+    line-height: 40rpx;
     width: auto;
-    padding: 2px 12px;
+    padding: 4rpx 40rpx;
     color: white;
-    font-size: 14px;
+    font-size: 28rpx;
     background-color: #2979FF;
-    border-radius: 12px;
+    border-radius: 24rpx;
 }
 
 
@@ -846,7 +849,3 @@ button::after {
     font-size: 28rpx;
     color: #939393;
 }
-
-
-
-
