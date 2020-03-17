@@ -14,6 +14,9 @@
     justify-content: flex-start;
     align-items: flex-start;
 }
+.punch-card-project-item:last-child {
+    margin-bottom: 70rpx;
+}
 
 .punch-card-project-cover-img {
     width: 140rpx;
@@ -23,58 +26,76 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+
+    position: relative;
 }
-.punch-card-project-cover-img > image{
+.punch-card-project-cover-img > image:first-child{
     width: 140rpx;
     height: 100rpx;
     border-radius: 10rpx;
 }
-
+.punch-card-project-creator-icon {
+    width: 25rpx;
+    height: 25rpx;
+    position: absolute;
+    bottom: 25rpx;
+    right: 5rpx;
+    background-color: white;
+    border-radius: 50%;
+    font-size: 0;
+}
+.punch-card-project-creator-icon > image {
+    width: 25rpx;
+    height: 25rpx;
+}
 .punch-card-project-info {
     width: 390rpx;
     height: 140rpx;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
 
     margin-left: 20rpx;
 }
-
-.info-head {
-    max-height: 75%;
-    min-height: 40%;
-    width: 100%;
+.punch-card-project-info > .left {
+    width: 300rpx;
+    height: 140rpx;
 }
-
-.punch-card-project-name {
+.punch-card-project-info > .left > .punch-card-project-name {
     margin-top: 20rpx;
     margin-bottom: 6rpx;
     line-height: 1.2;
+    font-size: 30rpx;
     letter-spacing: 2rpx;
     text-align: left;
-    display: flex;
-    align-items: flex-start;
-}
 
-.punch-card-project-creator {
-    margin-left: 10rpx;
-    line-height: 22rpx;
-    font-size: 22rpx;
-    color: white;
-    padding: 0 4rpx;
-    border: 1px solid #F9A825;
-    border-radius: 6rpx;
-    background-color: #F9A825;
+    background-color: #FBDA61;
+    background-image: linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
+    background-image: -webkit-linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
+    background-image: -moz-linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
+    background-image: -o-linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-
-.info-tail {
-    width: 100%;
-    height: 40rpx;
-    line-height: 40rpx;
+.punch-card-project-info > .left > .today-punch-card-people-num {
     font-size: 22rpx;
     color: #8a8a8a;
+}
+.punch-card-project-info > .right {
+    width: 90rpx;
+    height: 120rpx;
+    margin-top: 20rpx;
+    text-align: center;
+}
+.punch-card-project-info > .right > .punch-card-project-creator {
+    width: 60rpx;
+    font-size: 22rpx;
+    color: white;
+    background-color: #F9A825;
+    padding: 2rpx 4rpx;
+    border-radius: 8rpx;
 }
 
 .go-to-punch-card-btn {
@@ -93,4 +114,26 @@
     background-color: #F0B27A;
     color: white;
     padding: 4rpx 10rpx;
+}
+
+.empty-data-notify {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.empty-data-notify .wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-size: 32rpx;
+    color: black;
+}
+.empty-data-notify .wrap > image {
+    width: 240rpx;
+    height: 252rpx;
+    margin-bottom: 20rpx;
 }
