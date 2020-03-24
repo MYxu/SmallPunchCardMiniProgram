@@ -394,7 +394,7 @@ page {
     margin-top: 20rpx;
     width: 100%;
     padding: 0;
-
+ 
     background-color: #FBDA61;
     background-image: linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
     background-image: -webkit-linear-gradient(45deg,#FBDA61 0%,#FF5ACD 70%);
