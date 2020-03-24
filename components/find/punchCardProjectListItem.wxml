@@ -15,8 +15,7 @@
     </view>
 
     <!--圈子信息-->
-    <view class="project-base-info"
-          style="width: {{projectBaseInfoWidth}}px">
+    <view class="project-base-info">
         <view class="project-name">
             {{punchCardProjectItemData.project_name}}
         </view>
