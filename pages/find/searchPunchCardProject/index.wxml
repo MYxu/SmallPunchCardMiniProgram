@@ -1,34 +1,36 @@
 <view class="container">
     <!--搜索输入框-->
+  <view class="search-input-container {{searchBarFixClass}}">
     <view class="weui-search-bar">
-        <view class="weui-search-bar__form">
-            <view class="weui-search-bar__box">
-                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-                <input type="text" class="weui-search-bar__input" placeholder="搜索"
-                       value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping"
-                       confirm-type="search" bindconfirm="search"/>
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索"
+                 value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping"
+                 confirm-type="search" bindconfirm="search" aria-label="搜索"/>
 
-                <!--清除已输入的搜索文字&&上次搜索到打卡圈子记录-->
-                <block wx:if="{{inputVal.length > 0}}">
-                    <view class="weui-icon-clear" bindtap="clearInput">
-                        <icon type="clear" size="14"></icon>
-                    </view>
-                </block>
+          <!--清除已输入的搜索文字&&上次搜索到打卡圈子记录-->
+          <block wx:if="{{inputVal.length > 0}}">
+            <view class="weui-icon-clear" bindtap="clearInput">
+              <icon type="clear" size="14"></icon>
             </view>
-
-            <block wx:if="{{!inputShowed}}">
-                <label class="weui-search-bar__label" bindtap="showInput">
-                    <icon class="weui-icon-search" type="search" size="14"></icon>
-                    <view class="weui-search-bar__text">搜索</view>
-                </label>
-            </block>
+          </block>
         </view>
 
-        <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}"
-              bindtap="hideInput">
-            取消
-        </view>
+        <block wx:if="{{!inputShowed}}">
+          <label class="weui-search-bar__label" bindtap="showInput">
+            <icon class="weui-icon-search" type="search" size="14"></icon>
+            <view class="weui-search-bar__text">搜索</view>
+          </label>
+        </block>
+      </view>
+
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}"
+            bindtap="hideInput">
+        取消
+      </view>
     </view>
+  </view>
 
     <!--显示搜索到的打卡圈子列表-->
     <block wx:if="{{showSearchLoading}}">
@@ -39,7 +41,7 @@
     </block>
     <block wx:elif="{{punchCardProjectList.length > 0}}">
         <view class="search-result-list">
-            <block wx:for="{{punchCardProjectList}}">
+            <block wx:for="{{punchCardProjectList}}" wx:key="item.id">
                 <!--打卡圈子列表子项组件-->
                 <punch-card-project-item punch-card-project-item-data="{{item}}">
                 </punch-card-project-item>

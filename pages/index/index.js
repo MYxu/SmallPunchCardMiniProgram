@@ -329,7 +329,6 @@ Page({
     onPageScroll: function (e) {
         let that = this;
         let scrollHeight = e.scrollTop;
-        console.log("scroll:" + scrollHeight);
 
         // 导航栏到达顶部
         if (scrollHeight > that.data.navigationToTopHeight) {

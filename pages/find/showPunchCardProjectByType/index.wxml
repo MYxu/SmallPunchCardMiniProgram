@@ -15,7 +15,7 @@
         </block>
         <block wx:elif="{{punchCardProjectLists.length > 0}}">
             <view class="search-result-list">
-                <block wx:for="{{punchCardProjectLists}}">
+                <block wx:for="{{punchCardProjectLists}}" wx:key="{{item.id}}">
                     <!--打卡圈子列表子项组件-->
                     <punch-card-project-item punch-card-project-item-data="{{item}}">
                     </punch-card-project-item>
@@ -49,7 +49,7 @@
         <!--父类及所属子类标签tab选项-->
         <scroll-view class="project-children-type-navigation" scroll-x
                      scroll-left="{{true}}">
-            <block wx:for="{{childrenLabelList}}">
+            <block wx:for="{{childrenLabelList}}" wx:key="{{item.id}}">
                 <view class="children-label-item" data-index="{{index}}"
                       data-label-name="{{item.label_name}}"
                       bindtap="selectTap"
@@ -62,14 +62,14 @@
         </scroll-view>
         <!--用户自主选择的对应类型的打卡圈子展示-->
         <block wx:if="{{showGetDataLoading}}">
-            <view class="weui-loadmore">
+            <view class="weui-loadmore" style="margin-top: 42px">
                 <view class="weui-loading"></view>
                 <view class="weui-loadmore__tips">加载中...</view>
             </view>
         </block>
         <block wx:elif="{{punchCardProjectLists.length > 0}}">
-            <view class="search-result-list">
-                <block wx:for="{{punchCardProjectLists}}">
+            <view class="search-result-list" style="margin-top: 42px">
+                <block wx:for="{{punchCardProjectLists}}" wx:key="{{item.id}}">
                     <!--打卡圈子列表子项组件-->
                     <punch-card-project-item punch-card-project-item-data="{{item}}">
                     </punch-card-project-item>

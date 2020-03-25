@@ -1,8 +1,9 @@
 .punch-card-project-list-item {
-    width: 100vw;
+    width: calc(100vw - 40rpx);
     height: auto;
     padding: 30rpx 0;
     margin-left: 20rpx;
+    margin-right: 20rpx;
 
     display: flex;
     flex-direction: row;
@@ -24,7 +25,7 @@
     width: 200rpx;
     height: 120rpx;
 
-    border-radius: 12rpx;
+    border-radius: 10rpx;
 }
 
 .project-base-info {
