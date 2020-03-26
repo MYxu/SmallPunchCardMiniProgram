@@ -1,12 +1,12 @@
 /*音频播放视图*/
 .punch-card-diary-audio-play-item {
     width: auto;
-    height: 65px;
-    margin: 10px 0;
+    height: 130rpx;
+    margin: 20rpx 0;
 
     background-color: #B2DFDB;
 
-    border-radius: 7px;
+    border-radius: 14rpx;
 
     display: flex;
     flex-direction: row;
@@ -19,7 +19,7 @@
 .audio-control-btn-area {
     /*background-color: #64DD17;*/
     width: 20%;
-    height: 65px;
+    height: 130rpx;
 
     display: flex;
     flex-direction: row;
@@ -28,25 +28,44 @@
     align-items: center;
 }
 .audio-control-btn {
-    width: 60%;
-    height: 60%;
-    border: 3px solid whitesmoke;
-    border-radius: 50%;
+    /*width: 60%;*/
+    /*height: 60%;*/
+    /*border: 6rpx solid whitesmoke;*/
+    /*border-radius: 50%;*/
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    /*display: flex;*/
+    /*flex-direction: row;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+
+    /*解决图片高度等同宽度问题*/
+    /**
+     * 个人理解是：
+     * 1、在父级元素中设置高度为0，设置padding-bottom的百分比来撑开元素高度，
+     *    由于padding-bottom、padding-top这两个属性的百分比是根据元素宽度计算的，所以只要
+     *    padding-bottom的百分比跟宽度百分比一致，这时候得到就是一个正方形的父级元素了
+     * 2、最后还要分别设置父级、子级元素relative|absolute定位属性，现在我还没搞懂原理(不设置不行)
+     */
+    width: 60%;
+    height: 0;
+    padding-bottom: 60%;
+    position: relative;
 }
 .audio-control-btn > image {
-    width: 20px;
-    height: 20px;
+    /*width: 40rpx;*/
+    /*height: 40rpx;*/
+
+    /*解决图片高度等同于宽度问题*/
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 
 /*音频播放视图 播放进度条区域*/
 .audio-play-progress-area {
-    width: 75%;
-    height: 65px;
+    /*background-color: yellow;*/
+    width: 80%;
+    height: 130rpx;
 
     display: flex;
     flex-direction: column;
@@ -56,18 +75,24 @@
 }
 
 .audio-name {
-    height: 13px;
-    line-height: 13px;
-    margin: 10px 0 10px 15px;
+    height: 26rpx;
+    width: 85%;
+    line-height: 26rpx;
+    margin: 20rpx 0 20rpx 30rpx;
 
-    font-size: 13px;
+    font-size: 26rpx;
     color: white;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .audio-play-progress {
-    height: 20px;
-    margin-left: 15px;
-    font-size: 13px;
+    height: 40rpx;
+    width: 85%;
+    margin-left: 30rpx;
+    font-size: 26rpx;
     color: white;
 
     display: flex;
@@ -79,10 +104,13 @@
 
 .audio-play-last-time .audio-play-end-time {
     color: whitesmoke;
-    font-size: 12px;
+    font-size: 24rpx;
     width: auto;
 }
 
 .audio-play-progress-item {
-    width: 150px;
+    width: 80%;
+}
+slider {
+    margin: 10px !important;
 }

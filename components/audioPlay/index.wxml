@@ -5,14 +5,14 @@
         <block wx:if="{{audioPlayStatus == 'pause'}}">
             <!--音频暂停播放中 显示播放按钮-->
             <view class="audio-control-btn" catchtap="startAudioPlay">
-                <image src="/images/button/audio_play.png"></image>
+                <image src="/images/button/audio_play_2.png"></image>
             </view>
         </block>
         <block wx:else>
             <!--音频播放中 显示暂停按钮-->
             <view class="audio-control-btn" catchtap="pauseAudioPlay">
                 <!--suppress HtmlDeprecatedTag -->
-                <image src="/images/button/audio_pause.png"></image>
+                <image src="/images/button/audio_pause_2.png"></image>
             </view>
         </block>
     </view>

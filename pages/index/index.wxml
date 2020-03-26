@@ -216,7 +216,7 @@
                          wx:key="{{audioItem.id}}">
                     <block wx:if="{{audioItem.type == '2'}}">
                       <punch-card-diary-audio-play
-                              audio-name="{{item.publisher.nick_name}}的录音--{{audioItem.id}}"
+                              audio-name="{{item.publisher.nick_name}}的录音"
                               audio-file-info="{{audioItem}}"
                               bind:audioStatusChangeNotice="parentPageGetAudioPlayStatus"
                               audio-play-status-flag="{{audioIdCurrentlyPlay === audioItem.id ? 'play':'pause'}}">

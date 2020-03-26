@@ -10,3 +10,6 @@
     - webstorm无法识别微信小程序尺寸单位rpx: 安装webstorm插件**wxapp-support**
     
 - 微信小程序开发者工具(预览、调试) 
+
+#### 4、开发过程遇到的问题，先做个粗糙的笔记
+[笔记地址](https://github.com/MYxu/SmallPunchCardMiniProgram/blob/master/note.md)
