@@ -4,61 +4,61 @@
 }
 .comment-news, .like-news{
       width: auto;
-      height: 70px;
+      height: 140rpx;
       display: flex;
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
 }
 .comment-news-icon, .like-news-icon{
-      width: 70px;
-      height: 70px;
+      width: 140rpx;
+      height: 140rpx;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
 }
 .comment-news-icon > image, .like-news-icon > image {
-      width: 45px;
-      height: 45px;
+      width: 90rpx;
+      height: 90rpx;
 }
 
 .comment-news-title-area, .like-news-title-area {
       width: 100%;
-      height: 70px;
+      height: 140rpx;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
       color: black;
-      font-size: 15px;
+      font-size: 30rpx;
 }
 .into-comment-lists-page-icon, .into-like-lists-page-icon{
-      width: 50px;
-      height: 50px;
+      width: 100rpx;
+      height: 100rpx;
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
 }
 .unread-news-notice {
-      width: 15px;
-      height: 15px;
+      width: 30rpx;
+      height: 30rpx;
       background-color: red;
       border-radius: 50%;
-      font-size: 11px;
-      line-height: 11px;
+      font-size: 22rpx;
+      line-height: 22rpx;
       text-align: center;
       color: white;
 }
 .into-comment-lists-page-icon > image, .into-like-lists-page-icon > image{
-      height: 32px;
-      width: 32px;
+      height: 64rpx;
+      width: 64rpx;
 }
 
 .item-separator {
       width: 100%;
-      height: 1px;
+      height: 2rpx;
       background-color: #e5e5e5;
       margin-left: 70px;
 }

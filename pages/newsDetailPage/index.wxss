@@ -12,7 +12,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    font-size: 16px;
+    font-size: 32rpx;
     color: black;
 }
 
@@ -24,35 +24,35 @@
 }
 .liked-news-list-item{
     width: auto;
-    height: 70px;
+    height: 140rpx;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 }
 .admirer-avatar {
-    width: 70px;
-    height: 70px;
+    width: 140rpx;
+    height: 140rpx;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 .admirer-avatar > image {
-    width: 45px;
-    height: 45px;
+    width: 90rpx;
+    height: 90rpx;
     border-radius: 50%;
 }
 
 .like-info-area {
     width: 100%;
-    height: 70px;
+    height: 140rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     color: #F0B27A;
-    font-size: 16px;
+    font-size: 32rpx;
 }
 .like-info {
     display: flex;
@@ -61,13 +61,13 @@
     justify-content: flex-start;
 }
 .like-create_time {
-    font-size: 12px;
+    font-size: 24rpx;
     color: black;
 }
 
 .into-diary-detail-page-btn {
-    width: 50px;
-    height: 50px;
+    width: 100rpx;
+    height: 100rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -75,15 +75,15 @@
 }
 
 .into-diary-detail-page-btn > image {
-    height: 32px;
-    width: 32px;
+    height: 64rpx;
+    width: 64rpx;
 }
 
 .item-separator {
     width: 100%;
-    height: 1px;
+    height: 2rpx;
     background-color: #e5e5e5;
-    margin-left: 70px;
+    margin-left: 140rpx;
 }
 
 /*---------------------------------------------------------------*/
@@ -94,10 +94,10 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-top: 15px;
+    padding-top: 30rpx;
 }
 .reviewer-avatar {
-    width: 70px;
+    width: 140rpx;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -105,8 +105,8 @@
     align-items: center;
 }
 .reviewer-avatar > image {
-    width: 45px;
-    height: 45px;
+    width: 90rpx;
+    height: 90rpx;
     border-radius: 50%;
 }
 
@@ -118,7 +118,7 @@
     align-items: center;
     justify-content: space-between;
     color: black;
-    font-size: 16px;
+    font-size: 32rpx;
 }
 .comment-info {
     display: flex;
@@ -140,13 +140,13 @@
     font-size: 14px;
 }
 .comment-create_time {
-    font-size: 12px;
+    font-size: 24rpx;
     color: #C9C9C9;
-    margin-bottom: 10px;
+    margin-bottom: 20rpx;
 }
 
 .comment-news-into-diary-detail-page-btn {
-    width: 50px;
+    width: 100rpx;
     height: auto;
     display: flex;
     flex-direction: row;
@@ -155,7 +155,7 @@
 }
 
 .comment-news-into-diary-detail-page-btn > image {
-    height: 32px;
-    width: 32px;
+    height: 64rpx;
+    width: 64rpx;
 }
 
