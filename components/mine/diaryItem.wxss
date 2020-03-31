@@ -2,15 +2,15 @@
 .user-punch-card-diary-item {
     width: 100%;
     height: auto;
-    padding-bottom: 10px;
+    padding-bottom: 20rpx;
 }
 
 
 /* 日记展示头部：日记用户头像、昵称、打卡时间、已打卡天数、日记私密类型、更多操作按钮 */
 .header-info {
     width: auto;
-    height: 60px;
-    margin: 0 10px;
+    height: 120rpx;
+    margin: 0 20rpx;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -20,8 +20,8 @@
 
 /* 日记发表用户头像 */
 .publisher-avatar {
-    width: 40px;
-    height: 60px;
+    width: 80rpx;
+    height: 120rpx;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -31,22 +31,22 @@
 }
 
 .publisher-avatar > image {
-    width: 40px;
-    height: 40px;
+    width: 80rpx;
+    height: 80rpx;
     border-radius: 50%;
 }
 
 /*性别*/
 .publisher-sex-male{
-    width: 17px;
-    height: 17px;
+    width: 34rpx;
+    height: 34rpx;
 
     border-radius: 50%;
     background-color: white;
 
     position: absolute;
     right: 0;
-    bottom: 10px;
+    bottom: 20rpx;
 
     display: flex;
     flex-direction: row;
@@ -55,20 +55,20 @@
 
 }
 .publisher-sex-male > image{
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
 }
 
 .publisher-sex-female {
-    width: 17px;
-    height: 17px;
+    width: 34rpx;
+    height: 34rpx;
 
     border-radius: 50%;
     background-color: white;
 
     position: absolute;
     right: 0;
-    bottom: 10px;
+    bottom: 20rpx;
 
     display: flex;
     flex-direction: row;
@@ -77,28 +77,28 @@
 
 }
 .publisher-sex-female > image{
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
     transform: rotate(30deg);
 }
 
 /*打卡用户昵称、打卡时间、坚持天数、日记隐私类型*/
 .header-center-info {
     width: 100%;
-    height: 60px;
+    height: 120rpx;
 
 }
 
 /* 打卡日记用户昵称 */
 .publisher-nick-name {
     width: 100%;
-    height: 30px;
+    height: 60rpx;
 
-    margin-left: 8px;
-    margin-top: 4px;
+    margin-left: 16rpx;
+    margin-top: 8rpx;
     text-align: left;
     word-break: break-word;
-    font-size: 16px;
+    font-size: 32rpx;
     color: #F0B27A;
     display: flex;
     flex-direction: column-reverse;
@@ -109,8 +109,8 @@
 /*打卡时间 & 坚持天数*/
 .punch-time {
     width: 100%;
-    height: 15px;
-    margin-left: 8px;
+    height: 30rpx;
+    margin-left: 16rpx;
 
     display: flex;
     flex-direction: row;
@@ -119,24 +119,24 @@
 }
 .punch-time > text {
     width: auto;
-    height: 15px;
-    font-size: 11px;
+    height: 30rpx;
+    font-size: 22rpx;
     color: #8a8a8a;
-    margin-right: 8px;
+    margin-right: 16rpx;
 }
 
 /* 打卡日记隐私类型按钮 */
 .diary-visible-type {
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-self: center;
 }
 .diary-visible-type > image {
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
 }
 
 
@@ -153,14 +153,14 @@
 
 /*日记显示更多操作的控制按钮：*/
 .diary-more-operate-btn {
-    width: 20px;
-    height: 20px;
-    margin-left: 6px;
+    width: 40rpx;
+    height: 40rpx;
+    margin-left: 12rpx;
 }
 
 .diary-more-operate-btn > image {
-    width: 20px;
-    height: 20px;
+    width: 40rpx;
+    height: 40rpx;
 }
 
 /*自定义模态框显示对应的操作按钮：取消置顶、删除、投诉*/
@@ -181,32 +181,32 @@
 /*蒙层中间的操作按钮*/
 .mask-content-more-diary-operate-btn {
     background-color: white;
-    width: 300px;
+    width: 600rpx;
     height: auto;
 
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    border-radius: 6px;
+    border-radius: 12rpx;
 }
 .more-diary-operate-btn-item {
     width: 100%;
-    height: 45px;
-    line-height: 45px;
-    font-size: 15px;
+    height: 90rpx;
+    line-height: 90rpx;
+    font-size: 30rpx;
     color: black;
-    margin-left: 25px;
+    margin-left: 50rpx;
 }
 
 .close-more-diary-operate-btn {
     position: fixed;
-    top: 30px;
-    right: 30px;
+    top: 60rpx;
+    right: 60rpx;
 }
 .close-more-diary-operate-btn > image {
-    width: 20px;
-    height: 20px;
+    width: 40rpx;
+    height: 40rpx;
 }
 
 
@@ -214,13 +214,13 @@
 .diary-detail-content {
     width: auto;
     height: auto;
-    margin:0 10px 0 58px;
+    margin:0 20rpx 0 116rpx;
 }
 
 /* 打卡文字内容 */
 .diary-text {
-    margin-bottom: 5px;
-    font-size: 17px;
+    margin-bottom: 10rpx;
+    font-size: 34rpx;
 }
 
 /* 打卡图片，一张图片直接显示，二张以上九宫格格式展示 */
@@ -243,7 +243,7 @@
     flex-wrap: wrap;
 }
 .diary-img-item {
-    margin: 0 5px 5px 0;
+    margin: 0 10rpx 10rpx 0;
 }
 .diary-img-item > image{
     width: 100%;
@@ -254,28 +254,28 @@
 
 /* 打卡地址 */
 .not-punch-card-address {
-    margin-top: 5px;
-    font-size: 11px;
+    margin-top: 10rpx;
+    font-size: 22rpx;
     color: #8a8a8a;
 }
 
 
 .not-punch-card-address > image {
-    width: 10px;
-    height: 10px;
-    margin-top: 2px;
-    margin-right: 4px;
+    width: 20rpx;
+    height: 20rpx;
+    margin-top: 4rpx;
+    margin-right: 8rpx;
 }
 .punch-card-address {
-    margin-top: 5px;
-    font-size: 11px;
+    margin-top: 10rpx;
+    font-size: 22rpx;
     color: #F0B27A;
 }
 .punch-card-address > image {
-    width: 10px;
-    height: 10px;
-    margin-top: 2px;
-    margin-right: 4px;
+    width: 20rpx;
+    height: 20rpx;
+    margin-top: 4rpx;
+    margin-right: 8rpx;
 }
 
 
@@ -284,52 +284,52 @@
     background-color: WhiteSmoke;
 
     display: flex;
-    height: 50px;
+    height: 100rpx;
     width: 100%;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-top: 10rpx;
+    margin-bottom: 20rpx;
 }
 
 /* 打卡圈子信息：封面*/
 .diary-project-cover-img {
-    width: 50px;
-    height: 50px;
+    width: 100rpx;
+    height: 100rpx;
     float: left;
 }
 
 .diary-project-cover-img > image {
-    width: 50px;
-    height: 50px;
+    width: 100rpx;
+    height: 100rpx;
 }
 
 /* 打卡圈子信息：圈子名称*/
 .diary-project-name {
     flex: 1;
-    height: 50px;
+    height: 100rpx;
     text-align: left;
 }
 
 .diary-project-name > text {
-    font-size: 13px;
-    margin-left: 10px;
+    font-size: 26rpx;
+    margin-left: 20rpx;
 
     /*设置文字居中*/
-    height: 50px;
-    line-height: 50px;
+    height: 100rpx;
+    line-height: 100rpx;
 }
 
 /*进入打卡圈子详情页图标*/
 .into-diary-detail {
-    width: 50px;
-    height: 50px;
+    width: 100rpx;
+    height: 100rpx;
     float: right;
 }
 
 .into-diary-detail > image {
-    margin-top: 10px;
-    margin-left: 20px;
-    width: 30px;
-    height: 30px;
+    margin-top: 20rpx;
+    margin-left: 40rpx;
+    width: 60rpx;
+    height: 60rpx;
 }
 
 
@@ -342,9 +342,9 @@
 }
 /* 互动按钮*/
 .diary-interaction-btn {
-    height: 20px;
+    height: 40rpx;
     width: 100%;
-    margin: 6px 0;
+    margin: 12rpx 0;
 
     display: flex;
     flex-direction: row;
@@ -355,7 +355,7 @@
 /*点赞*/
 .like-btn {
     /*background-color: greenyellow;*/
-    height: 20px;
+    height: 40rpx;
     width: 25%;
 
     display: flex;
@@ -363,36 +363,36 @@
     justify-content: flex-start;
     align-items: center;
 
-    font-size: 12px;
+    font-size: 24rpx;
     color: #8a8a8a;
 }
 
 .like-btn > image {
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
+    height: 30rpx;
+    width: 30rpx;
+    margin-right: 8rpx;
 }
 
 /*评论*/
 .comment-btn {
     /*background-color: blue;*/
-    height: 20px;
+    height: 40rpx;
     width: 25%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 
-    font-size: 12px;
+    font-size: 24rpx;
     color: #8a8a8a;
 
-    margin-right: 4px;
+    margin-right: 8rpx;
 }
 
 .comment-btn image {
-    height: 20px;
-    width: 20px;
-    margin-right: 4px;
+    height: 40rpx;
+    width: 40rpx;
+    margin-right: 8rpx;
 
 }
 
@@ -403,7 +403,7 @@ button::after {
 }
 .share-btn {
     /*background-color: darkorange;*/
-    height: 20px;
+    height: 40rpx;
     width: 25%;
     padding: 0;
     background-color: white;
@@ -412,37 +412,35 @@ button::after {
     justify-content: flex-start;
     align-items: center;
 
-    font-size: 12px;
+    font-size: 24rpx;
     color: #8a8a8a;
 
 }
 
 .share-btn > image {
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
+    height: 30rpx;
+    width: 30rpx;
+    margin-right: 8rpx;
 }
 
 /*点评日记按钮*/
 .remark-diary-btn {
-    height: 20px;
+    height: 40rpx;
     width: 25%;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     /*background-color: #f9f9f9;*/
-    font-size: 12px;
+    font-size: 24rpx;
     color: #F0B27A;
 
 }
 
 .remark-diary-btn > image {
-    height: 15px;
-    width: 15px;
-    margin-right: 4px;
-
-
+    height: 30rpx;
+    width: 30rpx;
+    margin-right: 8rpx;
 }
 
 /*点赞信息：点赞用户昵称*/
@@ -455,24 +453,24 @@ button::after {
     height: auto;
     background-color: whitesmoke;
 
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 10rpx;
+    padding-bottom: 10rpx;
 
 }
 
 .like-user-info image {
-    height: 15px;
-    width: 15px;
+    height: 30rpx;
+    width: 30rpx;
     display: inline;
-    margin-left: 6px;
+    margin-left: 12rpx;
 }
 
 .like-user-info text {
-    margin-left: 15rpx;
-    font-size: 14px;
+    margin-left: 30rpx;
+    font-size: 28rpx;
     position: relative;
-    height: 20px;
-    line-height: 20px;
+    height: 40rpx;
+    line-height: 40rpx;
 
     /*color: #0c61dd;*/
     color: #F0B27A;
@@ -488,12 +486,12 @@ button::after {
 .commentInfo view {
     height: auto;
     line-height: 1.1;
-    margin-bottom: 3px;
+    margin-bottom: 6rpx;
 }
 
 .commentInfo text {
     text-align:left;
-    font-size: 14px;
+    font-size: 28rpx;
     color: #F0B27A;
 }
 
@@ -511,7 +509,7 @@ button::after {
     left: 0;
     bottom: 0;
     width: 100%;
-    padding: 18rpx 0 18rpx 30rpx;
+    padding: 36rpx 0 36rpx 30rpx;
     background-color: #F7F8F7;
     font-size: 28rpx;
     z-index: 999;
@@ -530,7 +528,7 @@ button::after {
 }
 .receiverComment button{
     width: 15%;
-    margin-right: 5px;
-    margin-left: 5px;
-    padding: 3px 10px;
+    margin-right: 10rpx;
+    margin-left: 10rpx;
+    padding: 6rpx 20rpx;
 }

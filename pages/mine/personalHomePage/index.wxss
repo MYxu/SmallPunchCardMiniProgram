@@ -9,7 +9,7 @@
  */
 .headerInfo {
     width: 100%;
-    height: 260px;
+    height: 520rpx;
 }
 
 /*
@@ -17,24 +17,24 @@
  */
 .backgroundImg {
     width: 100%;
-    height: 200px;
+    height: 400rpx;
 }
 
 /* 进入个人主页设置页面按钮 */
 .intoUserInfoSetBtn {
     width: auto;
-    height: 20px;
-    padding: 3px 5px 3px 5px;
-    border: 1px solid white;
-    border-radius: 3px;
+    height: 40rpx;
+    padding: 6rpx 10rpx 6rpx 10rpx;
+    border: 2rpx solid white;
+    border-radius: 6rpx;
     background-color: transparent;
-    font-size: 12px;
+    font-size: 24rpx;
     font-weight: bolder;
     color: white;
 
     position: absolute;
-    top: 158px;
-    right: 10px;
+    top: 316rpx;
+    right: 20rpx;
 
     /*设置图片居中*/
     display: table;
@@ -42,9 +42,9 @@
 
 }
 .intoUserInfoSetBtn image {
-    height: 20px;
-    width: 20px;
-    margin-right: 3px;
+    height: 40rpx;
+    width: 40rpx;
+    margin-right: 6rpx;
     vertical-align: middle;
 
 }
@@ -54,33 +54,33 @@
  * 用户头像
  */
 .userAvatar {
-    width: 100px;
-    height: 100px;
-    border: 1px solid white;
+    width: 200rpx;
+    height: 200rpx;
+    border: 2rpx solid white;
     border-radius: 50%;
 
     /*绝对定位水平居中*/
     position: absolute;
-    top: 150px;
+    top: 300rpx;
     left: 50%;
-    margin-left: -50px;
+    margin-left: -100rpx;
 }
 
 /*用户昵称*/
 .userNickName {
     width: 100%;
     height: auto;
-    margin-bottom: 10px;
+    margin-bottom: 20rpx;
 
 
-    font-size: 19px;
+    font-size: 38rpx;
     text-align: center;
 }
 
 /* 关注与粉丝 */
 .followAndFollower {
     width: 100%;
-    height: 30px;
+    height: 60rpx;
     display: flex;
     justify-content: space-between;
 }
@@ -96,10 +96,10 @@
 /* 分隔符 */
 .decollator {
     width: 10%;
-    padding-top: 7px;
+    padding-top: 14rpx;
     text-align: center;
     color: #8a8a8a;
-    font-size: 10px;
+    font-size: 20rpx;
 }
 
 /* 我的粉丝 */
@@ -116,7 +116,7 @@
     width: 80%;
     margin-right: 10%;
     margin-left: 10%;
-    padding: 0 5px 5px 5px;
+    padding: 0 10rpx 10rpx 10rpx;
 
     display: flex;
     flex-direction: row;
@@ -130,19 +130,19 @@
 /* min flex item*/
 .minLabelItem {
     width: auto;
-    height: 15px;
+    height: 30rpx;
 
-    padding: 5px 12px 5px 12px;
-    margin: 3px;
+    padding: 10rpx 24rpx 10rpx 24rpx;
+    margin: 6rpx;
 
-    border: 1px solid darkorange;
-    border-radius: 15px;
+    border: 2rpx solid darkorange;
+    border-radius: 30rpx;
 
     flex-grow: 0;
 
     color: darkorange;
-    font-size: 13px;
-    line-height: 15px;
+    font-size: 26rpx;
+    line-height: 30rpx;
     text-align: center;
 
 }
@@ -150,53 +150,53 @@
 /* 小号添加按钮 图标 */
 .minLabelItem image {
     display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 3px;
+    width: 20rpx;
+    height: 20rpx;
+    margin-right: 6rpx;
 }
 
 /* max flex item*/
 .maxLabelItem {
     width: auto;
-    height: 25px;
+    height: 50rpx;
 
-    padding: 5px 12px 5px 12px;
-    margin: 3px;
+    padding: 10rpx 24rpx 10rpx 24rpx;
+    margin: 6rpx;
 
-    border: 1px solid darkorange;
-    border-radius: 15px;
+    border: 2rpx solid darkorange;
+    border-radius: 30rpx;
 
     flex-grow: 0;
 
     color: darkorange;
-    font-size: 16px;
-    line-height: 25px;
+    font-size: 32rpx;
+    line-height: 50rpx;
     text-align: center;
 
 }
 /* 大号添加按钮 图标 */
 .maxLabelItem image {
     display: inline-block;
-    width: 14px;
-    height: 15px;
-    margin-right: 6px;
-    margin-bottom: 2px;
+    width: 28rpx;
+    height: 30rpx;
+    margin-right: 12rpx;
+    margin-bottom: 4rpx;
     vertical-align: middle;
 }
 
 /* 分割线 */
 .breakupLineMin {
     background-color: #e7e7e7;
-    height: 1px;
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
+    height: 2rpx;
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+    margin-left: 20rpx;
 }
 
 /* 个人主页访客记录: 访客人数 & 最近访问的五个人头像 & 详细访问记录页面入口*/
 .visitorRecord {
     width: 100%;
-    height: 50px;
+    height: 100rpx;
     display: flex;
     justify-content: space-between;
 }
@@ -204,11 +204,11 @@
 /*访客人数*/
 .visitorNum {
     width: 45%;
-    height: 50px;
-    padding-left: 10px;
+    height: 100rpx;
+    padding-left: 20rpx;
 
-    line-height: 50px;
-    font-size: 14px;
+    line-height: 100rpx;
+    font-size: 28rpx;
 
 }
 
@@ -226,9 +226,9 @@
 }
 
 .visitorAvatarItem {
-    width: 25px;
-    height: 25px;
-    margin-left: 5px;
+    width: 50rpx;
+    height: 50rpx;
+    margin-left: 10rpx;
 }
 .visitorAvatarItem image {
     width: 100%;
@@ -243,14 +243,14 @@
 }
 .intoVisitorDetailPageIcon image {
     width: 70%;
-    height: 35px;
-    padding-top: 7px;
+    height: 70rpx;
+    padding-top: 14rpx;
 }
 
 /*分割线*/
 .breakupLineMax {
     background-color: whitesmoke;
-    height: 10px;
+    height: 20rpx;
     width: 100%;
 }
 
@@ -258,77 +258,76 @@
 /* 我加入的打卡圈子 */
 .joinInPunchCardProject {
     width: 100%;
-    height: 165px;
-    padding-top: 10px;
+    height: 330rpx;
+    padding-top: 20rpx;
 
 }
 
 .joinInPunchCardProject text {
     width: 100%;
-    height: 30px;
+    height: 60rpx;
 
-    font-size: 18px;
+    font-size: 36rpx;
     font-weight: bolder;
-    line-height: 30px;
-    padding-left: 10px;
+    line-height: 60rpx;
+    padding-left: 20rpx;
 }
 
 /* 加入的打卡圈子通过scroll-view横向展示 */
 .joinInPunchCardProjectList {
-    height: 100px;
+    height: 200rpx;
     width: auto;
-    margin-top: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    margin-top: 20rpx;
+    padding-left: 20rpx;
+    padding-right: 20rpx;
 
     white-space: nowrap;
 }
 
 /*还未参与任何一个打卡圈子*/
 .noJoinInPunchCardProjectNotice {
-    height: 100px;
+    height: 200rpx;
     width: 100%;
-    line-height: 100px;
+    line-height: 200rpx;
 
     font-weight: bolder;
     text-align: center;
-
 }
 
 /* 加入的打卡圈子相关信息展示 */
 .joinInPunchCardProjectItem {
-    width: 200px;
+    width: 400rpx;
     height: 100%;
-    margin-right: 10px;
-    border-radius: 5px;
+    margin-right: 20rpx;
+    border-radius: 10rpx;
 
     display: inline-block;
 }
 
 /*打卡圈子名称*/
 .punchCardProjectName {
-    height: 60px;
+    height: 120rpx;
     width: 100%;
-    line-height: 60px;
+    line-height: 120rpx;
     text-align: center;
     color: white;
 }
 
 /* 所属打卡圈子打卡天数、排名*/
 .punchCardDaysAndRand {
-    height: 40px;
+    height: 80rpx;
     width: 100%;
-    line-height: 40px;
+    line-height: 80rpx;
     text-align: center;
     color: white;
-    font-size: 12px;
+    font-size: 24rpx;
 
 }
 
 
 /* 间隔线 */
 .interval_line {
-    height: 10px;
+    height: 20rpx;
     width: 100%;
     background-color: whitesmoke;
 }
@@ -342,12 +341,12 @@
     justify-content: center;
     align-items: center;
 
-    font-size: 14px;
+    font-size: 28rpx;
 }
 .empty-diary-list-notice > image {
-    margin: 25px 0 10px 0;
-    width: 120px;
-    height: 120px;
+    margin: 50rpx 0 20rpx 0;
+    width: 240rpx;
+    height: 240rpx;
 }
 
 
@@ -359,11 +358,11 @@
 
 .title {
     width: auto;
-    height: 50px;
-    line-height: 50px;
-    margin: 0 10px;
+    height: 100rpx;
+    line-height: 100rpx;
+    margin: 0 20rpx;
 
-    font-size: 17px;
+    font-size: 34rpx;
     color: black;
     font-weight: bolder;
 }
@@ -372,14 +371,12 @@
 /* 底部*/
 .bottom {
     width: 100%;
-    height: 30px;
-    line-height: 30px;
-    margin-bottom: 15px;
-    padding-top: 10px;
+    height: 60rpx;
+    line-height: 60rpx;
+    margin-bottom: 30rpx;
+    padding-top: 20rpx;
     text-align: center;
 
     color: #8a8a8a;
-    font-size: 15px;
+    font-size: 30rpx;
 }
-
-

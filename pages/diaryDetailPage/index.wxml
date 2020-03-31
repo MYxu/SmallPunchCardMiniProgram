@@ -335,8 +335,7 @@
                         <view class="child-comment-list-item">
                           <text class="reviewer-nick-name"
                                 data-user-id="{{childCItem.reviewer.id}}"
-                                catchtap="_intoPersonalHomePage">{{childCItem.reviewer.nick_name}}
-                          </text>
+                                catchtap="_intoPersonalHomePage">{{childCItem.reviewer.nick_name}}</text>
                           <text>回复</text>
                           <text class="respondent-nick-name"
                                 data-user-id="{{childCItem.respondent.id}}"

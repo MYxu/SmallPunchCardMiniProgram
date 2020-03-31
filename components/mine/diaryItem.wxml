@@ -254,7 +254,7 @@
       <block wx:if="{{diaryItemData.allCommentInfo.length > 0}}">
         <block wx:if="{{diaryItemData.tenLikeInfo.length > 0}}">
           <!-- 隔离带 -->
-          <view style="background-color: #dbdbdb;height: 1px;"></view>
+          <view style="background-color: #dbdbdb;height: 1rpx;"></view>
         </block>
 
         <view class="commentInfo">
