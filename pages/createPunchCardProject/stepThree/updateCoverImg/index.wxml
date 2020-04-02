@@ -12,7 +12,8 @@
         <view class="title">推荐图片</view>
         <!--推荐图片列表-->
         <block wx:if="{{systemRecommendCoverImgList.length > 0}}">
-            <block wx:for="{{systemRecommendCoverImgList}}">
+            <block wx:for="{{systemRecommendCoverImgList}}"
+                   wx:key="id">
                 <view class="cover-img-item" data-url="{{item.img_url}}"
                       data-id="{{item.id}}" bindtap="useSystemRecommendCoverImg">
                     <image src="{{imgRootPath}}{{item.img_url}}"></image>

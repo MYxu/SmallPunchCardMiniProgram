@@ -22,11 +22,11 @@
     height: auto;
     position: fixed;
     top: 50%;
-    margin-top: -150px;
+    margin-top: -300rpx;
     left: 10%;
     z-index: 9999;
     background: white;
-    border-radius: 10px;
+    border-radius: 20rpx;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -34,65 +34,65 @@
 
 .punch-card-invite-header {
     width: 100%;
-    height: 150px;
-    border-radius: 10px;
+    height: 300rpx;
+    border-radius: 20rpx;
 }
 
 .punch-card-invite-img {
     width: 100%;
-    height: 150px;
-    border-radius: 10px;
+    height: 300rpx;
+    border-radius: 20rpx;
     position: relative;
 }
 /*隐藏邀请模态框按钮*/
 .hidden-custom-invite-modal {
     position: absolute;
-    width: 30px;
-    height: 30px;
+    width: 60rpx;
+    height: 60rpx;
     opacity: 1;
     border-radius: 50%;
-    top: 3px;
-    right: 3px;
+    top: 6rpx;
+    right: 6rpx;
 }
 
 /*自定义模态框邀请标题*/
 .punch-card-invite-title {
     width: 100%;
-    height: 40px;
-    line-height: 40px;
+    height: 80rpx;
+    line-height: 80rpx;
     text-align: center;
     color: black;
-    font-size: 16px;
+    font-size: 32rpx;
 }
 /*自定义模态框邀请内容*/
 .punch-card-invite-content {
-    width: 228px;
+    width: 456rpx;
     height: auto;
-    margin: 0 0 15px 40px;
+    margin: 0 0 30rpx 80rpx;
 
     line-height: 1.5;
 
     color: #9d9d9d;
-    font-size: 14px;
+    font-size: 28rpx;
     white-space: normal;
 }
 /*自定义模态框邀请按钮*/
 .punch-card-invite-btn {
     width: 100%;
-    height: 80px;
-    border-radius: 10px;
+    height: 160rpx;
+    border-radius: 20rpx;
 }
 
 .punch-card-invite-btn > button {
     background-color: red;
     width: auto;
-    height: 50px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 10px;
-    line-height: 50px;
-    border-radius: 5px;
-    font-size: 17px;
+    height: 100rpx;
+    margin-left: 40rpx;
+    margin-right: 40rpx;
+    margin-top: 20rpx;
+    line-height: 100rpx;
+    border-radius: 10rpx;
+    font-size: 34rpx;
     color: white;
     text-align: center;
 
@@ -108,25 +108,25 @@
 /*打卡圈子详情--封面图部分*/
 .cover-img-container {
     width: 100%;
-    height: 180px;
+    height: 360rpx;
     background-color: white;
 }
 
 /*封面图*/
 .cover-img {
     width: 100%;
-    height: 170px;
+    height: 340rpx;
 }
 /*封面图上的分享按钮*/
 .share-btn-1 {
     width: auto;
-    height: 20px;
+    height: 40rpx;
     padding: 0;
     position: absolute;
     right: 0;
-    top: 20px;
+    top: 40rpx;
 
-    border-radius: 10px 0 0  10px;
+    border-radius: 20rpx 0 0 20rpx;
     background-color: indianred;
 
     display: flex;
@@ -135,19 +135,17 @@
 }
 
 .share-btn-1 > image {
-    width: 15px;
-    height: 15px;
-    margin: 0 3px 0 3px;
+    width: 30rpx;
+    height: 30rpx;
+    margin: 0 6rpx 0 6rpx;
 }
 .share-btn-1 > text {
     color: white;
-    font-size: 11px;
-    height: 20px;
+    font-size: 22rpx;
+    height: 40rpx;
     width: auto;
-    line-height: 20px;
-    margin-right: 4px;
-
-
+    line-height: 40rpx;
+    margin-right: 8rpx;
 }
 
 /*修改封面图按钮*/
@@ -155,9 +153,9 @@
     width: auto;
     height: auto;
     position: absolute;
-    padding: 5px;
-    right: 10px;
-    top: 135px;
+    padding: 10rpx;
+    right: 20rpx;
+    top: 270rpx;
     background: rgba(0,0,0,0.3);
     z-index: 1;
 
@@ -166,14 +164,14 @@
     align-items: center;
 }
 .update-cover-img-btn > image {
-    width: 15px;
-    height: 15px;
-    margin-right: 3px;
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 6rpx;
 }
 .update-cover-img-btn {
-    height: 15px;
-    line-height: 15px;
-    font-size: 12px;
+    height: 30rpx;
+    line-height:30rpx;
+    font-size: 24rpx;
     color: white;
 }
 
@@ -182,7 +180,7 @@
 /*圈子基本信息*/
 .project-base-info {
     width: 100%;
-    height: 80px;
+    height: 160rpx;
     background-color: white;
 
     display: flex;
@@ -194,24 +192,24 @@
 /*上半部为项目名*/
 .project-name {
     width: 100%;
-    height: 30px;
-    margin-left: 25px;
+    height: 60rpx;
+    margin-left: 50rpx;
 }
 
 .project-name text {
     color: black;
     width: auto;
-    height: 30px;
-    line-height: 30px;
-    font-size: 20px;
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 40rpx;
     font-weight: bolder;
-    margin-right: 8px;
+    margin-right: 16rpx;
     display: inline-block;
 }
 /*圈子名修改按钮*/
 .project-name > image {
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
 }
 
 /*自定义的修改圈子名称模态框*/
@@ -238,62 +236,62 @@
     left: 0;
     z-index: 9999;
     background: #f9f9f9;
-    margin: -100px 10%;
-    border-radius: 10px;
+    margin: -200rpx 10%;
+    border-radius: 20rpx;
 }
 /*对话框标题*/
 .modal-title {
-    padding-top: 20px;
-    font-size: 18px;
+    padding-top: 40rx;
+    font-size: 36rpx;
     font-weight: bolder;
     color: black;
     text-align: center;
 }
 /*对话框内容*/
 .modal-content {
-    padding: 15px 15px;
+    padding: 30rpx 30rpx;
 }
 
 /*对话框内容：添加自定义标签输入框*/
 .modal-input {
     display: flex;
     background: #fff;
-    border: 1px solid whitesmoke;
-    border-radius: 5px;
-    font-size: 14px;
+    border: 2rpx solid whitesmoke;
+    border-radius: 10rpx;
+    font-size: 28rpx;
 }
 
 /*输入框*/
 .input {
     width: 100%;
-    height: 40px;
-    font-size: 14px;
-    line-height: 40px;
-    padding: 0 5px;
+    height: 80rpx;
+    font-size: 28rpx;
+    line-height: 80rpx;
+    padding: 0 10rpx;
     box-sizing: border-box;
     color: black;
 }
 /*输入框placeholder样式*/
 .input-holder {
     color: #666;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 
 /*对话框按钮*/
 .modal-footer {
     display: flex;
     flex-direction: row;
-    height: 50px;
-    border-top: 1px solid #dedede;
-    font-size: 17px;
-    line-height: 50px;
+    height: 100rpx;
+    border-top: 2rpx solid #dedede;
+    font-size: 34rpx;
+    line-height: 100rpx;
 }
 /*取消按钮*/
 .btn-cancel {
     width: 50%;
     color: #666;
     text-align: center;
-    border-right: 1px solid #dedede;
+    border-right: 2rpx solid #dedede;
 }
 /*确认按钮*/
 .btn-confirm {
@@ -306,23 +304,23 @@
 /*下半部创建者信息*/
 .project-creator-info {
     width: 100%;
-    height: 40px;
-    margin-left: 25px;
+    height: 80rpx;
+    margin-left: 50rpx;
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 
 .project-creator-info > image {
-    width: 30px;
-    height: 30px;
+    width: 60rpx;
+    height: 60rpx;
     border-radius: 50%;
-    margin-right: 10px;
+    margin-right: 20rpx;
 
     display: inline-block;
 }
 .project-creator-info > text {
-    font-size: 13px;
+    font-size: 26rpx;
     color: #C9C9C9;
 
 }
@@ -332,39 +330,39 @@
     width: 100%;
     /*min-height: 200px;*/
     height: auto;
-    margin-top: 10px;
+    margin-top: 20rpx;
     background-color: white;
 }
 
 /*圈子介绍标题：当填写圈子简介信息之后显示缩小化的编辑按钮icon*/
 .project-intr-info-header {
     width: 100%;
-    height: 60px;
+    height: 120rpx;
 }
 
 .project-intr-info-header > text {
     width: auto;
-    height: 60px;
-    line-height: 60px;
-    margin-left: 10px;
-    margin-right: 8px;
+    height: 120rpx;
+    line-height: 120rpx;
+    margin-left: 20rpx;
+    margin-right: 16rpx;
     color: black;
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: bolder;
     display: inline-block;
 }
 .project-intr-info-header > image {
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
 }
 
 
 /*圈子简介信息为空时：提示填写圈子介绍信息*/
 .edit-project-intr-info-btn {
     width: auto;
-    height: 125px;
-    margin: 0 10px 15px 10px;
-    border: 1px #F0B27A dashed;
+    height: 250rpx;
+    margin: 0 20rpx 30rpx 20rpx;
+    border: 2rpx #F0B27A dashed;
 
     display: flex;
     flex-direction: column;
@@ -375,41 +373,41 @@
 /*提示添加圈子简介*/
 .edit-project-intr-notice {
     width: auto;
-    height: 65px;
+    height: 130rpx;
 
-    line-height: 65px;
-    font-size: 16px;
+    line-height: 130rpx;
+    font-size: 32rpx;
     color: #F0B27A;
     display: table;
     vertical-align: middle;
 }
 .edit-project-intr-notice > image {
-    width: 14px;
-    height: 14px;
-    margin-right: 5px;
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
     vertical-align: middle;
     display: inline-block;
-    margin-bottom: 3px;
+    margin-bottom: 6rpx;
 }
 /*添加圈子简介获取金币提示*/
 .edit-project-intr-activity-notice {
     width: auto;
-    height: 20px;
-    padding-left: 5px;
-    padding-right: 5px;
-    border-radius: 10px;
+    height: 40rpx;
+    padding-left: 10rpx;
+    padding-right: 10rpx;
+    border-radius: 20rpx;
     background-color: beige;
 
-    font-size: 13px;
-    line-height: 20px;
+    font-size: 26rpx;
+    line-height: 40rpx;
     color: indianred;
     display: table;
     vertical-align: middle;
 }
 .edit-project-intr-activity-notice > image {
-    width: 15px;
-    height: 15px;
-    margin-right: 5px;
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 10rpx;
     display: inline-block;
     vertical-align: middle;
 }
@@ -419,14 +417,14 @@
 .project-intr-info-content {
     width: auto;
     height: auto;
-    margin: 0 10px 15px 10px;
+    margin: 0 20rpx 30rpx 20rpx;
 }
 
 /*文本简介*/
 .project-intr-text-content {
     width: 100%;
     line-height: 1.2;
-    padding-bottom: 15px;
+    padding-bottom: 30rpx;
 }
 
 /*图片简介*/
@@ -435,7 +433,7 @@
 }
 .project-intr-image-content > image {
     width: 100%;
-    padding-bottom: 15px;
+    padding-bottom: 30rpx;
 }
 
 
@@ -446,39 +444,39 @@
 .creator-introduction-info {
     width: 100%;
     height: auto;
-    margin-top: 10px;
+    margin-top: 20rpx;
     background-color: white;
 }
 
 /*圈主介绍标题：当填写圈主信息之后显示缩小化的编辑按钮icon*/
 .creator-intr-info-header {
     width: 100%;
-    height: 60px;
+    height: 120rpx;
 }
 
 .creator-intr-info-header > text {
     width: auto;
-    height: 60px;
-    line-height: 60px;
-    margin-left: 10px;
-    margin-right: 10px;
+    height: 120rpx;
+    line-height: 120rpx;
+    margin-left: 20rpx;
+    margin-right: 20rpx;
     color: black;
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: bolder;
     display: inline-block;
 }
 .creator-intr-info-header > image {
-    width: 15px;
-    height: 15px;
+    width: 30rpx;
+    height: 30rpx;
 }
 
 
 /*圈主简介信息为空时：提示填写圈主介绍信息*/
 .edit-creator-intr-info-btn {
     width: auto;
-    height: 125px;
-    margin: 0 10px 15px 10px;
-    border: 1px #F0B27A dashed;
+    height: 250rpx;
+    margin: 0 20rpx 30rpx 20rpx;
+    border: 2rpx #F0B27A dashed;
 
     display: flex;
     flex-direction: column;
@@ -488,62 +486,62 @@
 
 .edit-creator-intr-notice {
     width: auto;
-    height: 65px;
+    height: 130rpx;
 
-    line-height: 65px;
-    font-size: 16px;
+    line-height: 130rpx;
+    font-size: 32rpx;
     color: #F0B27A;
     display: table;
     vertical-align: middle;
 }
 .edit-creator-intr-notice > image {
-    width: 14px;
-    height: 14px;
-    margin-right: 5px;
+    width: 28rpx;
+    height: 28rpx;
+    margin-right: 10rpx;
     vertical-align: middle;
     display: inline-block;
-    margin-bottom: 3px;
+    margin-bottom: 6rpx;
 }
 
 /*展示填写的圈主简介信息*/
 .creator-intr-info-content {
     width: auto;
     height: auto;
-    margin: 0 10px 15px 10px;
+    margin: 0 20rpx 30rpx 20rpx;
 }
 
 .creator-intr-avatar {
     width: auto;
-    height: 40px;
+    height: 80rpx;
 
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
 .creator-intr-avatar > image {
-    width: 40px;
-    height: 40px;
+    width: 80rpx;
+    height: 80rpx;
     border-radius: 50%;
-    margin-right: 6px;
+    margin-right: 12rpx;
 
     display: inline-block;
 }
 
 .creator-intr-avatar > text {
-    font-size: 15px;
+    font-size: 30rpx;
     color: dodgerblue;
 }
 
 /*圈主简介内容*/
 .creator-intr-text {
     width: auto;
-    margin-left: 46px;
-    padding-bottom: 10px;
-    margin-top: 10px;
+    margin-left: 92rpx;
+    padding-bottom: 20rpx;
+    margin-top: 20rpx;
     height: auto;
     line-height: 1.2;
-    letter-spacing: 1px;
-    font-size: 15px;
+    letter-spacing: 2rpx;
+    font-size: 30rpx;
     color: black;
 }
 
@@ -551,8 +549,8 @@
 /*圈子类型展示 & 修改*/
 .project-type-info {
     width: 100%;
-    height: 50px;
-    margin-top: 10px;
+    height: 100rpx;
+    margin-top: 20rpx;
     background-color: white;
     display: flex;
     flex-direction: row;
@@ -561,41 +559,41 @@
 
 .project-type-info-header {
     width: 20%;
-    height: 50px;
-    margin-left: 10px;
-    line-height: 50px;
+    height: 100rpx;
+    margin-left: 20rpx;
+    line-height: 100rpx;
     color: black;
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: bolder;
 }
 
 .project-type-info-content {
     width: 70%;
-    height: 50px;
-    line-height: 50px;
-    font-size: 14px;
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 28rpx;
     color: #C9C9C9;
     text-align: right;
 }
 
 .update-project-type-btn {
     width: 10%;
-    height: 50px;
+    height: 100rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 .update-project-type-btn > image {
-    width: 25px;
-    height: 25px;
+    width: 50rpx;
+    height: 50rpx;
     vertical-align: middle;
 }
 
 /*设置报名费&分销佣金*/
 .set-project-attend-cost {
     width: 100%;
-    height: 65px;
-    margin-top: 10px;
+    height: 130rpx;
+    margin-top: 20rpx;
     background-color: white;
 
     display: flex;
@@ -605,45 +603,45 @@
 
 .set-project-attend-cost-header {
     width: 90%;
-    height: 65px;
-    margin-left: 10px;
+    height: 130rpx;
+    margin-left: 20rpx;
 
 }
 
 .title {
     width: 100%;
-    height: 39px;
-    line-height: 39px;
-    font-size: 16px;
+    height: 78rpx;
+    line-height: 78rpx;
+    font-size: 32rpx;
     color: black;
     font-weight: bolder;
 }
 .notice {
     width: 100%;
-    height: 26px;
-    font-size: 13px;
+    height: 52rpx;
+    font-size: 26rpx;
     color: #C9C9C9;
 }
 
 .set-project-attend-cost-btn {
     width: 10%;
-    height: 65px;
+    height: 130rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 .set-project-attend-cost-btn > image {
-    width: 25px;
-    height: 25px;
+    width: 50rpx;
+    height: 50rpx;
     vertical-align: middle;
 }
 
 /*创建契约金*/
 .set-punch-card-money-award {
     width: 100%;
-    height: 65px;
-    margin-top: 10px;
-    margin-bottom: 90px;
+    height: 130rpx;
+    margin-top: 20rpx;
+    margin-bottom: 180rpx;
     background-color: white;
 
     display: flex;
@@ -653,20 +651,20 @@
 
 .set-punch-card-money-award-header {
     width: 90%;
-    height: 65px;
-    margin-left: 10px;
+    height: 130rpx;
+    margin-left: 20rpx;
 }
 
 .set-punch-card-money-award-btn {
     width: 10%;
-    height: 65px;
+    height: 130rpx;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 .set-punch-card-money-award-btn > image {
-    width: 25px;
-    height: 25px;
+    width: 50rpx;
+    height: 50rpx;
     vertical-align: middle;
 }
 
@@ -676,7 +674,7 @@
     width: 90%;
     height: auto;
     background-color: white;
-    padding: 10px 5%;
+    padding: 30rpx 5%;
 
     display: flex;
     justify-content: space-around;
@@ -689,23 +687,21 @@
 /*分享按钮2*/
 .share-btn-2 {
     width: 49%;
-    height: 50px;
-    line-height: 50px;
+    height: 100rpx;
+    line-height: 100rpx;
     color: red;
-    border: 1px solid red;
-    border-radius: 3px;
+    border: 2rpx solid red;
+    border-radius: 6rpx;
     margin-right: 1%;
 }
 
 /*进入打卡详情页*/
 .into-punch-card-detail {
     width: 49%;
-    height: 50px;
-    line-height: 50px;
+    height: 100rpx;
+    line-height: 100rpx;
     background-color: #F0B27A;
     color: white;
-    border-radius: 5px;
+    border-radius: 10rpx;
     margin-left: 1%;
 }
-
-

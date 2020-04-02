@@ -14,7 +14,7 @@
     <!--编辑的圈子介绍-->
     <block wx:if="{{projectIntrInfoList}}">
         <view class="project-intr-info-list">
-            <block wx:for="{{projectIntrInfoList}}">
+            <block wx:for="{{projectIntrInfoList}}" wx:key="id">
                 <!--如果为文字信息简介-->
                 <block wx:if="{{item.type === 1}}">
                     <view class="intr-info-btn">

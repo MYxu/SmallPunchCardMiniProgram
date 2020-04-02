@@ -2,7 +2,7 @@
     <scroll-view class="project-type-label-list">
         <view class="notice-message">点击展开分类,最多可以添加3个标签</view>
         <block wx:for="{{parentLabel}}" wx:for-item="parentItem"
-               wx:for-index="p_index">
+               wx:for-index="p_index" wx:key="id">
             <!--父级标签-->
             <view class="parent-label-item" data-parentIndex="{{p_index}}"
                   bindtap="showChildLabel" >
@@ -30,7 +30,7 @@
             <view class="child-label-list"
                   hidden="{{parentItem.show}}">
                 <view>
-                    <block wx:for="{{childLabel}}" wx:for-item="childItem">
+                    <block wx:for="{{childLabel}}" wx:for-item="childItem" wx:key="id">
                         <block wx:if="{{parentItem.id == childItem.parent_id}}">
                             <view class='child-label-item {{childItem.choose && "child-label-item-choose"}}' bindtap="childLabelBeChoose"
                                   data-childId="{{childItem.id}}"
