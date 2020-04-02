@@ -18,7 +18,7 @@
 
       <!--展示前四个打卡圈子-->
       <block wx:if="{{projectNum > 0}}">
-        <block wx:for="{{punchCardProjectList}}" wx:key="{{item.id}}">
+        <block wx:for="{{punchCardProjectList}}" wx:key="id">
           <block wx:if="{{index <= 3}}">
             <view class="container-item">
               <view class="punch-card-project-item-view"
@@ -116,7 +116,7 @@
       </block>
       <block wx:else>
         <view class="diary-recommend-view">
-          <block wx:for="{{recommendDiaryList}}" wx:key="{{item.id}}">
+          <block wx:for="{{recommendDiaryList}}" wx:key="id">
             <view class="diary-recommend-item"
                   catchtap="intoDiaryDetailPage"
                   data-diary-id="{{item.id}}">
@@ -130,7 +130,7 @@
                     data-project_id="{{item.projectInfo.id}}"
                     data-is_creator="-1">
                 <view class="project-cover-img-info">
-                  <block wx:if="{{item.projectInfo.cover_img_url == 'default_avatar'}}">
+                  <block wx:if="{{item.projectInfo.cover_img_url == 'default_cover_img'}}">
                     <image src="/images/default/project_cover_img.png"></image>
                   </block>
                   <block wx:else>
@@ -144,7 +144,7 @@
                   </view>
                   <view class="project-type-label-lists">
                     <block wx:for="{{item.projectInfo.type_label}}" wx:for-item="l"
-                           wx:key="{{l.child_label}}">
+                           wx:key="child_label">
                       <view class="project-type-label-item"
                             data-parent-name="{{l.parent_label}}"
                             catchtap="searchProjectByType">
@@ -157,7 +157,7 @@
                 <!--TODO 最新加入的三个参与者头像-->
                 <view class="project-attend-user-info">
                   <block wx:for="{{item.recentThreeAttendUserList}}" wx:for-item="a"
-                         wx:for-index="i" wx:key="{{i}}">
+                         wx:for-index="i" wx:key="avatar_url">
                     <view class="user-avatar-item">
                       <block wx:if="{{a.avatar_url == 'default_avatar'}}">
                         <image src="/images/default/project_cover_img.png"
@@ -198,7 +198,7 @@
                   <block wx:else>
                     <view class="diary-img-list">
                       <block wx:for="{{item.diaryResource}}" wx:for-item="v"
-                             wx:for-index="k" wx:key="{{v.id}}">
+                             wx:for-index="k" wx:key="id">
                         <block wx:if="{{v.type == '1'}}">
                           <view class="diary-img-item" style="width:{{diaryImgWidth}}px;height: {{diaryImgWidth}}px"
                                 catchtap="previewDiaryImage" data-index="{{index}}"
@@ -213,7 +213,7 @@
 
                   <!--音频-->
                   <block wx:for="{{item.diaryResource}}" wx:for-item="audioItem"
-                         wx:key="{{audioItem.id}}">
+                         wx:key="id">
                     <block wx:if="{{audioItem.type == '2'}}">
                       <punch-card-diary-audio-play
                               audio-name="{{item.publisher.nick_name}}的录音"
