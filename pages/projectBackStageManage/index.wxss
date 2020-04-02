@@ -7,7 +7,7 @@
 .container-header {
     width: 100%;
     height: auto;
-    padding: 10px 0;
+    padding: 20rpx 0;
     background-color: white;
 }
 
@@ -15,7 +15,7 @@
 .project-name {
     width: auto;
     height: auto;
-    margin: 0 15px;
+    margin: 0 30rpx;
 
     display: flex;
     flex-direction: row;
@@ -23,12 +23,12 @@
     align-items: center;
 }
 .project-name image {
-    width: 16px;
-    height: 16px;
-    margin-left: 5px;
+    width: 32rpx;
+    height: 32rpx;
+    margin-left: 10rpx;
 }
 .project-name > text {
-    font-size: 17px;
+    font-size: 34rpx;
     font-weight: bolder;
     color: black;
 }
@@ -57,62 +57,62 @@
     left: 0;
     z-index: 9999;
     background: #f9f9f9;
-    margin: -100px 10%;
-    border-radius: 10px;
+    margin: -200rpx 10%;
+    border-radius: 20rpx;
 }
 /*对话框标题*/
 .modal-title {
-    padding-top: 20px;
-    font-size: 18px;
+    padding-top: 40rpx;
+    font-size: 36rpx;
     font-weight: bolder;
     color: black;
     text-align: center;
 }
 /*对话框内容*/
 .modal-content {
-    padding: 15px 15px;
+    padding: 30rpx 30rpx;
 }
 
 /*对话框内容：添加自定义标签输入框*/
 .modal-input {
     display: flex;
     background: #fff;
-    border: 1px solid whitesmoke;
-    border-radius: 5px;
-    font-size: 14px;
+    border: 2rpx solid whitesmoke;
+    border-radius: 10rpx;
+    font-size: 28rpx;
 }
 
 /*输入框*/
 .input {
     width: 100%;
-    height: 40px;
-    font-size: 14px;
-    line-height: 40px;
-    padding: 0 5px;
+    height: 80rpx;
+    font-size: 28rpx;
+    line-height: 80rpx;
+    padding: 0 10rpx;
     box-sizing: border-box;
     color: black;
 }
 /*输入框placeholder样式*/
 .input-holder {
     color: #666;
-    font-size: 14px;
+    font-size: 28rpx;
 }
 
 /*对话框按钮*/
 .modal-footer {
     display: flex;
     flex-direction: row;
-    height: 50px;
-    border-top: 1px solid #dedede;
-    font-size: 17px;
-    line-height: 50px;
+    height: 100rpx;
+    border-top: 2rpx solid #dedede;
+    font-size: 34rpx;
+    line-height: 100rpx;
 }
 /*取消按钮*/
 .btn-cancel {
     width: 50%;
     color: #666;
     text-align: center;
-    border-right: 1px solid #dedede;
+    border-right: 2rpx solid #dedede;
 }
 /*确认按钮*/
 .btn-confirm {
@@ -125,8 +125,8 @@
 .project-id {
     width: auto;
     height: auto;
-    margin: 0 15px;
-    font-size: 13px;
+    margin: 0 30rpx;
+    font-size: 26rpx;
     color: #C9C9C9;
 }
 
@@ -139,22 +139,22 @@
 /*统计面板标题 & 统计时间*/
 .panel-title {
     width: auto;
-    height: 50px;
-    margin: 0 15px;
+    height: 100rpx;
+    margin: 0 30rpx;
 
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 
-    font-size: 16px;
+    font-size: 32rpx;
     color: black;
 
-    border-bottom: 1px #E5E5E5 solid;
+    border-bottom: 2rpx #E5E5E5 solid;
 }
 
 .data-update-time {
-    font-size: 11px;
+    font-size: 22rpx;
     color: #C9C9C9;
 }
 
@@ -162,14 +162,14 @@
 .data-statistics-content {
     width: auto;
     height: auto;
-    margin: 0 15px;
+    margin: 0 30rpx;
 
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
 
-    padding: 15px 0 5px 0;
+    padding: 30rpx 0 10rpx 0;
 }
 
 /*统计数据显示*/
@@ -184,20 +184,20 @@
 }
 .data-statistics-item {
     width: 50%;
-    height: 60px;
+    height: 120rpx;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-around;
 
-    font-size: 14px;
+    font-size: 28rpx;
     color: #C9C9C9;
 
-    margin-bottom: 15px;
+    margin-bottom: 30rpx;
 }
 
 .data {
-    font-size: 23px;
+    font-size: 46rpx;
     font-weight: bolder;
     color: black;
 }
@@ -212,8 +212,8 @@
     align-items: center;
 }
 .into-data-statistics-detail-page-icon > image {
-    width: 30px;
-    height: 30px;
+    width: 60rpx;
+    height: 60rpx;
 }
 
 /*圈子竞争力排名*/
@@ -228,20 +228,20 @@
 
 .project-compete-rank > view {
     width: 80%;
-    height: 50px;
-    margin-left: 15px;
-    line-height: 50px;
-    font-size: 16px;
+    height: 100rpx;
+    margin-left: 30rpx;
+    line-height: 100rpx;
+    font-size: 32rpx;
     color: black;
 }
 .rank {
     color: red;
-    font-size: 13px;
+    font-size: 26rpx;
 }
 
 .project-compete-rank > image {
-    width: 30px;
-    height: 30px;
+    width: 60rpx;
+    height: 60rpx;
 }
 
 /*打卡契约*/
@@ -249,7 +249,7 @@
     background-color: white;
     width: auto;
     display: flex;
-    padding: 0 15px;
+    padding: 0 30rpx;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
@@ -257,31 +257,31 @@
 
 .punch-card-convention-help {
     width: 40%;
-    height: 50px;
+    height: 100rpx;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    font-size: 16px;
+    font-size: 32rpx;
     color: black;
 }
 .punch-card-convention-help > image {
-    width: 15px;
-    height: 15px;
-    margin-left: 5px;
+    width: 30rpx;
+    height: 30rpx;
+    margin-left: 10rpx;
 }
 
 .into-create-punch-card-convention-page {
     width:60%;
-    height: 50px;
+    height: 100rpx;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
 }
 .into-create-punch-card-convention-page > image {
-    width: 30px;
-    height: 30px;
+    width: 60rpx;
+    height: 60rpx;
 }
 
 
@@ -289,7 +289,7 @@
 /*管理功能列表*/
 .back-stage-manage-function-list {
     width: 100%;
-    height: 202px;
+    height: 404rpx;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -301,31 +301,31 @@
 /*单项功能样式*/
 .function-item {
     width: 33%;
-    height: 100px;
+    height: 200rpx;
     background-color: white;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 
-    font-size: 13px;
+    font-size: 26rpx;
     color: black;
 
 }
 .function-item > image {
-    margin: 20px 0 15px 0;
-    width: 30px;
-    height: 30px;
+    margin: 40rpx 0 30rpx 0;
+    width: 60rpx;
+    height: 60rpx;
 }
 
 
 /*页脚问题反馈按钮*/
 .container-footer {
     width: 100%;
-    height: 30px;
-    padding-bottom: 20px;
-    line-height: 30px;
-    font-size: 14px;
+    height: 60rpx;
+    padding-bottom: 40rpx;
+    line-height: 60rpx;
+    font-size: 28rpx;
     color: cornflowerblue;
     text-align: center;
     background-color: whitesmoke;

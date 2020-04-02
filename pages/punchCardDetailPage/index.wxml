@@ -259,9 +259,7 @@
                         <block wx:if="{{item.have_sticky == 0}}">
                           <block wx:if="{{isCreator==1}}">
                             <view class="not-sticky" catchtap="dealSticky"
-                                  data-diary-index="{{index}}">
-                              置顶
-                            </view>
+                                  data-diary-index="{{index}}">置顶</view>
                           </block>
                         </block>
                         <block wx:else>
